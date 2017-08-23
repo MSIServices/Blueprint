@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Italic.ttf">
+            <string>OpenSans-Italic</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="CheckboxTVC" rowHeight="50" id="KGk-i7-Jjw" customClass="CheckboxTVC" customModule="Blueprint" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mrt-yO-KOA" customClass="M13Checkbox" customModule="M13Checkbox">
+                        <rect key="frame" x="276" y="7" width="36" height="36"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="PwH-gV-qqs"/>
+                            <constraint firstAttribute="height" constant="36" id="esi-pg-XoS"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="checkmarkLineWidth">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="string" keyPath="_IBCheckState" value="unchecked"/>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="checkboxPressed:" destination="KGk-i7-Jjw" eventType="valueChanged" id="Xjj-wF-K4G"/>
+                        </connections>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIr-tX-gw1">
+                        <rect key="frame" x="32" y="8" width="236" height="34"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" name="OpenSans-Italic" family="Open Sans" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="mrt-yO-KOA" secondAttribute="trailing" constant="8" id="5gu-rT-H3E"/>
+                    <constraint firstItem="DIr-tX-gw1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="32" id="9ZE-nO-bVO"/>
+                    <constraint firstItem="mrt-yO-KOA" firstAttribute="leading" secondItem="DIr-tX-gw1" secondAttribute="trailing" constant="8" id="FYf-xd-T8D"/>
+                    <constraint firstItem="mrt-yO-KOA" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="PTP-c6-SWq"/>
+                    <constraint firstAttribute="bottom" secondItem="DIr-tX-gw1" secondAttribute="bottom" constant="8" id="WMq-yT-5bn"/>
+                    <constraint firstItem="DIr-tX-gw1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="c8l-ec-w5p"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <connections>
+                <outlet property="checkboxV" destination="mrt-yO-KOA" id="Yx7-Td-Kz9"/>
+                <outlet property="titleLbl" destination="DIr-tX-gw1" id="gla-AT-h52"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="33"/>
+        </tableViewCell>
+    </objects>
+</document>

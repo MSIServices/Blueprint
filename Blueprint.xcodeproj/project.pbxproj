@@ -120,8 +120,6 @@
 		61A676E81F2D8C5C0047DD7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676E61F2D8C5C0047DD7B /* Constants.swift */; };
 		61A676E91F2D8C5C0047DD7B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676E61F2D8C5C0047DD7B /* Constants.swift */; };
 		61A676F11F2D8CF80047DD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676F01F2D8CF80047DD7B /* APIManager.swift */; };
-		61A676F21F2D8CF80047DD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676F01F2D8CF80047DD7B /* APIManager.swift */; };
-		61A676F31F2D8CF80047DD7B /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676F01F2D8CF80047DD7B /* APIManager.swift */; };
 		61A676FF1F2D8DF40047DD7B /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676FE1F2D8DF40047DD7B /* ErrorHandler.swift */; };
 		61A677001F2D8DF40047DD7B /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676FE1F2D8DF40047DD7B /* ErrorHandler.swift */; };
 		61A677011F2D8DF40047DD7B /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A676FE1F2D8DF40047DD7B /* ErrorHandler.swift */; };
@@ -289,6 +287,60 @@
 		DCAAEEBC1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
 		DCAAEEBD1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
 		DCAAEEBE1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
+		DCAAEED41F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */; };
+		DCAAEED51F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */; };
+		DCAAEED61F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */; };
+		DCAAEED71F4F48060004ADD7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC11F4F48060004ADD7 /* M13Checkbox.swift */; };
+		DCAAEED81F4F48060004ADD7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC11F4F48060004ADD7 /* M13Checkbox.swift */; };
+		DCAAEED91F4F48060004ADD7 /* M13Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC11F4F48060004ADD7 /* M13Checkbox.swift */; };
+		DCAAEEDA1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC21F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift */; };
+		DCAAEEDB1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC21F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift */; };
+		DCAAEEDC1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC21F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift */; };
+		DCAAEEDD1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC31F4F48060004ADD7 /* M13CheckboxController.swift */; };
+		DCAAEEDE1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC31F4F48060004ADD7 /* M13CheckboxController.swift */; };
+		DCAAEEDF1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC31F4F48060004ADD7 /* M13CheckboxController.swift */; };
+		DCAAEEE01F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC41F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift */; };
+		DCAAEEE11F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC41F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift */; };
+		DCAAEEE21F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC41F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift */; };
+		DCAAEEE31F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC61F4F48060004ADD7 /* M13CheckboxBounceController.swift */; };
+		DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC61F4F48060004ADD7 /* M13CheckboxBounceController.swift */; };
+		DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC61F4F48060004ADD7 /* M13CheckboxBounceController.swift */; };
+		DCAAEEE61F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC71F4F48060004ADD7 /* M13CheckboxDotController.swift */; };
+		DCAAEEE71F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC71F4F48060004ADD7 /* M13CheckboxDotController.swift */; };
+		DCAAEEE81F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC71F4F48060004ADD7 /* M13CheckboxDotController.swift */; };
+		DCAAEEE91F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC81F4F48060004ADD7 /* M13CheckboxExpandController.swift */; };
+		DCAAEEEA1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC81F4F48060004ADD7 /* M13CheckboxExpandController.swift */; };
+		DCAAEEEB1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC81F4F48060004ADD7 /* M13CheckboxExpandController.swift */; };
+		DCAAEEEC1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC91F4F48060004ADD7 /* M13CheckboxFadeController.swift */; };
+		DCAAEEED1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC91F4F48060004ADD7 /* M13CheckboxFadeController.swift */; };
+		DCAAEEEE1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEC91F4F48060004ADD7 /* M13CheckboxFadeController.swift */; };
+		DCAAEEEF1F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECA1F4F48060004ADD7 /* M13CheckboxFillController.swift */; };
+		DCAAEEF01F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECA1F4F48060004ADD7 /* M13CheckboxFillController.swift */; };
+		DCAAEEF11F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECA1F4F48060004ADD7 /* M13CheckboxFillController.swift */; };
+		DCAAEEF21F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECB1F4F48060004ADD7 /* M13CheckboxFlatController.swift */; };
+		DCAAEEF31F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECB1F4F48060004ADD7 /* M13CheckboxFlatController.swift */; };
+		DCAAEEF41F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECB1F4F48060004ADD7 /* M13CheckboxFlatController.swift */; };
+		DCAAEEF51F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECC1F4F48060004ADD7 /* M13CheckboxSpiralController.swift */; };
+		DCAAEEF61F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECC1F4F48060004ADD7 /* M13CheckboxSpiralController.swift */; };
+		DCAAEEF71F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECC1F4F48060004ADD7 /* M13CheckboxSpiralController.swift */; };
+		DCAAEEF81F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECD1F4F48060004ADD7 /* M13CheckboxStrokeController.swift */; };
+		DCAAEEF91F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECD1F4F48060004ADD7 /* M13CheckboxStrokeController.swift */; };
+		DCAAEEFA1F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECD1F4F48060004ADD7 /* M13CheckboxStrokeController.swift */; };
+		DCAAEEFB1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECF1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift */; };
+		DCAAEEFC1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECF1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift */; };
+		DCAAEEFD1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEECF1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift */; };
+		DCAAEEFE1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED01F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift */; };
+		DCAAEEFF1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED01F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift */; };
+		DCAAEF001F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED01F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift */; };
+		DCAAEF011F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		DCAAEF021F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		DCAAEF031F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */; };
+		DCAAEF041F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */; };
+		DCAAEF051F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */; };
+		DCAAEF061F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */; };
+		DCAAEF071F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
+		DCAAEF081F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
+		DCAAEF091F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
 		DCFF71B41F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B51F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B61F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
@@ -473,6 +525,24 @@
 		DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientVC.swift; sourceTree = "<group>"; };
 		DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCameraCVC.swift; sourceTree = "<group>"; };
 		DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCameraCVC.xib; sourceTree = "<group>"; };
+		DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "M13Checkbox+IB.swift"; sourceTree = "<group>"; };
+		DCAAEEC11F4F48060004ADD7 /* M13Checkbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13Checkbox.swift; sourceTree = "<group>"; };
+		DCAAEEC21F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAnimationGenerator.swift; sourceTree = "<group>"; };
+		DCAAEEC31F4F48060004ADD7 /* M13CheckboxController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxController.swift; sourceTree = "<group>"; };
+		DCAAEEC41F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxGestureRecognizer.swift; sourceTree = "<group>"; };
+		DCAAEEC61F4F48060004ADD7 /* M13CheckboxBounceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxBounceController.swift; sourceTree = "<group>"; };
+		DCAAEEC71F4F48060004ADD7 /* M13CheckboxDotController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDotController.swift; sourceTree = "<group>"; };
+		DCAAEEC81F4F48060004ADD7 /* M13CheckboxExpandController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxExpandController.swift; sourceTree = "<group>"; };
+		DCAAEEC91F4F48060004ADD7 /* M13CheckboxFadeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFadeController.swift; sourceTree = "<group>"; };
+		DCAAEECA1F4F48060004ADD7 /* M13CheckboxFillController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFillController.swift; sourceTree = "<group>"; };
+		DCAAEECB1F4F48060004ADD7 /* M13CheckboxFlatController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxFlatController.swift; sourceTree = "<group>"; };
+		DCAAEECC1F4F48060004ADD7 /* M13CheckboxSpiralController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxSpiralController.swift; sourceTree = "<group>"; };
+		DCAAEECD1F4F48060004ADD7 /* M13CheckboxStrokeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxStrokeController.swift; sourceTree = "<group>"; };
+		DCAAEECF1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxAddRemovePathGenerator.swift; sourceTree = "<group>"; };
+		DCAAEED01F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxCheckPathGenerator.swift; sourceTree = "<group>"; };
+		DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
+		DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
+		DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
 		DCFF71B31F4B549E00531062 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DCFF71B71F4B581C00531062 /* HeaderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTVC.swift; sourceTree = "<group>"; };
 		DCFF71B81F4B581C00531062 /* HeaderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderTVC.xib; sourceTree = "<group>"; };
@@ -747,6 +817,7 @@
 		61A676E21F2D8C0C0047DD7B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				DCAAEEBF1F4F48060004ADD7 /* Sources */,
 				DC3015DA1F4BB53800381031 /* AmazonAws */,
 				DC3015CB1F4BB47F00381031 /* Sdk */,
 				DC6F03CE1F3BD765007A8DB4 /* Media */,
@@ -953,6 +1024,47 @@
 				DC3015FD1F4C7B7400381031 /* green-checkmark-animated.gif */,
 			);
 			name = Media;
+			sourceTree = "<group>";
+		};
+		DCAAEEBF1F4F48060004ADD7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */,
+				DCAAEEC11F4F48060004ADD7 /* M13Checkbox.swift */,
+				DCAAEEC21F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift */,
+				DCAAEEC31F4F48060004ADD7 /* M13CheckboxController.swift */,
+				DCAAEEC41F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift */,
+				DCAAEEC51F4F48060004ADD7 /* Managers */,
+				DCAAEECE1F4F48060004ADD7 /* Paths */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		DCAAEEC51F4F48060004ADD7 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				DCAAEEC61F4F48060004ADD7 /* M13CheckboxBounceController.swift */,
+				DCAAEEC71F4F48060004ADD7 /* M13CheckboxDotController.swift */,
+				DCAAEEC81F4F48060004ADD7 /* M13CheckboxExpandController.swift */,
+				DCAAEEC91F4F48060004ADD7 /* M13CheckboxFadeController.swift */,
+				DCAAEECA1F4F48060004ADD7 /* M13CheckboxFillController.swift */,
+				DCAAEECB1F4F48060004ADD7 /* M13CheckboxFlatController.swift */,
+				DCAAEECC1F4F48060004ADD7 /* M13CheckboxSpiralController.swift */,
+				DCAAEECD1F4F48060004ADD7 /* M13CheckboxStrokeController.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		DCAAEECE1F4F48060004ADD7 /* Paths */ = {
+			isa = PBXGroup;
+			children = (
+				DCAAEECF1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift */,
+				DCAAEED01F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift */,
+				DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */,
+				DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */,
+				DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */,
+			);
+			path = Paths;
 			sourceTree = "<group>";
 		};
 		DCFF71BF1F4B582700531062 /* UITableViewCell */ = {
@@ -1227,7 +1339,6 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireSwiftyJSON/AlamofireSwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
@@ -1238,7 +1349,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireSwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
@@ -1273,14 +1383,17 @@
 				DCFF71B41F4B549E00531062 /* Group.swift in Sources */,
 				DC3015B31F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				616134BC1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
+				DCAAEEF21F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC1C44C51F4762C00013AD86 /* AudioVC.swift in Sources */,
 				DC98F0C11F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
 				6132240C1F3EA7A700F12A0C /* LogoV.swift in Sources */,
 				616134A01F2D94F100B52338 /* StringExtensions.swift in Sources */,
 				DC1C44A91F4663070013AD86 /* CheckerOptionV.swift in Sources */,
 				DC3016431F4E06A600381031 /* MediaVC.swift in Sources */,
+				DCAAEF041F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
 				613224071F3EA61800F12A0C /* NotificationProtocols.swift in Sources */,
 				61D614E31F3F9E340013D691 /* SignUpFourVC.swift in Sources */,
+				DCAAEEF81F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
 				DCAAEEB91F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DC3015E91F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				616134B01F2D952100B52338 /* UrlExtensions.swift in Sources */,
@@ -1289,6 +1402,7 @@
 				DC7C52A31F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				616134901F2D919100B52338 /* NC.swift in Sources */,
 				DC30163F1F4DF17800381031 /* Regex.swift in Sources */,
+				DCAAEED71F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DC1C44C91F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				616134941F2D91AE00B52338 /* TBC.swift in Sources */,
 				DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */,
@@ -1300,6 +1414,7 @@
 				6132240E1F3EA7E400F12A0C /* ProgressCircleV.swift in Sources */,
 				DCFF71D61F4B911000531062 /* PostType.swift in Sources */,
 				DC1C44951F44AD640013AD86 /* Type.swift in Sources */,
+				DCAAEED41F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				DC7C52A61F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DC3015B01F4BA95200381031 /* PostCD.swift in Sources */,
 				61A676AF1F2D8AB40047DD7B /* Blueprint.xcdatamodeld in Sources */,
@@ -1308,28 +1423,36 @@
 				DC1C44B91F4762810013AD86 /* LinkVC.swift in Sources */,
 				6132244F1F3EAE4600F12A0C /* MainVC.swift in Sources */,
 				613224031F3EA59F00F12A0C /* NSObjectExtensions.swift in Sources */,
+				DCAAEEDA1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				DC3016171F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
 				6161349C1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
 				615B79C11F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C529E1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DCFF71B91F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				613224901F3F467700F12A0C /* CustomTF.swift in Sources */,
+				DCAAEEDD1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
 				613223F61F3EA44B00F12A0C /* RawRepresentableExtensions.swift in Sources */,
 				DC1C44801F43C54A0013AD86 /* User.swift in Sources */,
 				DC3015EF1F4BB53800381031 /* AWSConfiguration.swift in Sources */,
 				DC1C44911F44AB700013AD86 /* LoginVC.swift in Sources */,
+				DCAAEEE01F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				616134AC1F2D951400B52338 /* DoubleExtensions.swift in Sources */,
+				DCAAEEE61F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
 				613224881F3EC42D00F12A0C /* CustomB.swift in Sources */,
 				DC1C44A11F4649210013AD86 /* NewPostVC.swift in Sources */,
 				DC30160F1F4CA88100381031 /* TextFieldTVC.swift in Sources */,
 				DC30163B1F4DEAB800381031 /* TV.swift in Sources */,
 				616134A81F2D950A00B52338 /* IntExtensions.swift in Sources */,
+				DCAAEEEF1F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				613223FE1F3EA51F00F12A0C /* UIColorExtensions.swift in Sources */,
 				DC3016361F4CE43500381031 /* LinkPreview.swift in Sources */,
 				61D614E71F3FB5A20013D691 /* MainV.swift in Sources */,
+				DCAAEEE91F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				61A677031F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				613224101F3EA8EA00F12A0C /* AuthenticationManager.swift in Sources */,
+				DCAAEEF51F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */,
 				DC3015EC1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
+				DCAAEF071F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				DCFF71CA1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
 				616134C41F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44851F44A54A0013AD86 /* HomeVC.swift in Sources */,
@@ -1339,12 +1462,16 @@
 				61A676A71F2D8AB40047DD7B /* AppDelegate.swift in Sources */,
 				DCFF71DA1F4B93F700531062 /* Post.swift in Sources */,
 				DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */,
+				DCAAEEFB1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				61A676E71F2D8C5C0047DD7B /* Constants.swift in Sources */,
 				DCFF71C31F4B5DF600531062 /* CheckboxTVC.swift in Sources */,
 				613223FC1F3EA4F100F12A0C /* UIScrollViewExtensions.swift in Sources */,
+				DCAAEEEC1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
 				DC3016061F4C7F9900381031 /* ZeroActionAlertV.swift in Sources */,
 				DC3015F21F4BB53800381031 /* AWSMobileClient.swift in Sources */,
+				DCAAEEFE1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */,
+				DCAAEF011F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
 				DC6F03CD1F3BD644007A8DB4 /* Helper.swift in Sources */,
 				DC3015E61F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				613224001F3EA54400F12A0C /* UIButtonExtensions.swift in Sources */,
@@ -1352,6 +1479,7 @@
 				DC3016321F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				616134B81F2D954600B52338 /* UIViewExtensions.swift in Sources */,
 				616134A41F2D950100B52338 /* DateExtensions.swift in Sources */,
+				DCAAEEE31F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DC3016471F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				61D614DF1F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */,
@@ -1362,8 +1490,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61A676F21F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				616134A11F2D94F100B52338 /* StringExtensions.swift in Sources */,
+				DCAAEEF31F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC3016401F4DF17800381031 /* Regex.swift in Sources */,
 				DC3015E71F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B41F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
@@ -1372,34 +1500,44 @@
 				DC3016331F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AA1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
 				DC3016481F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
+				DCAAEED51F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				616134911F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44961F44AD640013AD86 /* Type.swift in Sources */,
 				616134C51F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44CA1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DC1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
+				DCAAEEF91F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
 				615B79C21F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C529F1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016201F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
 				DC98F0C21F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
+				DCAAEEEA1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				DC7C52A71F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DCAAEEBA1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DCFF71BA1F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				DC3016071F4C7F9900381031 /* ZeroActionAlertV.swift in Sources */,
 				DCFF71C41F4B5DF600531062 /* CheckboxTVC.swift in Sources */,
 				616134A51F2D950100B52338 /* DateExtensions.swift in Sources */,
+				DCAAEF021F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
+				DCAAEEF61F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */,
 				DC1C44811F43C54A0013AD86 /* User.swift in Sources */,
 				61D614E41F3F9E340013D691 /* SignUpFourVC.swift in Sources */,
 				6161349D1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
+				DCAAEEE11F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				DCFF71DB1F4B93F700531062 /* Post.swift in Sources */,
+				DCAAEEDB1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				DC3015EA1F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				DC3016101F4CA88100381031 /* TextFieldTVC.swift in Sources */,
 				DC3016271F4CAFF000381031 /* MessageDelegate.swift in Sources */,
 				DCFF71B51F4B549E00531062 /* Group.swift in Sources */,
 				61A676BF1F2D8AB40047DD7B /* BlueprintTests.swift in Sources */,
 				DCFF71CB1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
+				DCAAEEF01F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				DC1C44B21F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447D1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
 				613224911F3F467700F12A0C /* CustomTF.swift in Sources */,
+				DCAAEEE71F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
+				DCAAEEED1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
 				DC1C44B61F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015ED1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				613224891F3EC42D00F12A0C /* CustomB.swift in Sources */,
@@ -1413,6 +1551,9 @@
 				DC1C44C61F4762C00013AD86 /* AudioVC.swift in Sources */,
 				616134A91F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				DC1C44861F44A54A0013AD86 /* HomeVC.swift in Sources */,
+				DCAAEEFF1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				DCAAEEDE1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
+				DCAAEF081F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				616134B11F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224501F3EAE4600F12A0C /* MainVC.swift in Sources */,
 				DC3016441F4E06A600381031 /* MediaVC.swift in Sources */,
@@ -1422,12 +1563,16 @@
 				DC3015F31F4BB53800381031 /* AWSMobileClient.swift in Sources */,
 				DC1C44921F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DC3016181F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
+				DCAAEEFC1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				DC30163C1F4DEAB800381031 /* TV.swift in Sources */,
 				616134C11F2D956000B52338 /* UILabelExtensions.swift in Sources */,
 				DC30164F1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E01F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
+				DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				61A677041F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BD1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
+				DCAAEED81F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
+				DCAAEF051F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
 				DC1C44A21F4649210013AD86 /* NewPostVC.swift in Sources */,
 				61D614E81F3FB5A20013D691 /* MainV.swift in Sources */,
 			);
@@ -1437,8 +1582,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				61A676F31F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				616134A21F2D94F100B52338 /* StringExtensions.swift in Sources */,
+				DCAAEEF41F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC3016411F4DF17800381031 /* Regex.swift in Sources */,
 				DC3015E81F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B51F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
@@ -1447,34 +1592,44 @@
 				DC3016341F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AB1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
 				DC3016491F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
+				DCAAEED61F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				616134921F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44971F44AD640013AD86 /* Type.swift in Sources */,
 				616134C61F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44CB1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DD1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
+				DCAAEEFA1F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
 				615B79C31F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C52A01F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016211F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
 				DC98F0C31F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
+				DCAAEEEB1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				DC7C52A81F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DCAAEEBB1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DCFF71BB1F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				DC3016081F4C7F9900381031 /* ZeroActionAlertV.swift in Sources */,
 				DCFF71C51F4B5DF600531062 /* CheckboxTVC.swift in Sources */,
 				616134A61F2D950100B52338 /* DateExtensions.swift in Sources */,
+				DCAAEF031F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
+				DCAAEEF71F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */,
 				DC1C44821F43C54A0013AD86 /* User.swift in Sources */,
 				61D614E51F3F9E340013D691 /* SignUpFourVC.swift in Sources */,
 				6161349E1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
+				DCAAEEE21F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				DCFF71DC1F4B93F700531062 /* Post.swift in Sources */,
+				DCAAEEDC1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				DC3015EB1F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				DC3016111F4CA88100381031 /* TextFieldTVC.swift in Sources */,
 				DC3016281F4CAFF000381031 /* MessageDelegate.swift in Sources */,
 				DCFF71B61F4B549E00531062 /* Group.swift in Sources */,
 				61A676CA1F2D8AB40047DD7B /* BlueprintUITests.swift in Sources */,
 				DCFF71CC1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
+				DCAAEEF11F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				DC1C44B31F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447E1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
 				613224921F3F467700F12A0C /* CustomTF.swift in Sources */,
+				DCAAEEE81F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
+				DCAAEEEE1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
 				DC1C44B71F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015EE1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				6132248A1F3EC42D00F12A0C /* CustomB.swift in Sources */,
@@ -1488,6 +1643,9 @@
 				DC1C44C71F4762C00013AD86 /* AudioVC.swift in Sources */,
 				616134AA1F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				DC1C44871F44A54A0013AD86 /* HomeVC.swift in Sources */,
+				DCAAEF001F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
+				DCAAEEDF1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
+				DCAAEF091F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				616134B21F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224511F3EAE4600F12A0C /* MainVC.swift in Sources */,
 				DC3016451F4E06A600381031 /* MediaVC.swift in Sources */,
@@ -1497,12 +1655,16 @@
 				DC3015F41F4BB53800381031 /* AWSMobileClient.swift in Sources */,
 				DC1C44931F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DC3016191F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
+				DCAAEEFD1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				DC30163D1F4DEAB800381031 /* TV.swift in Sources */,
 				616134C21F2D956000B52338 /* UILabelExtensions.swift in Sources */,
 				DC3016501F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E11F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
+				DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				61A677051F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BE1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
+				DCAAEED91F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
+				DCAAEF061F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
 				DC1C44A31F4649210013AD86 /* NewPostVC.swift in Sources */,
 				61D614E91F3FB5A20013D691 /* MainV.swift in Sources */,
 			);

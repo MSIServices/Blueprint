@@ -7,7 +7,6 @@ target 'Blueprint' do
 	pod 'SWXMLHash'
 	pod 'CryptoSwift'
 	pod 'AlamofireSwiftyJSON'
-	pod 'M13Checkbox'
 	pod 'SwiftyGif'
 	pod 'SwiftLinkPreview', '~> 2.0.7'
 end

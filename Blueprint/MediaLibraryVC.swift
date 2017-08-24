@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 fileprivate let SHOW_CAMERA_CVC = "ShowCameraCVC"
 fileprivate let PHOTO_CVC = "PhotoCVC"
@@ -19,7 +20,8 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     let layout = UICollectionViewFlowLayout()
     
     var settingsAlertV: DoubleActionAlertV!
-    var photos = [UIImage]()
+    var photoAssets = [PHAsset]()
+    var fetchGroup = DispatchGroup()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,23 +37,23 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         collectionView.collectionViewLayout = layout
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        MediaManager.shared.getAllPhotos(Success:  { photos in
+        MediaManager.shared.fetchAllImageAssetsAndCache(Success:  { assets in
             
-            self.photos = photos
-            self.testImageView.image = photos[0]
-            self.collectionView.reloadData()
+            DispatchQueue.main.async {
+                self.photoAssets = assets
+                self.collectionView.reloadData()
+            }
             
         }, Failure: { status in
-            print(status)
+            
+            self.settingsAlertV = self.mainV.showDoubleActionAlert(height: 250, width: 250, header: "Photo Library Access", subHeader: "Blueprint needs access to your photo library", cancelBtnText: "Cancel", confirmationBtnText: "Settings", backgroundColor: UIColor.white, buttonNormalBackgroundColor: UIColor.white, buttonHighlightedBackgroundColor: UIColor.lightGray, icon: nil, animated: true)
+            self.settingsAlertV.addButtonBorder(color: UIColor.lightGray, thickness: 1.0)
+            self.settingsAlertV.cancelBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+            self.settingsAlertV.confirmationBtn.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
         })
-        
-        settingsAlertV = mainV.showDoubleActionAlert(height: 250, width: 250, header: "Photo Library Access", subHeader: "Blueprint needs access to your photo library", cancelBtnText: "Cancel", confirmationBtnText: "Settings", backgroundColor: UIColor.white, buttonNormalBackgroundColor: UIColor.white, buttonHighlightedBackgroundColor: UIColor.lightGray, icon: nil, animated: true)
-        settingsAlertV.addButtonBorder(color: UIColor.lightGray, thickness: 1.0)
-        settingsAlertV.cancelBtn.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
-        settingsAlertV.confirmationBtn.addTarget(self, action: #selector(openSettings), for: .touchUpInside)
     }
     
     func dismissAlert() {
@@ -65,7 +67,6 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         if UIApplication.shared.canOpenURL(settingsUrl) {
             
             UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-
                 if success {
                     print("Successfully opened settings.")
                 }
@@ -78,8 +79,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
-//        return photos.count
+        return photoAssets.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -91,26 +91,39 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         } else {
             
-            if photos.count > 0 {
+            let asset = photoAssets[(indexPath as NSIndexPath).row]
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
                 
-                let photo = photos[(indexPath as NSIndexPath).row]
-                
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
-                
+            print("Fetching cached images...")
+            MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
+                    
+                print("Fetched cached image.")
                 cell.configureCell(image: photo)
-                
-                return cell
-                
-            } else {
-                
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
-                return cell
-            }
+                    
+            }, Failure: {
+                    
+                print("Fetching image not in cache...")
+                MediaManager.shared.fetchImage(asset: asset, completion: { photo in
+                    cell.configureCell(image: photo)
+                    print("Fetched image not in cache.")
+                })
+            })
+            return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.size.width / 4) - 8, height: (UIScreen.main.bounds.size.width / 4) - 8)
+        return CGSize(width: (UIScreen.main.bounds.size.width / 3) - 8, height: (UIScreen.main.bounds.size.width / 3) - 8)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if indexPath.row != 0 {
+            
+            let cell = collectionView.cellForItem(indexPath: indexPath) as! PhotoCVC
+            
+        }
     }
 
 }

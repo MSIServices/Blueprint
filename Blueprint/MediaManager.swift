@@ -14,7 +14,8 @@ class MediaManager {
     
     static let shared = MediaManager()
     
-    private let imageManager = PHImageManager.default()
+    private let imageManager = PHImageManager()
+    private let cacheImageManager = PHCachingImageManager()
     
     func getImage(urlString: String, Success: @escaping ((Data) -> Void), Failure: @escaping ((String) -> Void)) {
         
@@ -45,10 +46,7 @@ class MediaManager {
         }
     }
     
-    func getAllPhotos(Success: @escaping (([UIImage]) -> Void), Failure: @escaping ((PHAuthorizationStatus) -> Void)) {
-     
-        var photos = [UIImage]()
-        let myGroup = DispatchGroup()
+    func fetchAllImageAssetsAndCache(Success: @escaping (([PHAsset]) -> Void), Failure: @escaping ((PHAuthorizationStatus) -> Void)) {
         
         PHPhotoLibrary.requestAuthorization { (status) in
             
@@ -57,26 +55,21 @@ class MediaManager {
 
                 let fetchOptions = PHFetchOptions()
                 let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
-
-                let imageManagerOptions = PHImageRequestOptions()
-                imageManagerOptions.deliveryMode = .highQualityFormat
+                
+                var assets: [PHAsset] = []
                 
                 allPhotos.enumerateObjects({ (asset, count, _) in
-                    
-                    myGroup.enter()
-                    
-                    self.imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: imageManagerOptions, resultHandler: { (image, info) in
-                        
-                        photos.append(image!)
-                        
-                        myGroup.leave()
-                    })
+                    assets.append(asset)
                 })
                 
-                myGroup.notify(queue: DispatchQueue.main, execute: {
-                    Success(photos)
-                })
-        
+                let options = PHImageRequestOptions()
+                options.isSynchronous = true
+                options.deliveryMode = .highQualityFormat
+                
+                self.cacheImageManager.startCachingImages(for: assets, targetSize: CGSize(width: UIScreen.main.bounds.size.width / 3 - 8, height: UIScreen.main.bounds.size.width / 3 - 8), contentMode: PHImageContentMode.aspectFill, options: options)
+                
+                Success(assets)
+                
             case .denied:
                 Failure(.denied)
             case .restricted:
@@ -85,6 +78,33 @@ class MediaManager {
                 Failure(.notDetermined)
             }
         }
+    }
+    
+    func fetchImage(asset: PHAsset, completion: @escaping ((UIImage) -> Void)) {
+        
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        options.deliveryMode = .highQualityFormat
+        
+        imageManager.requestImage(for: asset, targetSize: CGSize(width: UIScreen.main.bounds.size.width / 3 - 8, height: UIScreen.main.bounds.size.width / 3 - 8), contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
+                completion(image!)
+        })
+    }
+    
+    func fetchCachedImage(asset: PHAsset, Success: @escaping ((UIImage) -> Void), Failure: @escaping (() -> Void)) {
+        
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        options.deliveryMode = .highQualityFormat
+
+        cacheImageManager.requestImage(for: asset, targetSize: CGSize(width: UIScreen.main.bounds.size.width / 3 - 8, height: UIScreen.main.bounds.size.width / 3 - 8), contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image, info) in
+            
+            if let img = image {
+                Success(img)
+            } else {
+                Failure()
+            }
+        })
     }
     
 //    func getImageFromS3AndCache(email: String, password: String, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {

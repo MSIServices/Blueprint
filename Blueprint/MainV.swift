@@ -119,7 +119,7 @@ class MainV: UIView {
             singleActionAlertV.center.x = self.bounds.size.width / 2
             singleActionAlertV.isHidden = false
             singleActionAlertV.configureView(gif: gif, header: header, subHeader: subHeader, btnText: btnText, backgroundColor: backgroundColor, buttonNormalBackgroundColor: buttonNormalBackgroundColor, buttonHighlightedBackgroundColor: buttonHighlightedBackgroundColor)
-            self.addSubview(singleActionAlertV!)
+            self.addSubview(singleActionAlertV)
             
             if animated {
                 
@@ -146,7 +146,7 @@ class MainV: UIView {
             darkView = self.renderDark(animated: animated)
             self.addSubview(darkView!)
             
-            doubleActionAlertV = DoubleActionAlertV.instanceFromNib()
+            doubleActionAlertV = DoubleActionAlertV.nib()
             doubleActionAlertV.frame = CGRect(x: 0, y: 0, width: width, height: height)
             doubleActionAlertV.center.y = -(doubleActionAlertV.frame.size.height)
             doubleActionAlertV.center.x = self.bounds.size.width / 2

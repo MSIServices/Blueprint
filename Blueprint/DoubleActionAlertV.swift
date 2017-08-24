@@ -27,7 +27,7 @@ class DoubleActionAlertV: UIView {
         self.layer.cornerRadius = 3
     }
     
-    class func instanceFromNib() -> DoubleActionAlertV {
+    class func nib() -> DoubleActionAlertV {
         return UINib(nibName: self.nameOfClass, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! DoubleActionAlertV
     }
     

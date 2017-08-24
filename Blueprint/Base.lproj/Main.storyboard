@@ -655,11 +655,11 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-bQ-oOE">
                                         <rect key="frame" x="0.0" y="272" width="376" height="272"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-preview" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.72549019609999998" green="0.76862745099999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="5Zk-Op-J8m" firstAttribute="top" secondItem="HEf-bQ-oOE" secondAttribute="top" id="Ilq-eA-UEA"/>
                                             <constraint firstAttribute="bottom" secondItem="5Zk-Op-J8m" secondAttribute="bottom" id="Vvk-vH-v0j"/>
@@ -733,7 +733,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UtY-1H-o0N">
                                 <rect key="frame" x="0.0" y="64" width="376" height="604"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aUj-Zb-SRW">
                                     <size key="itemSize" width="80" height="80"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -756,7 +756,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.72549019607843135" green="0.76862745098039209" blue="0.77254901960784317" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="a3o-CM-AsU" firstAttribute="top" secondItem="UtY-1H-o0N" secondAttribute="bottom" id="87O-wU-4pv"/>
                             <constraint firstAttribute="trailing" secondItem="UtY-1H-o0N" secondAttribute="trailing" id="a2N-11-kVe"/>
@@ -993,6 +993,7 @@
     <resources>
         <image name="chain" width="128" height="128"/>
         <image name="close-white" width="128" height="128"/>
+        <image name="no-preview" width="1280" height="800"/>
         <image name="user-photo-btn" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>

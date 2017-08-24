@@ -172,14 +172,6 @@
 		DC1C44B61F47626E0013AD86 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44B41F47626E0013AD86 /* TextVC.swift */; };
 		DC1C44B71F47626E0013AD86 /* TextVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44B41F47626E0013AD86 /* TextVC.swift */; };
 		DC1C44B91F4762810013AD86 /* LinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44B81F4762810013AD86 /* LinkVC.swift */; };
-		DC1C44BA1F4762810013AD86 /* LinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44B81F4762810013AD86 /* LinkVC.swift */; };
-		DC1C44BB1F4762810013AD86 /* LinkVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44B81F4762810013AD86 /* LinkVC.swift */; };
-		DC1C44BD1F4762920013AD86 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44BC1F4762920013AD86 /* ImageVC.swift */; };
-		DC1C44BE1F4762920013AD86 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44BC1F4762920013AD86 /* ImageVC.swift */; };
-		DC1C44BF1F4762920013AD86 /* ImageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44BC1F4762920013AD86 /* ImageVC.swift */; };
-		DC1C44C11F4762A20013AD86 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C01F4762A20013AD86 /* VideoVC.swift */; };
-		DC1C44C21F4762A20013AD86 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C01F4762A20013AD86 /* VideoVC.swift */; };
-		DC1C44C31F4762A20013AD86 /* VideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C01F4762A20013AD86 /* VideoVC.swift */; };
 		DC1C44C51F4762C00013AD86 /* AudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C41F4762C00013AD86 /* AudioVC.swift */; };
 		DC1C44C61F4762C00013AD86 /* AudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C41F4762C00013AD86 /* AudioVC.swift */; };
 		DC1C44C71F4762C00013AD86 /* AudioVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44C41F4762C00013AD86 /* AudioVC.swift */; };
@@ -257,6 +249,24 @@
 		DC3016361F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
 		DC3016371F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
 		DC3016381F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
+		DC30163B1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
+		DC30163C1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
+		DC30163D1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
+		DC30163F1F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
+		DC3016401F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
+		DC3016411F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
+		DC3016431F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
+		DC3016441F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
+		DC3016451F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
+		DC3016471F4E0DA500381031 /* MediaLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */; };
+		DC3016481F4E0DA500381031 /* MediaLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */; };
+		DC3016491F4E0DA500381031 /* MediaLibraryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */; };
+		DC30164E1F4E0ED200381031 /* PhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30164C1F4E0ED100381031 /* PhotoCVC.swift */; };
+		DC30164F1F4E0ED200381031 /* PhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30164C1F4E0ED100381031 /* PhotoCVC.swift */; };
+		DC3016501F4E0ED200381031 /* PhotoCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30164C1F4E0ED100381031 /* PhotoCVC.swift */; };
+		DC3016511F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
+		DC3016521F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
+		DC3016531F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
 		DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */; };
 		DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */; };
 		DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B46A1F3BC6D300D40871 /* Template.swift */; };
@@ -273,6 +283,12 @@
 		DC98F0C11F4794CA0075FCA4 /* RecipientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */; };
 		DC98F0C21F4794CA0075FCA4 /* RecipientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */; };
 		DC98F0C31F4794CA0075FCA4 /* RecipientVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */; };
+		DCAAEEB91F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */; };
+		DCAAEEBA1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */; };
+		DCAAEEBB1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */; };
+		DCAAEEBC1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
+		DCAAEEBD1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
+		DCAAEEBE1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */; };
 		DCFF71B41F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B51F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B61F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
@@ -409,8 +425,6 @@
 		DC1C44B01F475C680013AD86 /* CheckerOptionVDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckerOptionVDelegate.swift; sourceTree = "<group>"; };
 		DC1C44B41F47626E0013AD86 /* TextVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextVC.swift; sourceTree = "<group>"; };
 		DC1C44B81F4762810013AD86 /* LinkVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkVC.swift; sourceTree = "<group>"; };
-		DC1C44BC1F4762920013AD86 /* ImageVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageVC.swift; sourceTree = "<group>"; };
-		DC1C44C01F4762A20013AD86 /* VideoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoVC.swift; sourceTree = "<group>"; };
 		DC1C44C41F4762C00013AD86 /* AudioVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioVC.swift; sourceTree = "<group>"; };
 		DC1C44C81F4762D00013AD86 /* QuoteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuoteVC.swift; sourceTree = "<group>"; };
 		DC3015AE1F4BA95200381031 /* PostCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostCD.swift; sourceTree = "<group>"; };
@@ -443,6 +457,12 @@
 		DC3016251F4CAFF000381031 /* MessageDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageDelegate.swift; sourceTree = "<group>"; };
 		DC3016311F4CD5BD00381031 /* MediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		DC3016351F4CE43500381031 /* LinkPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
+		DC30163A1F4DEAB800381031 /* TV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
+		DC30163E1F4DF17800381031 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		DC3016421F4E06A600381031 /* MediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaVC.swift; sourceTree = "<group>"; };
+		DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryVC.swift; sourceTree = "<group>"; };
+		DC30164C1F4E0ED100381031 /* PhotoCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCVC.swift; sourceTree = "<group>"; };
+		DC30164D1F4E0ED100381031 /* PhotoCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCVC.xib; sourceTree = "<group>"; };
 		DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCD.swift; sourceTree = "<group>"; };
 		DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateCD+Properties.swift"; sourceTree = "<group>"; };
 		DC44B46A1F3BC6D300D40871 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
@@ -451,6 +471,8 @@
 		DC7C52A11F4B4E8D000D3AD7 /* GroupCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCD.swift; sourceTree = "<group>"; };
 		DC7C52A21F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "GroupCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipientVC.swift; sourceTree = "<group>"; };
+		DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowCameraCVC.swift; sourceTree = "<group>"; };
+		DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ShowCameraCVC.xib; sourceTree = "<group>"; };
 		DCFF71B31F4B549E00531062 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DCFF71B71F4B581C00531062 /* HeaderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTVC.swift; sourceTree = "<group>"; };
 		DCFF71B81F4B581C00531062 /* HeaderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderTVC.xib; sourceTree = "<group>"; };
@@ -641,11 +663,11 @@
 				DC1C44A01F4649210013AD86 /* NewPostVC.swift */,
 				DC1C44B41F47626E0013AD86 /* TextVC.swift */,
 				DC1C44B81F4762810013AD86 /* LinkVC.swift */,
-				DC1C44BC1F4762920013AD86 /* ImageVC.swift */,
-				DC1C44C01F4762A20013AD86 /* VideoVC.swift */,
 				DC1C44C41F4762C00013AD86 /* AudioVC.swift */,
 				DC1C44C81F4762D00013AD86 /* QuoteVC.swift */,
 				DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */,
+				DC3016421F4E06A600381031 /* MediaVC.swift */,
+				DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */,
 			);
 			name = UIViewController;
 			sourceTree = "<group>";
@@ -741,6 +763,7 @@
 				DC6F03CC1F3BD644007A8DB4 /* Helper.swift */,
 				6132240F1F3EA8EA00F12A0C /* AuthenticationManager.swift */,
 				DC3016311F4CD5BD00381031 /* MediaManager.swift */,
+				DC30163E1F4DF17800381031 /* Regex.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -853,6 +876,7 @@
 		61A676FC1F2D8DB00047DD7B /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
+				DC30164A1F4E0E9D00381031 /* UICollectionViewCell */,
 				DCFF71C01F4B583300531062 /* UIView */,
 				DCFF71BF1F4B582700531062 /* UITableViewCell */,
 			);
@@ -862,6 +886,8 @@
 		61A676FD1F2D8DCC0047DD7B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				DC30164B1F4E0EAE00381031 /* UICollectionViewCell */,
+				DC3016391F4DEA9F00381031 /* UITextView */,
 				613224861F3EC40E00F12A0C /* UIButton */,
 				613224081F3EA75000F12A0C /* UITextField */,
 				61A676E51F2D8C430047DD7B /* UITableViewCell */,
@@ -893,6 +919,32 @@
 				DC3015E11F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m */,
 			);
 			path = Api;
+			sourceTree = "<group>";
+		};
+		DC3016391F4DEA9F00381031 /* UITextView */ = {
+			isa = PBXGroup;
+			children = (
+				DC30163A1F4DEAB800381031 /* TV.swift */,
+			);
+			name = UITextView;
+			sourceTree = "<group>";
+		};
+		DC30164A1F4E0E9D00381031 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DCAAEEB81F4E1F8A0004ADD7 /* ShowCameraCVC.xib */,
+				DC30164D1F4E0ED100381031 /* PhotoCVC.xib */,
+			);
+			name = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DC30164B1F4E0EAE00381031 /* UICollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DC30164C1F4E0ED100381031 /* PhotoCVC.swift */,
+				DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */,
+			);
+			name = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
 		DC6F03CE1F3BD765007A8DB4 /* Media */ = {
@@ -1061,6 +1113,8 @@
 				615DF0561F3F578200FB301F /* OpenSans-Light.ttf in Resources */,
 				615DF05F1F3F578200FB301F /* OpenSans-SemiBold.ttf in Resources */,
 				615DF0591F3F578200FB301F /* OpenSans-LightItalic.ttf in Resources */,
+				DC3016511F4E0ED200381031 /* PhotoCVC.xib in Resources */,
+				DCAAEEBC1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				615DF05C1F3F578200FB301F /* OpenSans-Regular.ttf in Resources */,
 				DC3016221F4CAEDD00381031 /* PreviewTVC.xib in Resources */,
 				DC3015FE1F4C7B7400381031 /* green-checkmark-animated.gif in Resources */,
@@ -1071,6 +1125,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAAEEBD1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				616134991F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0481F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
 				DCFF71BD1F4B581C00531062 /* HeaderTVC.xib in Resources */,
@@ -1086,6 +1141,7 @@
 				615DF0541F3F578200FB301F /* OpenSans-Italic.ttf in Resources */,
 				615DF05A1F3F578200FB301F /* OpenSans-LightItalic.ttf in Resources */,
 				615DF06F1F3F621E00FB301F /* SingleActionAlertV.xib in Resources */,
+				DC3016521F4E0ED200381031 /* PhotoCVC.xib in Resources */,
 				DC3016031F4C7F7B00381031 /* ZeroActionAlertV.xib in Resources */,
 				DCFF71C71F4B5DF600531062 /* CheckboxTVC.xib in Resources */,
 				DC3015CD1F4BB47F00381031 /* Sdk in Resources */,
@@ -1099,6 +1155,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCAAEEBE1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				6161349A1F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0491F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
 				DCFF71BE1F4B581C00531062 /* HeaderTVC.xib in Resources */,
@@ -1114,6 +1171,7 @@
 				615DF0551F3F578200FB301F /* OpenSans-Italic.ttf in Resources */,
 				615DF05B1F3F578200FB301F /* OpenSans-LightItalic.ttf in Resources */,
 				615DF0701F3F621E00FB301F /* SingleActionAlertV.xib in Resources */,
+				DC3016531F4E0ED200381031 /* PhotoCVC.xib in Resources */,
 				DC3016041F4C7F7B00381031 /* ZeroActionAlertV.xib in Resources */,
 				DCFF71C81F4B5DF600531062 /* CheckboxTVC.xib in Resources */,
 				DC3015CE1F4BB47F00381031 /* Sdk in Resources */,
@@ -1220,14 +1278,17 @@
 				6132240C1F3EA7A700F12A0C /* LogoV.swift in Sources */,
 				616134A01F2D94F100B52338 /* StringExtensions.swift in Sources */,
 				DC1C44A91F4663070013AD86 /* CheckerOptionV.swift in Sources */,
+				DC3016431F4E06A600381031 /* MediaVC.swift in Sources */,
 				613224071F3EA61800F12A0C /* NotificationProtocols.swift in Sources */,
 				61D614E31F3F9E340013D691 /* SignUpFourVC.swift in Sources */,
+				DCAAEEB91F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DC3015E91F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				616134B01F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				61D614DB1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				61A676FF1F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
 				DC7C52A31F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				616134901F2D919100B52338 /* NC.swift in Sources */,
+				DC30163F1F4DF17800381031 /* Regex.swift in Sources */,
 				DC1C44C91F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				616134941F2D91AE00B52338 /* TBC.swift in Sources */,
 				DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */,
@@ -1243,6 +1304,7 @@
 				DC3015B01F4BA95200381031 /* PostCD.swift in Sources */,
 				61A676AF1F2D8AB40047DD7B /* Blueprint.xcdatamodeld in Sources */,
 				DC1C44B51F47626E0013AD86 /* TextVC.swift in Sources */,
+				DC30164E1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				DC1C44B91F4762810013AD86 /* LinkVC.swift in Sources */,
 				6132244F1F3EAE4600F12A0C /* MainVC.swift in Sources */,
 				613224031F3EA59F00F12A0C /* NSObjectExtensions.swift in Sources */,
@@ -1259,8 +1321,8 @@
 				616134AC1F2D951400B52338 /* DoubleExtensions.swift in Sources */,
 				613224881F3EC42D00F12A0C /* CustomB.swift in Sources */,
 				DC1C44A11F4649210013AD86 /* NewPostVC.swift in Sources */,
-				DC1C44C11F4762A20013AD86 /* VideoVC.swift in Sources */,
 				DC30160F1F4CA88100381031 /* TextFieldTVC.swift in Sources */,
+				DC30163B1F4DEAB800381031 /* TV.swift in Sources */,
 				616134A81F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				613223FE1F3EA51F00F12A0C /* UIColorExtensions.swift in Sources */,
 				DC3016361F4CE43500381031 /* LinkPreview.swift in Sources */,
@@ -1268,7 +1330,6 @@
 				61A677031F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				613224101F3EA8EA00F12A0C /* AuthenticationManager.swift in Sources */,
 				DC3015EC1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
-				DC1C44BD1F4762920013AD86 /* ImageVC.swift in Sources */,
 				DCFF71CA1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
 				616134C41F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44851F44A54A0013AD86 /* HomeVC.swift in Sources */,
@@ -1291,6 +1352,7 @@
 				DC3016321F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				616134B81F2D954600B52338 /* UIViewExtensions.swift in Sources */,
 				616134A41F2D950100B52338 /* DateExtensions.swift in Sources */,
+				DC3016471F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				61D614DF1F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */,
 			);
@@ -1300,16 +1362,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1C44BA1F4762810013AD86 /* LinkVC.swift in Sources */,
 				61A676F21F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				616134A11F2D94F100B52338 /* StringExtensions.swift in Sources */,
+				DC3016401F4DF17800381031 /* Regex.swift in Sources */,
 				DC3015E71F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B41F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B11F4BA95200381031 /* PostCD.swift in Sources */,
 				61A677001F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
-				DC1C44BE1F4762920013AD86 /* ImageVC.swift in Sources */,
 				DC3016331F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AA1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
+				DC3016481F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				616134911F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44961F44AD640013AD86 /* Type.swift in Sources */,
 				616134C51F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
@@ -1320,6 +1382,7 @@
 				DC3016201F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
 				DC98F0C21F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
 				DC7C52A71F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
+				DCAAEEBA1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DCFF71BA1F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				DC3016071F4C7F9900381031 /* ZeroActionAlertV.swift in Sources */,
 				DCFF71C41F4B5DF600531062 /* CheckboxTVC.swift in Sources */,
@@ -1340,7 +1403,6 @@
 				DC1C44B61F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015ED1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				613224891F3EC42D00F12A0C /* CustomB.swift in Sources */,
-				DC1C44C21F4762A20013AD86 /* VideoVC.swift in Sources */,
 				DC3016371F4CE43500381031 /* LinkPreview.swift in Sources */,
 				6132248D1F3ECC3800F12A0C /* SignUpOneVC.swift in Sources */,
 				DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */,
@@ -1353,13 +1415,16 @@
 				DC1C44861F44A54A0013AD86 /* HomeVC.swift in Sources */,
 				616134B11F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224501F3EAE4600F12A0C /* MainVC.swift in Sources */,
+				DC3016441F4E06A600381031 /* MediaVC.swift in Sources */,
 				61A676E81F2D8C5C0047DD7B /* Constants.swift in Sources */,
 				DC7C52A41F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				DC3015F01F4BB53800381031 /* AWSConfiguration.swift in Sources */,
 				DC3015F31F4BB53800381031 /* AWSMobileClient.swift in Sources */,
 				DC1C44921F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DC3016181F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
+				DC30163C1F4DEAB800381031 /* TV.swift in Sources */,
 				616134C11F2D956000B52338 /* UILabelExtensions.swift in Sources */,
+				DC30164F1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E01F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				61A677041F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BD1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
@@ -1372,16 +1437,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC1C44BB1F4762810013AD86 /* LinkVC.swift in Sources */,
 				61A676F31F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				616134A21F2D94F100B52338 /* StringExtensions.swift in Sources */,
+				DC3016411F4DF17800381031 /* Regex.swift in Sources */,
 				DC3015E81F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B51F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B21F4BA95200381031 /* PostCD.swift in Sources */,
 				61A677011F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
-				DC1C44BF1F4762920013AD86 /* ImageVC.swift in Sources */,
 				DC3016341F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AB1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
+				DC3016491F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				616134921F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44971F44AD640013AD86 /* Type.swift in Sources */,
 				616134C61F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
@@ -1392,6 +1457,7 @@
 				DC3016211F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
 				DC98F0C31F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
 				DC7C52A81F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
+				DCAAEEBB1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DCFF71BB1F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				DC3016081F4C7F9900381031 /* ZeroActionAlertV.swift in Sources */,
 				DCFF71C51F4B5DF600531062 /* CheckboxTVC.swift in Sources */,
@@ -1412,7 +1478,6 @@
 				DC1C44B71F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015EE1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				6132248A1F3EC42D00F12A0C /* CustomB.swift in Sources */,
-				DC1C44C31F4762A20013AD86 /* VideoVC.swift in Sources */,
 				DC3016381F4CE43500381031 /* LinkPreview.swift in Sources */,
 				6132248E1F3ECC3800F12A0C /* SignUpOneVC.swift in Sources */,
 				DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */,
@@ -1425,13 +1490,16 @@
 				DC1C44871F44A54A0013AD86 /* HomeVC.swift in Sources */,
 				616134B21F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224511F3EAE4600F12A0C /* MainVC.swift in Sources */,
+				DC3016451F4E06A600381031 /* MediaVC.swift in Sources */,
 				61A676E91F2D8C5C0047DD7B /* Constants.swift in Sources */,
 				DC7C52A51F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				DC3015F11F4BB53800381031 /* AWSConfiguration.swift in Sources */,
 				DC3015F41F4BB53800381031 /* AWSMobileClient.swift in Sources */,
 				DC1C44931F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DC3016191F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
+				DC30163D1F4DEAB800381031 /* TV.swift in Sources */,
 				616134C21F2D956000B52338 /* UILabelExtensions.swift in Sources */,
+				DC3016501F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E11F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				61A677051F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BE1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,

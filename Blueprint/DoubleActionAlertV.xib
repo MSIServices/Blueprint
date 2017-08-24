@@ -8,6 +8,9 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="OpenSans-Bold.ttf">
+            <string>OpenSans-Bold</string>
+        </array>
         <array key="Ubuntu-B.ttf">
             <string>Ubuntu-Bold</string>
         </array>
@@ -29,14 +32,17 @@
                         <constraint firstAttribute="width" constant="50" id="dSW-Of-Ydz"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kL8-El-s3W">
-                    <rect key="frame" x="16" y="90" width="343" height="0.0"/>
-                    <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="24"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="asdf" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kL8-El-s3W">
+                    <rect key="frame" x="16" y="90" width="343" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="gfB-IS-4JP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="Ubuntu-Bold" family="Ubuntu" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaa-ld-YPh">
-                    <rect key="frame" x="16" y="130" width="343" height="0.0"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qaa-ld-YPh">
+                    <rect key="frame" x="16" y="140" width="343" height="451"/>
                     <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="16"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -47,10 +53,7 @@
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7k-0H-b5U">
                             <rect key="frame" x="0.0" y="0.0" width="187.5" height="60"/>
                             <color key="backgroundColor" red="0.6470588235294118" green="0.67843137254901964" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="t1V-D5-LBR"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
@@ -58,15 +61,15 @@
                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T6g-uR-Sbh">
                             <rect key="frame" x="187.5" y="0.0" width="187.5" height="60"/>
                             <color key="backgroundColor" red="0.6470588235294118" green="0.67843137254901964" blue="0.69019607843137254" alpha="1" colorSpace="calibratedRGB"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="60" id="EeM-cc-TIQ"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" name="Ubuntu" family="Ubuntu" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="18"/>
                             <state key="normal">
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
                     </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="KLF-dk-3g0"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -74,20 +77,24 @@
                 <constraint firstItem="rEW-li-1Fd" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="0Z6-s9-Tvy"/>
                 <constraint firstAttribute="bottom" secondItem="7nK-vx-5P7" secondAttribute="bottom" id="5Mo-M1-EF7"/>
                 <constraint firstItem="rEW-li-1Fd" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Cyr-h6-gmb"/>
-                <constraint firstItem="qaa-ld-YPh" firstAttribute="top" secondItem="kL8-El-s3W" secondAttribute="bottom" constant="40" id="OFH-k0-MV4"/>
+                <constraint firstItem="qaa-ld-YPh" firstAttribute="top" secondItem="kL8-El-s3W" secondAttribute="bottom" constant="20" id="OFH-k0-MV4"/>
                 <constraint firstAttribute="trailing" secondItem="qaa-ld-YPh" secondAttribute="trailing" constant="16" id="PdY-y8-l9r"/>
                 <constraint firstItem="qaa-ld-YPh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="Qki-gp-5EI"/>
                 <constraint firstAttribute="trailing" secondItem="kL8-El-s3W" secondAttribute="trailing" constant="16" id="SVY-ak-9tj"/>
                 <constraint firstItem="kL8-El-s3W" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="cbr-9m-DyN"/>
                 <constraint firstAttribute="trailing" secondItem="7nK-vx-5P7" secondAttribute="trailing" id="q8q-uX-C7e"/>
                 <constraint firstItem="7nK-vx-5P7" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="qie-P3-mtz"/>
+                <constraint firstItem="7nK-vx-5P7" firstAttribute="top" secondItem="qaa-ld-YPh" secondAttribute="bottom" constant="16" id="y0e-r6-NbQ"/>
                 <constraint firstItem="kL8-El-s3W" firstAttribute="top" secondItem="rEW-li-1Fd" secondAttribute="bottom" constant="20" id="yXd-re-VCM"/>
             </constraints>
             <connections>
+                <outlet property="btnHeight" destination="KLF-dk-3g0" id="iXw-9A-XEU"/>
                 <outlet property="cancelBtn" destination="F7k-0H-b5U" id="WF7-bQ-hgL"/>
                 <outlet property="confirmationBtn" destination="T6g-uR-Sbh" id="1Mt-Dy-bb5"/>
                 <outlet property="headerTextLbl" destination="kL8-El-s3W" id="5yD-R1-Msf"/>
                 <outlet property="iconImageView" destination="rEW-li-1Fd" id="fiY-Jo-Wfj"/>
+                <outlet property="iconImageViewHeight" destination="WkB-8p-jjM" id="z0u-Ug-c6j"/>
+                <outlet property="iconImageViewWidth" destination="dSW-Of-Ydz" id="OTm-Gv-KnN"/>
                 <outlet property="subTextLbl" destination="qaa-ld-YPh" id="OEs-65-S1c"/>
             </connections>
             <point key="canvasLocation" x="25.5" y="59.5"/>

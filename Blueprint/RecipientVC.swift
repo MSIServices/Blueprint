@@ -29,6 +29,7 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var audio: Data?
     var errorAlert: SingleActionAlertV!
     var successAlert: ZeroActionAlertV!
+    var previousVC: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,7 +132,14 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
     
     func backBtnPressed() {
-        performSegue(withIdentifier: UNWIND_TEXT_VC, sender: self)
+        
+        switch previousVC {
+        case TEXT_VC:
+            performSegue(withIdentifier: UNWIND_TEXT_VC, sender: self)
+        case LINK_VC:
+            performSegue(withIdentifier: UNWIND_LINK_VC, sender: self)
+        default: break
+        }
     }
     
     func gifDidLoop(sender: UIImageView) {

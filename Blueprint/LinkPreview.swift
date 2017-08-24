@@ -16,7 +16,7 @@ struct LinkPreview {
     private var _image: String?
     private var _images: [String]?
     private var _canonicalUrl: String?
-    private var _finalUrl: String?
+    private var _finalUrl: URL?
     private var _url: String?
     
     var icon: String? {
@@ -43,7 +43,7 @@ struct LinkPreview {
         return _canonicalUrl
     }
     
-    var finalUrl: String? {
+    var finalUrl: URL? {
         return _finalUrl
     }
     
@@ -51,7 +51,7 @@ struct LinkPreview {
         return _url
     }
     
-    init(icon: String?, title: String?, descrip: String?, image: String?, images: [String]?, canonicalUrl: String?, finalUrl: String?, url: String?) {
+    init(icon: String?, title: String?, descrip: String?, image: String?, images: [String]?, canonicalUrl: String?, finalUrl: URL?, url: String?) {
         self._icon = icon
         self._title = title
         self._descrip = descrip

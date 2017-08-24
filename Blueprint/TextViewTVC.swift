@@ -18,15 +18,9 @@ class TextViewTVC: UITableViewCell, UITextViewDelegate {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
-        textView.delegate = self
-        textView.tag = 2
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
         
-        applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
+        textView.tag = 2
+        textView.delegate = self
     }
     
     class func nib() -> UINib {
@@ -34,7 +28,12 @@ class TextViewTVC: UITableViewCell, UITextViewDelegate {
     }
     
     func configureCell(text: String?) {
-        textView.text = text
+        
+        if text == nil {
+            applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
+        } else {
+            textView.text = text
+        }
     }
     
     func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String) {
@@ -92,6 +91,7 @@ class TextViewTVC: UITableViewCell, UITextViewDelegate {
             
         } else {
             
+            messageDelegate.updateText!(text: placeholderText)
             applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
             moveCursorToStart(aTextView: textView)
             return false

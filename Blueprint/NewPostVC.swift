@@ -17,12 +17,7 @@ class NewPostVC: UIViewController, CheckerOptionVDelegate {
         checkerOptionV.checkerOptionD = self
         view.addSubview(checkerOptionV)
     }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
-    }
-    
     func checkerBtnPressed(tag: Int) {
 
         switch tag {
@@ -31,9 +26,9 @@ class NewPostVC: UIViewController, CheckerOptionVDelegate {
         case 1:
             performSegue(withIdentifier: LINK_VC, sender: self)
         case 2:
-            performSegue(withIdentifier: IMAGE_VC, sender: self)
+            performSegue(withIdentifier: MEDIA_VC, sender: self)
         case 3:
-            performSegue(withIdentifier: VIDEO_VC, sender: self)
+            performSegue(withIdentifier: MEDIA_VC, sender: self)
         case 4:
             performSegue(withIdentifier: AUDIO_VC, sender: self)
         case 5:

@@ -7,11 +7,14 @@
 //
 
 import Foundation
+import Photos
 import Alamofire
 
 class MediaManager {
     
     static let shared = MediaManager()
+    
+    private let imageManager = PHImageManager.default()
     
     func getImage(urlString: String, Success: @escaping ((Data) -> Void), Failure: @escaping ((String) -> Void)) {
         
@@ -39,6 +42,48 @@ class MediaManager {
                 return
             }
             Success(data)
+        }
+    }
+    
+    func getAllPhotos(Success: @escaping (([UIImage]) -> Void), Failure: @escaping ((PHAuthorizationStatus) -> Void)) {
+     
+        var photos = [UIImage]()
+        let myGroup = DispatchGroup()
+        
+        PHPhotoLibrary.requestAuthorization { (status) in
+            
+            switch status {
+            case .authorized:
+
+                let fetchOptions = PHFetchOptions()
+                let allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+
+                let imageManagerOptions = PHImageRequestOptions()
+                imageManagerOptions.deliveryMode = .highQualityFormat
+                
+                allPhotos.enumerateObjects({ (asset, count, _) in
+                    
+                    myGroup.enter()
+                    
+                    self.imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.default, options: imageManagerOptions, resultHandler: { (image, info) in
+                        
+                        photos.append(image!)
+                        
+                        myGroup.leave()
+                    })
+                })
+                
+                myGroup.notify(queue: DispatchQueue.main, execute: {
+                    Success(photos)
+                })
+        
+            case .denied:
+                Failure(.denied)
+            case .restricted:
+                Failure(.restricted)
+            case .notDetermined:
+                Failure(.notDetermined)
+            }
         }
     }
     

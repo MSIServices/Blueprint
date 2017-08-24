@@ -139,7 +139,7 @@ class MainV: UIView {
         return singleActionAlertV
     }
     
-    func showDoubleActionAlert(icon: String, header: String, subHeader: String, cancelBtnText: String, confirmationBtnText: String, backgroundColor: UIColor, buttonNormalBackgroundColor: UIColor, buttonHighlightedBackgroundColor: UIColor, animated: Bool) -> DoubleActionAlertV {
+    func showDoubleActionAlert(height: CGFloat = 300, width: CGFloat = 300, header: String, subHeader: String, cancelBtnText: String, confirmationBtnText: String, backgroundColor: UIColor, buttonNormalBackgroundColor: UIColor, buttonHighlightedBackgroundColor: UIColor, icon: String?, animated: Bool) -> DoubleActionAlertV {
         
         if self.doubleActionAlertV == nil {
             
@@ -147,7 +147,7 @@ class MainV: UIView {
             self.addSubview(darkView!)
             
             doubleActionAlertV = DoubleActionAlertV.instanceFromNib()
-            doubleActionAlertV.frame = CGRect(x: 0, y: 0, width: 300, height: 300)
+            doubleActionAlertV.frame = CGRect(x: 0, y: 0, width: width, height: height)
             doubleActionAlertV.center.y = -(doubleActionAlertV.frame.size.height)
             doubleActionAlertV.center.x = self.bounds.size.width / 2
             doubleActionAlertV.isHidden = false
@@ -158,11 +158,11 @@ class MainV: UIView {
             if animated {
                 
                 UIView.animate(withDuration: 0.25, animations: {
-                    self.singleActionAlertV.center.y = self.bounds.size.height / 2 - 50
+                    self.doubleActionAlertV.center.y = self.bounds.size.height / 2 - 50
                 }, completion: { result in
                   
                     UIView.animate(withDuration: 0.25, animations: {
-                        self.singleActionAlertV.center.y -= 10
+                        self.doubleActionAlertV.center.y -= 10
                     })
                 })
             } else {

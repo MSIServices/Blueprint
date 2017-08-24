@@ -22,7 +22,7 @@ class TextVC: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
 
         textView.delegate = self
-        
+
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
         applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
         
@@ -51,6 +51,7 @@ class TextVC: UIViewController, UITextViewDelegate {
             let vC = segue.destination as! RecipientVC
             vC.type = PostType.text
             vC.text = textView.text!
+            vC.previousVC = nameOfClass
         }
     }
     

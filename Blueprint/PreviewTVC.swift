@@ -25,28 +25,20 @@ class PreviewTVC: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        addBorder(side: .south, thickness: 1.0, color: UIColor.darkGray, borderAdjustment: 0)
+        previewImageView.addViewBackedBorder(side: .south, thickness: 1.0, color: UIColor.darkGray)
     }
     
     class func nib() -> UINib {
         return UINib(nibName: self.nameOfClass, bundle: nil)
     }
     
-    func configureCell(linkPreview: LinkPreview?, image: UIImage?) {
-        
-        dump(linkPreview)
-
-        if image != nil {
-            previewImageView.image = image
-        } else {
+    func configureCell(linkPreview: LinkPreview?) {
             
-            if let urlString = linkPreview?.image {
-                getPreviewImage(urlString: urlString)
-            } else {
-                previewImageView.image = UIImage(named: "no-preview")
-            }
+        if let urlString = linkPreview?.image {
+            getPreviewImage(urlString: urlString)
+        } else {
+            previewImageView.image = UIImage(named: "no-preview")
         }
-        
         if let title = linkPreview?.title {
             titleLbl.text = title
         }
@@ -59,9 +51,14 @@ class PreviewTVC: UITableViewCell {
         
         MediaManager.shared.getImage(urlString: urlString, Success: { data in
             
-            self.previewImageView.image = UIImage(data: data)
+            if data.count == 0 {
+                self.previewImageView.image = UIImage(named: "no-preview")
+            } else {
+                self.previewImageView.image = UIImage(data: data)
+            }
             
         }, Failure: { error in
+            
             print(error)
             self.previewImageView.image = UIImage(named: "no-preview")
         })

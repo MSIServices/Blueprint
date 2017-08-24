@@ -11,5 +11,5 @@ import Foundation
 @objc protocol MessageDelegate {
     @objc optional func updateText(text: String?)
     @objc optional func updateUrl(text: String?)
-    @objc optional func setActiveField(tag: Int)
+    @objc optional func scrollToPoint(point: CGPoint)
 }

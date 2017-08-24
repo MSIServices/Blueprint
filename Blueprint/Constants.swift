@@ -32,7 +32,9 @@ let OPEN_SANS = ["OpenSans-ExtraBoldItalic", "OpenSans-SemiBoldItalic", "OpenSan
 //Server
 let AES_KEY: Array<UInt8> = [159, 125, 16, 203, 153, 34, 59, 223, 109, 170, 224, 224, 159, 168, 57, 31, 79, 192, 182, 130, 0, 119, 56, 245, 47, 224, 171, 199, 59, 58, 16, 243]
 let HOME_IP_ADDRESS: String = "192.168.0.7"
-let WORK_IP_ADDRESS: String = "10.1.204.83"
+let WORK_IP_ADDRESS_ONE: String = "10.1.204.83"
+let WORK_IP_ADDRESS_TWO: String = "10.1.228.145"
+let WORK_IP_ADDRESS_THREE: String = "169.254.130.194"
 let LOCAL_HOST_PORT: Int = 3000
 let SERVER_DOMAIN: String = "https://arcane-retreat-99625.herokuapp.com"
 
@@ -58,6 +60,8 @@ let VIDEO_VC = "VideoVC"
 let AUDIO_VC = "AudioVC"
 let QUOTE_VC = "QuoteVC"
 let RECIPIENT_VC = "RecipientVC"
+let MEDIA_VC = "MediaVC"
+let MEDIA_LIBRARY_VC = "MediaLibraryVC"
 
 //Reverse Segues
 let UNWIND_LOGIN_VC = "unwindToLoginVC"
@@ -68,6 +72,10 @@ let UNWIND_HOME_VC = "unwindToHomeVC"
 let UNWIND_MAIN_VC = "unwindToMainVC"
 let UNWIND_NEW_POST_VC = "unwindToNewPostVC"
 let UNWIND_TEXT_VC = "unwindToTextVC"
+let UNWIND_LINK_VC = "unwindToLinkVC"
+let UNWIND_MEDIA_VC = "unwindToMediaVC"
+let UNWIND_AUDIO_VC = "unwindToAudioVC"
+let UNWIND_QUOTE_VC = "unwindToQuoteVC"
 
 //UI
 let NAVIGATION_BAR_HEIGHT: CGFloat = 64.0

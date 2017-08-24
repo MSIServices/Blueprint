@@ -87,6 +87,7 @@ extension String {
         return self.substring(with: Range(self.characters.index(self.startIndex, offsetBy: start) ..< self.characters.index(self.startIndex, offsetBy: end)))
         
     }
+    
     func substring(_ range: NSRange) -> String {
         
         var end = range.location + range.length

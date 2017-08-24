@@ -585,7 +585,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="10g-fo-XVF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4234" y="-421"/>
+            <point key="canvasLocation" x="4266" y="114"/>
         </scene>
         <!--TBC-->
         <scene sceneID="QQH-GB-VGO">
@@ -624,11 +624,156 @@
                     <connections>
                         <segue destination="Ixe-cv-L6G" kind="show" identifier="TextVC" id="sjc-EK-Qze"/>
                         <segue destination="rIG-av-5Rg" kind="show" identifier="LinkVC" id="wG5-sA-ADm"/>
+                        <segue destination="2lk-md-cEJ" kind="show" identifier="MediaVC" id="FSz-UH-Qm7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMf-fg-hju" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4268.8000000000002" y="702.99850074962524"/>
+            <point key="canvasLocation" x="4267" y="802"/>
+        </scene>
+        <!--MediaVC-->
+        <scene sceneID="XrP-Uo-POf">
+            <objects>
+                <viewController id="2lk-md-cEJ" customClass="MediaVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="baA-Ro-NxS"/>
+                        <viewControllerLayoutGuide type="bottom" id="pWo-aE-BR7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9D2-Bj-kWX" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="717"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Udw-5b-NcA">
+                                <rect key="frame" x="0.0" y="64" width="376" height="544"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dMM-WP-u3z" customClass="TV" customModule="Blueprint" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-bQ-oOE">
+                                        <rect key="frame" x="0.0" y="272" width="376" height="272"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.72549019609999998" green="0.76862745099999996" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstItem="5Zk-Op-J8m" firstAttribute="top" secondItem="HEf-bQ-oOE" secondAttribute="top" id="Ilq-eA-UEA"/>
+                                            <constraint firstAttribute="bottom" secondItem="5Zk-Op-J8m" secondAttribute="bottom" id="Vvk-vH-v0j"/>
+                                            <constraint firstAttribute="trailing" secondItem="5Zk-Op-J8m" secondAttribute="trailing" id="XWF-B2-Jtj"/>
+                                            <constraint firstItem="5Zk-Op-J8m" firstAttribute="leading" secondItem="HEf-bQ-oOE" secondAttribute="leading" id="hNy-AS-Y7e"/>
+                                            <constraint firstAttribute="height" constant="272" id="i1L-g6-WYu"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="HEf-bQ-oOE" secondAttribute="trailing" id="BPI-2O-5eS"/>
+                                    <constraint firstItem="dMM-WP-u3z" firstAttribute="top" secondItem="Udw-5b-NcA" secondAttribute="top" id="Fck-yJ-pWX"/>
+                                    <constraint firstItem="HEf-bQ-oOE" firstAttribute="top" secondItem="dMM-WP-u3z" secondAttribute="bottom" id="ZL4-9A-h0s"/>
+                                    <constraint firstItem="HEf-bQ-oOE" firstAttribute="leading" secondItem="Udw-5b-NcA" secondAttribute="leading" id="ZQX-Sg-84s"/>
+                                    <constraint firstAttribute="bottom" secondItem="HEf-bQ-oOE" secondAttribute="bottom" id="aKC-yk-S4p"/>
+                                    <constraint firstItem="dMM-WP-u3z" firstAttribute="leading" secondItem="Udw-5b-NcA" secondAttribute="leading" id="gfV-Qa-jJN"/>
+                                    <constraint firstAttribute="trailing" secondItem="dMM-WP-u3z" secondAttribute="trailing" id="xTO-Jl-dz2"/>
+                                </constraints>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dUO-iR-UW6">
+                                <rect key="frame" x="0.0" y="608" width="376" height="60"/>
+                                <color key="backgroundColor" red="1" green="0.78823529410000004" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="1yD-Ft-mi7"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-ExtraBold" family="Open Sans" pointSize="20"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pWo-aE-BR7" firstAttribute="top" secondItem="dUO-iR-UW6" secondAttribute="bottom" id="A02-np-Xcx"/>
+                            <constraint firstItem="Udw-5b-NcA" firstAttribute="top" secondItem="baA-Ro-NxS" secondAttribute="bottom" id="Cpl-uZ-SMp"/>
+                            <constraint firstAttribute="trailing" secondItem="dUO-iR-UW6" secondAttribute="trailing" id="PbM-Ru-N1E"/>
+                            <constraint firstAttribute="trailing" secondItem="Udw-5b-NcA" secondAttribute="trailing" id="VSB-LH-cqB"/>
+                            <constraint firstItem="dUO-iR-UW6" firstAttribute="top" secondItem="Udw-5b-NcA" secondAttribute="bottom" id="jKo-ZX-EBQ"/>
+                            <constraint firstItem="Udw-5b-NcA" firstAttribute="leading" secondItem="9D2-Bj-kWX" secondAttribute="leading" id="kaT-y3-i1j"/>
+                            <constraint firstItem="dUO-iR-UW6" firstAttribute="leading" secondItem="9D2-Bj-kWX" secondAttribute="leading" id="zh6-G2-yyb"/>
+                        </constraints>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="376" height="717"/>
+                    <connections>
+                        <outlet property="mainV" destination="9D2-Bj-kWX" id="mj0-gd-51s"/>
+                        <outlet property="mediaImageView" destination="5Zk-Op-J8m" id="zhj-Ij-igg"/>
+                        <outlet property="mediaView" destination="HEf-bQ-oOE" id="MdZ-Kh-bMv"/>
+                        <outlet property="textView" destination="dMM-WP-u3z" id="txC-kS-2pJ"/>
+                        <segue destination="uTw-4b-hgh" kind="show" identifier="RecipientVC" id="HIS-Q2-Nv1"/>
+                        <segue destination="OsO-g3-nFW" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="qEO-2k-ruH"/>
+                        <segue destination="Ukn-p0-GSz" kind="show" identifier="MediaLibraryVC" id="bwB-9Q-gxH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IZm-Bq-Qq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="OsO-g3-nFW" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5030.3999999999996" y="801.94902548725645"/>
+        </scene>
+        <!--Media LibraryVC-->
+        <scene sceneID="Cod-Sm-yAz">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Ukn-p0-GSz" customClass="MediaLibraryVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MO6-Rb-svt"/>
+                        <viewControllerLayoutGuide type="bottom" id="a3o-CM-AsU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="6Zk-fH-rGf" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="717"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UtY-1H-o0N">
+                                <rect key="frame" x="0.0" y="64" width="376" height="604"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aUj-Zb-SRW">
+                                    <size key="itemSize" width="80" height="80"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PhotoCVC" id="Q1U-dv-tob" customClass="PhotoCVC" customModule="Blueprint" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Ukn-p0-GSz" id="7Gz-0A-xmz"/>
+                                    <outlet property="delegate" destination="Ukn-p0-GSz" id="zXq-aO-x2k"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="a3o-CM-AsU" firstAttribute="top" secondItem="UtY-1H-o0N" secondAttribute="bottom" id="87O-wU-4pv"/>
+                            <constraint firstAttribute="trailing" secondItem="UtY-1H-o0N" secondAttribute="trailing" id="a2N-11-kVe"/>
+                            <constraint firstItem="UtY-1H-o0N" firstAttribute="top" secondItem="MO6-Rb-svt" secondAttribute="bottom" id="vr3-UC-Kiw"/>
+                            <constraint firstItem="UtY-1H-o0N" firstAttribute="leading" secondItem="6Zk-fH-rGf" secondAttribute="leading" id="zzx-a6-fJb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="collectionView" destination="UtY-1H-o0N" id="vV2-Nm-gNQ"/>
+                        <outlet property="mainV" destination="6Zk-fH-rGf" id="u0Y-A3-DOn"/>
+                        <segue destination="ehu-C7-F95" kind="unwind" identifier="unwindToMediaVC" unwindAction="unwindToMediaVCWithSegue:" id="Dku-gV-T6P"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LiB-F9-WFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ehu-C7-F95" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5739.1999999999998" y="1400.1499250374814"/>
         </scene>
         <!--LinkVC-->
         <scene sceneID="63c-cR-XEv">
@@ -652,6 +797,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="uTw-4b-hgh" kind="show" identifier="RecipientVC" id="eeO-Qm-uZu"/>
+                                </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-dD-zvl">
                                 <rect key="frame" x="0.0" y="64" width="376" height="494"/>
@@ -675,6 +823,7 @@
                     </view>
                     <connections>
                         <outlet property="mainV" destination="cvl-Cd-TxR" id="iXT-9Z-uNb"/>
+                        <outlet property="nextBtn" destination="7aY-6E-6Yr" id="BSh-KB-Kti"/>
                         <outlet property="tableView" destination="DxU-dD-zvl" id="pZ3-od-2ej"/>
                         <outlet property="tableViewBttm" destination="Ndl-ix-oD9" id="zec-cp-s1t"/>
                         <segue destination="h8N-Ah-LUD" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="xK4-PR-Ywj"/>
@@ -683,7 +832,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUF-v4-gI7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="h8N-Ah-LUD" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4268.8000000000002" y="1421.7391304347827"/>
+            <point key="canvasLocation" x="5032" y="138"/>
         </scene>
         <!--TextVC-->
         <scene sceneID="Xfd-hJ-ngw">
@@ -741,7 +890,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NO-o9-WR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="xZh-N1-xIv" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5032" y="703"/>
+            <point key="canvasLocation" x="5032" y="-533"/>
         </scene>
         <!--RecipientVC-->
         <scene sceneID="ITy-Mb-DEO">
@@ -752,11 +901,11 @@
                         <viewControllerLayoutGuide type="bottom" id="mkL-LJ-xfd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NXv-bi-I0h" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="376" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="717"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="62" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7lQ-Um-oae">
-                                <rect key="frame" x="0.0" y="64" width="376" height="494"/>
+                                <rect key="frame" x="0.0" y="64" width="376" height="544"/>
                                 <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uTw-4b-hgh" id="1K8-kl-F5U"/>
@@ -764,7 +913,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-DN-dZ9">
-                                <rect key="frame" x="0.0" y="558" width="376" height="60"/>
+                                <rect key="frame" x="0.0" y="608" width="376" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.78823529410000004" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5lR-jL-9gr"/>
@@ -794,12 +943,13 @@
                         <outlet property="tableView" destination="7lQ-Um-oae" id="8eh-3U-Cth"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToTextVC" unwindAction="unwindToTextVCWithSegue:" id="hQ4-eq-s72"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="yRb-Fc-don"/>
+                        <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToLinkVC" unwindAction="unwindToLinkVCWithSegue:" id="l1h-b1-5hx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctg-Eu-0Ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DN9-r5-Ec5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5729.6000000000004" y="702.99850074962524"/>
+            <point key="canvasLocation" x="6037" y="703"/>
         </scene>
         <!--Item-->
         <scene sceneID="qh4-ve-Zv5">
@@ -847,5 +997,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UIE-4E-dtS"/>
+        <segue reference="HIS-Q2-Nv1"/>
     </inferredMetricsTieBreakers>
 </document>

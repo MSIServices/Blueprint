@@ -19,6 +19,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     @IBOutlet var mainV: MainV!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewBttm: NSLayoutConstraint!
+    @IBOutlet weak var nextBtn: UIButton!
     
     let slp = SwiftLinkPreview()
     
@@ -27,6 +28,8 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     var activeField: Int?
     var linkPreview: LinkPreview?
     var timer: Timer?
+    var gettingPreview = false
+    var previewCell: PreviewTVC!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,32 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        
+        if identifier == RECIPIENT_VC {
+            
+            if var url = self.url, url.characters.count > 0 {
+                
+                if Regex.test(url, regex: Regex.rawUrlPattern) && (previewCell.previewImageView.image != UIImage(named: "no-preview") || !(previewCell.titleLbl.text?.isEmpty)!) {
+                    return true
+                }
+            }
+        }
+        return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == RECIPIENT_VC {
+            
+            let vC = segue.destination as! RecipientVC
+            vC.type = PostType.text
+            vC.link = url
+            vC.text = message
+            vC.previousVC = nameOfClass
+        }
     }
     
     func keyboardWillShow(_ notification: Notification) {
@@ -91,30 +120,34 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
     
     func getPreview() {
         
-        if (url?.convertToValidUrlString().isValidUrl())! {
-            
-            let indexPath = IndexPath(row: 0, section: 1)
-            let cell = tableView.cellForRow(at: indexPath) as! PreviewTVC
-            
-            cell.loadingSpinner.isHidden = false
-            cell.loadingSpinner.startAnimating()
-            
+            previewCell.previewImageView.image = UIImage(named: "no-preview")
+            previewCell.titleLbl.text = ""
+            previewCell.urlLbl.text = ""
+            previewCell.loadingSpinner.isHidden = false
+            previewCell.loadingSpinner.startAnimating()
+            gettingPreview = true
+        
             slp.previewLink(url, onSuccess: { result in
                 
-                cell.loadingSpinner.stopAnimating()
-                cell.loadingSpinner.isHidden = true
+                self.previewCell.loadingSpinner.stopAnimating()
+                self.previewCell.loadingSpinner.isHidden = true
+                self.gettingPreview = false
                 
-                self.linkPreview = LinkPreview(icon: result["icon"] as? String, title: result["title"] as? String, descrip: result["descrip"] as? String, image: result["image"] as? String, images: result["images"] as? [String], canonicalUrl: result["canonicalUrl"] as? String, finalUrl: result["finalUrl"] as? String, url: result["url"] as? String)
+                self.linkPreview = LinkPreview(icon: result["icon"] as? String, title: result["title"] as? String, descrip: result["descrip"] as? String, image: result["image"] as? String, images: result["images"] as? [String], canonicalUrl: result["canonicalUrl"] as? String, finalUrl: result["finalUrl"] as? URL, url: result["url"] as? String)
+                
+                if let urlString = self.linkPreview?.finalUrl {
+                    self.url = String(describing: urlString)
+                }
                 
                 self.tableView.reloadData()
                 
             }, onError: { error in
                 
                 print(error)
-                cell.loadingSpinner.stopAnimating()
-                cell.loadingSpinner.isHidden = true
+                self.previewCell.loadingSpinner.stopAnimating()
+                self.previewCell.loadingSpinner.isHidden = true
+                self.gettingPreview = false
             })
-        }
     }
     
     func backBtnPressed() {
@@ -160,9 +193,9 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             
             let cell = tableView.dequeueReusableCell(withIdentifier: PREVIEW_TVC, for: indexPath) as! PreviewTVC
             
-            var img: UIImage?
+            cell.configureCell(linkPreview: linkPreview)
             
-            cell.configureCell(linkPreview: linkPreview, image: img)
+            previewCell = cell
             
             return cell
         
@@ -172,7 +205,6 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             
             cell.configureCell(text: message)
             cell.messageDelegate = self
-            cell.textView.delegate = self
             
             return cell
         }
@@ -207,5 +239,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
         return 0.00000001
     }
+    
+    @IBAction func unwindToLinkVC(segue: UIStoryboardSegue) { }
 
 }

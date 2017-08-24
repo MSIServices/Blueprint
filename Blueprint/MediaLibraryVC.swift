@@ -12,19 +12,24 @@ import Photos
 fileprivate let SHOW_CAMERA_CVC = "ShowCameraCVC"
 fileprivate let PHOTO_CVC = "PhotoCVC"
 
-class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet var mainV: MainV!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    let layout = UICollectionViewFlowLayout()
+    let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+    let targetSize = CGSize(width: UIScreen.main.bounds.size.width / 3 - 8, height: UIScreen.main.bounds.size.width / 3 - 8)
+    let imagePicker = UIImagePickerController()
     
     var settingsAlertV: DoubleActionAlertV!
     var photoAssets = [PHAsset]()
-    var fetchGroup = DispatchGroup()
+    var selectedImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
         
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
 
@@ -56,6 +61,15 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         })
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == UNWIND_MEDIA_VC && selectedImage != nil {
+            
+            let vC = segue.destination as! MediaVC
+            vC.mediaImageView.image = selectedImage
+        }
+    }
+    
     func dismissAlert() {
         mainV.removeAlert()
     }
@@ -77,6 +91,20 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
     }
+
+   func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+        
+        if error == nil {
+            backBtnPressed()
+        }
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        imagePicker.dismiss(animated: true, completion: nil)
+        selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        UIImageWriteToSavedPhotosAlbum(selectedImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return photoAssets.count
@@ -94,7 +122,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             let asset = photoAssets[(indexPath as NSIndexPath).row]
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
-                
+            
             print("Fetching cached images...")
             MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
                     
@@ -104,7 +132,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             }, Failure: {
                     
                 print("Fetching image not in cache...")
-                MediaManager.shared.fetchImage(asset: asset, completion: { photo in
+                MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
                     cell.configureCell(image: photo)
                     print("Fetched image not in cache.")
                 })
@@ -114,15 +142,21 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (UIScreen.main.bounds.size.width / 3) - 8, height: (UIScreen.main.bounds.size.width / 3) - 8)
+        return targetSize
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if indexPath.row != 0 {
             
-            let cell = collectionView.cellForItem(indexPath: indexPath) as! PhotoCVC
+            let asset = photoAssets[(indexPath as NSIndexPath).row]
             
+            MediaManager.shared.fetchImage(asset: asset, completion: { photo in
+                self.selectedImage = photo
+                self.performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
+            })
+        } else {
+            present(imagePicker, animated: true, completion: nil)
         }
     }
 

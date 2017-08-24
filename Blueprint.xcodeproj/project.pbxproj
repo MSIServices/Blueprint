@@ -817,7 +817,7 @@
 		61A676E21F2D8C0C0047DD7B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DCAAEEBF1F4F48060004ADD7 /* Sources */,
+				DCAAEEBF1F4F48060004ADD7 /* M13Checkbox */,
 				DC3015DA1F4BB53800381031 /* AmazonAws */,
 				DC3015CB1F4BB47F00381031 /* Sdk */,
 				DC6F03CE1F3BD765007A8DB4 /* Media */,
@@ -1026,7 +1026,7 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
-		DCAAEEBF1F4F48060004ADD7 /* Sources */ = {
+		DCAAEEBF1F4F48060004ADD7 /* M13Checkbox */ = {
 			isa = PBXGroup;
 			children = (
 				DCAAEEC01F4F48060004ADD7 /* M13Checkbox+IB.swift */,
@@ -1037,6 +1037,7 @@
 				DCAAEEC51F4F48060004ADD7 /* Managers */,
 				DCAAEECE1F4F48060004ADD7 /* Paths */,
 			);
+			name = M13Checkbox;
 			path = Sources;
 			sourceTree = "<group>";
 		};

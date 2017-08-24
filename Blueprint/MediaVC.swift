@@ -8,9 +8,10 @@
 
 import UIKit
 
-class MediaVC: UIViewController {
+fileprivate let placeholderText = "Text"
 
-    
+class MediaVC: UIViewController, UITextViewDelegate {
+
     @IBOutlet var mainV: MainV!
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var mediaImageView: UIImageView!
@@ -21,6 +22,96 @@ class MediaVC: UIViewController {
 
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
         addBarButton(imageNormal: "camera-white", imageHighlighted: nil, action: #selector(showMediaLibrary), side: .east)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        
+        applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        textView.addViewBackedBorder(side: .south, thickness: 1.0, color: UIColor.lightGray)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == RECIPIENT_VC {
+            
+            let vC = segue.destination as! RecipientVC
+            vC.image = UIImagePNGRepresentation(mediaImageView.image!)
+            vC.previousVC = MEDIA_VC
+            
+            if let text = textView.text, text != "" {
+                vC.text = text
+            }
+        }
+    }
+    
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String) {
+        
+        aTextview.textColor = UIColor.gray
+        aTextview.text = placeholderText
+        aTextview.textAlignment = .center
+        aTextview.font = UIFont(name: "OpenSans-LightItalic", size: 16)!
+    }
+    
+    func applyNonPlaceholderStyle(aTextview: UITextView) {
+        
+        aTextview.textColor = UIColor.darkText
+        aTextview.alpha = 1.0
+        aTextview.textAlignment = .left
+        aTextview.font = UIFont(name: "OpenSans-Regular", size: 16)!
+    }
+    
+    func textViewShouldBeginEditing(_ aTextView: UITextView) -> Bool {
+        
+        if aTextView.text == placeholderText {
+            moveCursorToStart(aTextView: aTextView)
+        }
+        return true
+    }
+    
+    func moveCursorToStart(aTextView: UITextView) {
+
+        DispatchQueue.main.async {
+            aTextView.selectedRange = NSMakeRange(0, 0);
+        }
+    }
+    
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        if(text == "\n") {
+            
+            textView.resignFirstResponder()
+            return false
+        }
+        
+        let newLength = textView.text.utf16.count + text.utf16.count - range.length
+        
+        if newLength > 0 {
+            
+            if textView.text == placeholderText {
+                
+                if text.utf16.count == 0 {
+                    return false
+                }
+                applyNonPlaceholderStyle(aTextview: textView)
+                textView.text = ""
+            }
+            return true
+            
+        } else {
+            
+            applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
+            moveCursorToStart(aTextView: textView)
+            return false
+        }
     }
     
     func backBtnPressed() {
@@ -29,6 +120,13 @@ class MediaVC: UIViewController {
     
     func showMediaLibrary() {
         performSegue(withIdentifier: MEDIA_LIBRARY_VC, sender: self)
+    }
+    
+    @IBAction func nextBtnPressed(_ sender: Any) {
+        
+        if mediaImageView.image != nil && mediaImageView.image != UIImage(named: "no-preview") {
+            performSegue(withIdentifier: RECIPIENT_VC, sender: self)
+        }
     }
 
     @IBAction func unwindToMediaVC(segue: UIStoryboardSegue) { }

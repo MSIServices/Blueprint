@@ -634,7 +634,7 @@
         <!--MediaVC-->
         <scene sceneID="XrP-Uo-POf">
             <objects>
-                <viewController id="2lk-md-cEJ" customClass="MediaVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="2lk-md-cEJ" customClass="MediaVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="baA-Ro-NxS"/>
                         <viewControllerLayoutGuide type="bottom" id="pWo-aE-BR7"/>
@@ -646,16 +646,19 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Udw-5b-NcA">
                                 <rect key="frame" x="0.0" y="64" width="376" height="544"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dMM-WP-u3z" customClass="TV" customModule="Blueprint" customModuleProvider="target">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dMM-WP-u3z" customClass="TV" customModule="Blueprint" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="yes"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="2lk-md-cEJ" id="62v-N1-WjW"/>
+                                        </connections>
                                     </textView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HEf-bQ-oOE">
                                         <rect key="frame" x="0.0" y="272" width="376" height="272"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-preview" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-preview" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
                                             </imageView>
                                         </subviews>
@@ -689,6 +692,9 @@
                                 <state key="normal" title="Next">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextBtnPressed:" destination="2lk-md-cEJ" eventType="touchUpInside" id="Jp6-Oi-JVe"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -850,7 +856,10 @@
                                 <rect key="frame" x="0.0" y="64" width="376" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="yes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Ixe-cv-L6G" id="AAK-N2-EbT"/>
+                                </connections>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="crh-L9-NYX">
                                 <rect key="frame" x="0.0" y="558" width="376" height="60"/>
@@ -944,6 +953,7 @@
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToTextVC" unwindAction="unwindToTextVCWithSegue:" id="hQ4-eq-s72"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="yRb-Fc-don"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToLinkVC" unwindAction="unwindToLinkVCWithSegue:" id="l1h-b1-5hx"/>
+                        <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToMediaVC" unwindAction="unwindToMediaVCWithSegue:" id="Aa3-bc-g0k"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctg-Eu-0Ga" userLabel="First Responder" sceneMemberID="firstResponder"/>

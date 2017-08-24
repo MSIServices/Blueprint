@@ -40,7 +40,7 @@ class TextViewTVC: UITableViewCell, UITextViewDelegate {
         
         aTextview.textColor = UIColor.gray
         aTextview.text = placeholderText
-        aTextview.textAlignment = .left
+        aTextview.textAlignment = .center
         aTextview.font = UIFont(name: "OpenSans-LightItalic", size: 16)!
     }
     

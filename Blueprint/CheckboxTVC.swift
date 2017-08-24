@@ -10,6 +10,7 @@ import UIKit
 
 class CheckboxTVC: UITableViewCell {
 
+    
     @IBOutlet weak var checkboxV: M13Checkbox!
     @IBOutlet weak var titleLbl: UILabel!
     

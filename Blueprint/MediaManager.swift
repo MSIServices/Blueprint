@@ -86,7 +86,18 @@ class MediaManager {
         options.isSynchronous = true
         options.deliveryMode = .highQualityFormat
         
-        imageManager.requestImage(for: asset, targetSize: CGSize(width: UIScreen.main.bounds.size.width / 3 - 8, height: UIScreen.main.bounds.size.width / 3 - 8), contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
+        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
+            completion(image!)
+        })
+    }
+    
+    func fetchImage(asset: PHAsset, targetSize: CGSize, completion: @escaping ((UIImage) -> Void)) {
+        
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        options.deliveryMode = .highQualityFormat
+        
+        imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
                 completion(image!)
         })
     }

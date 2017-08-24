@@ -138,6 +138,8 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             performSegue(withIdentifier: UNWIND_TEXT_VC, sender: self)
         case LINK_VC:
             performSegue(withIdentifier: UNWIND_LINK_VC, sender: self)
+        case MEDIA_VC:
+            performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
         default: break
         }
     }
@@ -152,6 +154,13 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBAction func createBtnPressed(_ sender: Any) {
         
         if checkedOptions.count > 0 {
+            
+            
+            
+            
+            
+            
+            
             
             APIManager.shared.createPost(text: text, link: link, image: image, video: video, audio: audio, type: type, Success: { _ in
                 

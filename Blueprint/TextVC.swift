@@ -21,8 +21,6 @@ class TextVC: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textView.delegate = self
-
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
         applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
         
@@ -65,7 +63,7 @@ class TextVC: UIViewController, UITextViewDelegate {
 
         aTextview.textColor = UIColor.gray
         aTextview.text = placeholderText
-        aTextview.textAlignment = .left
+        aTextview.textAlignment = .center
         aTextview.font = UIFont(name: "OpenSans-LightItalic", size: 16)!
     }
     

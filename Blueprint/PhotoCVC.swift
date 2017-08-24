@@ -40,9 +40,5 @@ class PhotoCVC: UICollectionViewCell {
     func configureCell(image: UIImage) {
         photoImageView.image = image
     }
-    
-    func highlight() {
-        
-    }
 
 }

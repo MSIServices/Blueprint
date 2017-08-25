@@ -80,14 +80,18 @@ class MediaManager {
         }
     }
     
-    func fetchImage(asset: PHAsset, completion: @escaping ((UIImage) -> Void)) {
+    func fetchImage(asset: PHAsset, completion: @escaping ((UIImage, NSURL, String) -> Void)) {
         
         let options = PHImageRequestOptions()
         options.isSynchronous = true
         options.deliveryMode = .highQualityFormat
         
         imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
-            completion(image!)
+            
+            var extInfo = info?["PHImageFileUTIKey"] as! String
+            extInfo.trimBefore(char: ".")
+            
+            completion(image!, info?["PHImageFileURLKey"] as! NSURL, extInfo)
         })
     }
     
@@ -100,6 +104,23 @@ class MediaManager {
         imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
                 completion(image!)
         })
+    }
+    
+    func fetchLastImageLocalIdentifier(completion: (_ localIdentifier: String?) -> Void) {
+        
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.fetchLimit = 1
+        
+        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        if fetchResult.firstObject != nil {
+            
+            let lastImageAsset: PHAsset = fetchResult.firstObject!
+            completion(lastImageAsset.localIdentifier)
+            
+        } else {
+            completion(nil)
+        }
     }
     
     func fetchCachedImage(asset: PHAsset, Success: @escaping ((UIImage) -> Void), Failure: @escaping (() -> Void)) {
@@ -117,6 +138,46 @@ class MediaManager {
             }
         })
     }
+    
+    func fetchAllVideos(Success: @escaping (([PHAsset]) -> Void), Failure: @escaping ((PHAuthorizationStatus) -> Void)) {
+        
+        PHPhotoLibrary.requestAuthorization { (status) in
+            
+            switch status {
+            case .authorized:
+                
+                let fetchOptions = PHFetchOptions()
+                let allPhotos = PHAsset.fetchAssets(with: .video, options: fetchOptions)
+                
+                var assets: [PHAsset] = []
+                
+                allPhotos.enumerateObjects({ (asset, count, _) in
+                    assets.append(asset)
+                })
+                
+                Success(assets)
+                
+            case .denied:
+                Failure(.denied)
+            case .restricted:
+                Failure(.restricted)
+            case .notDetermined:
+                Failure(.notDetermined)
+            }
+        }
+    }
+    
+    func fetchVideo(asset: PHAsset, targetSize: CGSize, completion: @escaping ((UIImage) -> Void)) {
+        
+        let options = PHImageRequestOptions()
+        options.isSynchronous = true
+        options.deliveryMode = .highQualityFormat
+        
+        imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
+            completion(image!)
+        })
+    }
+
     
 //    func getImageFromS3AndCache(email: String, password: String, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
 //        

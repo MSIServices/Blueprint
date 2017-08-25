@@ -83,8 +83,6 @@
 		6161349D1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161349B1F2D927100B52338 /* DoubleActionAlertV.swift */; };
 		6161349E1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161349B1F2D927100B52338 /* DoubleActionAlertV.swift */; };
 		616134A01F2D94F100B52338 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161349F1F2D94F100B52338 /* StringExtensions.swift */; };
-		616134A11F2D94F100B52338 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161349F1F2D94F100B52338 /* StringExtensions.swift */; };
-		616134A21F2D94F100B52338 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6161349F1F2D94F100B52338 /* StringExtensions.swift */; };
 		616134A41F2D950100B52338 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616134A31F2D950100B52338 /* DateExtensions.swift */; };
 		616134A51F2D950100B52338 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616134A31F2D950100B52338 /* DateExtensions.swift */; };
 		616134A61F2D950100B52338 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616134A31F2D950100B52338 /* DateExtensions.swift */; };
@@ -139,6 +137,12 @@
 		61D614E81F3FB5A20013D691 /* MainV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D614E61F3FB5A20013D691 /* MainV.swift */; };
 		61D614E91F3FB5A20013D691 /* MainV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D614E61F3FB5A20013D691 /* MainV.swift */; };
 		68F879FC9964823922E59300 /* Pods_Blueprint.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB74DECBD177AAD7DD1D32ED /* Pods_Blueprint.framework */; };
+		DC0327031F50BBE2006541B4 /* ProgressV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0327021F50BBE2006541B4 /* ProgressV.swift */; };
+		DC0327041F50BBE2006541B4 /* ProgressV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0327021F50BBE2006541B4 /* ProgressV.swift */; };
+		DC0327051F50BBE2006541B4 /* ProgressV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0327021F50BBE2006541B4 /* ProgressV.swift */; };
+		DC0327071F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
+		DC0327081F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
+		DC0327091F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
 		DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
@@ -206,8 +210,6 @@
 		DC3015F21F4BB53800381031 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3015E31F4BB53800381031 /* AWSMobileClient.swift */; };
 		DC3015F31F4BB53800381031 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3015E31F4BB53800381031 /* AWSMobileClient.swift */; };
 		DC3015F41F4BB53800381031 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3015E31F4BB53800381031 /* AWSMobileClient.swift */; };
-		DC3015F61F4BB53800381031 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3015E41F4BB53800381031 /* AWSMobileHubHelper.framework */; };
-		DC3015F71F4BB53800381031 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3015E41F4BB53800381031 /* AWSMobileHubHelper.framework */; };
 		DC3015F81F4BB5F500381031 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3015E41F4BB53800381031 /* AWSMobileHubHelper.framework */; };
 		DC3015FA1F4BB60F00381031 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3015F91F4BB60F00381031 /* libz.tbd */; };
 		DC3015FC1F4BB62100381031 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3015FB1F4BB62100381031 /* libsqlite3.tbd */; };
@@ -265,6 +267,8 @@
 		DC3016511F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
 		DC3016521F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
 		DC3016531F4E0ED200381031 /* PhotoCVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC30164D1F4E0ED100381031 /* PhotoCVC.xib */; };
+		DC3544CC1F506F3100927ECE /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3544CA1F506F3100927ECE /* AWSS3.framework */; };
+		DC3544CD1F506F3100927ECE /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3544CA1F506F3100927ECE /* AWSS3.framework */; };
 		DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */; };
 		DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */; };
 		DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B46A1F3BC6D300D40871 /* Template.swift */; };
@@ -466,6 +470,8 @@
 		61D614E21F3F9E340013D691 /* SignUpFourVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpFourVC.swift; sourceTree = "<group>"; };
 		61D614E61F3FB5A20013D691 /* MainV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainV.swift; sourceTree = "<group>"; };
 		DB74DECBD177AAD7DD1D32ED /* Pods_Blueprint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blueprint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC0327021F50BBE2006541B4 /* ProgressV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressV.swift; sourceTree = "<group>"; };
+		DC0327061F50BBFB006541B4 /* ProgressV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressV.xib; sourceTree = "<group>"; };
 		DC1C44771F43C3950013AD86 /* UserCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCD.swift; sourceTree = "<group>"; };
 		DC1C44781F43C3950013AD86 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC1C447F1F43C54A0013AD86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -515,6 +521,7 @@
 		DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryVC.swift; sourceTree = "<group>"; };
 		DC30164C1F4E0ED100381031 /* PhotoCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCVC.swift; sourceTree = "<group>"; };
 		DC30164D1F4E0ED100381031 /* PhotoCVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCVC.xib; sourceTree = "<group>"; };
+		DC3544CA1F506F3100927ECE /* AWSS3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSS3.framework; sourceTree = "<group>"; };
 		DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCD.swift; sourceTree = "<group>"; };
 		DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateCD+Properties.swift"; sourceTree = "<group>"; };
 		DC44B46A1F3BC6D300D40871 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
@@ -573,7 +580,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC3015F61F4BB53800381031 /* AWSMobileHubHelper.framework in Frameworks */,
+				DC3544CC1F506F3100927ECE /* AWSS3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,7 +588,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC3015F71F4BB53800381031 /* AWSMobileHubHelper.framework in Frameworks */,
+				DC3544CD1F506F3100927ECE /* AWSS3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -849,6 +856,7 @@
 				61D614E61F3FB5A20013D691 /* MainV.swift */,
 				DC1C44A81F4663070013AD86 /* CheckerOptionV.swift */,
 				DC3016051F4C7F9900381031 /* ZeroActionAlertV.swift */,
+				DC0327021F50BBE2006541B4 /* ProgressV.swift */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -970,6 +978,7 @@
 		DC3015DA1F4BB53800381031 /* AmazonAws */ = {
 			isa = PBXGroup;
 			children = (
+				DC3544CA1F506F3100927ECE /* AWSS3.framework */,
 				DC3015DB1F4BB53800381031 /* Api */,
 				DC3015E21F4BB53800381031 /* AWSConfiguration.swift */,
 				DC3015E31F4BB53800381031 /* AWSMobileClient.swift */,
@@ -1086,6 +1095,7 @@
 				DC3016011F4C7F7B00381031 /* ZeroActionAlertV.xib */,
 				616134971F2D922400B52338 /* DoubleActionAlertV.xib */,
 				615DF06D1F3F621E00FB301F /* SingleActionAlertV.xib */,
+				DC0327061F50BBFB006541B4 /* ProgressV.xib */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -1220,6 +1230,7 @@
 				615DF0531F3F578200FB301F /* OpenSans-Italic.ttf in Resources */,
 				615DF0621F3F578200FB301F /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				616134981F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
+				DC0327071F50BBFB006541B4 /* ProgressV.xib in Resources */,
 				615DF06E1F3F621E00FB301F /* SingleActionAlertV.xib in Resources */,
 				61A676AC1F2D8AB40047DD7B /* Main.storyboard in Resources */,
 				615DF04A1F3F578200FB301F /* OpenSans-BoldItalic.ttf in Resources */,
@@ -1247,6 +1258,7 @@
 				DC3015FF1F4C7B7400381031 /* green-checkmark-animated.gif in Resources */,
 				615DF04B1F3F578200FB301F /* OpenSans-BoldItalic.ttf in Resources */,
 				DC3016231F4CAEDD00381031 /* PreviewTVC.xib in Resources */,
+				DC0327081F50BBFB006541B4 /* ProgressV.xib in Resources */,
 				615DF03B1F3F56CF00FB301F /* BalooBhaina-Regular.ttf in Resources */,
 				615DF0571F3F578200FB301F /* OpenSans-Light.ttf in Resources */,
 				615DF0511F3F578200FB301F /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -1277,6 +1289,7 @@
 				DC3016001F4C7B7400381031 /* green-checkmark-animated.gif in Resources */,
 				615DF04C1F3F578200FB301F /* OpenSans-BoldItalic.ttf in Resources */,
 				DC3016241F4CAEDD00381031 /* PreviewTVC.xib in Resources */,
+				DC0327091F50BBFB006541B4 /* ProgressV.xib in Resources */,
 				615DF03C1F3F56CF00FB301F /* BalooBhaina-Regular.ttf in Resources */,
 				615DF0581F3F578200FB301F /* OpenSans-Light.ttf in Resources */,
 				615DF0521F3F578200FB301F /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -1417,6 +1430,7 @@
 				DC1C44951F44AD640013AD86 /* Type.swift in Sources */,
 				DCAAEED41F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				DC7C52A61F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
+				DC0327031F50BBE2006541B4 /* ProgressV.swift in Sources */,
 				DC3015B01F4BA95200381031 /* PostCD.swift in Sources */,
 				61A676AF1F2D8AB40047DD7B /* Blueprint.xcdatamodeld in Sources */,
 				DC1C44B51F47626E0013AD86 /* TextVC.swift in Sources */,
@@ -1491,9 +1505,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				616134A11F2D94F100B52338 /* StringExtensions.swift in Sources */,
 				DCAAEEF31F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC3016401F4DF17800381031 /* Regex.swift in Sources */,
+				DC0327041F50BBE2006541B4 /* ProgressV.swift in Sources */,
 				DC3015E71F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B41F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B11F4BA95200381031 /* PostCD.swift in Sources */,
@@ -1583,9 +1597,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				616134A21F2D94F100B52338 /* StringExtensions.swift in Sources */,
 				DCAAEEF41F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC3016411F4DF17800381031 /* Regex.swift in Sources */,
+				DC0327051F50BBE2006541B4 /* ProgressV.swift in Sources */,
 				DC3015E81F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B51F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B21F4BA95200381031 /* PostCD.swift in Sources */,

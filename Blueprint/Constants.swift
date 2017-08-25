@@ -38,6 +38,9 @@ let WORK_IP_ADDRESS_THREE: String = "169.254.130.194"
 let LOCAL_HOST_PORT: Int = 3000
 let SERVER_DOMAIN: String = "https://arcane-retreat-99625.herokuapp.com"
 
+//Database
+let S3_BUCKET: String = "chain-hosting-mobilehub-1716918461"
+
 //UserDefaults
 let USER_ID = "user_id"
 let EMAIL = "email"

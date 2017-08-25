@@ -54,8 +54,27 @@
 	<string>Chains needs to access your photo library.</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSAllowsArbitraryLoads</key>
-		<true/>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>amazonaws.com</key>
+			<dict>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+			<key>amazonaws.com.cn</key>
+			<dict>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
+		</dict>
 	</dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
@@ -83,6 +102,18 @@
 		<dict>
 			<key>ProjectClientId</key>
 			<string>MobileHub d9c70282-79f4-478e-b5b9-b725f628260f aws-my-sample-app-ios-swift-v0.18</string>
+		</dict>
+		<key>ContentManager</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>CloudFrontURL</key>
+				<string>https://d38m8t21rpv5ur.cloudfront.net</string>
+				<key>S3Bucket</key>
+				<string>chain-hosting-mobilehub-1716918461</string>
+				<key>Region</key>
+				<string>us-east-1</string>
+			</dict>
 		</dict>
 	</dict>
 </dict>

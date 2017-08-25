@@ -17,6 +17,11 @@ class MediaVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var textView: TV!
     
+    var imagePath: NSURL?
+    var newImageIdentifier: String?
+    var ext: String?
+    var type: PostType!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,11 +45,14 @@ class MediaVC: UIViewController, UITextViewDelegate {
         if segue.identifier == RECIPIENT_VC {
             
             let vC = segue.destination as! RecipientVC
-            vC.image = UIImagePNGRepresentation(mediaImageView.image!)
             vC.previousVC = MEDIA_VC
+            vC.type = type
+            vC.ext = ext
+            vC.imageUrl = imagePath
+            vC.imageLocalIdentifier = newImageIdentifier
             
-            if let text = textView.text, text != "" {
-                vC.text = text
+            if let txt = textView.text {
+                vC.text = txt
             }
         }
     }

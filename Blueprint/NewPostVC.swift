@@ -10,12 +10,28 @@ import UIKit
 
 class NewPostVC: UIViewController, CheckerOptionVDelegate {
 
+    var tag: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let checkerOptionV = CheckerOptionV(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         checkerOptionV.checkerOptionD = self
         view.addSubview(checkerOptionV)
+    }
+    
+    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == MEDIA_VC {
+            
+            let vC = segue.destination as! MediaVC
+            
+            if tag == 2 {
+                vC.type = PostType.image
+            } else if tag == 3 {
+                vC.type = PostType.video
+            }
+        }
     }
         
     func checkerBtnPressed(tag: Int) {

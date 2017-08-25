@@ -8,6 +8,8 @@
 
 import UIKit
 import SwiftyGif
+import AWSS3
+import Photos
 
 fileprivate let HEADER_TVC = "HeaderTVC"
 fileprivate let CHECKBOX_TVC = "CheckboxTVC"
@@ -22,13 +24,16 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var titles = ["Abyss","Connections"]
     var groups = [Group]()
     var type: PostType!
+    var ext: String?
     var text: String?
     var link: String?
-    var image: Data?
-    var video: Data?
-    var audio: Data?
-    var errorAlert: SingleActionAlertV!
+    var imageUrl: NSURL?
+    var imageLocalIdentifier: String?
+    var videoUrl: NSURL?
+    var audioUrl: NSURL?
+    var progressAlert: ProgressV!
     var successAlert: ZeroActionAlertV!
+    var errorAlert: SingleActionAlertV!
     var previousVC: String!
     
     override func viewDidLoad() {
@@ -151,29 +156,94 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "SwitchTab"), object: nil, userInfo: ["index":0])
     }
     
+    func createPost(image: String?, video: String?, audio: String?) {
+        
+        APIManager.shared.createPost(text: text, link: link, image: image, video: video, audio: audio, type: type, Success: { _ in
+        
+            self.successAlert = self.mainV.showSuccess(msg: "", animated: true)
+            self.successAlert.iconImageView.delegate = self
+        
+        }, Failure: { error in
+        
+            if let msg = error {
+                self.errorAlert = self.mainV.showError(msg: msg, animated: true)
+                self.errorAlert.confirmationBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+            }
+        })
+    }
+    
     @IBAction func createBtnPressed(_ sender: Any) {
         
         if checkedOptions.count > 0 {
             
-            
-            
-            
-            
-            
-            
-            
-            APIManager.shared.createPost(text: text, link: link, image: image, video: video, audio: audio, type: type, Success: { _ in
+            if type == PostType.image || type == PostType.video || type == PostType.audio {
                 
-                self.successAlert = self.mainV.showSuccess(msg: "", animated: true)
-                self.successAlert.iconImageView.delegate = self
+                let awsManager = AWSS3TransferManager.default()
                 
-            }, Failure: { error in
-             
-                if let msg = error {
-                    self.errorAlert = self.mainV.showError(msg: msg, animated: true)
-                    self.errorAlert.confirmationBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+                let uploadRequest = AWSS3TransferManagerUploadRequest()
+                uploadRequest?.bucket = S3_BUCKET
+                
+                var data: Data?
+                
+                if imageLocalIdentifier != nil {
+                    
+                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [imageLocalIdentifier!], options: nil).firstObject!
+
+                    MediaManager.shared.fetchImage(asset: asset, completion: { (image, url, ext) in
+                        
+                        if ext == "jpeg" {
+                            uploadRequest?.contentType = "image/jpeg"
+                            data = UIImageJPEGRepresentation(image, 1.0)
+                        } else if ext == "png" {
+                            uploadRequest?.contentType = "image/png"
+                            data = UIImagePNGRepresentation(image)
+                        }
+                        
+                        let fileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
+                        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
+                        
+                        do {
+                            
+                            try data?.write(to: fileURL!, options: .atomic)
+                            
+                            uploadRequest?.body = fileURL!
+                            uploadRequest?.key = fileName
+                            
+                            self.progressAlert = self.mainV.showProgressV(animated: true)
+
+                            awsManager.upload(uploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
+                                    
+                                if let error = task.error {
+                                    print("Upload failed with error: (\(error))")
+                                }
+                                
+                                if task.result != nil {
+                                        
+                                    let url = AWSS3.default().configuration.endpoint.url
+                                    let publicURL = url?.appendingPathComponent((uploadRequest?.bucket!)!).appendingPathComponent((uploadRequest?.key!)!)
+                                    
+                                    self.createPost(image: "\(publicURL!)", video: nil, audio: nil)
+                                    
+                                    DispatchQueue.main.async {
+                                        self.progressAlert.removeFromSuperview()
+                                    }
+                                }
+                                return nil
+                            })
+                            
+                            uploadRequest?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                                
+                                DispatchQueue.main.async(execute: { () -> Void in
+                                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                                })
+                            }
+                       
+                        } catch let err as NSError {
+                            print("IMAGE WRITE ERROR: \(err)")
+                        }
+                    })
                 }
-            })
+            }
         } else {
             self.errorAlert = self.mainV.showError(msg: "No recipients selected.", animated: true)
             self.errorAlert.confirmationBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)

@@ -23,7 +23,11 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     var settingsAlertV: DoubleActionAlertV!
     var photoAssets = [PHAsset]()
+    var videoAssets = [PHAsset]()
     var selectedImage: UIImage!
+    var selectedImageUrl: NSURL?
+    var selectedImageIdentifier: String?
+    var ext: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,20 +49,40 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        MediaManager.shared.fetchAllImageAssetsAndCache(Success:  { assets in
+        
+        if type == PostType.image {
             
-            DispatchQueue.main.async {
-                self.photoAssets = assets
-                self.collectionView.reloadData()
-            }
+            MediaManager.shared.fetchAllImageAssetsAndCache(Success:  { assets in
+                
+                DispatchQueue.main.async {
+                    self.photoAssets = assets
+                    self.collectionView.reloadData()
+                }
+                
+            }, Failure: { status in
+                
+                self.settingsAlertV = self.mainV.showDoubleActionAlert(height: 250, width: 250, header: "Photo Library Access", subHeader: "Blueprint needs access to your photo library", cancelBtnText: "Cancel", confirmationBtnText: "Settings", backgroundColor: UIColor.white, buttonNormalBackgroundColor: UIColor.white, buttonHighlightedBackgroundColor: UIColor.lightGray, icon: nil, animated: true)
+                self.settingsAlertV.addButtonBorder(color: UIColor.lightGray, thickness: 1.0)
+                self.settingsAlertV.cancelBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+                self.settingsAlertV.confirmationBtn.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
+            })
+        } else if type == PostType.video {
             
-        }, Failure: { status in
-            
-            self.settingsAlertV = self.mainV.showDoubleActionAlert(height: 250, width: 250, header: "Photo Library Access", subHeader: "Blueprint needs access to your photo library", cancelBtnText: "Cancel", confirmationBtnText: "Settings", backgroundColor: UIColor.white, buttonNormalBackgroundColor: UIColor.white, buttonHighlightedBackgroundColor: UIColor.lightGray, icon: nil, animated: true)
-            self.settingsAlertV.addButtonBorder(color: UIColor.lightGray, thickness: 1.0)
-            self.settingsAlertV.cancelBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
-            self.settingsAlertV.confirmationBtn.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
-        })
+            MediaManager.shared.fetchAllVideos(Success: { assets in
+                
+                DispatchQueue.main.async {
+                    self.videoAssets = assets
+                    self.collectionView.reloadData()
+                }
+
+            }, Failure: { status in
+                
+                self.settingsAlertV = self.mainV.showDoubleActionAlert(height: 250, width: 250, header: "Photo Library Access", subHeader: "Blueprint needs access to your photo library", cancelBtnText: "Cancel", confirmationBtnText: "Settings", backgroundColor: UIColor.white, buttonNormalBackgroundColor: UIColor.white, buttonHighlightedBackgroundColor: UIColor.lightGray, icon: nil, animated: true)
+                self.settingsAlertV.addButtonBorder(color: UIColor.lightGray, thickness: 1.0)
+                self.settingsAlertV.cancelBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
+                self.settingsAlertV.confirmationBtn.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
+            })
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -67,6 +91,9 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let vC = segue.destination as! MediaVC
             vC.mediaImageView.image = selectedImage
+            vC.imagePath = selectedImageUrl
+            vC.newImageIdentifier = selectedImageIdentifier
+            vC.ext = ext
         }
     }
     
@@ -95,7 +122,14 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         
         if error == nil {
-            backBtnPressed()
+            
+            MediaManager.shared.fetchLastImageLocalIdentifier(completion: { urlString in
+                
+                self.selectedImageIdentifier = urlString
+                self.selectedImageUrl = nil
+                self.ext = nil
+                backBtnPressed()
+            })
         }
     }
     
@@ -107,7 +141,12 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoAssets.count
+        
+        if type == PostType.image {
+            return photoAssets.count
+        } else {
+            return videoAssets.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -119,25 +158,38 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             
         } else {
             
-            let asset = photoAssets[(indexPath as NSIndexPath).row]
-            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
+
+            var asset: PHAsset!
             
-            print("Fetching cached images...")
-            MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
+            if type == PostType.image {
+                
+                asset = photoAssets[(indexPath as NSIndexPath).row]
+                
+                print("Fetching cached images...")
+                MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
                     
-                print("Fetched cached image.")
-                cell.configureCell(image: photo)
-                    
-            }, Failure: {
-                    
-                print("Fetching image not in cache...")
-                MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
+                    print("Fetched cached image.")
                     cell.configureCell(image: photo)
-                    print("Fetched image not in cache.")
+                    
+                }, Failure: {
+                    
+                    print("Fetching image not in cache...")
+                    MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
+                        
+                        cell.configureCell(image: photo)
+                        print("Fetched image not in cache.")
+                    })
                 })
-            })
-            return cell
+                return cell
+                
+            } else if type == PostType.video {
+                
+                asset = videoAssets[(indexPath as NSIndexPath).row]
+                
+                return cell
+            }
+            
         }
     }
     
@@ -151,8 +203,11 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             
             let asset = photoAssets[(indexPath as NSIndexPath).row]
             
-            MediaManager.shared.fetchImage(asset: asset, completion: { photo in
+            MediaManager.shared.fetchImage(asset: asset, completion: { (photo, url, ext) in
+                
                 self.selectedImage = photo
+                self.selectedImageUrl = url
+                self.ext = ext
                 self.performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
             })
         } else {

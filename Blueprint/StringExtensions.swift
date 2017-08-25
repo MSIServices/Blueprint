@@ -10,7 +10,6 @@ import Foundation
 import CryptoSwift
 import UIKit
 
-
 /*........................................................................................................................................................................................................
  INSTANCE METHODS
  ........................................................................................................................................................................................................*/
@@ -158,6 +157,20 @@ extension String {
             self.prepend("http://")
         }
         return self
+    }
+    
+    mutating func trimBefore(char: Character) {
+        
+        if let charRange = self.range(of: String(char)) {
+            self.removeSubrange(self.startIndex..<charRange.upperBound)
+        }
+    }
+    
+    mutating func trimAfter(char: Character) {
+        
+        if let charRange = self.range(of: String(char)) {
+            self.removeSubrange(charRange.lowerBound..<self.endIndex)
+        }
     }
 
 }

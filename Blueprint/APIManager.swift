@@ -15,7 +15,7 @@ import AlamofireSwiftyJSON
 class APIManager {
  
     static let shared = APIManager()
-    static let baseUrl: String = "http://\(WORK_IP_ADDRESS_THREE):\(LOCAL_HOST_PORT)"
+    static let baseUrl: String = "http://\(WORK_IP_ADDRESS_TWO):\(LOCAL_HOST_PORT)"
 //    static let baseUrl: String = SERVER_DOMAIN
     static let createUser: String =  baseUrl + "/user"
     static let authenticate: String = baseUrl + "/authenticate"
@@ -102,7 +102,7 @@ class APIManager {
         }
     }
     
-    func createPost(text: String?, link: String?, image: Data?, video: Data?, audio: Data?, type: PostType, Success: @escaping ((Post) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func createPost(text: String?, link: String?, image: String?, video: String?, audio: String?, type: PostType, Success: @escaping ((Post) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         var params = [
             "user_id": User.currentId,

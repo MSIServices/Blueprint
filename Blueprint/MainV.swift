@@ -14,12 +14,18 @@ class MainV: UIView {
     var singleActionAlertV: SingleActionAlertV!
     var doubleActionAlertV: DoubleActionAlertV!
     var zeroActionAlertV: ZeroActionAlertV!
+    var progressV: ProgressV!
     
     func removeAlert() {
         
         if darkView != nil {
             darkView.removeFromSuperview()
             darkView = nil
+        }
+        
+        if progressV != nil {
+            progressV.removeFromSuperview()
+            progressV = nil
         }
         
         if zeroActionAlertV != nil {
@@ -36,6 +42,33 @@ class MainV: UIView {
             doubleActionAlertV.removeFromSuperview()
             doubleActionAlertV = nil
         }
+    }
+    
+    func showProgressV(height: CGFloat = 240, width: CGFloat = 240, animated: Bool) -> ProgressV {
+        
+        if self.progressV == nil {
+            
+            progressV = ProgressV.nib()
+            progressV.frame = CGRect(x: 0, y: 0, width: width, height: height)
+            progressV.center.x = self.bounds.size.width / 2
+            self.addSubview(progressV)
+            
+            if animated {
+                
+                UIView.animate(withDuration: 0.25, animations: {
+                    self.progressV.center.y = self.bounds.size.height / 2 - 50
+                }, completion: { result in
+                    
+                    UIView.animate(withDuration: 0.25, animations: {
+                        self.progressV.center.y -= 10
+                    })
+                })
+            } else {
+                progressV.center = CGPoint(x: self.bounds.size.width / 2, y: (self.bounds.size.height / 2) - 60)
+            }
+            return progressV
+        }
+        return progressV
     }
     
     //For use with GIF's

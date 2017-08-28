@@ -28,6 +28,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     var selectedImageUrl: NSURL?
     var selectedImageIdentifier: String?
     var ext: String?
+    var type: PostType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,6 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         
         if type == PostType.image {
             
@@ -189,8 +189,8 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                 
                 return cell
             }
-            
         }
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

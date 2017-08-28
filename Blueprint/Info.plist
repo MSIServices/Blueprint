@@ -2,6 +2,44 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AWS</key>
+	<dict>
+		<key>ContentManager</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>CloudFrontURL</key>
+				<string>https://d38m8t21rpv5ur.cloudfront.net</string>
+				<key>Region</key>
+				<string>us-east-1</string>
+				<key>S3Bucket</key>
+				<string>chain-hosting-mobilehub-1716918461</string>
+			</dict>
+		</dict>
+		<key>CredentialsProvider</key>
+		<dict>
+			<key>CognitoIdentity</key>
+			<dict>
+				<key>Default</key>
+				<dict>
+					<key>PoolId</key>
+					<string>us-east-1:bdf5b1a5-9f5e-481c-b5f2-b3a77dfd0a3a</string>
+					<key>Region</key>
+					<string>us-east-1</string>
+				</dict>
+			</dict>
+		</dict>
+		<key>IdentityManager</key>
+		<dict>
+			<key>Default</key>
+			<dict/>
+		</dict>
+		<key>MobileHub</key>
+		<dict>
+			<key>ProjectClientId</key>
+			<string>MobileHub d9c70282-79f4-478e-b5b9-b725f628260f aws-my-sample-app-ios-swift-v0.18</string>
+		</dict>
+	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -20,6 +58,34 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSExceptionDomains</key>
+		<dict>
+			<key>amazonaws.com</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+			<key>amazonaws.com.cn</key>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
+				<string>TLSv1.0</string>
+				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+				<false/>
+			</dict>
+		</dict>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Chains needs to access your camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Chains needs to access your photo library.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BalooBhaina-Regular.ttf</string>
@@ -48,73 +114,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>Chains needs to access your camera.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Chains needs to access your photo library.</string>
-	<key>NSAppTransportSecurity</key>
-	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>amazonaws.com</key>
-			<dict>
-				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-			<key>amazonaws.com.cn</key>
-			<dict>
-				<key>NSThirdPartyExceptionMinimumTLSVersion</key>
-				<string>TLSv1.0</string>
-				<key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
-				<false/>
-				<key>NSIncludesSubdomains</key>
-				<true/>
-			</dict>
-		</dict>
-	</dict>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>AWS</key>
-	<dict>
-		<key>IdentityManager</key>
-		<dict>
-			<key>Default</key>
-			<dict/>
-		</dict>
-		<key>CredentialsProvider</key>
-		<dict>
-			<key>CognitoIdentity</key>
-			<dict>
-				<key>Default</key>
-				<dict>
-					<key>PoolId</key>
-					<string>us-east-1:bdf5b1a5-9f5e-481c-b5f2-b3a77dfd0a3a</string>
-					<key>Region</key>
-					<string>us-east-1</string>
-				</dict>
-			</dict>
-		</dict>
-		<key>MobileHub</key>
-		<dict>
-			<key>ProjectClientId</key>
-			<string>MobileHub d9c70282-79f4-478e-b5b9-b725f628260f aws-my-sample-app-ios-swift-v0.18</string>
-		</dict>
-		<key>ContentManager</key>
-		<dict>
-			<key>Default</key>
-			<dict>
-				<key>CloudFrontURL</key>
-				<string>https://d38m8t21rpv5ur.cloudfront.net</string>
-				<key>S3Bucket</key>
-				<string>chain-hosting-mobilehub-1716918461</string>
-				<key>Region</key>
-				<string>us-east-1</string>
-			</dict>
-		</dict>
-	</dict>
 </dict>
 </plist>

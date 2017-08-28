@@ -20,7 +20,7 @@ class NewPostVC: UIViewController, CheckerOptionVDelegate {
         view.addSubview(checkerOptionV)
     }
     
-    func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == MEDIA_VC {
             

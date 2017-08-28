@@ -54,6 +54,10 @@ class MediaVC: UIViewController, UITextViewDelegate {
             if let txt = textView.text {
                 vC.text = txt
             }
+        } else if segue.identifier == MEDIA_LIBRARY_VC {
+            
+            let vC = segue.destination as! MediaLibraryVC
+            vC.type = type
         }
     }
     

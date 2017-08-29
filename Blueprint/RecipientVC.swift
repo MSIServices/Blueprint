@@ -21,23 +21,27 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     @IBOutlet weak var tableView: UITableView!
     
     var checkedOptions = ["Connections"]
-    var titles = ["Abyss","Connections"]
+    var titles = ["Abyss", "Connections"]
     var groups = [Group]()
     var type: PostType!
-    var ext: String?
+    var videoExt: String?
     var text: String?
     var link: String?
-    var imageUrl: NSURL?
     var imageLocalIdentifier: String?
-    var videoUrl: NSURL?
+    var videoUrl: URL?
+    var videoThumbnail: UIImage?
+    var videoAsset: PHAsset?
     var audioUrl: NSURL?
     var progressAlert: ProgressV!
     var successAlert: ZeroActionAlertV!
     var errorAlert: SingleActionAlertV!
     var previousVC: String!
+    var awsManager: AWSS3TransferManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        awsManager = AWSS3TransferManager.default()
         
         let descriptionLbl = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 200))
         descriptionLbl.text = "Select recipients for the current post."
@@ -172,77 +176,165 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         })
     }
     
+    func uploadImageToS3(image: UIImage, ext: String, completion: @escaping ((URL?, NSError?) -> Void)) {
+        
+        let imageUploadRequest = AWSS3TransferManagerUploadRequest()
+        imageUploadRequest?.bucket = S3_BUCKET
+        
+        var data: Data?
+
+        if ext == "jpeg" {
+            imageUploadRequest?.contentType = "image/jpeg"
+            data = UIImageJPEGRepresentation(image, 1.0)
+        } else if ext == "png" {
+            imageUploadRequest?.contentType = "image/png"
+            data = UIImagePNGRepresentation(image)
+        }
+        
+        let imageFileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
+        let imageFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(imageFileName)
+        
+        do {
+            try data?.write(to: imageFileURL!, options: .atomic)
+            
+            imageUploadRequest?.body = imageFileURL!
+            imageUploadRequest?.key = imageFileName
+            
+            awsManager.upload(imageUploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
+                
+                if let error = task.error {
+                    print("Upload image failed with error: (\(error))")
+                    completion(nil, error as NSError)
+                }
+                
+                if task.result != nil {
+                    
+                    let url = AWSS3.default().configuration.endpoint.url
+                    let publicImageUrl = url?.appendingPathComponent((imageUploadRequest?.bucket!)!).appendingPathComponent((imageUploadRequest?.key!)!)
+                    
+                    completion(publicImageUrl, nil)
+                }
+                return nil
+            })
+            
+            imageUploadRequest?.uploadProgress = { (bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                })
+            }
+        } catch let err as NSError {
+            print("IMAGE WRITE ERROR: \(err)")
+        }
+    }
+    
+    func uploadVideoToS3(videoData: Data, ext: String, completion: @escaping ((URL?, NSError?) -> Void)) {
+        
+        let videoUploadRequest = AWSS3TransferManagerUploadRequest()
+        videoUploadRequest?.bucket = S3_BUCKET
+            
+        if ext.uppercased() == "MOV" {
+            videoUploadRequest?.contentType = "video/mov"
+        }
+        
+        let videoFileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
+        let videoFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(videoFileName)
+            
+        do {
+            try videoData.write(to: videoFileURL!, options: .atomic)
+                
+            videoUploadRequest?.body = videoFileURL!
+            videoUploadRequest?.key = videoFileName
+            
+            awsManager.upload(videoUploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
+                    
+                if let error = task.error {
+                    print("Upload video failed with error: (\(error))")
+                    completion(nil, error as NSError)
+                }
+                
+                if task.result != nil {
+                        
+                    let url = AWSS3.default().configuration.endpoint.url
+                    let publicVideoURL = url?.appendingPathComponent((videoUploadRequest?.bucket!)!).appendingPathComponent((videoUploadRequest?.key!)!)
+                    
+                    completion(publicVideoURL, nil)
+                }
+                return nil
+            })
+                
+            videoUploadRequest?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                    
+                DispatchQueue.main.async(execute: { () -> Void in
+                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                })
+            }
+        } catch let err as NSError {
+            print(err)
+        }
+    }
+    
     @IBAction func createBtnPressed(_ sender: Any) {
         
         if checkedOptions.count > 0 {
             
-            if type == PostType.image || type == PostType.video || type == PostType.audio {
+            if type == PostType.image {
                 
-                let awsManager = AWSS3TransferManager.default()
+                let asset = PHAsset.fetchAssets(withLocalIdentifiers: [imageLocalIdentifier!], options: nil).firstObject!
                 
-                let uploadRequest = AWSS3TransferManagerUploadRequest()
-                uploadRequest?.bucket = S3_BUCKET
-                
-                var data: Data?
-                
-                if imageLocalIdentifier != nil {
+                MediaManager.shared.fetchImage(asset: asset, completion: { (image, _, ext) in
                     
-                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [imageLocalIdentifier!], options: nil).firstObject!
+                    self.progressAlert = self.mainV.showProgressV(animated: true)
+                    self.progressAlert.titleLbl.text = "Uploading Image"
 
-                    MediaManager.shared.fetchImage(asset: asset, completion: { (image, url, ext) in
+                    self.uploadImageToS3(image: image, ext: ext, completion: { (url, error) in
                         
-                        if ext == "jpeg" {
-                            uploadRequest?.contentType = "image/jpeg"
-                            data = UIImageJPEGRepresentation(image, 1.0)
-                        } else if ext == "png" {
-                            uploadRequest?.contentType = "image/png"
-                            data = UIImagePNGRepresentation(image)
+                        if url != nil {
+                            self.createPost(image: String(describing: url!), video: nil, audio: nil)
+                        } else {
+                            print("Failed to get image url from s3 upload")
                         }
                         
-                        let fileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
-                        let fileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(fileName)
-                        
-                        do {
-                            
-                            try data?.write(to: fileURL!, options: .atomic)
-                            
-                            uploadRequest?.body = fileURL!
-                            uploadRequest?.key = fileName
-                            
-                            self.progressAlert = self.mainV.showProgressV(animated: true)
-
-                            awsManager.upload(uploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
-                                    
-                                if let error = task.error {
-                                    print("Upload failed with error: (\(error))")
-                                }
-                                
-                                if task.result != nil {
-                                        
-                                    let url = AWSS3.default().configuration.endpoint.url
-                                    let publicURL = url?.appendingPathComponent((uploadRequest?.bucket!)!).appendingPathComponent((uploadRequest?.key!)!)
-                                    
-                                    self.createPost(image: "\(publicURL!)", video: nil, audio: nil)
-                                    
-                                    DispatchQueue.main.async {
-                                        self.progressAlert.removeFromSuperview()
-                                    }
-                                }
-                                return nil
-                            })
-                            
-                            uploadRequest?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
-                                
-                                DispatchQueue.main.async(execute: { () -> Void in
-                                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
-                                })
-                            }
-                       
-                        } catch let err as NSError {
-                            print("IMAGE WRITE ERROR: \(err)")
+                        DispatchQueue.main.async {
+                            self.progressAlert.removeFromSuperview()
                         }
                     })
-                }
+                })
+            } else if type == PostType.video {
+                
+                MediaManager.shared.fetchVideo(asset: videoAsset!, getData: true, completion: { (_, data) in
+                    
+                    DispatchQueue.main.async {
+                        self.progressAlert = self.mainV.showProgressV(animated: true)
+                        self.progressAlert.titleLbl.text = "Uploading Video"
+                    }
+                    
+                    self.uploadVideoToS3(videoData: data!, ext: self.videoExt!, completion: { (videoUrl, error) in
+                        
+                        if error != nil {
+                            print(error!)
+                        } else {
+                                
+                            DispatchQueue.main.async {
+                                self.progressAlert.progressBarV.setProgress(0.0, animated: false)
+                                self.progressAlert.titleLbl.text = "Uploading Thumbnail"
+                            }
+                            
+                            self.uploadImageToS3(image: self.videoThumbnail!, ext: self.videoExt!, completion: { (imageUrl, error) in
+                                    
+                                if error != nil {
+                                    print(error!)
+                                } else {
+                                    self.createPost(image: String(describing: imageUrl!), video: String(describing: videoUrl!), audio: nil)
+                                }
+                                    
+                                DispatchQueue.main.async {
+                                    self.progressAlert.removeFromSuperview()
+                                }
+                            })
+                        }
+                    })
+                })
             }
         } else {
             self.errorAlert = self.mainV.showError(msg: "No recipients selected.", animated: true)
@@ -251,3 +343,4 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     }
 
 }
+ 

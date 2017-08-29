@@ -25,8 +25,10 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     var photoAssets = [PHAsset]()
     var videoAssets = [PHAsset]()
     var selectedImage: UIImage!
-    var selectedImageUrl: NSURL?
     var selectedImageIdentifier: String?
+    var selectedVideoAsset: PHAsset?
+    var thumbnail: UIImage?
+    var videoUrl: URL?
     var ext: String?
     var type: PostType!
     
@@ -34,7 +36,17 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         super.viewDidLoad()
         
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            
+            imagePicker.sourceType = .camera
+            
+            if type == .image {
+                imagePicker.mediaTypes = ["public.image"]
+            } else {
+                imagePicker.mediaTypes = ["public.movie"]
+            }
+        }
         
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
 
@@ -50,7 +62,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if type == PostType.image {
+        if type == .image {
             
             MediaManager.shared.fetchAllImageAssetsAndCache(Success:  { assets in
                 
@@ -66,10 +78,10 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                 self.settingsAlertV.cancelBtn.addTarget(self, action: #selector(self.dismissAlert), for: .touchUpInside)
                 self.settingsAlertV.confirmationBtn.addTarget(self, action: #selector(self.openSettings), for: .touchUpInside)
             })
-        } else if type == PostType.video {
+        } else if type == .video {
             
             MediaManager.shared.fetchAllVideos(Success: { assets in
-                
+
                 DispatchQueue.main.async {
                     self.videoAssets = assets
                     self.collectionView.reloadData()
@@ -84,16 +96,18 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             })
         }
     }
-    
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == UNWIND_MEDIA_VC && selectedImage != nil {
             
             let vC = segue.destination as! MediaVC
             vC.mediaImageView.image = selectedImage
-            vC.imagePath = selectedImageUrl
             vC.newImageIdentifier = selectedImageIdentifier
-            vC.ext = ext
+            vC.thumbnail = thumbnail
+            vC.videoExt = ext
+            vC.videoUrl = videoUrl
+            vC.selectedVideoAsset = selectedVideoAsset
         }
     }
     
@@ -108,6 +122,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         if UIApplication.shared.canOpenURL(settingsUrl) {
             
             UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+               
                 if success {
                     print("Successfully opened settings.")
                 }
@@ -123,11 +138,9 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if error == nil {
             
-            MediaManager.shared.fetchLastImageLocalIdentifier(completion: { urlString in
+            MediaManager.shared.fetchLastAssetLocalIdentifier(type: .image, completion: { urlString in
                 
                 self.selectedImageIdentifier = urlString
-                self.selectedImageUrl = nil
-                self.ext = nil
                 backBtnPressed()
             })
         }
@@ -135,60 +148,101 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-        imagePicker.dismiss(animated: true, completion: nil)
-        selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        UIImageWriteToSavedPhotosAlbum(selectedImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+        picker.dismiss(animated: true, completion: nil)
+        
+        if type == .image {
+            
+            selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+            UIImageWriteToSavedPhotosAlbum(selectedImage, self, #selector(image(image:didFinishSavingWithError:contextInfo:)), nil)
+            
+        } else if type == .video {
+            
+            if let url = info["UIImagePickerControllerMediaURL"] as? URL {
+                
+                let asset = AVURLAsset(url: url, options: nil)
+                let imgGenerator = AVAssetImageGenerator(asset: asset)
+                
+                videoUrl = url
+                ext = url.pathExtension
+                
+                MediaManager.shared.saveVideo(videoUrl: videoUrl!, completion: { result in
+                
+                    DispatchQueue.main.async {
+                        
+                        do {
+                            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+                            self.thumbnail = UIImage(cgImage: cgImage, scale: CGFloat(1.0), orientation: .right)
+                            self.selectedImage = self.thumbnail
+                            
+                            MediaManager.shared.fetchLastAsset(type: .video, completion: { asset in
+                                
+                                self.selectedVideoAsset = asset
+                                self.backBtnPressed()
+                            })
+                        } catch let err as NSError {
+                            print(err.debugDescription)
+                        }
+                    }
+                })
+            }
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if type == PostType.image {
-            return photoAssets.count
+            return photoAssets.count + 1
         } else {
-            return videoAssets.count
+            return videoAssets.count + 1
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        var asset: PHAsset!
+
         if indexPath.row == 0 {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SHOW_CAMERA_CVC, for: indexPath) as! ShowCameraCVC
+            
+            if type == .image {
+                cell.configureCell(text: "Photo", image: "camera-white")
+            } else if type == .video {
+                cell.configureCell(text: "Video", image: "video-white")
+            }
             return cell
             
-        } else {
+        } else if type == PostType.image {
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
-
-            var asset: PHAsset!
             
-            if type == PostType.image {
+            asset = photoAssets[(indexPath as NSIndexPath).row - 1]
                 
-                asset = photoAssets[(indexPath as NSIndexPath).row]
-                
-                print("Fetching cached images...")
-                MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
+            MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
                     
-                    print("Fetched cached image.")
+                cell.configureCell(image: photo)
+                    
+            }, Failure: {
+                    
+                MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
                     cell.configureCell(image: photo)
-                    
-                }, Failure: {
-                    
-                    print("Fetching image not in cache...")
-                    MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
-                        
-                        cell.configureCell(image: photo)
-                        print("Fetched image not in cache.")
-                    })
                 })
-                return cell
+            })
+            return cell
                 
-            } else if type == PostType.video {
+        } else if type == PostType.video {
+            
+            asset = videoAssets[(indexPath as NSIndexPath).row - 1]
                 
-                asset = videoAssets[(indexPath as NSIndexPath).row]
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PHOTO_CVC, for: indexPath) as! PhotoCVC
                 
-                return cell
+            DispatchQueue.global(qos: .background).async {
+                    
+                MediaManager.shared.getAssetThumbnail(asset: asset, size: UIScreen.main.bounds.size.width / 3 - 8, completion: { image in
+                    cell.configureCell(image: image!)
+                })
             }
+            return cell
         }
         return UICollectionViewCell()
     }
@@ -201,15 +255,42 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         
         if indexPath.row != 0 {
             
-            let asset = photoAssets[(indexPath as NSIndexPath).row]
-            
-            MediaManager.shared.fetchImage(asset: asset, completion: { (photo, url, ext) in
+            if type == .image {
                 
-                self.selectedImage = photo
-                self.selectedImageUrl = url
-                self.ext = ext
-                self.performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
-            })
+                let asset = photoAssets[(indexPath as NSIndexPath).row - 1]
+                selectedImageIdentifier = asset.localIdentifier
+                
+                MediaManager.shared.fetchImage(asset: asset, completion: { (image, url, ext) in
+                    self.selectedImage = image
+                    self.backBtnPressed()
+                })
+            } else if type == .video {
+                
+                let asset = videoAssets[(indexPath as NSIndexPath).row - 1]
+                selectedVideoAsset = asset
+                
+                MediaManager.shared.fetchVideo(asset: asset, getData: false, completion: { url, data in
+                    
+                    self.videoUrl = url
+                    self.ext = url?.pathExtension
+                    
+                    let asset = AVURLAsset(url: url!, options: nil)
+                    let imgGenerator = AVAssetImageGenerator(asset: asset)
+
+                    DispatchQueue.main.async {
+
+                        do {
+                            let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
+                            self.thumbnail = UIImage(cgImage: cgImage, scale: CGFloat(1.0), orientation: .right)
+                            self.selectedImage = self.thumbnail
+                            self.backBtnPressed()
+                        
+                        } catch let err as NSError {
+                            print(err.debugDescription)
+                        }
+                    }
+                })
+            }
         } else {
             present(imagePicker, animated: true, completion: nil)
         }

@@ -45,7 +45,7 @@ extension UIView {
         }
     }
     
-    func renderDark(animated: Bool, duration: TimeInterval = 0.25) -> UIView {
+    func renderDark(animated: Bool, alpha: CGFloat = 0.6, duration: TimeInterval = 0.25) -> UIView {
         
         let darkView = UIView(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         darkView.backgroundColor = UIColor.black
@@ -53,10 +53,10 @@ extension UIView {
         
         if animated {
             UIView.animate(withDuration: duration, animations: {
-                darkView.alpha = 0.6
+                darkView.alpha = alpha
             })
         } else {
-            darkView.alpha = 0.6
+            darkView.alpha = alpha
         }
         self.addSubview(darkView)
         

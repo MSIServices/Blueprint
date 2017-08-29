@@ -614,22 +614,55 @@
                         <viewControllerLayoutGuide type="bottom" id="KrK-yd-HSg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="A4B-Nb-Rqp" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="376" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="668"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="6x8-v6-7Br"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="376" height="667"/>
+                    <size key="freeformSize" width="376" height="668"/>
                     <connections>
                         <segue destination="Ixe-cv-L6G" kind="show" identifier="TextVC" id="sjc-EK-Qze"/>
                         <segue destination="rIG-av-5Rg" kind="show" identifier="LinkVC" id="wG5-sA-ADm"/>
                         <segue destination="2lk-md-cEJ" kind="show" identifier="MediaVC" id="FSz-UH-Qm7"/>
+                        <segue destination="5Yp-2V-FB3" kind="show" identifier="AudioVC" id="t6b-zZ-gL3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMf-fg-hju" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4267" y="802"/>
+            <point key="canvasLocation" x="4265.6000000000004" y="801.49925037481262"/>
+        </scene>
+        <!--AudioVC-->
+        <scene sceneID="xmH-hE-UXk">
+            <objects>
+                <viewController id="5Yp-2V-FB3" customClass="AudioVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IyS-gA-Knt"/>
+                        <viewControllerLayoutGuide type="bottom" id="1wr-Hx-ugD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HpU-qE-he4">
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="668"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pb-ZO-9p0">
+                                <rect key="frame" x="138" y="284" width="100" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="Sxk-AT-KHf"/>
+                                    <constraint firstAttribute="height" constant="100" id="uok-Gl-86b"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9pb-ZO-9p0" firstAttribute="centerY" secondItem="HpU-qE-he4" secondAttribute="centerY" id="6Os-QU-QAl"/>
+                            <constraint firstItem="9pb-ZO-9p0" firstAttribute="centerX" secondItem="HpU-qE-he4" secondAttribute="centerX" id="9x3-8x-fA7"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rMG-Tt-gcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4266" y="1500"/>
         </scene>
         <!--MediaVC-->
         <scene sceneID="XrP-Uo-POf">
@@ -661,14 +694,25 @@
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-preview" translatesAutoresizingMaskIntoConstraints="NO" id="5Zk-Op-J8m">
                                                 <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
                                             </imageView>
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zHP-WO-mHd">
+                                                <rect key="frame" x="0.0" y="0.0" width="376" height="272"/>
+                                                <state key="normal" image="play-white"/>
+                                                <connections>
+                                                    <action selector="playBtnPressed:" destination="2lk-md-cEJ" eventType="touchUpInside" id="GU7-Gk-DC5"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="zHP-WO-mHd" secondAttribute="trailing" id="FcX-bO-iVj"/>
+                                            <constraint firstAttribute="bottom" secondItem="zHP-WO-mHd" secondAttribute="bottom" id="Fhs-TW-pnm"/>
                                             <constraint firstItem="5Zk-Op-J8m" firstAttribute="top" secondItem="HEf-bQ-oOE" secondAttribute="top" id="Ilq-eA-UEA"/>
+                                            <constraint firstItem="zHP-WO-mHd" firstAttribute="top" secondItem="HEf-bQ-oOE" secondAttribute="top" id="R0A-Oe-qu8"/>
                                             <constraint firstAttribute="bottom" secondItem="5Zk-Op-J8m" secondAttribute="bottom" id="Vvk-vH-v0j"/>
                                             <constraint firstAttribute="trailing" secondItem="5Zk-Op-J8m" secondAttribute="trailing" id="XWF-B2-Jtj"/>
                                             <constraint firstItem="5Zk-Op-J8m" firstAttribute="leading" secondItem="HEf-bQ-oOE" secondAttribute="leading" id="hNy-AS-Y7e"/>
                                             <constraint firstAttribute="height" constant="272" id="i1L-g6-WYu"/>
+                                            <constraint firstItem="zHP-WO-mHd" firstAttribute="leading" secondItem="HEf-bQ-oOE" secondAttribute="leading" id="yoU-yj-l2D"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -714,6 +758,7 @@
                         <outlet property="mainV" destination="9D2-Bj-kWX" id="mj0-gd-51s"/>
                         <outlet property="mediaImageView" destination="5Zk-Op-J8m" id="zhj-Ij-igg"/>
                         <outlet property="mediaView" destination="HEf-bQ-oOE" id="MdZ-Kh-bMv"/>
+                        <outlet property="playBtn" destination="zHP-WO-mHd" id="k4Q-bK-aSQ"/>
                         <outlet property="textView" destination="dMM-WP-u3z" id="txC-kS-2pJ"/>
                         <segue destination="uTw-4b-hgh" kind="show" identifier="RecipientVC" id="HIS-Q2-Nv1"/>
                         <segue destination="OsO-g3-nFW" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="qEO-2k-ruH"/>
@@ -790,11 +835,11 @@
                         <viewControllerLayoutGuide type="bottom" id="HxH-FP-SsV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="cvl-Cd-TxR" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="376" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="668"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7aY-6E-6Yr">
-                                <rect key="frame" x="0.0" y="558" width="376" height="60"/>
+                                <rect key="frame" x="0.0" y="559" width="376" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.78823529410000004" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="h0F-gB-rQO"/>
@@ -808,7 +853,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-dD-zvl">
-                                <rect key="frame" x="0.0" y="64" width="376" height="494"/>
+                                <rect key="frame" x="0.0" y="64" width="376" height="495"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rIG-av-5Rg" id="jNj-Hz-36f"/>
@@ -967,7 +1012,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dx5-h6-7sh" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="UyM-Py-YeG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3J-aj-Zw2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3J-aj-Zw2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -986,7 +1031,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pfY-wY-Hgq" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="orL-6H-jGH"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="d3R-1F-tGn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d3R-1F-tGn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1004,6 +1049,7 @@
         <image name="chain" width="128" height="128"/>
         <image name="close-white" width="128" height="128"/>
         <image name="no-preview" width="1280" height="800"/>
+        <image name="play-white" width="64" height="64"/>
         <image name="user-photo-btn" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>

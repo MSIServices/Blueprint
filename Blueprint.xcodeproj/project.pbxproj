@@ -143,6 +143,9 @@
 		DC0327071F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
 		DC0327081F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
 		DC0327091F50BBFB006541B4 /* ProgressV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0327061F50BBFB006541B4 /* ProgressV.xib */; };
+		DC03270B1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
+		DC03270C1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
+		DC03270D1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
 		DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
@@ -244,8 +247,6 @@
 		DC3016271F4CAFF000381031 /* MessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016251F4CAFF000381031 /* MessageDelegate.swift */; };
 		DC3016281F4CAFF000381031 /* MessageDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016251F4CAFF000381031 /* MessageDelegate.swift */; };
 		DC3016321F4CD5BD00381031 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016311F4CD5BD00381031 /* MediaManager.swift */; };
-		DC3016331F4CD5BD00381031 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016311F4CD5BD00381031 /* MediaManager.swift */; };
-		DC3016341F4CD5BD00381031 /* MediaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016311F4CD5BD00381031 /* MediaManager.swift */; };
 		DC3016361F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
 		DC3016371F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
 		DC3016381F4CE43500381031 /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016351F4CE43500381031 /* LinkPreview.swift */; };
@@ -345,6 +346,9 @@
 		DCAAEF071F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
 		DCAAEF081F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
 		DCAAEF091F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */; };
+		DCB2C3131F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
+		DCB2C3141F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
+		DCB2C3151F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
 		DCFF71B41F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B51F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B61F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
@@ -472,6 +476,7 @@
 		DB74DECBD177AAD7DD1D32ED /* Pods_Blueprint.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Blueprint.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC0327021F50BBE2006541B4 /* ProgressV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressV.swift; sourceTree = "<group>"; };
 		DC0327061F50BBFB006541B4 /* ProgressV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressV.xib; sourceTree = "<group>"; };
+		DC03270A1F54A61F006541B4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DC1C44771F43C3950013AD86 /* UserCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCD.swift; sourceTree = "<group>"; };
 		DC1C44781F43C3950013AD86 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC1C447F1F43C54A0013AD86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -550,6 +555,7 @@
 		DCAAEED11F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxDisclosurePathGenerator.swift; sourceTree = "<group>"; };
 		DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
 		DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
+		DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckerOptionV.xib; sourceTree = "<group>"; };
 		DCFF71B31F4B549E00531062 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DCFF71B71F4B581C00531062 /* HeaderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTVC.swift; sourceTree = "<group>"; };
 		DCFF71B81F4B581C00531062 /* HeaderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderTVC.xib; sourceTree = "<group>"; };
@@ -897,6 +903,7 @@
 				613224041F3EA5E000F12A0C /* Notifications.swift */,
 				DC1C44941F44AD640013AD86 /* Type.swift */,
 				DCFF71D51F4B911000531062 /* PostType.swift */,
+				DC03270A1F54A61F006541B4 /* Extension.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -1096,6 +1103,7 @@
 				616134971F2D922400B52338 /* DoubleActionAlertV.xib */,
 				615DF06D1F3F621E00FB301F /* SingleActionAlertV.xib */,
 				DC0327061F50BBFB006541B4 /* ProgressV.xib */,
+				DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -1234,6 +1242,7 @@
 				615DF06E1F3F621E00FB301F /* SingleActionAlertV.xib in Resources */,
 				61A676AC1F2D8AB40047DD7B /* Main.storyboard in Resources */,
 				615DF04A1F3F578200FB301F /* OpenSans-BoldItalic.ttf in Resources */,
+				DCB2C3131F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
 				615DF0561F3F578200FB301F /* OpenSans-Light.ttf in Resources */,
 				615DF05F1F3F578200FB301F /* OpenSans-SemiBold.ttf in Resources */,
 				615DF0591F3F578200FB301F /* OpenSans-LightItalic.ttf in Resources */,
@@ -1249,6 +1258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB2C3141F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
 				DCAAEEBD1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				616134991F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0481F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
@@ -1280,6 +1290,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB2C3151F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
 				DCAAEEBE1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				6161349A1F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0491F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
@@ -1446,6 +1457,7 @@
 				DCFF71B91F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				613224901F3F467700F12A0C /* CustomTF.swift in Sources */,
 				DCAAEEDD1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
+				DC03270B1F54A61F006541B4 /* Extension.swift in Sources */,
 				613223F61F3EA44B00F12A0C /* RawRepresentableExtensions.swift in Sources */,
 				DC1C44801F43C54A0013AD86 /* User.swift in Sources */,
 				DC3015EF1F4BB53800381031 /* AWSConfiguration.swift in Sources */,
@@ -1512,10 +1524,10 @@
 				DC3015B41F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B11F4BA95200381031 /* PostCD.swift in Sources */,
 				61A677001F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
-				DC3016331F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AA1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
 				DC3016481F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				DCAAEED51F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
+				DC03270C1F54A61F006541B4 /* Extension.swift in Sources */,
 				616134911F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44961F44AD640013AD86 /* Type.swift in Sources */,
 				616134C51F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
@@ -1604,10 +1616,10 @@
 				DC3015B51F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				DC3015B21F4BA95200381031 /* PostCD.swift in Sources */,
 				61A677011F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
-				DC3016341F4CD5BD00381031 /* MediaManager.swift in Sources */,
 				DC1C44AB1F4663070013AD86 /* CheckerOptionV.swift in Sources */,
 				DC3016491F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				DCAAEED61F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
+				DC03270D1F54A61F006541B4 /* Extension.swift in Sources */,
 				616134921F2D919100B52338 /* NC.swift in Sources */,
 				DC1C44971F44AD640013AD86 /* Type.swift in Sources */,
 				616134C61F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,

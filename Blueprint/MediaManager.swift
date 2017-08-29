@@ -86,7 +86,7 @@ class MediaManager {
         options.isSynchronous = true
         options.deliveryMode = .highQualityFormat
         
-        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
+        imageManager.requestImage(for: asset, targetSize: PHImageManagerMaximumSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image, info) in
             
             var extInfo = info?["PHImageFileUTIKey"] as! String
             extInfo.trimBefore(char: ".")
@@ -94,7 +94,7 @@ class MediaManager {
             completion(image!, info?["PHImageFileURLKey"] as! NSURL, extInfo)
         })
     }
-    
+        
     func fetchImage(asset: PHAsset, targetSize: CGSize, completion: @escaping ((UIImage) -> Void)) {
         
         let options = PHImageRequestOptions()
@@ -106,13 +106,27 @@ class MediaManager {
         })
     }
     
-    func fetchLastImageLocalIdentifier(completion: (_ localIdentifier: String?) -> Void) {
+    func fetchLastAsset(type: PHAssetMediaType, completion: (_ localIdentifier: PHAsset?) -> Void) {
         
         let fetchOptions = PHFetchOptions()
         fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
         fetchOptions.fetchLimit = 1
         
-        let fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+        let fetchResult = PHAsset.fetchAssets(with: type, options: fetchOptions)
+        if fetchResult.firstObject != nil {
+            completion(fetchResult.firstObject!)
+        } else {
+            completion(nil)
+        }
+    }
+    
+    func fetchLastAssetLocalIdentifier(type: PHAssetMediaType, completion: (_ localIdentifier: String?) -> Void) {
+        
+        let fetchOptions = PHFetchOptions()
+        fetchOptions.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchOptions.fetchLimit = 1
+        
+        let fetchResult = PHAsset.fetchAssets(with: type, options: fetchOptions)
         if fetchResult.firstObject != nil {
             
             let lastImageAsset: PHAsset = fetchResult.firstObject!
@@ -167,17 +181,67 @@ class MediaManager {
         }
     }
     
-    func fetchVideo(asset: PHAsset, targetSize: CGSize, completion: @escaping ((UIImage) -> Void)) {
+    func fetchVideo(asset: PHAsset, getData data: Bool, completion: @escaping ((URL?, Data?) -> Void)) {
         
-        let options = PHImageRequestOptions()
-        options.isSynchronous = true
+        let options = PHVideoRequestOptions()
         options.deliveryMode = .highQualityFormat
         
-        imageManager.requestImage(for: asset, targetSize: targetSize, contentMode: PHImageContentMode.aspectFill, options: options, resultHandler: { (image,info) in
-            completion(image!)
+        imageManager.requestAVAsset(forVideo: asset, options: options, resultHandler: { (asset, audio, info) in
+            
+            if let urlAsset = asset as? AVURLAsset {
+                
+                if data {
+                    
+                    do {
+                        let data = try Data(contentsOf: urlAsset.url)
+                        completion(urlAsset.url, data)
+                    } catch let err as NSError {
+                        print(err)
+                    }
+                } else {
+                    completion(urlAsset.url, nil)
+                }
+            } else {
+                completion(nil, nil)
+            }
         })
     }
+    
+    func getAssetThumbnail(asset: PHAsset, size: CGFloat, completion: @escaping ((UIImage?) -> Void)) {
+        
+        let retinaScale = UIScreen.main.scale
+        let retinaSquare = CGSize(width: size * retinaScale, height: size * retinaScale)
+        let cropSizeLength = min(asset.pixelWidth, asset.pixelHeight)
+        let square = CGRect(x: 0, y: 0, width: CGFloat(cropSizeLength), height: CGFloat(cropSizeLength))
+        let cropRect = square.applying(CGAffineTransform(scaleX: 1.0 / CGFloat(asset.pixelWidth), y: 1.0/CGFloat(asset.pixelHeight)))
+        
+        let manager = PHImageManager.default()
+        let options = PHImageRequestOptions()
+        
+        options.isSynchronous = true
+        options.deliveryMode = .highQualityFormat
+        options.resizeMode = .exact
+        options.normalizedCropRect = cropRect
+        
+        manager.requestImage(for: asset, targetSize: retinaSquare, contentMode: .aspectFit, options: options, resultHandler: { (image, info) -> Void in
+            completion(image)
+        })
+    }
+    
+    func saveVideo(videoUrl: URL, completion: @escaping ((Bool) -> Void)) {
+        
+        PHPhotoLibrary.shared().performChanges({
+            
+            PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: videoUrl)
 
+        }) { (saved, error) -> Void in
+            
+            if error != nil {
+                print(error!)
+            }
+            completion(saved)
+        }
+    }
     
 //    func getImageFromS3AndCache(email: String, password: String, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
 //        

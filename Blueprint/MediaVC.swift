@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import AVFoundation
+import AVKit
+import Photos
 
 fileprivate let placeholderText = "Text"
 
@@ -16,11 +19,15 @@ class MediaVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var mediaView: UIView!
     @IBOutlet weak var mediaImageView: UIImageView!
     @IBOutlet weak var textView: TV!
+    @IBOutlet weak var playBtn: UIButton!
     
-    var imagePath: NSURL?
-    var newImageIdentifier: String?
-    var ext: String?
     var type: PostType!
+    var newImageIdentifier: String?
+    var videoUrl: URL?
+    var thumbnail: UIImage?
+    var videoExt: String?
+    var darkView: UIView?
+    var selectedVideoAsset: PHAsset?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,11 +54,13 @@ class MediaVC: UIViewController, UITextViewDelegate {
             let vC = segue.destination as! RecipientVC
             vC.previousVC = MEDIA_VC
             vC.type = type
-            vC.ext = ext
-            vC.imageUrl = imagePath
+            vC.videoUrl = videoUrl
+            vC.videoThumbnail = thumbnail
+            vC.videoExt = videoExt
+            vC.videoAsset = selectedVideoAsset
             vC.imageLocalIdentifier = newImageIdentifier
             
-            if let txt = textView.text {
+            if let txt = textView.text, txt != "Text" {
                 vC.text = txt
             }
         } else if segue.identifier == MEDIA_LIBRARY_VC {
@@ -140,7 +149,23 @@ class MediaVC: UIViewController, UITextViewDelegate {
             performSegue(withIdentifier: RECIPIENT_VC, sender: self)
         }
     }
-
-    @IBAction func unwindToMediaVC(segue: UIStoryboardSegue) { }
+    
+    @IBAction func playBtnPressed(_ sender: Any) {
+        
+        let player = AVPlayer(url: videoUrl!)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        self.present(playerViewController, animated: true) {
+            playerViewController.player!.play()
+        }
+    }
+    
+    @IBAction func unwindToMediaVC(segue: UIStoryboardSegue) {
+        
+        if thumbnail != nil {
+            darkView = mediaImageView.renderDark(animated: true, alpha: 0.3)
+            playBtn.isHidden = false
+        }
+    }
 
 }

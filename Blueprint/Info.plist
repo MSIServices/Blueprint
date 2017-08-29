@@ -86,6 +86,8 @@
 	<string>Chains needs to access your camera.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Chains needs to access your photo library.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Chains needs to access your microphone.</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>BalooBhaina-Regular.ttf</string>

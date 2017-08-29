@@ -9,14 +9,26 @@
 import UIKit
 
 class NewPostVC: UIViewController, CheckerOptionVDelegate {
-
+    
+    var checkerOptionV: CheckerOptionV!
     var tag: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let checkerOptionV = CheckerOptionV(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
+        checkerOptionV = CheckerOptionV(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
         checkerOptionV.checkerOptionD = self
+        
+        let topConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 1.0)
+        topConstraint.isActive = true
+        let bottomConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 1.0)
+        bottomConstraint.isActive = true
+        let leftConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 1.0)
+        leftConstraint.isActive = true
+        let rightConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 1.0)
+        rightConstraint.isActive = true
+        
+        view.addConstraints([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
         view.addSubview(checkerOptionV)
     }
     
@@ -42,8 +54,10 @@ class NewPostVC: UIViewController, CheckerOptionVDelegate {
         case 1:
             performSegue(withIdentifier: LINK_VC, sender: self)
         case 2:
+            self.tag = 2
             performSegue(withIdentifier: MEDIA_VC, sender: self)
         case 3:
+            self.tag = 3
             performSegue(withIdentifier: MEDIA_VC, sender: self)
         case 4:
             performSegue(withIdentifier: AUDIO_VC, sender: self)

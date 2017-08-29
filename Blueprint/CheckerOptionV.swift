@@ -28,10 +28,13 @@ class CheckerOptionV: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         configureImageOnly()
     }
-        
+    
+    class func nib() -> CheckerOptionV {
+        return UINib(nibName: self.nameOfClass, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! CheckerOptionV
+    }
+    
     func configureImageOnly() {
         
         var height: CGFloat!
@@ -65,7 +68,7 @@ class CheckerOptionV: UIView {
                 let button = UIButton(type: .custom)
                 button.frame = CGRect(x: xOffset, y: yOffset, width: self.frame.size.width / CGFloat(_columns), height: height)
                 button.setImage(UIImage(named: _icons[counter]), for: .normal)
-                button.imageEdgeInsets = UIEdgeInsets(top: IMAGE_INSETS, left: IMAGE_INSETS, bottom: IMAGE_INSETS, right: IMAGE_INSETS)
+//                button.imageEdgeInsets = UIEdgeInsets(top: IMAGE_INSETS, left: IMAGE_INSETS, bottom: IMAGE_INSETS, right: IMAGE_INSETS)
                 button.tag = counter
                 button.addTarget(self, action: #selector(btnPressed(button:)), for: .touchUpInside)
                 addSubview(button)

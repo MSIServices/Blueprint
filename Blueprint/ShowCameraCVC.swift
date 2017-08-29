@@ -16,13 +16,13 @@ class ShowCameraCVC: UICollectionViewCell {
     
     let developmentSize: CGFloat = 80.0
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-    }
-    
     class func nib() -> UINib {
         return UINib(nibName: self.nameOfClass, bundle: nil)
+    }
+    
+    func configureCell(text: String, image: String) {
+        self.iconImageView.image = UIImage(named: image)
+        self.titleLbl.text = text
     }
 
 }

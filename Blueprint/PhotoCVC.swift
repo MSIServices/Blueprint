@@ -12,12 +12,6 @@ class PhotoCVC: UICollectionViewCell {
 
     @IBOutlet weak var photoImageView: UIImageView!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-
-        photoImageView.backgroundColor = UIColor.random()
-    }
-    
     override var isHighlighted: Bool {
         get {
             return super.isHighlighted

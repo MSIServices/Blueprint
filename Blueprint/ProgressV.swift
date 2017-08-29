@@ -50,8 +50,6 @@ class ProgressV: UIView {
     
     func updateProgress(bytesSent: Int64, bytesExpected: Int64) {
         
-        print(progressBarV.progress)
-        
         if progressBarV.progress != 1 {
             progressBarV.progress = Float(bytesSent) / Float(bytesExpected)
         } else {

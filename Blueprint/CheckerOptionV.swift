@@ -23,12 +23,21 @@ class CheckerOptionV: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         configureImageOnly()
+        
+        center = (superview?.center)!
     }
     
     class func nib() -> CheckerOptionV {

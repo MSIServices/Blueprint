@@ -9,4 +9,5 @@ target 'Blueprint' do
 	pod 'AlamofireSwiftyJSON'
 	pod 'SwiftyGif'
 	pod 'SwiftLinkPreview', '~> 2.0.7'
+	pod 'Pulsator'
 end

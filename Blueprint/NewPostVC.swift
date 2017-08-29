@@ -8,28 +8,13 @@
 
 import UIKit
 
-class NewPostVC: UIViewController, CheckerOptionVDelegate {
+class NewPostVC: UIViewController {
     
-    var checkerOptionV: CheckerOptionV!
     var tag: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkerOptionV = CheckerOptionV(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: view.frame.size.height))
-        checkerOptionV.checkerOptionD = self
-        
-        let topConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .top, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: 1.0)
-        topConstraint.isActive = true
-        let bottomConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 1.0)
-        bottomConstraint.isActive = true
-        let leftConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 1.0)
-        leftConstraint.isActive = true
-        let rightConstraint = NSLayoutConstraint(item: checkerOptionV, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: 1.0)
-        rightConstraint.isActive = true
-        
-        view.addConstraints([topConstraint, bottomConstraint, leftConstraint, rightConstraint])
-        view.addSubview(checkerOptionV)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -45,27 +30,31 @@ class NewPostVC: UIViewController, CheckerOptionVDelegate {
             }
         }
     }
-        
-    func checkerBtnPressed(tag: Int) {
-
-        switch tag {
-        case 0:
-            performSegue(withIdentifier: TEXT_VC, sender: self)
-        case 1:
-            performSegue(withIdentifier: LINK_VC, sender: self)
-        case 2:
-            self.tag = 2
-            performSegue(withIdentifier: MEDIA_VC, sender: self)
-        case 3:
-            self.tag = 3
-            performSegue(withIdentifier: MEDIA_VC, sender: self)
-        case 4:
-            performSegue(withIdentifier: AUDIO_VC, sender: self)
-        case 5:
-            performSegue(withIdentifier: QUOTE_VC, sender: self)
-        default:
-            break
-        }
+    
+    @IBAction func textBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: TEXT_VC, sender: self)
+    }
+    
+    @IBAction func linkBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: LINK_VC, sender: self)
+    }
+    
+    @IBAction func imageBtnPressed(_ sender: Any) {
+        self.tag = 2
+        performSegue(withIdentifier: MEDIA_VC, sender: self)
+    }
+    
+    @IBAction func videoBtnPressed(_ sender: Any) {
+        self.tag = 3
+        performSegue(withIdentifier: MEDIA_VC, sender: self)
+    }
+    
+    @IBAction func microphoneBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: AUDIO_VC, sender: self)
+    }
+    
+    @IBAction func quoteBtnPressed(_ sender: Any) {
+        performSegue(withIdentifier: QUOTE_VC, sender: self)
     }
     
     @IBAction func unwindToNewPostVC(segue: UIStoryboardSegue) { }

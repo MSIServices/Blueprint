@@ -22,22 +22,18 @@ class MainV: UIView {
             darkView.removeFromSuperview()
             darkView = nil
         }
-        
         if progressV != nil {
             progressV.removeFromSuperview()
             progressV = nil
         }
-        
         if zeroActionAlertV != nil {
             zeroActionAlertV.removeFromSuperview()
             zeroActionAlertV = nil
         }
-        
         if singleActionAlertV != nil {
             singleActionAlertV.removeFromSuperview()
             singleActionAlertV = nil
         }
-        
         if doubleActionAlertV != nil {
             doubleActionAlertV.removeFromSuperview()
             doubleActionAlertV = nil

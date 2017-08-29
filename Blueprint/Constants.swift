@@ -13,6 +13,8 @@ import UIKit
 let CHAIN_BLUE_LOADING = UIColor(red: 185.0 / 255.0, green: 196.0 / 255.0, blue: 197.0 / 255.0, alpha: 1.0) //#B9C4C5
 let CHAIN_BLUE_BG = UIColor(red: 115.0 / 255.0, green: 137.0 / 255.0, blue: 139.0 / 255.0, alpha: 1.0) //#73898B
 let CHAIN_BLUE = UIColor(red: 0, green: 39.0 / 255.0, blue: 43.0 / 255.0, alpha: 1.0) //#00272B
+let CHAIN_BLUE_OUTER = UIColor(red: 23.0 / 255.0, green: 58.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0) //#173A3E
+let CHAIN_BLUE_INNER = UIColor(red: 46.0 / 255.0, green: 78.0 / 255.0, blue: 81.0 / 255.0, alpha: 1.0) //#2E4E51
 let CHAIN_CREAM = UIColor(red: 255.0 / 255.0, green: 201.0 / 255.0, blue: 81.0 / 255.0, alpha: 1.0) //#FFC951
 let CHAIN_GREY = UIColor(red: 91.0 / 255.0, green: 91.0 / 255.0, blue: 91.0 / 255.0, alpha: 1.0) //#5B5B5B
 let CHAIN_LIGHT = UIColor(red: 214.0 / 255.0, green: 217.0 / 255.0, blue: 206.0 / 255.0, alpha: 1.0) //#D6D9CE

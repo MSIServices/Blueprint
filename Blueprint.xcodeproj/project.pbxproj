@@ -349,6 +349,12 @@
 		DCB2C3131F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
 		DCB2C3141F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
 		DCB2C3151F54EB0200943B52 /* CheckerOptionV.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */; };
+		DCB2C3171F55BFFF00943B52 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */; };
+		DCB2C3181F55BFFF00943B52 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */; };
+		DCB2C3191F55BFFF00943B52 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */; };
+		DCB2C31F1F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
+		DCB2C3201F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
+		DCB2C3211F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
 		DCFF71B41F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B51F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B61F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
@@ -556,6 +562,8 @@
 		DCAAEED21F4F48060004ADD7 /* M13CheckboxPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxPathGenerator.swift; sourceTree = "<group>"; };
 		DCAAEED31F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = M13CheckboxRadioPathGenerator.swift; sourceTree = "<group>"; };
 		DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckerOptionV.xib; sourceTree = "<group>"; };
+		DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
+		DCB2C31E1F55C8C400943B52 /* RecordV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordV.swift; sourceTree = "<group>"; };
 		DCFF71B31F4B549E00531062 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DCFF71B71F4B581C00531062 /* HeaderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTVC.swift; sourceTree = "<group>"; };
 		DCFF71B81F4B581C00531062 /* HeaderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderTVC.xib; sourceTree = "<group>"; };
@@ -863,6 +871,7 @@
 				DC1C44A81F4663070013AD86 /* CheckerOptionV.swift */,
 				DC3016051F4C7F9900381031 /* ZeroActionAlertV.swift */,
 				DC0327021F50BBE2006541B4 /* ProgressV.swift */,
+				DCB2C31E1F55C8C400943B52 /* RecordV.swift */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -940,6 +949,7 @@
 				613223FD1F3EA51F00F12A0C /* UIColorExtensions.swift */,
 				613223FF1F3EA54400F12A0C /* UIButtonExtensions.swift */,
 				DC7C529D1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift */,
+				DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */,
 			);
 			name = UIKit;
 			sourceTree = "<group>";
@@ -1364,6 +1374,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireSwiftyJSON/AlamofireSwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
 				"${BUILT_PRODUCTS_DIR}/SWXMLHash/SWXMLHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLinkPreview/SwiftLinkPreview.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
@@ -1374,6 +1385,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireSwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWXMLHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLinkPreview.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
@@ -1461,6 +1473,8 @@
 				613223F61F3EA44B00F12A0C /* RawRepresentableExtensions.swift in Sources */,
 				DC1C44801F43C54A0013AD86 /* User.swift in Sources */,
 				DC3015EF1F4BB53800381031 /* AWSConfiguration.swift in Sources */,
+				DCB2C31F1F55C8C400943B52 /* RecordV.swift in Sources */,
+				DCB2C3171F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
 				DC1C44911F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DCAAEEE01F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				616134AC1F2D951400B52338 /* DoubleExtensions.swift in Sources */,
@@ -1592,10 +1606,12 @@
 				DC3016181F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
 				DCAAEEFC1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				DC30163C1F4DEAB800381031 /* TV.swift in Sources */,
+				DCB2C3201F55C8C400943B52 /* RecordV.swift in Sources */,
 				616134C11F2D956000B52338 /* UILabelExtensions.swift in Sources */,
 				DC30164F1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E01F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
+				DCB2C3181F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
 				61A677041F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BD1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED81F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
@@ -1684,10 +1700,12 @@
 				DC3016191F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
 				DCAAEEFD1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
 				DC30163D1F4DEAB800381031 /* TV.swift in Sources */,
+				DCB2C3211F55C8C400943B52 /* RecordV.swift in Sources */,
 				616134C21F2D956000B52338 /* UILabelExtensions.swift in Sources */,
 				DC3016501F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E11F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
+				DCB2C3191F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
 				61A677051F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BE1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED91F4F48060004ADD7 /* M13Checkbox.swift in Sources */,

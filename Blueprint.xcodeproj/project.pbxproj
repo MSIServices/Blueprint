@@ -273,6 +273,10 @@
 		DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */; };
 		DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */; };
 		DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B46A1F3BC6D300D40871 /* Template.swift */; };
+		DC657C7F1F5A1B47007D0DCD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC657C7E1F5A1B47007D0DCD /* AudioToolbox.framework */; };
+		DC657C811F5A1BD6007D0DCD /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC657C801F5A1BD6007D0DCD /* AudioManager.swift */; };
+		DC657C821F5A1BD6007D0DCD /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC657C801F5A1BD6007D0DCD /* AudioManager.swift */; };
+		DC657C831F5A1BD6007D0DCD /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC657C801F5A1BD6007D0DCD /* AudioManager.swift */; };
 		DC6F03CD1F3BD644007A8DB4 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC6F03CC1F3BD644007A8DB4 /* Helper.swift */; };
 		DC7C529E1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C529D1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift */; };
 		DC7C529F1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC7C529D1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift */; };
@@ -536,6 +540,9 @@
 		DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCD.swift; sourceTree = "<group>"; };
 		DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateCD+Properties.swift"; sourceTree = "<group>"; };
 		DC44B46A1F3BC6D300D40871 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
+		DC657C7D1F5A1B46007D0DCD /* Blueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blueprint.entitlements; sourceTree = "<group>"; };
+		DC657C7E1F5A1B47007D0DCD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		DC657C801F5A1BD6007D0DCD /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		DC6F03CC1F3BD644007A8DB4 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		DC7C529D1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerExtensions.swift; sourceTree = "<group>"; };
 		DC7C52A11F4B4E8D000D3AD7 /* GroupCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupCD.swift; sourceTree = "<group>"; };
@@ -583,6 +590,7 @@
 				DC3015FC1F4BB62100381031 /* libsqlite3.tbd in Frameworks */,
 				DC3015FA1F4BB60F00381031 /* libz.tbd in Frameworks */,
 				DC3015F81F4BB5F500381031 /* AWSMobileHubHelper.framework in Frameworks */,
+				DC657C7F1F5A1B47007D0DCD /* AudioToolbox.framework in Frameworks */,
 				DC3015D61F4BB4E200381031 /* AWSS3.framework in Frameworks */,
 				DC3015D21F4BB4E200381031 /* AWSAPIGateway.framework in Frameworks */,
 				68F879FC9964823922E59300 /* Pods_Blueprint.framework in Frameworks */,
@@ -612,6 +620,7 @@
 		0A29264D12DA629CED7ED8D2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DC657C7E1F5A1B47007D0DCD /* AudioToolbox.framework */,
 				DC3015FB1F4BB62100381031 /* libsqlite3.tbd */,
 				DC3015F91F4BB60F00381031 /* libz.tbd */,
 				DB74DECBD177AAD7DD1D32ED /* Pods_Blueprint.framework */,
@@ -697,6 +706,7 @@
 		61A676A51F2D8AB40047DD7B /* Blueprint */ = {
 			isa = PBXGroup;
 			children = (
+				DC657C7D1F5A1B46007D0DCD /* Blueprint.entitlements */,
 				61A676E31F2D8C140047DD7B /* Services */,
 				61A676E21F2D8C0C0047DD7B /* Resources */,
 				61A676E11F2D8C060047DD7B /* Utils */,
@@ -856,6 +866,7 @@
 				6132240F1F3EA8EA00F12A0C /* AuthenticationManager.swift */,
 				DC3016311F4CD5BD00381031 /* MediaManager.swift */,
 				DC30163E1F4DF17800381031 /* Regex.swift */,
+				DC657C801F5A1BD6007D0DCD /* AudioManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1193,6 +1204,11 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 99ZNT9UC25;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.InterAppAudio = {
+								enabled = 1;
+							};
+						};
 					};
 					61A676B91F2D8AB40047DD7B = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -1497,6 +1513,7 @@
 				DCFF71CA1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
 				616134C41F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44851F44A54A0013AD86 /* HomeVC.swift in Sources */,
+				DC657C811F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
 				616134C01F2D956000B52338 /* UILabelExtensions.swift in Sources */,
 				61A676F11F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				6132248C1F3ECC3800F12A0C /* SignUpOneVC.swift in Sources */,
@@ -1573,6 +1590,7 @@
 				DCFF71B51F4B549E00531062 /* Group.swift in Sources */,
 				61A676BF1F2D8AB40047DD7B /* BlueprintTests.swift in Sources */,
 				DCFF71CB1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
+				DC657C821F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
 				DCAAEEF01F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				DC1C44B21F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447D1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
@@ -1667,6 +1685,7 @@
 				DCFF71B61F4B549E00531062 /* Group.swift in Sources */,
 				61A676CA1F2D8AB40047DD7B /* BlueprintUITests.swift in Sources */,
 				DCFF71CC1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
+				DC657C831F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
 				DCAAEEF11F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				DC1C44B31F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447E1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
@@ -1848,6 +1867,7 @@
 			baseConfigurationReference = 121D1878522132AC04399E21 /* Pods-Blueprint.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Blueprint/Blueprint.entitlements;
 				DEVELOPMENT_TEAM = 99ZNT9UC25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1869,6 +1889,7 @@
 			baseConfigurationReference = EA92460CD12EEF0D20C8DE53 /* Pods-Blueprint.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Blueprint/Blueprint.entitlements;
 				DEVELOPMENT_TEAM = 99ZNT9UC25;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

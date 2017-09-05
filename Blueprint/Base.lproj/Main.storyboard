@@ -801,7 +801,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the circle to start recording." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VZZ-HR-XqC">
-                                <rect key="frame" x="16" y="579.5" width="344" height="19.5"/>
+                                <rect key="frame" x="16" y="549.5" width="344" height="19.5"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SbX-dV-WH3"/>
                                 </constraints>
@@ -809,31 +809,34 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AEn-pe-apm">
+                            <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="AEn-pe-apm">
                                 <rect key="frame" x="14" y="114" width="348" height="31"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="M3q-7u-AnX"/>
                                 </constraints>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tG8-Fn-VuQ">
-                                <rect key="frame" x="16" y="412" width="344" height="159.5"/>
-                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="24"/>
+                                <rect key="frame" x="16" y="412" width="344" height="129.5"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="32"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-6j-rPz">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdN-6j-rPz">
                                 <rect key="frame" x="170" y="152" width="36" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="oWR-bu-dne"/>
                                     <constraint firstAttribute="width" constant="36" id="vo1-m2-kdh"/>
                                 </constraints>
                                 <state key="normal" image="play-white"/>
+                                <connections>
+                                    <action selector="playAudioBtnPressed:" destination="5Yp-2V-FB3" eventType="touchUpInside" id="3ye-sR-b9B"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="PdN-6j-rPz" firstAttribute="centerX" secondItem="HpU-qE-he4" secondAttribute="centerX" id="0mC-XT-P9B"/>
-                            <constraint firstItem="1wr-Hx-ugD" firstAttribute="top" secondItem="VZZ-HR-XqC" secondAttribute="bottom" constant="20" id="7KO-5K-AUo"/>
+                            <constraint firstItem="1wr-Hx-ugD" firstAttribute="top" secondItem="VZZ-HR-XqC" secondAttribute="bottom" constant="50" id="7KO-5K-AUo"/>
                             <constraint firstItem="VZZ-HR-XqC" firstAttribute="leading" secondItem="HpU-qE-he4" secondAttribute="leadingMargin" id="E0E-OD-heq"/>
                             <constraint firstItem="tG8-Fn-VuQ" firstAttribute="top" secondItem="6HX-Jw-FUx" secondAttribute="bottom" constant="8" id="EgL-5a-Cve"/>
                             <constraint firstAttribute="trailing" secondItem="T5M-YI-yBG" secondAttribute="trailing" id="Q7u-MB-RLg"/>
@@ -858,6 +861,7 @@
                         <outlet property="mainV" destination="HpU-qE-he4" id="Eww-WK-HHK"/>
                         <outlet property="middleBtnV" destination="IK5-tq-RxN" id="c5S-ew-TcO"/>
                         <outlet property="outerBtnV" destination="6HX-Jw-FUx" id="INZ-er-z7H"/>
+                        <outlet property="playBtn" destination="PdN-6j-rPz" id="csa-uo-AGo"/>
                         <outlet property="recordBtn" destination="wt2-5Q-gxb" id="REd-PE-4Er"/>
                         <outlet property="recordBtnHeight" destination="YkK-z1-POo" id="dPJ-hD-cZ6"/>
                         <outlet property="recordBtnWidth" destination="dVR-yw-S8g" id="eg5-h4-0P7"/>

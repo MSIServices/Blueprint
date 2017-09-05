@@ -20,10 +20,11 @@ class AudioVC: UIViewController {
     @IBOutlet weak var recordBtnHeight: NSLayoutConstraint!
     @IBOutlet weak var recordBtnWidth: NSLayoutConstraint!
     @IBOutlet weak var descriptionLbl: UILabel!
+    @IBOutlet weak var playBtn: UIButton!
     
     let pulsator = Pulsator()
     
-    var nonObservabePropertiesUpdateTimer = DispatchSource.makeTimerSource(flags: [], queue: DispatchQueue.main)
+    var uuid: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,8 @@ class AudioVC: UIViewController {
         
         recordBtn.layer.cornerRadius = recordBtn.frame.size.width / 2
         
+        AudioManager.shared.setup()
+        
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
     }
     
@@ -80,11 +83,29 @@ class AudioVC: UIViewController {
         pulsator.position = innerBtnV.layer.position
     }
 
+    @IBAction func playAudioBtnPressed(_ sender: Any) {
+
+        AudioManager.shared.play()
+        do {
+            let data = try Data(contentsOf: AudioManager.shared.audioUrl!)
+            print(data.bytes.count)
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     @IBAction func recordBtnPressed(_ sender: Any) {
         
-        if AudioManager.shared.recorder != nil {
+        if uuid == nil {
+            uuid = UUID().uuidString
+        }
+        
+        if AudioManager.shared.recorder == nil || !pulsator.isPulsating {
             
             descriptionLbl.isHidden = true
+            playBtn.isHidden = true
+            slider.isHidden = true
+            
             pulsator.start()
             
             UIView.animate(withDuration: 1.0, animations: {
@@ -93,9 +114,17 @@ class AudioVC: UIViewController {
                 self.recordBtnWidth.constant = 29
                 self.recordBtn.layer.cornerRadius = 6
             })
+            if AudioManager.shared.record(fileName: uuid!) {
+                print("Recording...")
+            } else {
+                print("Failed to record.")
+            }
         } else {
             
             descriptionLbl.isHidden = false
+            playBtn.isHidden = false
+            slider.isHidden = false
+            
             pulsator.stop()
             
             UIView.animate(withDuration: 1.0, animations: {
@@ -104,26 +133,8 @@ class AudioVC: UIViewController {
                 self.recordBtnWidth.constant = 58
                 self.recordBtn.layer.cornerRadius = 58 / 2
             })
+            AudioManager.shared.stopRecording()
         }
-    
-        let formatter = DateComponentsFormatter()
-        formatter.zeroFormattingBehavior = .pad
-        formatter.includesApproximationPhrase = false
-        formatter.includesTimeRemainingPhrase = false
-        formatter.allowedUnits = [.minute, .second]
-        formatter.calendar = Calendar.current
-        
-        nonObservabePropertiesUpdateTimer.setEventHandler { [weak self] in
-        
-//            self.durationLbl.text = formatter.string(from: AudioManager.shared.recorder?.currentTime)
-            
-//            let percent = (Double(AudioManager.shared.recorderPeak0) + 160) / 160
-//            let final = CGFloat(percent) + 0.3
-        }
-        
-        nonObservabePropertiesUpdateTimer.scheduleRepeating(deadline: DispatchTime.now(), interval: DispatchTimeInterval.milliseconds(100))
-        
-        nonObservabePropertiesUpdateTimer.resume()
     }
     
     func backBtnPressed() {

@@ -15,6 +15,8 @@ class AudioManager: NSObject {
     
     var recordingSession: AVAudioSession!
     var recorder: AVAudioRecorder?
+    var player: AVAudioPlayer?
+    var audioUrl: URL?
     var timer: Timer?
     
     func setup() {
@@ -45,23 +47,17 @@ class AudioManager: NSObject {
         let url = getUserPath().appendingPathComponent(fileName + ".m4a")
         let audioUrl = URL(fileURLWithPath: url.path)
         let recordSettings: [String:Any] = [
-            AVFormatIDKey: NSNumber(value: kAudioFormatAppleLossless),
-            AVEncoderAudioQualityKey: AVAudioQuality.high,
+            AVFormatIDKey: NSNumber(value: kAudioFormatMPEG4AAC),
+            AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
             AVEncoderBitRateKey: 12000.0,
-            AVNumberOfChannelsKey: 1,
-            AVSampleRateKey: 44100.0
+            AVNumberOfChannelsKey: 1
         ]
         
         do {
             recorder = try AVAudioRecorder(url: audioUrl, settings: recordSettings)
             recorder?.delegate = self
-            recorder?.isMeteringEnabled = true
             recorder?.prepareToRecord()
             recorder?.record()
-            
-            self.timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { (timer: Timer) in
-                
-            })
             
             return true
             
@@ -77,34 +73,32 @@ class AudioManager: NSObject {
         self.timer?.invalidate()
     }
     
+    func play() {
+        player?.play()
+    }
+    
     //Get the path for the folder we will be saving the file to.
     func getUserPath() -> URL {
         return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
+    
 }
 
 extension AudioManager: AVAudioRecorderDelegate {
     
     func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
         print("AudioManager did finish recording")
+        print(recorder.url)
+        do {
+            player = try AVAudioPlayer(contentsOf: recorder.url)
+            player?.prepareToPlay()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     private func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("AUDIO ENCODING ERROR: \(error.debugDescription)")
     }
+    
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -16,10 +16,9 @@ class AudioManager: NSObject {
     var recordingSession: AVAudioSession!
     var recorder: AVAudioRecorder?
     var player: AVAudioPlayer?
-    var audioUrl: URL?
     var timer: Timer?
     
-    func setup() {
+    func setup(_ viewController: UIViewController) {
         
         recordingSession = AVAudioSession.sharedInstance()
         
@@ -44,20 +43,19 @@ class AudioManager: NSObject {
     //Start the record session
     func record(fileName: String) -> Bool {
         
-        let url = getUserPath().appendingPathComponent(fileName + ".m4a")
-        let audioUrl = URL(fileURLWithPath: url.path)
+        let path = getUserPath().appendingPathComponent(fileName + ".m4a").path
+        let audioUrl = URL(fileURLWithPath: path)
         let recordSettings: [String:Any] = [
             AVFormatIDKey: NSNumber(value: kAudioFormatMPEG4AAC),
             AVEncoderAudioQualityKey: AVAudioQuality.high.rawValue,
-            AVEncoderBitRateKey: 12000.0,
+            AVSampleRateKey: 12000,
             AVNumberOfChannelsKey: 1
         ]
         
         do {
             recorder = try AVAudioRecorder(url: audioUrl, settings: recordSettings)
-            recorder?.delegate = self
-            recorder?.prepareToRecord()
-            recorder?.record()
+            recorder!.prepareToRecord()
+            recorder!.record()
             
             return true
             
@@ -69,36 +67,29 @@ class AudioManager: NSObject {
     
     //Stop the recorder
     func stopRecording() {
+        
         self.recorder?.stop()
         self.timer?.invalidate()
-    }
-    
-    func play() {
-        player?.play()
-    }
-    
-    //Get the path for the folder we will be saving the file to.
-    func getUserPath() -> URL {
-        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
-    }
-    
-}
-
-extension AudioManager: AVAudioRecorderDelegate {
-    
-    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
-        print("AudioManager did finish recording")
-        print(recorder.url)
+        
         do {
-            player = try AVAudioPlayer(contentsOf: recorder.url)
-            player?.prepareToPlay()
+            player = try AVAudioPlayer(contentsOf: recorder!.url)
+            player!.prepareToPlay()
         } catch {
             print(error.localizedDescription)
         }
     }
     
-    private func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
-        print("AUDIO ENCODING ERROR: \(error.debugDescription)")
+    func play() {
+        player!.play()
+    }
+    
+    func pause() {
+        player!.pause()
+    }
+    
+    //Get the path for the folder we will be saving the file to.
+    func getUserPath() -> URL {
+        return FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
     }
     
 }

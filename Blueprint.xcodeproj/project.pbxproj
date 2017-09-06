@@ -146,6 +146,9 @@
 		DC03270B1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
 		DC03270C1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
 		DC03270D1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
+		DC18A88C1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
+		DC18A88D1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
+		DC18A88E1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
 		DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
@@ -487,6 +490,7 @@
 		DC0327021F50BBE2006541B4 /* ProgressV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressV.swift; sourceTree = "<group>"; };
 		DC0327061F50BBFB006541B4 /* ProgressV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressV.xib; sourceTree = "<group>"; };
 		DC03270A1F54A61F006541B4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DC18A88B1F5F71E60007795A /* AudioEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEN.swift; sourceTree = "<group>"; };
 		DC1C44771F43C3950013AD86 /* UserCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCD.swift; sourceTree = "<group>"; };
 		DC1C44781F43C3950013AD86 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC1C447F1F43C54A0013AD86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -924,6 +928,7 @@
 				DC1C44941F44AD640013AD86 /* Type.swift */,
 				DCFF71D51F4B911000531062 /* PostType.swift */,
 				DC03270A1F54A61F006541B4 /* Extension.swift */,
+				DC18A88B1F5F71E60007795A /* AudioEN.swift */,
 			);
 			name = Enums;
 			sourceTree = "<group>";
@@ -1457,6 +1462,7 @@
 				DC30163F1F4DF17800381031 /* Regex.swift in Sources */,
 				DCAAEED71F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DC1C44C91F4762D00013AD86 /* QuoteVC.swift in Sources */,
+				DC18A88C1F5F71E60007795A /* AudioEN.swift in Sources */,
 				616134941F2D91AE00B52338 /* TBC.swift in Sources */,
 				DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */,
 				613223F81F3EA47300F12A0C /* SequenceExtensions.swift in Sources */,
@@ -1565,6 +1571,7 @@
 				DC1C44CA1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DC1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				DCAAEEF91F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
+				DC18A88D1F5F71E60007795A /* AudioEN.swift in Sources */,
 				615B79C21F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C529F1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016201F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
@@ -1660,6 +1667,7 @@
 				DC1C44CB1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DD1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				DCAAEEFA1F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
+				DC18A88E1F5F71E60007795A /* AudioEN.swift in Sources */,
 				615B79C31F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C52A01F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016211F4CAEDD00381031 /* PreviewTVC.swift in Sources */,

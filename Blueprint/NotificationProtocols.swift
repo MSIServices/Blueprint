@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NotificationName {
-    var BackspaceDetected: Notification.Name { get }
+   var BackspaceDetected: Notification.Name { get }
 }

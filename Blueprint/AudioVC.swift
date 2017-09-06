@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 import Pulsator
 
 class AudioVC: UIViewController {
@@ -23,6 +24,10 @@ class AudioVC: UIViewController {
     @IBOutlet weak var playBtn: UIButton!
     
     let pulsator = Pulsator()
+    let playImg = UIImage(named: "play-white")
+    let pauseImg = UIImage(named: "pause-white")
+    let recorderTimer = Timer!
+    let playerTimer = Timer!
     
     var uuid: String?
     
@@ -55,7 +60,7 @@ class AudioVC: UIViewController {
         
         recordBtn.layer.cornerRadius = recordBtn.frame.size.width / 2
         
-        AudioManager.shared.setup()
+        AudioManager.shared.setup(self)
         
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
     }
@@ -85,12 +90,15 @@ class AudioVC: UIViewController {
 
     @IBAction func playAudioBtnPressed(_ sender: Any) {
 
-        AudioManager.shared.play()
-        do {
-            let data = try Data(contentsOf: AudioManager.shared.audioUrl!)
-            print(data.bytes.count)
-        } catch {
-            print(error.localizedDescription)
+        if AudioManager.shared.player!.isPlaying {
+            
+            AudioManager.shared.pause()
+            playBtn.setImage(playImg, for: .normal)
+            
+        } else {
+            
+            AudioManager.shared.play()
+            playBtn.setImage(pauseImg, for: .normal)
         }
     }
     
@@ -114,8 +122,12 @@ class AudioVC: UIViewController {
                 self.recordBtnWidth.constant = 29
                 self.recordBtn.layer.cornerRadius = 6
             })
+            
             if AudioManager.shared.record(fileName: uuid!) {
-                print("Recording...")
+                
+                AudioManager.shared.recorder!.delegate = self
+                recorderTimer = Timer(timeInterval: 1.0, target: self, selector: #selector(updateRecordingTime), userInfo: nil, repeats: true)
+                
             } else {
                 print("Failed to record.")
             }
@@ -134,11 +146,39 @@ class AudioVC: UIViewController {
                 self.recordBtn.layer.cornerRadius = 58 / 2
             })
             AudioManager.shared.stopRecording()
+            AudioManager.shared.player!.delegate = self
         }
+    }
+    
+    func updateRecordingTime() {
+        
+        
     }
     
     func backBtnPressed() {
         self.performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
+    }
+
+}
+
+extension AudioVC: AVAudioRecorderDelegate, AVAudioPlayerDelegate {
+    
+    func audioRecorderDidFinishRecording(_ recorder: AVAudioRecorder, successfully flag: Bool) {
+        print("AudioManager did finish recording: \(flag)")
+    }
+    
+    private func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+        print("AUDIO ENCODING ERROR: \(error.debugDescription)")
+    }
+    
+    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
+        print("AudioManager did finish playing: \(flag)")
+        
+        playBtn.setImage(playImg, for: .normal)
+    }
+    
+    private func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        print("AUDIO DECODE ERROR: \(error.debugDescription)")
     }
 
 }

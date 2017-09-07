@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import CryptoSwift
 
-
 struct Helper {
     
     static func delay(_ delay: Double, closure: @escaping ()->()) {
@@ -25,6 +24,15 @@ struct Helper {
             bytes.append(UInt8(arc4random_uniform(255)))
         }
         return bytes
+    }
+    
+    static func formatTimeIntervalWithMinutesAndSeconds(currentTime: TimeInterval) -> String {
+        
+        let dFormat = "%02d"
+        let min: Int = Int(currentTime / 60)
+        let sec: Int = Int(currentTime.truncatingRemainder(dividingBy: 60.0))
+        
+        return "\(String(format: dFormat, min)):\(String(format: dFormat, sec))"
     }
 
 }

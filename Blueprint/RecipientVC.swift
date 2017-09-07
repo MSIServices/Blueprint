@@ -8,8 +8,8 @@
 
 import UIKit
 import SwiftyGif
-import AWSS3
 import Photos
+import AWSS3
 
 fileprivate let HEADER_TVC = "HeaderTVC"
 fileprivate let CHECKBOX_TVC = "CheckboxTVC"
@@ -31,17 +31,14 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
     var videoUrl: URL?
     var videoThumbnail: UIImage?
     var videoAsset: PHAsset?
-    var audioUrl: NSURL?
+    var audioUrl: URL?
     var progressAlert: ProgressV!
     var successAlert: ZeroActionAlertV!
     var errorAlert: SingleActionAlertV!
     var previousVC: String!
-    var awsManager: AWSS3TransferManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        awsManager = AWSS3TransferManager.default()
         
         let descriptionLbl = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 200))
         descriptionLbl.text = "Select recipients for the current post."
@@ -176,104 +173,6 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         })
     }
     
-    func uploadImageToS3(image: UIImage, ext: String, completion: @escaping ((URL?, NSError?) -> Void)) {
-        
-        let imageUploadRequest = AWSS3TransferManagerUploadRequest()
-        imageUploadRequest?.bucket = S3_BUCKET
-        
-        var data: Data?
-
-        if ext == "jpeg" {
-            imageUploadRequest?.contentType = "image/jpeg"
-            data = UIImageJPEGRepresentation(image, 1.0)
-        } else if ext == "png" {
-            imageUploadRequest?.contentType = "image/png"
-            data = UIImagePNGRepresentation(image)
-        }
-        
-        let imageFileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
-        let imageFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(imageFileName)
-        
-        do {
-            try data?.write(to: imageFileURL!, options: .atomic)
-            
-            imageUploadRequest?.body = imageFileURL!
-            imageUploadRequest?.key = imageFileName
-            
-            awsManager.upload(imageUploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
-                
-                if let error = task.error {
-                    print("Upload image failed with error: (\(error))")
-                    completion(nil, error as NSError)
-                }
-                
-                if task.result != nil {
-                    
-                    let url = AWSS3.default().configuration.endpoint.url
-                    let publicImageUrl = url?.appendingPathComponent((imageUploadRequest?.bucket!)!).appendingPathComponent((imageUploadRequest?.key!)!)
-                    
-                    completion(publicImageUrl, nil)
-                }
-                return nil
-            })
-            
-            imageUploadRequest?.uploadProgress = { (bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
-                
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
-                })
-            }
-        } catch let err as NSError {
-            print("IMAGE WRITE ERROR: \(err)")
-        }
-    }
-    
-    func uploadVideoToS3(videoData: Data, ext: String, completion: @escaping ((URL?, NSError?) -> Void)) {
-        
-        let videoUploadRequest = AWSS3TransferManagerUploadRequest()
-        videoUploadRequest?.bucket = S3_BUCKET
-            
-        if ext.uppercased() == "MOV" {
-            videoUploadRequest?.contentType = "video/mov"
-        }
-        
-        let videoFileName = ProcessInfo.processInfo.globallyUniqueString.appending(".\(ext)")
-        let videoFileURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(videoFileName)
-            
-        do {
-            try videoData.write(to: videoFileURL!, options: .atomic)
-                
-            videoUploadRequest?.body = videoFileURL!
-            videoUploadRequest?.key = videoFileName
-            
-            awsManager.upload(videoUploadRequest!).continueWith(block: { (task: AWSTask) -> Any? in
-                    
-                if let error = task.error {
-                    print("Upload video failed with error: (\(error))")
-                    completion(nil, error as NSError)
-                }
-                
-                if task.result != nil {
-                        
-                    let url = AWSS3.default().configuration.endpoint.url
-                    let publicVideoURL = url?.appendingPathComponent((videoUploadRequest?.bucket!)!).appendingPathComponent((videoUploadRequest?.key!)!)
-                    
-                    completion(publicVideoURL, nil)
-                }
-                return nil
-            })
-                
-            videoUploadRequest?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
-                    
-                DispatchQueue.main.async(execute: { () -> Void in
-                    self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
-                })
-            }
-        } catch let err as NSError {
-            print(err)
-        }
-    }
-    
     @IBAction func createBtnPressed(_ sender: Any) {
         
         if checkedOptions.count > 0 {
@@ -287,7 +186,9 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     self.progressAlert = self.mainV.showProgressV(animated: true)
                     self.progressAlert.titleLbl.text = "Uploading Image"
 
-                    self.uploadImageToS3(image: image, ext: ext, completion: { (url, error) in
+                    let request = AWSS3TransferManagerUploadRequest()
+                    
+                    S3Manager.shared.uploadImageToS3(imageUploadRequest: request!, image: image, ext: ext, completion: { (url, error) in
                         
                         if url != nil {
                             self.createPost(image: String(describing: url!), video: nil, audio: nil)
@@ -299,6 +200,13 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                             self.progressAlert.removeFromSuperview()
                         }
                     })
+                    
+                    request?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                        
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                        })
+                    }
                 })
             } else if type == PostType.video {
                 
@@ -309,7 +217,9 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                         self.progressAlert.titleLbl.text = "Uploading Video"
                     }
                     
-                    self.uploadVideoToS3(videoData: data!, ext: self.videoExt!, completion: { (videoUrl, error) in
+                    let request = AWSS3TransferManagerUploadRequest()
+                    
+                    S3Manager.shared.uploadVideoToS3(videoUploadRequest: request!, videoData: data!, ext: self.videoExt!, completion: { (videoUrl, error) in
                         
                         if error != nil {
                             print(error!)
@@ -320,21 +230,65 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                                 self.progressAlert.titleLbl.text = "Uploading Thumbnail"
                             }
                             
-                            self.uploadImageToS3(image: self.videoThumbnail!, ext: self.videoExt!, completion: { (imageUrl, error) in
+                            let request = AWSS3TransferManagerUploadRequest()
+                            
+                            S3Manager.shared.uploadImageToS3(imageUploadRequest: request!, image: self.videoThumbnail!, ext: self.videoExt!, completion: { (imageUrl, error) in
                                     
                                 if error != nil {
                                     print(error!)
                                 } else {
                                     self.createPost(image: String(describing: imageUrl!), video: String(describing: videoUrl!), audio: nil)
                                 }
-                                    
+                                
                                 DispatchQueue.main.async {
                                     self.progressAlert.removeFromSuperview()
                                 }
                             })
                         }
                     })
+                    
+                    request?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                        
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                        })
+                    }
                 })
+            } else if type == PostType.audio {
+                
+                do {
+                    let audioData = try Data(contentsOf: audioUrl!)
+                    let ext = audioUrl!.pathExtension
+                    
+                    DispatchQueue.main.async {
+                        self.progressAlert = self.mainV.showProgressV(animated: true)
+                        self.progressAlert.titleLbl.text = "Uploading Audio"
+                    }
+
+                    let request = AWSS3TransferManagerUploadRequest()
+                    
+                    S3Manager.shared.uploadAudioToS3(audioUploadRequest: request!, audioData: audioData, ext: ext, completion: { (audioUrl, error) in
+                        
+                        if error != nil {
+                            print(error!)
+                        } else {
+                            self.createPost(image: nil, video: nil, audio: String(describing: audioUrl!))
+                        }
+                        
+                        DispatchQueue.main.async {
+                            self.progressAlert.removeFromSuperview()
+                        }
+                    })
+                    
+                    request?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                        
+                        DispatchQueue.main.async(execute: { () -> Void in
+                            self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                        })
+                    }
+                } catch {
+                    print("ERROR SAVING AUDIO: \(error.localizedDescription)")
+                }
             }
         } else {
             self.errorAlert = self.mainV.showError(msg: "No recipients selected.", animated: true)

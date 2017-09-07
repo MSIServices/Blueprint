@@ -17,6 +17,7 @@ class TextVC: UIViewController, UITextViewDelegate {
     @IBOutlet weak var nextBtnBttm: NSLayoutConstraint!
     
     var errorAlert: SingleActionAlertV!
+    var audioUrl: URL?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +29,17 @@ class TextVC: UIViewController, UITextViewDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        textView.becomeFirstResponder()
+    }
+    
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         
         if identifier == RECIPIENT_VC {
             
-            if textView.text == placeholderText {
+            if textView.text == placeholderText && audioUrl == nil  {
                 errorAlert = mainV.showError(msg: "Text cannot be empty.", animated: true)
                 errorAlert.confirmationBtn.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
                 return false
@@ -47,8 +54,17 @@ class TextVC: UIViewController, UITextViewDelegate {
         if segue.identifier == RECIPIENT_VC {
             
             let vC = segue.destination as! RecipientVC
-            vC.type = PostType.text
-            vC.text = textView.text!
+            
+            if audioUrl != nil {
+                vC.type = PostType.audio
+                vC.audioUrl = audioUrl!
+            } else {
+                vC.type = PostType.text
+            }
+            
+            if let txt = textView.text, txt != placeholderText {
+                vC.text = txt
+            }
             vC.previousVC = nameOfClass
         }
     }

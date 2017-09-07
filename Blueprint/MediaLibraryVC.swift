@@ -31,6 +31,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     var videoUrl: URL?
     var ext: String?
     var type: PostType!
+    var previousVC: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -108,6 +109,12 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             vC.videoExt = ext
             vC.videoUrl = videoUrl
             vC.selectedVideoAsset = selectedVideoAsset
+            
+        } else if segue.identifier == UNWIND_QUOTE_VC && selectedImage != nil {
+            
+            let vC = segue.destination as! QuoteVC
+            vC.quoteImageView.image = selectedImage
+            vC.selectedImageIdentifier = selectedImageIdentifier
         }
     }
     
@@ -131,7 +138,17 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func backBtnPressed() {
-        performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
+        
+        print(previousVC)
+        
+        switch previousVC {
+        case MEDIA_VC:
+            performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
+        case QUOTE_VC:
+            performSegue(withIdentifier: UNWIND_QUOTE_VC, sender: self)
+        default:
+            break
+        }
     }
 
    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
@@ -219,9 +236,9 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
             asset = photoAssets[(indexPath as NSIndexPath).row - 1]
                 
             MediaManager.shared.fetchCachedImage(asset: asset, Success: { photo in
-                    
+            
                 cell.configureCell(image: photo)
-                    
+                
             }, Failure: {
                     
                 MediaManager.shared.fetchImage(asset: asset, targetSize: self.targetSize, completion: { photo in
@@ -269,16 +286,16 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
                 let asset = videoAssets[(indexPath as NSIndexPath).row - 1]
                 selectedVideoAsset = asset
                 
-                MediaManager.shared.fetchVideo(asset: asset, getData: false, completion: { url, data in
+                MediaManager.shared.fetchVideo(asset: asset, getData: false, completion: { url, _ in
                     
                     self.videoUrl = url
                     self.ext = url?.pathExtension
                     
                     let asset = AVURLAsset(url: url!, options: nil)
                     let imgGenerator = AVAssetImageGenerator(asset: asset)
-
+                    
                     DispatchQueue.main.async {
-
+                        
                         do {
                             let cgImage = try imgGenerator.copyCGImage(at: CMTimeMake(0, 1), actualTime: nil)
                             self.thumbnail = UIImage(cgImage: cgImage, scale: CGFloat(1.0), orientation: .right)

@@ -23,7 +23,6 @@ class AudioManager: NSObject {
         recordingSession = AVAudioSession.sharedInstance()
         
         do {
-            
             try recordingSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
             try recordingSession.setActive(true)
             
@@ -67,9 +66,27 @@ class AudioManager: NSObject {
     
     //Stop the recorder
     func stopRecording() {
-        
-        self.recorder?.stop()
-        self.timer?.invalidate()
+        recorder!.stop()
+        setupPlayer()
+    }
+    
+    func play() {
+        player!.play()
+    }
+    
+    func resumeRecording() {
+        recorder!.record()
+    }
+    
+    func pausePlayer() {
+        player!.pause()
+    }
+    
+    func pauseRecorder() {
+        recorder!.pause()
+    }
+    
+    func setupPlayer() {
         
         do {
             player = try AVAudioPlayer(contentsOf: recorder!.url)
@@ -77,14 +94,6 @@ class AudioManager: NSObject {
         } catch {
             print(error.localizedDescription)
         }
-    }
-    
-    func play() {
-        player!.play()
-    }
-    
-    func pause() {
-        player!.pause()
     }
     
     //Get the path for the folder we will be saving the file to.

@@ -67,6 +67,7 @@ class MediaVC: UIViewController, UITextViewDelegate {
             
             let vC = segue.destination as! MediaLibraryVC
             vC.type = type
+            vC.previousVC = MEDIA_VC
         }
     }
     

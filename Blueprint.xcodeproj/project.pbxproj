@@ -18,7 +18,6 @@
 		613224071F3EA61800F12A0C /* NotificationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613224061F3EA61800F12A0C /* NotificationProtocols.swift */; };
 		6132240C1F3EA7A700F12A0C /* LogoV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132240B1F3EA7A700F12A0C /* LogoV.swift */; };
 		6132240E1F3EA7E400F12A0C /* ProgressCircleV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132240D1F3EA7E400F12A0C /* ProgressCircleV.swift */; };
-		613224101F3EA8EA00F12A0C /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132240F1F3EA8EA00F12A0C /* AuthenticationManager.swift */; };
 		6132244F1F3EAE4600F12A0C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132244E1F3EAE4600F12A0C /* MainVC.swift */; };
 		613224501F3EAE4600F12A0C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132244E1F3EAE4600F12A0C /* MainVC.swift */; };
 		613224511F3EAE4600F12A0C /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6132244E1F3EAE4600F12A0C /* MainVC.swift */; };
@@ -149,6 +148,9 @@
 		DC18A88C1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
 		DC18A88D1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
 		DC18A88E1F5F71E60007795A /* AudioEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88B1F5F71E60007795A /* AudioEN.swift */; };
+		DC18A8901F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
+		DC18A8911F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
+		DC18A8921F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
 		DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
@@ -434,7 +436,6 @@
 		613224061F3EA61800F12A0C /* NotificationProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationProtocols.swift; sourceTree = "<group>"; };
 		6132240B1F3EA7A700F12A0C /* LogoV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoV.swift; sourceTree = "<group>"; };
 		6132240D1F3EA7E400F12A0C /* ProgressCircleV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressCircleV.swift; sourceTree = "<group>"; };
-		6132240F1F3EA8EA00F12A0C /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		6132244E1F3EAE4600F12A0C /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		613224871F3EC42D00F12A0C /* CustomB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomB.swift; sourceTree = "<group>"; };
 		6132248B1F3ECC3800F12A0C /* SignUpOneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpOneVC.swift; sourceTree = "<group>"; };
@@ -491,6 +492,7 @@
 		DC0327061F50BBFB006541B4 /* ProgressV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressV.xib; sourceTree = "<group>"; };
 		DC03270A1F54A61F006541B4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DC18A88B1F5F71E60007795A /* AudioEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEN.swift; sourceTree = "<group>"; };
+		DC18A88F1F609EFF0007795A /* S3Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Manager.swift; sourceTree = "<group>"; };
 		DC1C44771F43C3950013AD86 /* UserCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCD.swift; sourceTree = "<group>"; };
 		DC1C44781F43C3950013AD86 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC1C447F1F43C54A0013AD86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -867,10 +869,10 @@
 			children = (
 				61A676F01F2D8CF80047DD7B /* APIManager.swift */,
 				DC6F03CC1F3BD644007A8DB4 /* Helper.swift */,
-				6132240F1F3EA8EA00F12A0C /* AuthenticationManager.swift */,
 				DC3016311F4CD5BD00381031 /* MediaManager.swift */,
 				DC30163E1F4DF17800381031 /* Regex.swift */,
 				DC657C801F5A1BD6007D0DCD /* AudioManager.swift */,
+				DC18A88F1F609EFF0007795A /* S3Manager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1506,13 +1508,13 @@
 				DC30160F1F4CA88100381031 /* TextFieldTVC.swift in Sources */,
 				DC30163B1F4DEAB800381031 /* TV.swift in Sources */,
 				616134A81F2D950A00B52338 /* IntExtensions.swift in Sources */,
+				DC18A8901F609EFF0007795A /* S3Manager.swift in Sources */,
 				DCAAEEEF1F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
 				613223FE1F3EA51F00F12A0C /* UIColorExtensions.swift in Sources */,
 				DC3016361F4CE43500381031 /* LinkPreview.swift in Sources */,
 				61D614E71F3FB5A20013D691 /* MainV.swift in Sources */,
 				DCAAEEE91F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				61A677031F2D8E6D0047DD7B /* Direction.swift in Sources */,
-				613224101F3EA8EA00F12A0C /* AuthenticationManager.swift in Sources */,
 				DCAAEEF51F4F48060004ADD7 /* M13CheckboxSpiralController.swift in Sources */,
 				DC3015EC1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				DCAAEF071F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
@@ -1633,6 +1635,7 @@
 				DC30163C1F4DEAB800381031 /* TV.swift in Sources */,
 				DCB2C3201F55C8C400943B52 /* RecordV.swift in Sources */,
 				616134C11F2D956000B52338 /* UILabelExtensions.swift in Sources */,
+				DC18A8911F609EFF0007795A /* S3Manager.swift in Sources */,
 				DC30164F1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E01F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
@@ -1729,6 +1732,7 @@
 				DC30163D1F4DEAB800381031 /* TV.swift in Sources */,
 				DCB2C3211F55C8C400943B52 /* RecordV.swift in Sources */,
 				616134C21F2D956000B52338 /* UILabelExtensions.swift in Sources */,
+				DC18A8921F609EFF0007795A /* S3Manager.swift in Sources */,
 				DC3016501F4E0ED200381031 /* PhotoCVC.swift in Sources */,
 				61D614E11F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,

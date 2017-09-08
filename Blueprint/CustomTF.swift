@@ -13,6 +13,12 @@ class CustomTF: UITextField {
     var textPaddingAdjustment: CGFloat = 0.0
     var placeholderYPadding: CGFloat = 0.0
     var textYPadding: CGFloat = 0.0
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        autocorrectionType = .no
+    }
 
     override func deleteBackward() {
         super.deleteBackward()

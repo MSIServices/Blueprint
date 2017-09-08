@@ -11,10 +11,10 @@ import UIKit
 fileprivate let TAB_BAR_COLOR: UIColor = CHAIN_BLUE
 fileprivate let TEXT_COLOR_NORMAL: UIColor = UIColor.white
 fileprivate let TEXT_COLOR_SELECTED: UIColor = CHAIN_CREAM
-fileprivate let TITLES = ["Home", "New Post"]
+fileprivate let TITLES = ["Home", "New Post", "Messages"]
 fileprivate let FONT: String = "OpenSans-Regular"
-fileprivate let NORMAL_IMAGES = ["home-white", "new-post-white"]
-fileprivate let SELECTED_IMAGES = ["home-cream", "new-post-cream"]
+fileprivate let NORMAL_IMAGES = ["home-white", "new-post-white", "messages-white"]
+fileprivate let SELECTED_IMAGES = ["home-cream", "new-post-cream", "messages-cream"]
 
 class TBC: UITabBarController, UITabBarControllerDelegate {
 

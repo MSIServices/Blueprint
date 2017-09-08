@@ -20,7 +20,7 @@ class HeaderTVC: UITableViewCell {
     }
     
     class func nib() -> UINib {
-        return UINib(nibName: "HeaderTVC", bundle: nil)
+        return UINib(nibName: self.nameOfClass, bundle: nil)
     }
 
     func configureCell(title: String, image: String) {

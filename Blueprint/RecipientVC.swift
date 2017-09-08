@@ -146,6 +146,10 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
             performSegue(withIdentifier: UNWIND_LINK_VC, sender: self)
         case MEDIA_VC:
             performSegue(withIdentifier: UNWIND_MEDIA_VC, sender: self)
+        case AUDIO_VC:
+            performSegue(withIdentifier: UNWIND_AUDIO_VC, sender: self)
+        case QUOTE_VC:
+            performSegue(withIdentifier: UNWIND_QUOTE_VC, sender: self)
         default: break
         }
     }
@@ -177,7 +181,9 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         
         if checkedOptions.count > 0 {
             
-            if type == PostType.image {
+            if type == PostType.text || type == PostType.link {
+                createPost(image: nil, video: nil, audio: nil)
+            } else if type == PostType.image {
                 
                 let asset = PHAsset.fetchAssets(withLocalIdentifiers: [imageLocalIdentifier!], options: nil).firstObject!
                 
@@ -288,6 +294,42 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                     }
                 } catch {
                     print("ERROR SAVING AUDIO: \(error.localizedDescription)")
+                }
+            } else if type == PostType.quote {
+                
+                if let imgId = imageLocalIdentifier {
+                    
+                    let asset = PHAsset.fetchAssets(withLocalIdentifiers: [imgId], options: nil).firstObject!
+                    
+                    MediaManager.shared.fetchImage(asset: asset, completion: { (image, _, ext) in
+                        
+                        self.progressAlert = self.mainV.showProgressV(animated: true)
+                        self.progressAlert.titleLbl.text = "Uploading Quote"
+                        
+                        let request = AWSS3TransferManagerUploadRequest()
+                        
+                        S3Manager.shared.uploadImageToS3(imageUploadRequest: request!, image: image, ext: ext, completion: { (url, error) in
+                            
+                            if url != nil {
+                                self.createPost(image: String(describing: url!), video: nil, audio: nil)
+                            } else {
+                                print("Failed to get image url from s3 upload")
+                            }
+                            
+                            DispatchQueue.main.async {
+                                self.progressAlert.removeFromSuperview()
+                            }
+                        })
+                        
+                        request?.uploadProgress = {(bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) -> Void in
+                            
+                            DispatchQueue.main.async(execute: { () -> Void in
+                                self.progressAlert.updateProgress(bytesSent: totalBytesSent, bytesExpected: totalBytesExpectedToSend)
+                            })
+                        }
+                    })
+                } else {
+                    self.createPost(image: nil, video: nil, audio: nil)
                 }
             }
         } else {

@@ -36,6 +36,17 @@ class QuoteVC: UIViewController, UITextViewDelegate {
             let vC = segue.destination as! MediaLibraryVC
             vC.type = PostType.image
             vC.previousVC = QUOTE_VC
+            
+        } else if segue.identifier == RECIPIENT_VC {
+            
+            let vC = segue.destination as! RecipientVC
+            vC.type = PostType.quote
+            vC.imageLocalIdentifier = selectedImageIdentifier
+            vC.previousVC = QUOTE_VC
+            
+            if let txt = textView.text, txt != placeholderText {
+                vC.text = txt
+            }
         }
     }
     
@@ -134,6 +145,13 @@ class QuoteVC: UIViewController, UITextViewDelegate {
     
     func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
+    }
+    
+    @IBAction func nextBtnPressed(_ sender: Any) {
+        
+        if quoteImageView.image != UIImage(named: "no-preview") || textView.text != placeholderText {
+            performSegue(withIdentifier: RECIPIENT_VC, sender: self)
+        }
     }
     
     @IBAction func pickQuoteBtnPressed(_ sender: Any) {

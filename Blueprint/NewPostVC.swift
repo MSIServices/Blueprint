@@ -28,6 +28,10 @@ class NewPostVC: UIViewController {
             } else if tag == 3 {
                 vC.type = PostType.video
             }
+        } else if segue.identifier == TEXT_VC {
+            
+            let vC = segue.destination as! TextVC
+            vC.previousVC = NEW_POST_VC
         }
     }
     

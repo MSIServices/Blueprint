@@ -12,19 +12,19 @@ import SwiftyJSON
 struct User {
     
     private var _userId: Int!
-    private var _email: String!
-    private var _username: String!
+    private var _email: String?
+    private var _username: String?
     private var _avatar: String?
     
     var userId: Int {
         return _userId
     }
     
-    var email: String {
+    var email: String? {
         return _email
     }
     
-    var username: String {
+    var username: String? {
         return _username
     }
     

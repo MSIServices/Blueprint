@@ -20,6 +20,7 @@ class APIManager {
     static let createUser: String =  baseUrl + "/user"
     static let authenticate: String = baseUrl + "/authenticate"
     static let createPost: String = baseUrl + "/post"
+    static let users: String = baseUrl + "/users"
     
     func createUser(email: String, username: String, password: String, avatar: Data?, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
         
@@ -99,6 +100,41 @@ class APIManager {
                 return
             }
             Success(User(id: json["userId"].int!, json: json))
+        }
+    }
+    
+    func getUsers(Success: @escaping ((Bool) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let url = URL(string: APIManager.users)!
+        Alamofire.request(url).responseSwiftyJSON { res in
+            
+            guard let jsonArray = res.result.value?.array, jsonArray.count > 0, res.response?.statusCode == 200 else {
+                
+                if res.result.value?.array == nil {
+                    print(Error.noData)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(Error.unauthorized)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(Error.badRequest)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(Error.internalServerError)
+                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(Error.unknownError)
+                    Failure(res.result.value?["error"].string!)
+                }
+                return
+            }
+            
+            for user in jsonArray {
+                
+                let user = User(id: user["userId"].int!, json: user)
+                UserCD.save(user: user)
+            }
+            Success(true)
         }
     }
     

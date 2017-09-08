@@ -107,6 +107,7 @@ class AudioVC: UIViewController {
             
             let vC = segue.destination as! TextVC
             vC.audioUrl = AudioManager.shared.recorder?.url
+            vC.previousVC = AUDIO_VC
         }
     }
     
@@ -187,11 +188,12 @@ class AudioVC: UIViewController {
         
         pulsator.start()
         
-        UIView.animate(withDuration: 1.0, animations: {
+        UIView.animate(withDuration: 0.25, animations: {
             
             self.recordBtnHeight.constant = 29
             self.recordBtnWidth.constant = 29
             self.recordBtn.layer.cornerRadius = 6
+            self.view.layoutIfNeeded()
         })
     }
     
@@ -243,11 +245,12 @@ class AudioVC: UIViewController {
                 middleBtnV.layer.borderWidth = 1.0
                 pulsator.stop()
                 
-                UIView.animate(withDuration: 1.0, animations: {
+                UIView.animate(withDuration: 0.25, animations: {
                     
                     self.recordBtnHeight.constant = 58
                     self.recordBtnWidth.constant = 58
                     self.recordBtn.layer.cornerRadius = 58 / 2
+                    self.view.layoutIfNeeded()
                 })
                 AudioManager.shared.pauseRecorder()
                 recorderTimer.invalidate()
@@ -289,6 +292,8 @@ class AudioVC: UIViewController {
             performSegue(withIdentifier: TEXT_VC, sender: self)
         }
     }
+    
+    @IBAction func unwindToAudioVC(segue: UIStoryboardSegue) { }
     
 }
 

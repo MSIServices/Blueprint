@@ -83,7 +83,7 @@ extension String {
         return numOfAlphaNumericChars
     }
     
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
+    func height(width: CGFloat, font: UIFont) -> CGFloat {
         
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)
@@ -91,7 +91,7 @@ extension String {
         return ceil(boundingBox.height)
     }
     
-    func width(withConstraintedHeight height: CGFloat, font: UIFont) -> CGFloat {
+    func width(height: CGFloat, font: UIFont) -> CGFloat {
         
         let constraintRect = CGSize(width: .greatestFiniteMagnitude, height: height)
         let boundingBox = self.boundingRect(with: constraintRect, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: font], context: nil)

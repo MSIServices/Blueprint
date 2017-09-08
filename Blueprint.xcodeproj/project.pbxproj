@@ -151,6 +151,44 @@
 		DC18A8901F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
 		DC18A8911F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
 		DC18A8921F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
+		DC18A8941F61A6FA0007795A /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8931F61A6F90007795A /* ConversationsVC.swift */; };
+		DC18A8951F61A6FA0007795A /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8931F61A6F90007795A /* ConversationsVC.swift */; };
+		DC18A8961F61A6FA0007795A /* ConversationsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8931F61A6F90007795A /* ConversationsVC.swift */; };
+		DC18A8981F61AA9B0007795A /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8971F61AA9B0007795A /* Conversation.swift */; };
+		DC18A8991F61AA9B0007795A /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8971F61AA9B0007795A /* Conversation.swift */; };
+		DC18A89A1F61AA9B0007795A /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8971F61AA9B0007795A /* Conversation.swift */; };
+		DC18A89C1F61AF3C0007795A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A89B1F61AF3C0007795A /* Message.swift */; };
+		DC18A89D1F61AF3C0007795A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A89B1F61AF3C0007795A /* Message.swift */; };
+		DC18A89E1F61AF3C0007795A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A89B1F61AF3C0007795A /* Message.swift */; };
+		DC18A89F1F61B41B0007795A /* Blueprint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61A676AD1F2D8AB40047DD7B /* Blueprint.xcdatamodeld */; };
+		DC18A8A01F61B41B0007795A /* Blueprint.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61A676AD1F2D8AB40047DD7B /* Blueprint.xcdatamodeld */; };
+		DC18A8A31F61B7710007795A /* ConversationCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A11F61B7710007795A /* ConversationCD.swift */; };
+		DC18A8A41F61B7710007795A /* ConversationCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A11F61B7710007795A /* ConversationCD.swift */; };
+		DC18A8A51F61B7710007795A /* ConversationCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A11F61B7710007795A /* ConversationCD.swift */; };
+		DC18A8A61F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A21F61B7710007795A /* ConversationCD+CoreDataProperties.swift */; };
+		DC18A8A71F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A21F61B7710007795A /* ConversationCD+CoreDataProperties.swift */; };
+		DC18A8A81F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A21F61B7710007795A /* ConversationCD+CoreDataProperties.swift */; };
+		DC18A8AB1F61BBA90007795A /* MessageCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A91F61BBA90007795A /* MessageCD.swift */; };
+		DC18A8AC1F61BBA90007795A /* MessageCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A91F61BBA90007795A /* MessageCD.swift */; };
+		DC18A8AD1F61BBA90007795A /* MessageCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8A91F61BBA90007795A /* MessageCD.swift */; };
+		DC18A8AE1F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8AA1F61BBA90007795A /* MessageCD+CoreDataProperties.swift */; };
+		DC18A8AF1F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8AA1F61BBA90007795A /* MessageCD+CoreDataProperties.swift */; };
+		DC18A8B01F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8AA1F61BBA90007795A /* MessageCD+CoreDataProperties.swift */; };
+		DC18A8B31F61BCB40007795A /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8B11F61BCB40007795A /* MessageTVC.swift */; };
+		DC18A8B41F61BCB40007795A /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8B11F61BCB40007795A /* MessageTVC.swift */; };
+		DC18A8B51F61BCB40007795A /* MessageTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8B11F61BCB40007795A /* MessageTVC.swift */; };
+		DC18A8B61F61BCB40007795A /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8B21F61BCB40007795A /* MessageTVC.xib */; };
+		DC18A8B71F61BCB40007795A /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8B21F61BCB40007795A /* MessageTVC.xib */; };
+		DC18A8B81F61BCB40007795A /* MessageTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8B21F61BCB40007795A /* MessageTVC.xib */; };
+		DC18A8BC1F61CA660007795A /* ConversationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8BA1F61CA660007795A /* ConversationTVC.swift */; };
+		DC18A8BD1F61CA660007795A /* ConversationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8BA1F61CA660007795A /* ConversationTVC.swift */; };
+		DC18A8BE1F61CA660007795A /* ConversationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8BA1F61CA660007795A /* ConversationTVC.swift */; };
+		DC18A8BF1F61CA660007795A /* ConversationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8BB1F61CA660007795A /* ConversationTVC.xib */; };
+		DC18A8C01F61CA660007795A /* ConversationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8BB1F61CA660007795A /* ConversationTVC.xib */; };
+		DC18A8C11F61CA660007795A /* ConversationTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC18A8BB1F61CA660007795A /* ConversationTVC.xib */; };
+		DC18A8C31F61DF690007795A /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8C21F61DF690007795A /* MessagesVC.swift */; };
+		DC18A8C41F61DF6A0007795A /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8C21F61DF690007795A /* MessagesVC.swift */; };
+		DC18A8C51F61DF6A0007795A /* MessagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A8C21F61DF690007795A /* MessagesVC.swift */; };
 		DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447A1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
 		DC1C447B1F43C3950013AD86 /* UserCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1C44771F43C3950013AD86 /* UserCD.swift */; };
@@ -364,6 +402,24 @@
 		DCB2C31F1F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
 		DCB2C3201F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
 		DCB2C3211F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
+		DCF7AC1A1F62FE84008B4420 /* SearchTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC191F62FE84008B4420 /* SearchTV.swift */; };
+		DCF7AC1B1F62FE84008B4420 /* SearchTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC191F62FE84008B4420 /* SearchTV.swift */; };
+		DCF7AC1C1F62FE84008B4420 /* SearchTV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC191F62FE84008B4420 /* SearchTV.swift */; };
+		DCF7AC271F6304B8008B4420 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC251F6304B8008B4420 /* SearchTVC.swift */; };
+		DCF7AC281F6304B8008B4420 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC251F6304B8008B4420 /* SearchTVC.swift */; };
+		DCF7AC291F6304B8008B4420 /* SearchTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC251F6304B8008B4420 /* SearchTVC.swift */; };
+		DCF7AC2A1F6304B8008B4420 /* SearchTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF7AC261F6304B8008B4420 /* SearchTVC.xib */; };
+		DCF7AC2B1F6304B8008B4420 /* SearchTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF7AC261F6304B8008B4420 /* SearchTVC.xib */; };
+		DCF7AC2C1F6304B8008B4420 /* SearchTVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCF7AC261F6304B8008B4420 /* SearchTVC.xib */; };
+		DCF7AC2E1F630EA6008B4420 /* BubbleV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC2D1F630EA6008B4420 /* BubbleV.swift */; };
+		DCF7AC2F1F630EA6008B4420 /* BubbleV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC2D1F630EA6008B4420 /* BubbleV.swift */; };
+		DCF7AC301F630EA6008B4420 /* BubbleV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC2D1F630EA6008B4420 /* BubbleV.swift */; };
+		DCF7AC381F633D95008B4420 /* BubbleSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC371F633D95008B4420 /* BubbleSV.swift */; };
+		DCF7AC391F633D95008B4420 /* BubbleSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC371F633D95008B4420 /* BubbleSV.swift */; };
+		DCF7AC3A1F633D95008B4420 /* BubbleSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC371F633D95008B4420 /* BubbleSV.swift */; };
+		DCF7AC3C1F634E8E008B4420 /* ImportantStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC3B1F634E8E008B4420 /* ImportantStuff.swift */; };
+		DCF7AC3D1F634E8E008B4420 /* ImportantStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC3B1F634E8E008B4420 /* ImportantStuff.swift */; };
+		DCF7AC3E1F634E8E008B4420 /* ImportantStuff.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCF7AC3B1F634E8E008B4420 /* ImportantStuff.swift */; };
 		DCFF71B41F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B51F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
 		DCFF71B61F4B549E00531062 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFF71B31F4B549E00531062 /* Group.swift */; };
@@ -493,6 +549,18 @@
 		DC03270A1F54A61F006541B4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		DC18A88B1F5F71E60007795A /* AudioEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioEN.swift; sourceTree = "<group>"; };
 		DC18A88F1F609EFF0007795A /* S3Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Manager.swift; sourceTree = "<group>"; };
+		DC18A8931F61A6F90007795A /* ConversationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
+		DC18A8971F61AA9B0007795A /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		DC18A89B1F61AF3C0007795A /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		DC18A8A11F61B7710007795A /* ConversationCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationCD.swift; sourceTree = "<group>"; };
+		DC18A8A21F61B7710007795A /* ConversationCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ConversationCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC18A8A91F61BBA90007795A /* MessageCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCD.swift; sourceTree = "<group>"; };
+		DC18A8AA1F61BBA90007795A /* MessageCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		DC18A8B11F61BCB40007795A /* MessageTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTVC.swift; sourceTree = "<group>"; };
+		DC18A8B21F61BCB40007795A /* MessageTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageTVC.xib; sourceTree = "<group>"; };
+		DC18A8BA1F61CA660007795A /* ConversationTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTVC.swift; sourceTree = "<group>"; };
+		DC18A8BB1F61CA660007795A /* ConversationTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTVC.xib; sourceTree = "<group>"; };
+		DC18A8C21F61DF690007795A /* MessagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesVC.swift; sourceTree = "<group>"; };
 		DC1C44771F43C3950013AD86 /* UserCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCD.swift; sourceTree = "<group>"; };
 		DC1C44781F43C3950013AD86 /* UserCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		DC1C447F1F43C54A0013AD86 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -577,6 +645,12 @@
 		DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckerOptionV.xib; sourceTree = "<group>"; };
 		DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		DCB2C31E1F55C8C400943B52 /* RecordV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordV.swift; sourceTree = "<group>"; };
+		DCF7AC191F62FE84008B4420 /* SearchTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTV.swift; sourceTree = "<group>"; };
+		DCF7AC251F6304B8008B4420 /* SearchTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
+		DCF7AC261F6304B8008B4420 /* SearchTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchTVC.xib; sourceTree = "<group>"; };
+		DCF7AC2D1F630EA6008B4420 /* BubbleV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleV.swift; sourceTree = "<group>"; };
+		DCF7AC371F633D95008B4420 /* BubbleSV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleSV.swift; sourceTree = "<group>"; };
+		DCF7AC3B1F634E8E008B4420 /* ImportantStuff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImportantStuff.swift; sourceTree = "<group>"; };
 		DCFF71B31F4B549E00531062 /* Group.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		DCFF71B71F4B581C00531062 /* HeaderTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderTVC.swift; sourceTree = "<group>"; };
 		DCFF71B81F4B581C00531062 /* HeaderTVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderTVC.xib; sourceTree = "<group>"; };
@@ -775,6 +849,8 @@
 				DC98F0C01F4794C90075FCA4 /* RecipientVC.swift */,
 				DC3016421F4E06A600381031 /* MediaVC.swift */,
 				DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */,
+				DC18A8931F61A6F90007795A /* ConversationsVC.swift */,
+				DC18A8C21F61DF690007795A /* MessagesVC.swift */,
 			);
 			name = UIViewController;
 			sourceTree = "<group>";
@@ -816,6 +892,10 @@
 		61A676DF1F2D8BDD0047DD7B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				DC18A8A91F61BBA90007795A /* MessageCD.swift */,
+				DC18A8AA1F61BBA90007795A /* MessageCD+CoreDataProperties.swift */,
+				DC18A8A11F61B7710007795A /* ConversationCD.swift */,
+				DC18A8A21F61B7710007795A /* ConversationCD+CoreDataProperties.swift */,
 				DC3015AE1F4BA95200381031 /* PostCD.swift */,
 				DC3015AF1F4BA95200381031 /* PostCD+CoreDataProperties.swift */,
 				DC7C52A11F4B4E8D000D3AD7 /* GroupCD.swift */,
@@ -836,6 +916,8 @@
 				DCFF71B31F4B549E00531062 /* Group.swift */,
 				DCFF71D91F4B93F700531062 /* Post.swift */,
 				DC3016351F4CE43500381031 /* LinkPreview.swift */,
+				DC18A8971F61AA9B0007795A /* Conversation.swift */,
+				DC18A89B1F61AF3C0007795A /* Message.swift */,
 			);
 			name = Memory;
 			sourceTree = "<group>";
@@ -847,6 +929,7 @@
 				61A676EE1F2D8C8D0047DD7B /* Protocols */,
 				61A676ED1F2D8C880047DD7B /* Enums */,
 				61A676E61F2D8C5C0047DD7B /* Constants.swift */,
+				DCF7AC3B1F634E8E008B4420 /* ImportantStuff.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -889,6 +972,7 @@
 				DC3016051F4C7F9900381031 /* ZeroActionAlertV.swift */,
 				DC0327021F50BBE2006541B4 /* ProgressV.swift */,
 				DCB2C31E1F55C8C400943B52 /* RecordV.swift */,
+				DCF7AC2D1F630EA6008B4420 /* BubbleV.swift */,
 			);
 			name = UIView;
 			sourceTree = "<group>";
@@ -901,6 +985,9 @@
 				DC30160D1F4CA88100381031 /* TextFieldTVC.swift */,
 				DC3016151F4CAEBA00381031 /* TextViewTVC.swift */,
 				DC30161D1F4CAEDD00381031 /* PreviewTVC.swift */,
+				DC18A8B11F61BCB40007795A /* MessageTVC.swift */,
+				DC18A8BA1F61CA660007795A /* ConversationTVC.swift */,
+				DCF7AC251F6304B8008B4420 /* SearchTVC.swift */,
 			);
 			name = UITableViewCell;
 			sourceTree = "<group>";
@@ -1000,6 +1087,8 @@
 		61A676FD1F2D8DCC0047DD7B /* Code */ = {
 			isa = PBXGroup;
 			children = (
+				DCF7AC361F633D34008B4420 /* UIScrollView */,
+				DCF7AC181F62FDF7008B4420 /* UITableView */,
 				DC30164B1F4E0EAE00381031 /* UICollectionViewCell */,
 				DC3016391F4DEA9F00381031 /* UITextView */,
 				613224861F3EC40E00F12A0C /* UIButton */,
@@ -1112,9 +1201,28 @@
 			path = Paths;
 			sourceTree = "<group>";
 		};
+		DCF7AC181F62FDF7008B4420 /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				DCF7AC191F62FE84008B4420 /* SearchTV.swift */,
+			);
+			name = UITableView;
+			sourceTree = "<group>";
+		};
+		DCF7AC361F633D34008B4420 /* UIScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				DCF7AC371F633D95008B4420 /* BubbleSV.swift */,
+			);
+			name = UIScrollView;
+			sourceTree = "<group>";
+		};
 		DCFF71BF1F4B582700531062 /* UITableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				DCF7AC261F6304B8008B4420 /* SearchTVC.xib */,
+				DC18A8BB1F61CA660007795A /* ConversationTVC.xib */,
+				DC18A8B21F61BCB40007795A /* MessageTVC.xib */,
 				DC30161E1F4CAEDD00381031 /* PreviewTVC.xib */,
 				DC3016161F4CAEBA00381031 /* TextViewTVC.xib */,
 				DCFF71C21F4B5DF600531062 /* CheckboxTVC.xib */,
@@ -1260,6 +1368,8 @@
 				DC3015CC1F4BB47F00381031 /* Sdk in Resources */,
 				DCFF71C61F4B5DF600531062 /* CheckboxTVC.xib in Resources */,
 				615DF04D1F3F578200FB301F /* OpenSans-ExtraBold.ttf in Resources */,
+				DC18A8BF1F61CA660007795A /* ConversationTVC.xib in Resources */,
+				DC18A8B61F61BCB40007795A /* MessageTVC.xib in Resources */,
 				61A676B41F2D8AB40047DD7B /* LaunchScreen.storyboard in Resources */,
 				615DF0471F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
 				DC3016121F4CA88100381031 /* TextFieldTVC.xib in Resources */,
@@ -1273,6 +1383,7 @@
 				616134981F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				DC0327071F50BBFB006541B4 /* ProgressV.xib in Resources */,
 				615DF06E1F3F621E00FB301F /* SingleActionAlertV.xib in Resources */,
+				DCF7AC2A1F6304B8008B4420 /* SearchTVC.xib in Resources */,
 				61A676AC1F2D8AB40047DD7B /* Main.storyboard in Resources */,
 				615DF04A1F3F578200FB301F /* OpenSans-BoldItalic.ttf in Resources */,
 				DCB2C3131F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
@@ -1292,6 +1403,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB2C3141F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
+				DCF7AC2B1F6304B8008B4420 /* SearchTVC.xib in Resources */,
+				DC18A8C01F61CA660007795A /* ConversationTVC.xib in Resources */,
+				DC18A8B71F61BCB40007795A /* MessageTVC.xib in Resources */,
 				DCAAEEBD1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				616134991F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0481F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
@@ -1324,6 +1438,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCB2C3151F54EB0200943B52 /* CheckerOptionV.xib in Resources */,
+				DCF7AC2C1F6304B8008B4420 /* SearchTVC.xib in Resources */,
+				DC18A8C11F61CA660007795A /* ConversationTVC.xib in Resources */,
+				DC18A8B81F61BCB40007795A /* MessageTVC.xib in Resources */,
 				DCAAEEBE1F4E1F8A0004ADD7 /* ShowCameraCVC.xib in Resources */,
 				6161349A1F2D922400B52338 /* DoubleActionAlertV.xib in Resources */,
 				615DF0491F3F578200FB301F /* OpenSans-Bold.ttf in Resources */,
@@ -1441,10 +1558,13 @@
 			files = (
 				DC3016261F4CAFF000381031 /* MessageDelegate.swift in Sources */,
 				DCFF71B41F4B549E00531062 /* Group.swift in Sources */,
+				DC18A89C1F61AF3C0007795A /* Message.swift in Sources */,
 				DC3015B31F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
 				616134BC1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEEF21F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
 				DC1C44C51F4762C00013AD86 /* AudioVC.swift in Sources */,
+				DCF7AC271F6304B8008B4420 /* SearchTVC.swift in Sources */,
+				DC18A8B31F61BCB40007795A /* MessageTVC.swift in Sources */,
 				DC98F0C11F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
 				6132240C1F3EA7A700F12A0C /* LogoV.swift in Sources */,
 				616134A01F2D94F100B52338 /* StringExtensions.swift in Sources */,
@@ -1454,15 +1574,19 @@
 				613224071F3EA61800F12A0C /* NotificationProtocols.swift in Sources */,
 				61D614E31F3F9E340013D691 /* SignUpFourVC.swift in Sources */,
 				DCAAEEF81F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
+				DC18A8BC1F61CA660007795A /* ConversationTVC.swift in Sources */,
+				DC18A8A61F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */,
 				DCAAEEB91F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
 				DC3015E91F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				616134B01F2D952100B52338 /* UrlExtensions.swift in Sources */,
+				DC18A8AB1F61BBA90007795A /* MessageCD.swift in Sources */,
 				61D614DB1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				61A676FF1F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
 				DC7C52A31F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				616134901F2D919100B52338 /* NC.swift in Sources */,
 				DC30163F1F4DF17800381031 /* Regex.swift in Sources */,
 				DCAAEED71F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
+				DCF7AC381F633D95008B4420 /* BubbleSV.swift in Sources */,
 				DC1C44C91F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				DC18A88C1F5F71E60007795A /* AudioEN.swift in Sources */,
 				616134941F2D91AE00B52338 /* TBC.swift in Sources */,
@@ -1478,10 +1602,12 @@
 				DCAAEED41F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				DC7C52A61F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DC0327031F50BBE2006541B4 /* ProgressV.swift in Sources */,
+				DCF7AC1A1F62FE84008B4420 /* SearchTV.swift in Sources */,
 				DC3015B01F4BA95200381031 /* PostCD.swift in Sources */,
 				61A676AF1F2D8AB40047DD7B /* Blueprint.xcdatamodeld in Sources */,
 				DC1C44B51F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC30164E1F4E0ED200381031 /* PhotoCVC.swift in Sources */,
+				DCF7AC2E1F630EA6008B4420 /* BubbleV.swift in Sources */,
 				DC1C44B91F4762810013AD86 /* LinkVC.swift in Sources */,
 				6132244F1F3EAE4600F12A0C /* MainVC.swift in Sources */,
 				613224031F3EA59F00F12A0C /* NSObjectExtensions.swift in Sources */,
@@ -1502,11 +1628,14 @@
 				DC1C44911F44AB700013AD86 /* LoginVC.swift in Sources */,
 				DCAAEEE01F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				616134AC1F2D951400B52338 /* DoubleExtensions.swift in Sources */,
+				DCF7AC3C1F634E8E008B4420 /* ImportantStuff.swift in Sources */,
 				DCAAEEE61F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
 				613224881F3EC42D00F12A0C /* CustomB.swift in Sources */,
 				DC1C44A11F4649210013AD86 /* NewPostVC.swift in Sources */,
 				DC30160F1F4CA88100381031 /* TextFieldTVC.swift in Sources */,
+				DC18A8AE1F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */,
 				DC30163B1F4DEAB800381031 /* TV.swift in Sources */,
+				DC18A8A31F61B7710007795A /* ConversationCD.swift in Sources */,
 				616134A81F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				DC18A8901F609EFF0007795A /* S3Manager.swift in Sources */,
 				DCAAEEEF1F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
@@ -1519,6 +1648,7 @@
 				DC3015EC1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				DCAAEF071F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				DCFF71CA1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
+				DC18A8941F61A6FA0007795A /* ConversationsVC.swift in Sources */,
 				616134C41F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44851F44A54A0013AD86 /* HomeVC.swift in Sources */,
 				DC657C811F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
@@ -1526,6 +1656,7 @@
 				61A676F11F2D8CF80047DD7B /* APIManager.swift in Sources */,
 				6132248C1F3ECC3800F12A0C /* SignUpOneVC.swift in Sources */,
 				61A676A71F2D8AB40047DD7B /* AppDelegate.swift in Sources */,
+				DC18A8981F61AA9B0007795A /* Conversation.swift in Sources */,
 				DCFF71DA1F4B93F700531062 /* Post.swift in Sources */,
 				DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */,
 				DCAAEEFB1F4F48060004ADD7 /* M13CheckboxAddRemovePathGenerator.swift in Sources */,
@@ -1538,6 +1669,7 @@
 				DCAAEEFE1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */,
 				DCAAEF011F4F48060004ADD7 /* M13CheckboxDisclosurePathGenerator.swift in Sources */,
+				DC18A8C31F61DF690007795A /* MessagesVC.swift in Sources */,
 				DC6F03CD1F3BD644007A8DB4 /* Helper.swift in Sources */,
 				DC3015E61F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				613224001F3EA54400F12A0C /* UIButtonExtensions.swift in Sources */,
@@ -1568,16 +1700,21 @@
 				DCAAEED51F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				DC03270C1F54A61F006541B4 /* Extension.swift in Sources */,
 				616134911F2D919100B52338 /* NC.swift in Sources */,
+				DC18A8A41F61B7710007795A /* ConversationCD.swift in Sources */,
 				DC1C44961F44AD640013AD86 /* Type.swift in Sources */,
 				616134C51F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44CA1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DC1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				DCAAEEF91F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
 				DC18A88D1F5F71E60007795A /* AudioEN.swift in Sources */,
+				DC18A8C41F61DF6A0007795A /* MessagesVC.swift in Sources */,
 				615B79C21F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C529F1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016201F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
+				DC18A89F1F61B41B0007795A /* Blueprint.xcdatamodeld in Sources */,
 				DC98F0C21F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
+				DC18A8BD1F61CA660007795A /* ConversationTVC.swift in Sources */,
+				DCF7AC2F1F630EA6008B4420 /* BubbleV.swift in Sources */,
 				DCAAEEEA1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				DC7C52A71F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DCAAEEBA1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
@@ -1592,6 +1729,7 @@
 				6161349D1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
 				DCAAEEE11F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				DCFF71DB1F4B93F700531062 /* Post.swift in Sources */,
+				DC18A8AC1F61BBA90007795A /* MessageCD.swift in Sources */,
 				DCAAEEDB1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				DC3015EA1F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				DC3016101F4CA88100381031 /* TextFieldTVC.swift in Sources */,
@@ -1601,11 +1739,16 @@
 				DCFF71CB1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
 				DC657C821F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
 				DCAAEEF01F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
+				DCF7AC3D1F634E8E008B4420 /* ImportantStuff.swift in Sources */,
 				DC1C44B21F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447D1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
 				613224911F3F467700F12A0C /* CustomTF.swift in Sources */,
+				DC18A8B41F61BCB40007795A /* MessageTVC.swift in Sources */,
+				DC18A8991F61AA9B0007795A /* Conversation.swift in Sources */,
 				DCAAEEE71F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
+				DCF7AC281F6304B8008B4420 /* SearchTVC.swift in Sources */,
 				DCAAEEED1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
+				DC18A89D1F61AF3C0007795A /* Message.swift in Sources */,
 				DC1C44B61F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015ED1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				613224891F3EC42D00F12A0C /* CustomB.swift in Sources */,
@@ -1619,11 +1762,14 @@
 				DC1C44C61F4762C00013AD86 /* AudioVC.swift in Sources */,
 				616134A91F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				DC1C44861F44A54A0013AD86 /* HomeVC.swift in Sources */,
+				DCF7AC1B1F62FE84008B4420 /* SearchTV.swift in Sources */,
 				DCAAEEFF1F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				DCAAEEDE1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
 				DCAAEF081F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				616134B11F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224501F3EAE4600F12A0C /* MainVC.swift in Sources */,
+				DC18A8951F61A6FA0007795A /* ConversationsVC.swift in Sources */,
+				DCF7AC391F633D95008B4420 /* BubbleSV.swift in Sources */,
 				DC3016441F4E06A600381031 /* MediaVC.swift in Sources */,
 				61A676E81F2D8C5C0047DD7B /* Constants.swift in Sources */,
 				DC7C52A41F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
@@ -1640,12 +1786,14 @@
 				61D614E01F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DCB2C3181F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
+				DC18A8AF1F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */,
 				61A677041F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BD1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED81F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DCAAEF051F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
 				DC1C44A21F4649210013AD86 /* NewPostVC.swift in Sources */,
 				61D614E81F3FB5A20013D691 /* MainV.swift in Sources */,
+				DC18A8A71F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1665,16 +1813,21 @@
 				DCAAEED61F4F48060004ADD7 /* M13Checkbox+IB.swift in Sources */,
 				DC03270D1F54A61F006541B4 /* Extension.swift in Sources */,
 				616134921F2D919100B52338 /* NC.swift in Sources */,
+				DC18A8A51F61B7710007795A /* ConversationCD.swift in Sources */,
 				DC1C44971F44AD640013AD86 /* Type.swift in Sources */,
 				616134C61F2D957500B52338 /* UITextFieldExtensions.swift in Sources */,
 				DC1C44CB1F4762D00013AD86 /* QuoteVC.swift in Sources */,
 				61D614DD1F3F979F0013D691 /* SignUpTwoVC.swift in Sources */,
 				DCAAEEFA1F4F48060004ADD7 /* M13CheckboxStrokeController.swift in Sources */,
 				DC18A88E1F5F71E60007795A /* AudioEN.swift in Sources */,
+				DC18A8C51F61DF6A0007795A /* MessagesVC.swift in Sources */,
 				615B79C31F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
 				DC7C52A01F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
 				DC3016211F4CAEDD00381031 /* PreviewTVC.swift in Sources */,
+				DC18A8A01F61B41B0007795A /* Blueprint.xcdatamodeld in Sources */,
 				DC98F0C31F4794CA0075FCA4 /* RecipientVC.swift in Sources */,
+				DC18A8BE1F61CA660007795A /* ConversationTVC.swift in Sources */,
+				DCF7AC301F630EA6008B4420 /* BubbleV.swift in Sources */,
 				DCAAEEEB1F4F48060004ADD7 /* M13CheckboxExpandController.swift in Sources */,
 				DC7C52A81F4B4E8D000D3AD7 /* GroupCD+CoreDataProperties.swift in Sources */,
 				DCAAEEBB1F4E1F8A0004ADD7 /* ShowCameraCVC.swift in Sources */,
@@ -1689,6 +1842,7 @@
 				6161349E1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
 				DCAAEEE21F4F48060004ADD7 /* M13CheckboxGestureRecognizer.swift in Sources */,
 				DCFF71DC1F4B93F700531062 /* Post.swift in Sources */,
+				DC18A8AD1F61BBA90007795A /* MessageCD.swift in Sources */,
 				DCAAEEDC1F4F48060004ADD7 /* M13CheckboxAnimationGenerator.swift in Sources */,
 				DC3015EB1F4BB53800381031 /* AWSAPI_DTPL0NODLL_RequestSchema.m in Sources */,
 				DC3016111F4CA88100381031 /* TextFieldTVC.swift in Sources */,
@@ -1698,11 +1852,16 @@
 				DCFF71CC1F4B861C00531062 /* CheckboxDelegate.swift in Sources */,
 				DC657C831F5A1BD6007D0DCD /* AudioManager.swift in Sources */,
 				DCAAEEF11F4F48060004ADD7 /* M13CheckboxFillController.swift in Sources */,
+				DCF7AC3E1F634E8E008B4420 /* ImportantStuff.swift in Sources */,
 				DC1C44B31F475C680013AD86 /* CheckerOptionVDelegate.swift in Sources */,
 				DC1C447E1F43C3950013AD86 /* UserCD+CoreDataProperties.swift in Sources */,
 				613224921F3F467700F12A0C /* CustomTF.swift in Sources */,
+				DC18A8B51F61BCB40007795A /* MessageTVC.swift in Sources */,
+				DC18A89A1F61AA9B0007795A /* Conversation.swift in Sources */,
 				DCAAEEE81F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
+				DCF7AC291F6304B8008B4420 /* SearchTVC.swift in Sources */,
 				DCAAEEEE1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
+				DC18A89E1F61AF3C0007795A /* Message.swift in Sources */,
 				DC1C44B71F47626E0013AD86 /* TextVC.swift in Sources */,
 				DC3015EE1F4BB53800381031 /* AWSAPI_DTPL0NODLL_ResponseSchema.m in Sources */,
 				6132248A1F3EC42D00F12A0C /* CustomB.swift in Sources */,
@@ -1716,11 +1875,14 @@
 				DC1C44C71F4762C00013AD86 /* AudioVC.swift in Sources */,
 				616134AA1F2D950A00B52338 /* IntExtensions.swift in Sources */,
 				DC1C44871F44A54A0013AD86 /* HomeVC.swift in Sources */,
+				DCF7AC1C1F62FE84008B4420 /* SearchTV.swift in Sources */,
 				DCAAEF001F4F48060004ADD7 /* M13CheckboxCheckPathGenerator.swift in Sources */,
 				DCAAEEDF1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
 				DCAAEF091F4F48060004ADD7 /* M13CheckboxRadioPathGenerator.swift in Sources */,
 				616134B21F2D952100B52338 /* UrlExtensions.swift in Sources */,
 				613224511F3EAE4600F12A0C /* MainVC.swift in Sources */,
+				DC18A8961F61A6FA0007795A /* ConversationsVC.swift in Sources */,
+				DCF7AC3A1F633D95008B4420 /* BubbleSV.swift in Sources */,
 				DC3016451F4E06A600381031 /* MediaVC.swift in Sources */,
 				61A676E91F2D8C5C0047DD7B /* Constants.swift in Sources */,
 				DC7C52A51F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
@@ -1737,12 +1899,14 @@
 				61D614E11F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
 				DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DCB2C3191F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
+				DC18A8B01F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */,
 				61A677051F2D8E6D0047DD7B /* Direction.swift in Sources */,
 				616134BE1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED91F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DCAAEF061F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
 				DC1C44A31F4649210013AD86 /* NewPostVC.swift in Sources */,
 				61D614E91F3FB5A20013D691 /* MainV.swift in Sources */,
+				DC18A8A81F61B7710007795A /* ConversationCD+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

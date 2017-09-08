@@ -576,7 +576,7 @@
                     <view key="view" contentMode="scaleToFill" id="PnV-8i-Uxb" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.33333333333333331" green="0.43529411764705883" blue="0.44705882352941173" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.45098039215686275" green="0.53725490196078429" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="v0R-QH-19y"/>
                     <connections>
@@ -599,6 +599,7 @@
                     <connections>
                         <segue destination="Dx5-h6-7sh" kind="relationship" relationship="viewControllers" id="efX-Af-jeM"/>
                         <segue destination="pfY-wY-Hgq" kind="relationship" relationship="viewControllers" id="Sk9-G5-RXJ"/>
+                        <segue destination="Vvi-FI-hy5" kind="relationship" relationship="viewControllers" id="oej-Gu-6y5"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PXI-Ub-cH2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -720,7 +721,86 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMf-fg-hju" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4265.6000000000004" y="801.49925037481262"/>
+            <point key="canvasLocation" x="5204.8000000000002" y="801.49925037481262"/>
+        </scene>
+        <!--MessagesVC-->
+        <scene sceneID="Xyo-gJ-9oi">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Mz9-p9-VSW" customClass="MessagesVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z4E-lQ-KSy"/>
+                        <viewControllerLayoutGuide type="bottom" id="k1A-9j-WWA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TtX-7t-JjC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gqQ-95-QwA">
+                                <rect key="frame" x="0.0" y="104" width="375" height="464"/>
+                                <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Mz9-p9-VSW" id="SHu-cC-6q9"/>
+                                    <outlet property="delegate" destination="Mz9-p9-VSW" id="zDc-dm-Og9"/>
+                                </connections>
+                            </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x2G-0D-adD">
+                                <rect key="frame" x="0.0" y="568" width="375" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="zuJ-DK-MlM"/>
+                                </constraints>
+                            </view>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WiI-fI-ise" customClass="TV" customModule="Blueprint" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="64" width="375" height="40"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="mS0-Vh-3UN"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Mz9-p9-VSW" id="5U8-a5-FlK"/>
+                                </connections>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wka-DD-pv8">
+                                <rect key="frame" x="329" y="70" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="Kq6-xW-je0"/>
+                                    <constraint firstAttribute="height" constant="30" id="ht8-7b-o7Z"/>
+                                </constraints>
+                                <state key="normal" image="plus-black"/>
+                                <connections>
+                                    <action selector="addRecipientBtnPressed:" destination="Mz9-p9-VSW" eventType="touchUpInside" id="FVf-Gl-FEe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gqQ-95-QwA" firstAttribute="leading" secondItem="TtX-7t-JjC" secondAttribute="leading" id="1VZ-gI-tCW"/>
+                            <constraint firstItem="wka-DD-pv8" firstAttribute="top" secondItem="z4E-lQ-KSy" secondAttribute="bottom" constant="6" id="9R7-fI-fiB"/>
+                            <constraint firstItem="wka-DD-pv8" firstAttribute="trailing" secondItem="TtX-7t-JjC" secondAttribute="trailingMargin" id="JK7-GA-yia"/>
+                            <constraint firstItem="x2G-0D-adD" firstAttribute="leading" secondItem="TtX-7t-JjC" secondAttribute="leading" id="PbP-Xi-mIG"/>
+                            <constraint firstAttribute="trailing" secondItem="x2G-0D-adD" secondAttribute="trailing" id="ULX-HQ-3JF"/>
+                            <constraint firstAttribute="trailing" secondItem="WiI-fI-ise" secondAttribute="trailing" id="Ztd-tX-5If"/>
+                            <constraint firstItem="x2G-0D-adD" firstAttribute="top" secondItem="gqQ-95-QwA" secondAttribute="bottom" id="c2E-lL-Dk4"/>
+                            <constraint firstItem="k1A-9j-WWA" firstAttribute="top" secondItem="x2G-0D-adD" secondAttribute="bottom" id="j2S-Ca-ahk"/>
+                            <constraint firstItem="WiI-fI-ise" firstAttribute="top" secondItem="z4E-lQ-KSy" secondAttribute="bottom" id="jEq-dm-PPQ"/>
+                            <constraint firstItem="gqQ-95-QwA" firstAttribute="top" secondItem="WiI-fI-ise" secondAttribute="bottom" id="lZg-w7-Pfl"/>
+                            <constraint firstAttribute="trailing" secondItem="gqQ-95-QwA" secondAttribute="trailing" id="ppQ-TC-AOx"/>
+                            <constraint firstItem="WiI-fI-ise" firstAttribute="leading" secondItem="TtX-7t-JjC" secondAttribute="leading" id="sl6-h8-UgG"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="messagesTableView" destination="gqQ-95-QwA" id="St0-dK-Rnj"/>
+                        <outlet property="sendMessageView" destination="x2G-0D-adD" id="kKB-YY-rz8"/>
+                        <outlet property="textView" destination="WiI-fI-ise" id="Qf6-I0-7i9"/>
+                        <segue destination="jIm-4G-2UG" kind="unwind" identifier="unwindToConversationsVC" unwindAction="unwindToConversationsVCWithSegue:" id="1ae-lv-4ZG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kBZ-td-isx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="jIm-4G-2UG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="3520.8000000000002" y="1485.6071964017992"/>
         </scene>
         <!--AudioVC-->
         <scene sceneID="xmH-hE-UXk">
@@ -910,7 +990,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rMG-Tt-gcr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="bqM-AA-N8z" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3521.5999999999999" y="1462.6686656671666"/>
+            <point key="canvasLocation" x="4460.8000000000002" y="1462.6686656671666"/>
         </scene>
         <!--QuoteVC-->
         <scene sceneID="apj-wm-Uy6">
@@ -974,6 +1054,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextBtnPressed:" destination="2lk-md-cEJ" eventType="touchUpInside" id="7ti-sh-9BY"/>
+                                    <action selector="nextBtnPressed:" destination="GGj-nY-lkc" eventType="touchUpInside" id="L9O-lg-ahs"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -995,12 +1076,13 @@
                         <outlet property="textView" destination="8gW-pa-F3M" id="hTV-gr-Sn4"/>
                         <segue destination="Ukn-p0-GSz" kind="show" identifier="MediaLibraryVC" id="xtI-eT-4vF"/>
                         <segue destination="umY-d4-VEl" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="LGc-z4-DJ4"/>
+                        <segue destination="uTw-4b-hgh" kind="show" identifier="RecipientVC" id="PLx-bK-tHk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JTZ-oA-clb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="umY-d4-VEl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4496" y="1570.6146926536733"/>
+            <point key="canvasLocation" x="5204.8000000000002" y="1462.6686656671666"/>
         </scene>
         <!--MediaVC-->
         <scene sceneID="XrP-Uo-POf">
@@ -1106,7 +1188,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IZm-Bq-Qq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="OsO-g3-nFW" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5030.3999999999996" y="801.94902548725645"/>
+            <point key="canvasLocation" x="5969.6000000000004" y="801.94902548725645"/>
         </scene>
         <!--Media LibraryVC-->
         <scene sceneID="Cod-Sm-yAz">
@@ -1163,7 +1245,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LiB-F9-WFH" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ehu-C7-F95" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5821" y="1415"/>
+            <point key="canvasLocation" x="6760" y="1414.992503748126"/>
         </scene>
         <!--LinkVC-->
         <scene sceneID="63c-cR-XEv">
@@ -1278,6 +1360,7 @@
                         <outlet property="nextBtnBttm" destination="khX-1b-Zn3" id="886-Ip-gDf"/>
                         <outlet property="textView" destination="VdA-Oe-x9W" id="57L-vO-e5h"/>
                         <segue destination="xZh-N1-xIv" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="3cb-kM-380"/>
+                        <segue destination="xZh-N1-xIv" kind="unwind" identifier="unwindToAudioVC" unwindAction="unwindToAudioVCWithSegue:" id="RPz-sQ-kBd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9NO-o9-WR1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1294,11 +1377,11 @@
                         <viewControllerLayoutGuide type="bottom" id="mkL-LJ-xfd"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="NXv-bi-I0h" customClass="MainV" customModule="Blueprint" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="376" height="717"/>
+                        <rect key="frame" x="0.0" y="0.0" width="376" height="668"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="62" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7lQ-Um-oae">
-                                <rect key="frame" x="0.0" y="64" width="376" height="544"/>
+                                <rect key="frame" x="0.0" y="64" width="376" height="495"/>
                                 <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uTw-4b-hgh" id="1K8-kl-F5U"/>
@@ -1306,7 +1389,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EV7-DN-dZ9">
-                                <rect key="frame" x="0.0" y="608" width="376" height="60"/>
+                                <rect key="frame" x="0.0" y="559" width="376" height="60"/>
                                 <color key="backgroundColor" red="1" green="0.78823529410000004" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="5lR-jL-9gr"/>
@@ -1338,12 +1421,13 @@
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToNewPostVC" unwindAction="unwindToNewPostVCWithSegue:" id="yRb-Fc-don"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToLinkVC" unwindAction="unwindToLinkVCWithSegue:" id="l1h-b1-5hx"/>
                         <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToMediaVC" unwindAction="unwindToMediaVCWithSegue:" id="Aa3-bc-g0k"/>
+                        <segue destination="DN9-r5-Ec5" kind="unwind" identifier="unwindToQuoteVC" unwindAction="unwindToQuoteVCWithSegue:" id="5Aj-Cd-z5N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctg-Eu-0Ga" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="DN9-r5-Ec5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="6037" y="703"/>
+            <point key="canvasLocation" x="6976" y="702.54872563718152"/>
         </scene>
         <!--Item-->
         <scene sceneID="qh4-ve-Zv5">
@@ -1364,6 +1448,47 @@
             </objects>
             <point key="canvasLocation" x="3521" y="-552"/>
         </scene>
+        <!--ConversationsVC-->
+        <scene sceneID="7oR-0b-M2D">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Sut-2Q-zAw" customClass="ConversationsVC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7kD-6h-Gmz"/>
+                        <viewControllerLayoutGuide type="bottom" id="mTS-Vx-uKa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="NVe-Fl-but">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frz-2T-DQS">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Sut-2Q-zAw" id="IoS-of-Oaa"/>
+                                    <outlet property="delegate" destination="Sut-2Q-zAw" id="D8w-0C-i8M"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Frz-2T-DQS" firstAttribute="leading" secondItem="NVe-Fl-but" secondAttribute="leading" id="9V7-o6-KgW"/>
+                            <constraint firstItem="Frz-2T-DQS" firstAttribute="leading" secondItem="NVe-Fl-but" secondAttribute="leading" id="Z56-Xo-fsD"/>
+                            <constraint firstItem="mTS-Vx-uKa" firstAttribute="top" secondItem="Frz-2T-DQS" secondAttribute="bottom" id="ZW7-EN-ZCJ"/>
+                            <constraint firstAttribute="trailing" secondItem="Frz-2T-DQS" secondAttribute="trailing" id="aTd-qk-LAV"/>
+                            <constraint firstItem="Frz-2T-DQS" firstAttribute="top" secondItem="7kD-6h-Gmz" secondAttribute="bottom" id="mdi-ys-9wK"/>
+                            <constraint firstAttribute="trailing" secondItem="Frz-2T-DQS" secondAttribute="trailing" id="pil-5i-D5J"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="f98-FN-Hac"/>
+                    <connections>
+                        <outlet property="tableView" destination="Frz-2T-DQS" id="n3k-hj-ao3"/>
+                        <segue destination="Mz9-p9-VSW" kind="show" identifier="MessagesVC" id="fU1-SC-lR8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pbF-qd-NSV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3520.8000000000002" y="823.53823088455783"/>
+        </scene>
         <!--Item-->
         <scene sceneID="gcW-ph-umQ">
             <objects>
@@ -1381,7 +1506,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANO-vX-hC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3521" y="802"/>
+            <point key="canvasLocation" x="4460" y="823.53823088455783"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="zO9-E5-2G8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vvi-FI-hy5" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="f8S-xY-r7C"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="edd-gm-cSZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Sut-2Q-zAw" kind="relationship" relationship="rootViewController" id="YbN-I9-IGM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Kdz-nH-eiT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2790" y="841"/>
         </scene>
     </scenes>
     <resources>
@@ -1393,6 +1537,7 @@
         <image name="mic-black" width="128" height="128"/>
         <image name="no-preview" width="1280" height="800"/>
         <image name="play-white" width="24" height="24"/>
+        <image name="plus-black" width="32" height="32"/>
         <image name="quote-black" width="128" height="128"/>
         <image name="save-white" width="32" height="32"/>
         <image name="square-white" width="24" height="24"/>
@@ -1402,8 +1547,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="UIE-4E-dtS"/>
-        <segue reference="HIS-Q2-Nv1"/>
-        <segue reference="xtI-eT-4vF"/>
         <segue reference="nWz-7D-8up"/>
+        <segue reference="xtI-eT-4vF"/>
+        <segue reference="PLx-bK-tHk"/>
     </inferredMetricsTieBreakers>
 </document>

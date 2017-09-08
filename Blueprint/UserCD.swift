@@ -22,6 +22,7 @@ public class UserCD: NSManagedObject {
         if #available(iOS 10.0, *) {
             
             let context = appDelegate.persistentContainer.viewContext
+            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
             let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
             let newUser = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
             
@@ -85,29 +86,29 @@ public class UserCD: NSManagedObject {
         return User
     }
 //
-//    static func fetchAll() -> [UserCD] {
-//        
-//        var Users = [UserCD]()
-//        
-//        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-//            return Users
-//        }
-//        
-//        if #available(iOS 10.0, *) {
-//            
-//            let context = appDelegate.persistentContainer.viewContext
-//            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserCD")
-//            
-//            do {
-//                Users = try context.fetch(request) as! [UserCD]
-//                print("Fetched all...")
-//            } catch let error as NSError {
-//                print("ERROR FETCHING ALL: \(error.debugDescription)")
-//            }
-//        }
-//        return Users
-//    }
-//    
+    static func fetchAll() -> [UserCD] {
+        
+        var Users = [UserCD]()
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return Users
+        }
+        
+        if #available(iOS 10.0, *) {
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserCD")
+            
+            do {
+                Users = try context.fetch(request) as! [UserCD]
+                print("Fetched all...")
+            } catch let error as NSError {
+                print("ERROR FETCHING ALL: \(error.debugDescription)")
+            }
+        }
+        return Users
+    }
+//
 //    static func fetchByProperty(property: UserCD) -> [UserCD] {
 //        
 //        var Users = [UserCD]()

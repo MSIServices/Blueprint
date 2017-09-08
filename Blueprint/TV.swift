@@ -9,6 +9,12 @@
 import UIKit
 
 class TV: UITextView {
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        autocorrectionType = .no
+    }
 
     override func deleteBackward() {
         super.deleteBackward()

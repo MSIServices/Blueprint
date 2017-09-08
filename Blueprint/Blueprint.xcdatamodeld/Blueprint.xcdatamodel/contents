@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="ConversationCD" representedClassName="ConversationCD" syncable="YES">
+        <attribute name="conversationId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MessageCD" inverseName="conversation" inverseEntity="MessageCD" syncable="YES"/>
+        <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserCD" inverseName="conversations" inverseEntity="UserCD" syncable="YES"/>
+    </entity>
     <entity name="GroupCD" representedClassName="GroupCD" syncable="YES">
         <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="groupId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
@@ -12,6 +18,13 @@
                 <constraint value="name"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
+    </entity>
+    <entity name="MessageCD" representedClassName="MessageCD" syncable="YES">
+        <attribute name="messageId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ConversationCD" inverseName="messages" inverseEntity="ConversationCD" syncable="YES"/>
+        <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserCD" inverseName="messages" inverseEntity="UserCD" syncable="YES"/>
     </entity>
     <entity name="PostCD" representedClassName="PostCD" syncable="YES">
         <attribute name="audio" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,7 +46,9 @@
         <attribute name="email" attributeType="String" syncable="YES"/>
         <attribute name="userId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
+        <relationship name="conversations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ConversationCD" inverseName="participants" inverseEntity="ConversationCD" syncable="YES"/>
         <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GroupCD" inverseName="members" inverseEntity="GroupCD" syncable="YES"/>
+        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MessageCD" inverseName="sender" inverseEntity="MessageCD" syncable="YES"/>
         <relationship name="posts" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostCD" inverseName="user" inverseEntity="PostCD" syncable="YES"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
@@ -45,7 +60,9 @@
     </entity>
     <elements>
         <element name="GroupCD" positionX="-63" positionY="9" width="128" height="120"/>
-        <element name="UserCD" positionX="-63" positionY="-18" width="128" height="135"/>
         <element name="PostCD" positionX="-54" positionY="45" width="128" height="165"/>
+        <element name="UserCD" positionX="-63" positionY="-18" width="128" height="165"/>
+        <element name="ConversationCD" positionX="-54" positionY="81" width="128" height="105"/>
+        <element name="MessageCD" positionX="-45" positionY="90" width="128" height="120"/>
     </elements>
 </model>

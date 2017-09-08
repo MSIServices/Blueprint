@@ -17,11 +17,13 @@ extension UserCD {
     }
 
     @NSManaged public var userId: NSNumber!
-    @NSManaged public var email: String!
-    @NSManaged public var username: String!
+    @NSManaged public var email: String?
+    @NSManaged public var username: String?
     @NSManaged public var avatar: String?
     @NSManaged public var groups: NSSet?
     @NSManaged public var posts: NSSet?
+    @NSManaged public var messages: NSSet?
+    @NSManaged public var conversations: NSSet?
 
 }
 
@@ -29,10 +31,10 @@ extension UserCD {
 extension UserCD {
     
     @objc(addGroupsObject:)
-    @NSManaged public func addToGroups(_ value: UserCD)
+    @NSManaged public func addToGroups(_ value: GroupCD)
     
     @objc(removeGroupsObject:)
-    @NSManaged public func removeFromGroups(_ value: UserCD)
+    @NSManaged public func removeFromGroups(_ value: GroupCD)
     
     @objc(addGroups:)
     @NSManaged public func addToGroups(_ values: NSSet)
@@ -42,7 +44,7 @@ extension UserCD {
     
 }
 
-// MARK: Generated accessors for posts
+// MARK: Generated accessors for Posts
 extension UserCD {
     
     @objc(addPostsObject:)
@@ -56,5 +58,39 @@ extension UserCD {
     
     @objc(removePosts:)
     @NSManaged public func removeFromPosts(_ values: NSSet)
+    
+}
+
+// MARK: Generated accessors for Messages
+extension UserCD {
+    
+    @objc(addMessagesObject:)
+    @NSManaged public func addToMessages(_ value: MessageCD)
+    
+    @objc(removeMessagesObject:)
+    @NSManaged public func removeFromMessages(_ value: MessageCD)
+    
+    @objc(addMessages:)
+    @NSManaged public func addToMessages(_ values: NSSet)
+    
+    @objc(removeMessages:)
+    @NSManaged public func removeFromMessages(_ values: NSSet)
+    
+}
+
+// MARK: Generated accessors for Conversations
+extension UserCD {
+    
+    @objc(addConversationsObject:)
+    @NSManaged public func addToConversations(_ value: ConversationCD)
+    
+    @objc(removeConversationsObject:)
+    @NSManaged public func removeFromConversations(_ value: ConversationCD)
+    
+    @objc(addConversations:)
+    @NSManaged public func addToConversations(_ values: NSSet)
+    
+    @objc(removeConversations:)
+    @NSManaged public func removeFromConversations(_ values: NSSet)
     
 }

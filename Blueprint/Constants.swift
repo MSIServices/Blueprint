@@ -11,6 +11,7 @@ import UIKit
 
 //Colors
 let CHAIN_BLUE_LOADING = UIColor(red: 185.0 / 255.0, green: 196.0 / 255.0, blue: 197.0 / 255.0, alpha: 1.0) //#B9C4C5
+let CHAIN_BLUE_LIGHT = UIColor(red: 204.0 / 255.0, green: 212.0 / 255.0, blue: 212.0 / 255.0, alpha: 1.0) //#CCD4D4
 let CHAIN_BLUE_BG = UIColor(red: 115.0 / 255.0, green: 137.0 / 255.0, blue: 139.0 / 255.0, alpha: 1.0) //#73898B
 let CHAIN_BLUE = UIColor(red: 0, green: 39.0 / 255.0, blue: 43.0 / 255.0, alpha: 1.0) //#00272B
 let CHAIN_BLUE_OUTER = UIColor(red: 23.0 / 255.0, green: 58.0 / 255.0, blue: 62.0 / 255.0, alpha: 1.0) //#173A3E
@@ -67,6 +68,7 @@ let QUOTE_VC = "QuoteVC"
 let RECIPIENT_VC = "RecipientVC"
 let MEDIA_VC = "MediaVC"
 let MEDIA_LIBRARY_VC = "MediaLibraryVC"
+let MESSAGES_VC = "MessagesVC"
 
 //Reverse Segues
 let UNWIND_LOGIN_VC = "unwindToLoginVC"
@@ -81,6 +83,7 @@ let UNWIND_LINK_VC = "unwindToLinkVC"
 let UNWIND_MEDIA_VC = "unwindToMediaVC"
 let UNWIND_AUDIO_VC = "unwindToAudioVC"
 let UNWIND_QUOTE_VC = "unwindToQuoteVC"
+let UNWIND_CONVERSATIONS_VC = "unwindToConversationsVC"
 
 //UI
 let NAVIGATION_BAR_HEIGHT: CGFloat = 64.0

@@ -8,7 +8,7 @@
 
 import UIKit
 
-fileprivate let placeholderText = "Text"
+fileprivate var placeholderText = "Text"
 
 class TextVC: UIViewController, UITextViewDelegate {
 
@@ -18,9 +18,14 @@ class TextVC: UIViewController, UITextViewDelegate {
     
     var errorAlert: SingleActionAlertV!
     var audioUrl: URL?
+    var previousVC: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if previousVC == AUDIO_VC {
+            placeholderText = "Optional"
+        }
 
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
         applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
@@ -40,6 +45,7 @@ class TextVC: UIViewController, UITextViewDelegate {
         if identifier == RECIPIENT_VC {
             
             if textView.text == placeholderText && audioUrl == nil  {
+                
                 errorAlert = mainV.showError(msg: "Text cannot be empty.", animated: true)
                 errorAlert.confirmationBtn.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
                 return false
@@ -166,7 +172,15 @@ class TextVC: UIViewController, UITextViewDelegate {
     }
     
     func backBtnPressed() {
-        performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
+        
+        switch previousVC {
+        case NEW_POST_VC:
+            performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
+        case AUDIO_VC:
+            performSegue(withIdentifier: UNWIND_AUDIO_VC, sender: self)
+        default:
+            break
+        }
     }
     
     @IBAction func unwindToTextVC(segue: UIStoryboardSegue) { }

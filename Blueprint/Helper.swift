@@ -34,5 +34,18 @@ struct Helper {
         
         return "\(String(format: dFormat, min)):\(String(format: dFormat, sec))"
     }
+    
+    static func findFirstResponder(inView view: UIView) -> UIView? {
+        
+        for subView in view.subviews {
+            if subView.isFirstResponder {
+                return subView
+            }
+            if let recursiveSubView = self.findFirstResponder(inView: subView) {
+                return recursiveSubView
+            }
+        }
+        return nil
+    }
 
 }

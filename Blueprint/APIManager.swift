@@ -9,13 +9,12 @@
 import Foundation
 import Alamofire
 import CryptoSwift
-import SwiftyJSON
 import AlamofireSwiftyJSON
 
 class APIManager {
  
     static let shared = APIManager()
-    static let baseUrl: String = "http://\(WORK_IP_ADDRESS_TWO):\(LOCAL_HOST_PORT)"
+    static let baseUrl: String = "http://\(WORK_IP_ADDRESS_ONE):\(LOCAL_HOST_PORT)"
 //    static let baseUrl: String = SERVER_DOMAIN
     static let createUser: String =  baseUrl + "/user"
     static let authenticate: String = baseUrl + "/authenticate"
@@ -107,6 +106,8 @@ class APIManager {
         
         let url = URL(string: APIManager.users)!
         Alamofire.request(url).responseSwiftyJSON { res in
+            
+            print(res.result.value)
             
             guard let jsonArray = res.result.value?.array, jsonArray.count > 0, res.response?.statusCode == 200 else {
                 

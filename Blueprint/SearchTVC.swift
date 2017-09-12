@@ -13,19 +13,19 @@ class SearchTVC: UITableViewCell {
     @IBOutlet weak var imgView: UIImageView!
     @IBOutlet weak var textLbl: UILabel!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        addViewBackedBorder(side: .south, thickness: 1.0, color: UIColor.lightGray)
+        addViewBackedBorder(side: .south, thickness: 1.0, color: GRAY_BG)
     }
     
-    func configureCell() {
+    class func nib() -> UINib {
+        return UINib(nibName: self.nameOfClass, bundle: nil)
+    }
+    
+    func configureCell(user: UserCD) {
         
+        textLbl.text = user.username
     }
     
 }

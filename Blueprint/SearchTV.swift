@@ -12,12 +12,14 @@ fileprivate let SEARCH_TVC = "SearchTVC"
 
 class SearchTV: UITableView {
 
-    init(y: CGFloat = 0.0, height: CGFloat = 200) {
-        super.init(frame: CGRect(x: 0, y: y, width: UIScreen.main.bounds.size.width, height: height), style: .plain)
+    init(superview: UIView, topView: UIView, bottomView: UIView) {
+        super.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 0), style: .plain)
         
         separatorStyle = .none
         backgroundColor = UIColor.white
         register(SearchTV.nib(), forCellReuseIdentifier: SEARCH_TVC)
+        
+        superview.addSubview(self)
     }
     
     required init?(coder aDecoder: NSCoder) {

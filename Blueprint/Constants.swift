@@ -28,6 +28,7 @@ let WARNING = UIColor(red: 255.0 / 255.0, green: 197.0 / 255.0, blue: 47.0 / 255
 let ERROR = UIColor(red: 255.0 / 255.0, green: 63.0 / 255.0, blue: 0.0, alpha: 1.0) //#FF3F00
 let ERROR_BUTTON = UIColor(red: 209.0 / 255.0, green: 52.0 / 255.0, blue: 0.0, alpha: 1.0)  //#D13400
 let ERROR_BUTTON_HIGHLIGHT = UIColor(red: 232.0 / 255.0, green: 58.0 / 255.0, blue: 0.0, alpha: 0.0) //#E83A00
+let GRAY_BG = UIColor(red: 239.0 / 255.0, green: 239.0 / 255.0, blue: 239.0 / 255.0, alpha: 1.0) //#EFEFEF
 
 //Fonts
 let OPEN_SANS = ["OpenSans-ExtraBoldItalic", "OpenSans-SemiBoldItalic", "OpenSans-ExtraBold", "OpenSans-BoldItalic", "OpenSans-Italic", "OpenSans-SemiBold", "OpenSans-Light", "OpenSans-Regular", "OpenSans-LightItalic", "OpenSans-Bold"]

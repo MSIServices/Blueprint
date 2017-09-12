@@ -35,3 +35,9 @@
 //        self.view.layoutIfNeeded()
 //    }
 //}
+
+
+/* BACKSPACE NOTIFICATION */
+
+//NotificationCenter.default.addObserver(self, selector: #selector(self.backspacePressed), name: Notifications.customNotification.BackspaceDetected, object: nil)
+

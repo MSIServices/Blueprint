@@ -10,13 +10,15 @@ import UIKit
 
 class BubbleV: UIView {
 
-    init(textField: CustomTF, user: UserCD, widthOfText: CGFloat, height: CGFloat, spacing: CGFloat, font: UIFont) {
-        super.init(frame: CGRect(x: textField.textPaddingAdjustment, y: 0, width: widthOfText, height:  height))
-        
-        center.y = textField.bounds.size.height / 2
+    init(textView: TV, user: UserCD, widthOfText: CGFloat, height: CGFloat, spacing: CGFloat, font: UIFont, centerOffset: CGFloat) {
+        super.init(frame: CGRect(x: textView.xAdjustment, y: textView.yAdjustment, width: widthOfText, height:  height))
+    
+        center.y = centerOffset
         backgroundColor = CHAIN_CREAM
         layer.cornerRadius = 6
-        textField.addSubview(self)
+        layer.borderColor = UIColor.lightGray.cgColor
+        layer.borderWidth = 1.0
+        textView.addSubview(self)
         
         let textLbl = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
         textLbl.center = CGPoint(x: self.bounds.size.width / 2, y: self.bounds.size.height / 2)
@@ -24,8 +26,6 @@ class BubbleV: UIView {
         textLbl.font = font
         textLbl.textAlignment = .center
         self.addSubview(textLbl)
-        
-        textField.textPaddingAdjustment += widthOfText + (spacing * 2)
     }
     
     required init?(coder aDecoder: NSCoder) {

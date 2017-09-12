@@ -22,12 +22,12 @@ class MessageTVC: UITableViewCell {
         
     }
     
-    class func nib() -> MessageTVC {
-        return UINib(nibName: self.nameOfClass, bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! MessageTVC
+    class func nib() -> UINib{
+        return UINib(nibName: self.nameOfClass, bundle: nil)
     }
     
     func configureCell() {
-        
+    
     }
     
 }

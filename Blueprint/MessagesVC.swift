@@ -10,6 +10,7 @@ import UIKit
 
 fileprivate let MESSAGE_TVC = "MessageTVC"
 fileprivate let SEARCH_TVC = "SearchTVC"
+fileprivate var placeholderText = "Enter Message"
 
 class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextViewDelegate, UIScrollViewDelegate {
 
@@ -27,6 +28,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var users = [UserCD]()
     var filteredUsers = [UserCD]()
     var recipients = [UserCD]()
+    var participants = [UserCD]()
     var messages = [MessageCD]()
     var bubbles = [(BubbleV, UIEdgeInsets)]()
     var conversation: ConversationCD?
@@ -43,6 +45,8 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        applyPlaceholderStyle(aTextview: sendMessageTextView, placeholderText: placeholderText)
         
         addRecipientBtn = UIButton(type: .custom)
         addRecipientBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
@@ -76,6 +80,43 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if conversation == nil {
             getUsers()
+        }
+    }
+    
+    func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String) {
+        
+        if aTextview == sendMessageTextView {
+            
+            aTextview.textColor = UIColor.gray
+            aTextview.text = placeholderText
+            aTextview.textAlignment = .left
+            aTextview.font = UIFont(name: "OpenSans-LightItalic", size: 16)!
+        }
+    }
+    
+    func applyNonPlaceholderStyle(aTextview: UITextView) {
+        
+        if aTextview == sendMessageTextView {
+            
+            aTextview.textColor = UIColor.darkText
+            aTextview.alpha = 1.0
+            aTextview.textAlignment = .left
+            aTextview.font = UIFont(name: "OpenSans-Regular", size: 16)!
+        }
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        
+        if textView.text == placeholderText {
+            moveCursorToStart(aTextView: textView)
+        }
+        return true
+    }
+    
+    func moveCursorToStart(aTextView: UITextView) {
+        
+        DispatchQueue.main.async {
+            aTextView.selectedRange = NSMakeRange(0, 0);
         }
     }
     
@@ -143,7 +184,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func backspacePressed() {
         
-        if searchTextView.text.trimmingCharacters(in: .whitespacesAndNewlines) == "" && bubbles.count > 0 && removeBubble {
+        if searchTextView.text == "" && bubbles.count > 0 && removeBubble {
             
             disableSearch()
             
@@ -160,7 +201,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 centerOffset -= originalSearchViewHeight
                 numberOfBubblesOnEachLine.remove(at: currentLine - 1)
                 currentLine -= 1
-
+                
                 if currentLine <= 5 {
                     searchTextViewHeight.constant -= originalSearchViewHeight
                 }
@@ -197,25 +238,41 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        if textView == searchTextView {
-            sendMessageViewBttm.constant = 0
-            //Post notification to adjust tableview bttm to height of keyboard
-            //Receive it in the KeyboardWillShow method
-        }
-    }
-    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if text == "\n" {
             textView.endEditing(true)
+            sendMessageViewBttm.constant = 0
         }
         
         if searchTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).characters.count == 1 {
             removeBubble = false
         } else {
             removeBubble = true
+        }
+        
+        if textView == sendMessageTextView {
+            
+            let newLength = textView.text.utf16.count + text.utf16.count - range.length
+            
+            if newLength > 0 {
+                
+                if textView.text == placeholderText {
+                    
+                    if text.utf16.count == 0 {
+                        return false
+                    }
+                    applyNonPlaceholderStyle(aTextview: textView)
+                    textView.text = ""
+                }
+                return true
+                
+            } else {
+                
+                applyPlaceholderStyle(aTextview: textView, placeholderText: placeholderText)
+                moveCursorToStart(aTextView: textView)
+                return false
+            }
         }
         return true
     }
@@ -224,8 +281,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
 
         if let txt = textView.text, textView == searchTextView, textView.text != "" {
         
-            //Add !recipients.contains($0) to the end of the conditional
-            filteredUsers = users.filter { $0.username?.lowercased().range(of: txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) != nil && $0.username != UserDefaults.standard.value(forKey: USERNAME) as? String }
+            filteredUsers = users.filter { $0.username?.lowercased().range(of: txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) != nil && $0.username != UserDefaults.standard.value(forKey: USERNAME) as? String && !recipients.contains($0) }
     
             if filteredUsers.count > 0 {
                 
@@ -233,8 +289,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 
                 for user in filteredUsers {
                     
-                    //Add !recipients.contains { $0.username == user.username! } to the end of the conditional
-                    if user.username!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) {
+                    if user.username!.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) == txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) && !recipients.contains { $0.username == user.username! } {
                         
                         self.createBubble(user: user)
                         return
@@ -296,7 +351,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             if messages.count > 0 {
                 
                 let msg = messages[indexPath.row]
-                
+
                 let cell = tableView.dequeueReusableCell(withIdentifier: MESSAGE_TVC, for: indexPath) as! MessageTVC
                 
 //                cell.configureCell(msg: msg)
@@ -313,6 +368,32 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     @IBAction func sendMessageBtnPressed(_ sender: Any) {
         
+        if let msg = sendMessageTextView.text, msg != placeholderText {
+            
+            if conversation == nil && recipients.count > 0 {
+                    
+                //Switch to Server call
+                
+                
+                
+                
+                
+                if let existingConversation = ConversationCD.fetchFromParticipants(participants: recipients) {
+//                    saveMessage(converstion: existingConversation, msg: msg)
+                } else {
+                        
+                    let recipientIds: [NSNumber] = recipients.map { $0.userId }
+                    //Make Server call to save remote then save locally
+                    APIManager.shared.createConversation(message: msg, userId: User.currentId, recipients: recipientIds, Success: { conversation in
+                        self.sendMessageTextView.text = placeholderText
+                    }, Failure: { error in
+                        print(error ?? "No Error.")
+                    })
+                }
+            } else if conversation != nil && (recipients.count > 0 || participants.count > 0) {
+//                saveMessage(conversation: conversation!, msg: msg)
+            }
+        }
     }
     
     @IBAction func addFileBtnPressed(_ sender: Any) {

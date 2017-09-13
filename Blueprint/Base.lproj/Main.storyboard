@@ -773,6 +773,9 @@
                                         <color key="backgroundColor" red="0.64705882349999999" green="0.70196078429999997" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Mz9-p9-VSW" id="436-Z3-hNx"/>
+                                        </connections>
                                     </textView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1466,7 +1469,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dx5-h6-7sh" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="UyM-Py-YeG"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3J-aj-Zw2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="E3J-aj-Zw2">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1526,7 +1529,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pfY-wY-Hgq" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="orL-6H-jGH"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="d3R-1F-tGn">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d3R-1F-tGn">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1545,7 +1548,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vvi-FI-hy5" customClass="NC" customModule="Blueprint" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="f8S-xY-r7C"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="edd-gm-cSZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="edd-gm-cSZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

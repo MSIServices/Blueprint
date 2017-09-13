@@ -151,6 +151,16 @@ extension String {
         return date
     }
     
+    mutating func sqlToDate() -> Date {
+        
+        let dateFormatter = DateFormatter()
+        
+        self.trimAfter(char: ".")
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+
+        return dateFormatter.date(from: self)!
+    }
+    
     mutating func convertToValidUrlString() -> String {
         
         if !self.contains("http") {

@@ -15,7 +15,6 @@ struct Message {
     private var _text: String!
     private var _timestamp: Date!
     private var _sender: User!
-    private var _conversation: Conversation!
     
     var messageId: Int {
         return _messageId
@@ -33,16 +32,14 @@ struct Message {
         return _sender
     }
     
-    var conversation: Conversation {
-        return _conversation
-    }
-    
     init(id: Int, json: JSON) {
         self._messageId = id
         self._text = json["text"].string
-//        self._timestamp = json["timestamp"].string
-//        self._sender = json["sender"].string
-//        self._conversation = json["conversation"].string
+        
+        if var dateString = json["timestamp"].string {
+            self._timestamp = dateString.sqlToDate()
+        }
+        self._sender = User(id: json["userId"].int!, json: json)
     }
     
 }

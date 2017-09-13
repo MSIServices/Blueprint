@@ -13,7 +13,6 @@ struct Conversation {
     
     private var _conversationId: Int!
     private var _startDate: Date!
-    private var _lastMessageDate: Date!
     private var _participants = [User]()
     private var _messages = [Message]()
     
@@ -25,10 +24,6 @@ struct Conversation {
         return _startDate
     }
     
-    var lastMessageDate: Date {
-        return _lastMessageDate
-    }
-    
     var participants: [User] {
         return _participants
     }
@@ -37,12 +32,19 @@ struct Conversation {
         return _messages
     }
     
-    init(id: Int, json: JSON) {
-        self._conversationId = id
-//        self._startDate = json["startDate"].string
-//        self._lastMessageDate = json["lastMessageDate"].string
-        self._participants = json["participants"] as! [User]
-        self._messages = json["messages"] as! [Message]
+    init(json: JSON) {
+        
+        self._conversationId = json["conversation"]["conversationId"].int
+        
+        if var dateString = json["conversation"]["startDate"].string {
+            self._startDate = dateString.sqlToDate()
+        }
+        _participants.append(User(id: json["message"]["userId"].int!, json: json))
+        
+        for recipient in json["recipients"].array! {
+            _participants.append(User(id: recipient["userId"].int!, json: recipient))
+        }
+        _messages.append(Message(id: json["message"]["messageId"].int!, json: json["message"]))
     }
     
 }

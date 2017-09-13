@@ -31,7 +31,7 @@ public class PostCD: NSManagedObject {
             newPost.image = post.image
             newPost.video = post.video
             newPost.audio = post.audio
-            newPost.user = UserCD.fetchById(UserId: String(describing: User.currentId))
+            newPost.user = UserCD.fetchById(UserId: User.currentId)
             
             do {
                 try newPost.managedObjectContext?.save()

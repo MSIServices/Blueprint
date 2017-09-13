@@ -43,7 +43,7 @@
     </entity>
     <entity name="UserCD" representedClassName="UserCD" syncable="YES">
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="email" attributeType="String" syncable="YES"/>
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userId" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="username" attributeType="String" syncable="YES"/>
         <relationship name="conversations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ConversationCD" inverseName="participants" inverseEntity="ConversationCD" syncable="YES"/>
@@ -59,10 +59,10 @@
         </uniquenessConstraints>
     </entity>
     <elements>
+        <element name="ConversationCD" positionX="-54" positionY="81" width="128" height="105"/>
         <element name="GroupCD" positionX="-63" positionY="9" width="128" height="120"/>
+        <element name="MessageCD" positionX="-45" positionY="90" width="128" height="120"/>
         <element name="PostCD" positionX="-54" positionY="45" width="128" height="165"/>
         <element name="UserCD" positionX="-63" positionY="-18" width="128" height="165"/>
-        <element name="ConversationCD" positionX="-54" positionY="81" width="128" height="105"/>
-        <element name="MessageCD" positionX="-45" positionY="90" width="128" height="120"/>
     </elements>
 </model>

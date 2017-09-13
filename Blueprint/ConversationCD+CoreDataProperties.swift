@@ -17,7 +17,6 @@ extension ConversationCD {
 
     @NSManaged public var conversationId: NSNumber!
     @NSManaged public var startDate: NSDate!
-    @NSManaged public var lastMessageDate: NSDate!
     @NSManaged public var participants: NSSet?
     @NSManaged public var messages: NSSet?
 

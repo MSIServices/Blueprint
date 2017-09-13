@@ -40,6 +40,38 @@ public class UserCD: NSManagedObject {
         }
     }
     
+    static func sync(user: User) -> UserCD? {
+        
+        var savedUser: UserCD?
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return savedUser
+        }
+        
+        if #available(iOS 10.0, *) {
+            
+            let context = appDelegate.persistentContainer.viewContext
+            context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+            
+            let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
+            let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
+
+            newUser.userId = user.userId as NSNumber
+            newUser.email = user.email
+            newUser.username = user.username
+            newUser.avatar = user.avatar
+            
+            do {
+                try newUser.managedObjectContext?.save()
+                savedUser = newUser
+                print("Saved user...")
+            } catch let err as NSError {
+                print("ERROR SAVING: \(err.debugDescription)")
+            }
+        }
+        return savedUser
+    }
+    
 //    static func deleteAll() {
 //        
 //        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
@@ -61,7 +93,7 @@ public class UserCD: NSManagedObject {
 //        }
 //    }
 //    
-    static func fetchById(UserId: String) -> UserCD? {
+    static func fetchById(UserId: NSNumber) -> UserCD? {
         
         var User: UserCD?
         

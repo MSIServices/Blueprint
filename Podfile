@@ -6,6 +6,7 @@ target 'Blueprint' do
 	pod 'Alamofire', '~> 4.4'
 	pod 'SWXMLHash'
 	pod 'CryptoSwift'
+	pod 'SwiftyJSON'
 	pod 'AlamofireSwiftyJSON'
 	pod 'SwiftyGif'
 	pod 'SwiftLinkPreview', '~> 2.0.7'

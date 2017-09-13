@@ -8,11 +8,11 @@
 
 import Foundation
 import Alamofire
-import CryptoSwift
 import AlamofireSwiftyJSON
+import CryptoSwift
 
 class APIManager {
- 
+    
     static let shared = APIManager()
     static let baseUrl: String = "http://\(WORK_IP_ADDRESS_ONE):\(LOCAL_HOST_PORT)"
 //    static let baseUrl: String = SERVER_DOMAIN
@@ -20,18 +20,16 @@ class APIManager {
     static let authenticate: String = baseUrl + "/authenticate"
     static let createPost: String = baseUrl + "/post"
     static let users: String = baseUrl + "/users"
+    static let conversation: String = baseUrl + "/conversation"
+    static let conversationFromParticipants: String = baseUrl + "/conversation/participants"
     
     func createUser(email: String, username: String, password: String, avatar: Data?, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
-        
-        let now = Date()
         
         var params = [
             "email": email,
             "username": username,
             "password": password,
-            "aesKey": AES_KEY.toHexString(),
-            "created": now,
-            "updated": now
+            "aesKey": AES_KEY.toHexString()
         ] as [String : Any]
         
         if avatar != nil {
@@ -106,8 +104,6 @@ class APIManager {
         
         let url = URL(string: APIManager.users)!
         Alamofire.request(url).responseSwiftyJSON { res in
-            
-            print(res.result.value)
             
             guard let jsonArray = res.result.value?.array, jsonArray.count > 0, res.response?.statusCode == 200 else {
                 
@@ -191,5 +187,81 @@ class APIManager {
             Success(post)
         }
     }
+    
+    func createConversation(message: String, userId: NSNumber, recipients: [NSNumber], Success: @escaping ((Conversation) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let params = [
+            "message": message,
+            "userId": userId,
+            "recipients": recipients,
+            "aesKey": AES_KEY.toHexString()
+        ] as [String : Any]
+        
+        let url = URL(string: APIManager.conversation)!
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            print(res)
+            guard let json = res.result.value, res.response?.statusCode == 200 else {
+                
+                if res.result.value == nil {
+                    print(Error.noData)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(Error.unauthorized)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(Error.badRequest)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(Error.internalServerError)
+                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(Error.unknownError)
+                    Failure(res.result.value?["error"].string!)
+                }
+                return
+            }
+            let conversation = Conversation(json: json)
+            ConversationCD.save(conversation: conversation)
+            Success(conversation)
+        }
+    }
 
+    func getConversationFromParticipants(message: String, userId: NSNumber, recipients: [NSNumber], Success: @escaping ((Conversation) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let params = [
+            "message": message,
+            "userId": userId,
+            "recipients": recipients,
+            "aesKey": AES_KEY.toHexString()
+            ] as [String : Any]
+        
+        let url = URL(string: APIManager.conversationFromParticipants)!
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            print(res)
+            guard let json = res.result.value, res.response?.statusCode == 200 else {
+                
+                if res.result.value == nil {
+                    print(Error.noData)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(Error.unauthorized)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(Error.badRequest)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(Error.internalServerError)
+                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(Error.unknownError)
+                    Failure(res.result.value?["error"].string!)
+                }
+                return
+            }
+            let conversation = Conversation(json: json)
+            ConversationCD.save(conversation: conversation)
+            Success(conversation)
+        }
+    }
+    
 }

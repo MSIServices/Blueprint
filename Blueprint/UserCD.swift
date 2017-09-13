@@ -42,10 +42,8 @@ public class UserCD: NSManagedObject {
     
     static func sync(user: User) -> UserCD? {
         
-        var savedUser: UserCD?
-        
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return savedUser
+            return nil
         }
         
         if #available(iOS 10.0, *) {
@@ -60,16 +58,18 @@ public class UserCD: NSManagedObject {
             newUser.email = user.email
             newUser.username = user.username
             newUser.avatar = user.avatar
-            
+
             do {
                 try newUser.managedObjectContext?.save()
-                savedUser = newUser
                 print("Saved user...")
+                
+                return newUser
+                
             } catch let err as NSError {
                 print("ERROR SAVING: \(err.debugDescription)")
             }
         }
-        return savedUser
+        return nil
     }
     
 //    static func deleteAll() {

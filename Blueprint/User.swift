@@ -44,20 +44,21 @@ struct User {
         return UserDefaults.standard.value(forKey: USERNAME) as! String
     }
     
-    init(userId: Int, email: String, username: String) {
+    init(userId: Int, email: String?, username: String?) {
         self._userId = userId
         self._email = email
         self._username = username
     }
     
     //Probably should keep these for single purpose and seperate inits for different functions
-    init(id: Int, json: JSON) {
-        self._userId = id
+    init(json: JSON) {
+        
+        self._userId = json["userId"].int
         
         if let email = json["email"].string {
             self._email = email
         }
-        print(json["username"].string)
+
         if let username = json["username"].string {
             self._username = username
         }
@@ -68,7 +69,7 @@ struct User {
     }
     
     func current() -> User {
-        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as! Int, email: UserDefaults.standard.value(forKey: EMAIL) as! String, username: UserDefaults.standard.value(forKey: USERNAME) as! String)
+        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as! Int, email: UserDefaults.standard.value(forKey: EMAIL) as? String, username: UserDefaults.standard.value(forKey: USERNAME) as? String)
     }
 
 }

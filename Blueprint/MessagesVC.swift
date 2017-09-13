@@ -28,8 +28,8 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var users = [UserCD]()
     var filteredUsers = [UserCD]()
     var recipients = [UserCD]()
-    var participants = [UserCD]()
-    var messages = [MessageCD]()
+//    var participants = [UserCD]()
+//    var messages = [MessageCD]()
     var bubbles = [(BubbleV, UIEdgeInsets)]()
     var conversation: ConversationCD?
     var bubbleHeight: CGFloat = 35
@@ -136,6 +136,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         })
     }
     
+    //Just look at it!
     func createBubble(user: UserCD) {
         
         let widthOfText: CGFloat = user.username!.trimmingCharacters(in: .whitespaces).width(height: bubbleHeight, font: searchTextView.font!)
@@ -323,7 +324,10 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         if searchMode {
             return users.count
         }
-        return messages.count
+        if conversation != nil {
+            return conversation!.messages!.count
+        }
+        return 0
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -348,13 +352,31 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
         } else {
             
-            if messages.count > 0 {
+            if conversation!.messages!.count > 0 {
                 
-                let msg = messages[indexPath.row]
-
+                let messages: [MessageCD] = Array(conversation!.messages!) as! [MessageCD]
+                
                 let cell = tableView.dequeueReusableCell(withIdentifier: MESSAGE_TVC, for: indexPath) as! MessageTVC
                 
-//                cell.configureCell(msg: msg)
+                let sortedMessages = messages.sorted {$0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+                let msg = sortedMessages[indexPath.row]
+
+                var showDate: Bool!
+                var previousMsg: MessageCD!
+                
+                if indexPath.row == 0 {
+                    showDate = true
+                } else {
+                    
+                    previousMsg = sortedMessages[indexPath.row - 1]
+                    if msg.timestamp.minutes(from: previousMsg.timestamp as Date) > 15 {
+                        showDate = true
+                    } else {
+                        showDate = false
+                    }
+                }
+                
+                cell.configureCell(message: msg, showDate: showDate)
                 
                 return cell
             }
@@ -372,25 +394,41 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             if conversation == nil && recipients.count > 0 {
                     
-                //Switch to Server call
+                var recipientIds: [NSNumber] = recipients.map { $0.userId }
+                recipientIds.append(User.currentId)
                 
-                
-                
-                
-                
-                if let existingConversation = ConversationCD.fetchFromParticipants(participants: recipients) {
-//                    saveMessage(converstion: existingConversation, msg: msg)
-                } else {
+                APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
+                    
+                    if conversation != nil {
                         
-                    let recipientIds: [NSNumber] = recipients.map { $0.userId }
-                    //Make Server call to save remote then save locally
-                    APIManager.shared.createConversation(message: msg, userId: User.currentId, recipients: recipientIds, Success: { conversation in
-                        self.sendMessageTextView.text = placeholderText
-                    }, Failure: { error in
-                        print(error ?? "No Error.")
-                    })
-                }
-            } else if conversation != nil && (recipients.count > 0 || participants.count > 0) {
+                        print("Conversation already exists")
+                        
+                        //SAVE MESSAGE TO EXISTING CONVERSATION
+                        
+                        self.conversation = conversation
+                        self.messagesTableView.reloadData()
+                        
+                    } else {
+                        
+                        print("Conversation does not exist. Creating new one...")
+                        
+                        var recipientIds: [NSNumber] = self.recipients.map { $0.userId }
+                        recipientIds.append(User.currentId)
+                        
+                        APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
+                            
+                            self.conversation = conversation
+                            self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
+                            self.messagesTableView.reloadData()
+                            
+                        }, Failure: { error in
+                            print(error ?? "No Error.")
+                        })
+                    }
+                }, Failure: { error in
+                    print(error ?? "No Error")
+                })
+            } else if conversation != nil {
 //                saveMessage(conversation: conversation!, msg: msg)
             }
         }

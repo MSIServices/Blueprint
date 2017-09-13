@@ -32,14 +32,15 @@ struct Message {
         return _sender
     }
     
-    init(id: Int, json: JSON) {
-        self._messageId = id
-        self._text = json["text"].string
+    init(message: JSON) {
         
-        if var dateString = json["timestamp"].string {
+        self._messageId = message["messageId"].int
+        self._text = message["text"].string
+        
+        if var dateString = message["timestamp"].string {
             self._timestamp = dateString.sqlToDate()
         }
-        self._sender = User(id: json["userId"].int!, json: json)
+        self._sender = User(userId: message["userId"].int!, email: nil, username: message["sender"].string)
     }
     
 }

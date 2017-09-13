@@ -45,4 +45,28 @@ public class MessageCD: NSManagedObject {
         return savedMessage
     }
     
+    static func fetchAll() -> [MessageCD]? {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+        
+        if #available(iOS 10.0, *) {
+            
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "MessageCD")
+            
+            do {
+                let messages = try context.fetch(request) as! [MessageCD]
+                print("Fetched all...")
+                
+                return messages
+                
+            } catch let error as NSError {
+                print("ERROR FETCHING ALL: \(error.debugDescription)")
+            }
+        }
+        return nil
+    }
+    
 }

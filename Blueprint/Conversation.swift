@@ -39,12 +39,29 @@ struct Conversation {
         if var dateString = json["conversation"]["startDate"].string {
             self._startDate = dateString.sqlToDate()
         }
-        _participants.append(User(id: json["message"]["userId"].int!, json: json))
         
-        for recipient in json["recipients"].array! {
-            _participants.append(User(id: recipient["userId"].int!, json: recipient))
+        for user in json["participants"].arrayValue {
+            _participants.append(User(json: user))
         }
-        _messages.append(Message(id: json["message"]["messageId"].int!, json: json["message"]))
+        for msg in json["messages"].arrayValue {
+            _messages.append(Message(message: msg))
+        }
     }
     
+//    //Not sure what this is for yet.
+//    init(json: JSON) {
+//        
+//        self._conversationId = json["conversation"]["conversationId"].int
+//        
+//        if var dateString = json["conversation"]["startDate"].string {
+//            self._startDate = dateString.sqlToDate()
+//        }
+//        _participants.append(User(id: json["message"]["userId"].int!, json: json))
+//        
+//        for recipient in json["recipients"].array! {
+//            _participants.append(User(id: recipient["userId"].int!, json: recipient))
+//        }
+//        _messages.append(Message(id: json["message"]["messageId"].int!, json: json["message"]))
+//    }
+//    
 }

@@ -5,6 +5,11 @@
         <attribute name="startDate" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MessageCD" inverseName="conversation" inverseEntity="MessageCD" syncable="YES"/>
         <relationship name="participants" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="UserCD" inverseName="conversations" inverseEntity="UserCD" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="conversationId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="GroupCD" representedClassName="GroupCD" syncable="YES">
         <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
@@ -25,6 +30,11 @@
         <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ConversationCD" inverseName="messages" inverseEntity="ConversationCD" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserCD" inverseName="messages" inverseEntity="UserCD" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="messageId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="PostCD" representedClassName="PostCD" syncable="YES">
         <attribute name="audio" optional="YES" attributeType="String" syncable="YES"/>
@@ -40,6 +50,11 @@
                 <index value="postId"/>
             </compoundIndex>
         </compoundIndexes>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="postId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
     <entity name="UserCD" representedClassName="UserCD" syncable="YES">
         <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>

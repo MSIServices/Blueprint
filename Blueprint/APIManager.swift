@@ -21,7 +21,7 @@ class APIManager {
     static let createPost: String = baseUrl + "/post"
     static let users: String = baseUrl + "/users"
     static let conversation: String = baseUrl + "/conversation"
-    static let conversationFromParticipants: String = baseUrl + "/conversation/participants"
+    static let conversationFromParticipants: String = baseUrl + "/participants/conversation"
     
     func createUser(email: String, username: String, password: String, avatar: Data?, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
         
@@ -59,7 +59,7 @@ class APIManager {
                 }
                 return
             }
-            let user = User(id: json["userId"].int!, json: json)
+            let user = User(json: json)
             UserCD.save(user: user)
             Success(user)
         }
@@ -96,7 +96,7 @@ class APIManager {
                 }
                 return
             }
-            Success(User(id: json["userId"].int!, json: json))
+            Success(User(json: json))
         }
     }
     
@@ -128,7 +128,7 @@ class APIManager {
             
             for user in jsonArray {
                 
-                let user = User(id: user["userId"].int!, json: user)
+                let user = User(json: user)
                 UserCD.save(user: user)
             }
             Success(true)
@@ -188,18 +188,17 @@ class APIManager {
         }
     }
     
-    func createConversation(message: String, userId: NSNumber, recipients: [NSNumber], Success: @escaping ((Conversation) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func createConversation(message: String, recipients: [NSNumber], Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         let params = [
             "message": message,
-            "userId": userId,
             "recipients": recipients,
             "aesKey": AES_KEY.toHexString()
         ] as [String : Any]
         
         let url = URL(string: APIManager.conversation)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-            print(res)
+
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
@@ -221,19 +220,16 @@ class APIManager {
                 return
             }
             let conversation = Conversation(json: json)
-            ConversationCD.save(conversation: conversation)
-            Success(conversation)
+            Success(ConversationCD.sync(conversation: conversation)!)
         }
     }
 
-    func getConversationFromParticipants(message: String, userId: NSNumber, recipients: [NSNumber], Success: @escaping ((Conversation) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func getConversationFromRecipients(recipients: [NSNumber], Success: @escaping ((ConversationCD?) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         let params = [
-            "message": message,
-            "userId": userId,
             "recipients": recipients,
             "aesKey": AES_KEY.toHexString()
-            ] as [String : Any]
+        ] as [String:Any]
         
         let url = URL(string: APIManager.conversationFromParticipants)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
@@ -258,9 +254,14 @@ class APIManager {
                 }
                 return
             }
-            let conversation = Conversation(json: json)
-            ConversationCD.save(conversation: conversation)
-            Success(conversation)
+            
+            if json["result"].bool == false {
+                Success(nil)
+            } else {
+                
+                let conversation = Conversation(json: json)
+                Success(ConversationCD.sync(conversation: conversation))
+            }
         }
     }
     

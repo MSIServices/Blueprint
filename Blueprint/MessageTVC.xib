@@ -78,6 +78,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="Oms-Nc-hMv" firstAttribute="top" secondItem="rbE-4p-ogT" secondAttribute="bottom" constant="4" id="8pD-zi-C3D"/>
                     <constraint firstAttribute="bottomMargin" secondItem="t6f-bv-JtV" secondAttribute="bottom" constant="4" id="8xP-dl-vdC"/>
@@ -101,6 +102,8 @@
                 <outlet property="senderLbl" destination="XfC-QR-zoZ" id="nRq-Ia-0wW"/>
                 <outlet property="senderView" destination="t6f-bv-JtV" id="TKP-Mc-95f"/>
                 <outlet property="timestampLbl" destination="s6F-dU-NZc" id="msY-zu-Fza"/>
+                <outlet property="timestampLblHeight" destination="si0-6q-6ze" id="vUk-dV-9jG"/>
+                <outlet property="timestampLblTop" destination="Q5J-9V-EMr" id="VE0-fD-9zO"/>
             </connections>
             <point key="canvasLocation" x="84" y="26"/>
         </tableViewCell>

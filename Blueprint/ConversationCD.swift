@@ -12,10 +12,10 @@ import CoreData
 @objc(ConversationCD)
 public class ConversationCD: NSManagedObject {
 
-    static func save(conversation: Conversation) {
+    static func sync(conversation: Conversation) -> ConversationCD? {
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
+            return nil
         }
         
         if #available(iOS 10.0, *) {
@@ -31,24 +31,58 @@ public class ConversationCD: NSManagedObject {
             
             for user in conversation.participants {
                 
-                if let savedUser = UserCD.sync(user: user) {
-                    newConvo.addToParticipants(savedUser)
-                }
+                let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
+                let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
+
+                newUser.userId = user.userId as NSNumber
+                newUser.email = user.email
+                newUser.username = user.username
+                newUser.avatar = user.avatar
+                
+                newConvo.addToParticipants(newUser)
             }
+                        
             for msg in conversation.messages {
                 
-                if let savedMessage = MessageCD.sync(message: msg, conversation: newConvo, sender: UserCD.sync(user: msg.sender)!) {
-                    newConvo.addToMessages(savedMessage)
-                }
+                let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
+                let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
+                
+                newUser.userId = msg.sender.userId as NSNumber
+                newUser.email = msg.sender.email
+                newUser.username = msg.sender.username
+                newUser.avatar = msg.sender.avatar
+                
+                let messageEntity = NSEntityDescription.entity(forEntityName: "MessageCD", in: context)
+                let newMessage: MessageCD = NSManagedObject(entity: messageEntity!, insertInto: context) as! MessageCD
+                
+                newMessage.messageId = msg.messageId as NSNumber
+                newMessage.text = msg.text
+                newMessage.timestamp = msg.timestamp as NSDate
+                newMessage.sender = newUser
+                newMessage.conversation = newConvo
+                
+                newConvo.addToMessages(newMessage)
             }
-
+            
             do {
                 try newConvo.managedObjectContext?.save()
                 print("Saved Conversation...")
+                
+                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ConversationCD")
+                request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+                request.fetchLimit = 1
+
+                do {
+                    let conversation = try context.fetch(request) as! [ConversationCD]
+                    return conversation.first
+                } catch {
+                    print("ERROR FETCHING RECENTLY SAVED CONVERSATION: \(error.localizedDescription)")
+                }
             } catch {
                 print("ERROR SAVING CONVERSATION: \(error.localizedDescription)")
             }
         }
+        return nil
     }
     
     static func fetchFromParticipants(participants: [UserCD]) -> ConversationCD? {
@@ -72,6 +106,30 @@ public class ConversationCD: NSManagedObject {
             }
         }
         return convos.first
+    }
+    
+    static func fetchAll() -> [ConversationCD]? {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return nil
+        }
+    
+        if #available(iOS 10.0, *) {
+    
+            let context = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ConversationCD")
+    
+            do {
+                let conversations = try context.fetch(request) as! [ConversationCD]
+                print("Fetched all...")
+                
+                return conversations
+                
+            } catch let error as NSError {
+                print("ERROR FETCHING ALL: \(error.debugDescription)")
+            }
+        }
+        return nil
     }
 
 }

@@ -35,6 +35,7 @@ class MessageTVC: UITableViewCell {
     func configureCell(message: MessageCD, showDate: Bool) {
         
         self.message = message
+        dump(message)
         
         if showDate {
             

@@ -17,10 +17,11 @@ class APIManager {
     static let baseUrl: String = "http://\(WORK_IP_ADDRESS_ONE):\(LOCAL_HOST_PORT)"
 //    static let baseUrl: String = SERVER_DOMAIN
     static let createUser: String =  baseUrl + "/user"
+    static let users: String = baseUrl + "/users"
     static let authenticate: String = baseUrl + "/authenticate"
     static let createPost: String = baseUrl + "/post"
-    static let users: String = baseUrl + "/users"
     static let conversation: String = baseUrl + "/conversation"
+    static let conversations: String = baseUrl + "/conversations"
     static let conversationFromParticipants: String = baseUrl + "/participants/conversation"
     
     func createUser(email: String, username: String, password: String, avatar: Data?, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
@@ -59,6 +60,8 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
+
             let user = User(json: json)
             UserCD.save(user: user)
             Success(user)
@@ -96,6 +99,8 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
+
             Success(User(json: json))
         }
     }
@@ -125,6 +130,7 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
             
             for user in jsonArray {
                 
@@ -182,6 +188,8 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
+
             let post = Post(id: json["postId"].int!, json: json)
             PostCD.save(post: post)
             Success(post)
@@ -219,6 +227,8 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
+
             let conversation = Conversation(json: json)
             Success(ConversationCD.sync(conversation: conversation)!)
         }
@@ -254,6 +264,7 @@ class APIManager {
                 }
                 return
             }
+            //You should never end up here unless your data is valid
             
             if json["result"].bool == false {
                 Success(nil)
@@ -265,4 +276,38 @@ class APIManager {
         }
     }
     
+    func getConversations(userId: String, Success: @escaping ((ConversationCD?) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let params = [
+            "userId": userId,
+            "aesKey": AES_KEY.toHexString()
+            ] as [String:Any]
+        
+        let url = URL(string: APIManager.conversations)!
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            print(res)
+            guard let json = res.result.value, res.response?.statusCode == 200 else {
+                
+                if res.result.value == nil {
+                    print(Error.noData)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(Error.unauthorized)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(Error.badRequest)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(Error.internalServerError)
+                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(Error.unknownError)
+                    Failure(res.result.value?["error"].string!)
+                }
+                return
+            }
+
+        }
+    }
+
 }

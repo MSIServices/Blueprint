@@ -74,7 +74,9 @@ public class ConversationCD: NSManagedObject {
 
                 do {
                     let conversation = try context.fetch(request) as! [ConversationCD]
+                    
                     return conversation.first
+                    
                 } catch {
                     print("ERROR FETCHING RECENTLY SAVED CONVERSATION: \(error.localizedDescription)")
                 }

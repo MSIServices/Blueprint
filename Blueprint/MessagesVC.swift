@@ -67,6 +67,8 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         messagesTableView.register(SearchTVC.nib(), forCellReuseIdentifier: SEARCH_TVC)
         messagesTableView.register(MessageTVC.nib(), forCellReuseIdentifier: MESSAGE_TVC)
+        messagesTableView.rowHeight = UITableViewAutomaticDimension
+        messagesTableView.estimatedRowHeight = 50
         
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
         
@@ -354,10 +356,9 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             if conversation!.messages!.count > 0 {
                 
-                let messages: [MessageCD] = Array(conversation!.messages!) as! [MessageCD]
-                
                 let cell = tableView.dequeueReusableCell(withIdentifier: MESSAGE_TVC, for: indexPath) as! MessageTVC
                 
+                let messages: [MessageCD] = Array(conversation!.messages!) as! [MessageCD]
                 let sortedMessages = messages.sorted {$0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
                 let msg = sortedMessages[indexPath.row]
 
@@ -405,15 +406,13 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         
                         //SAVE MESSAGE TO EXISTING CONVERSATION
                         
+                        
                         self.conversation = conversation
                         self.messagesTableView.reloadData()
                         
                     } else {
                         
                         print("Conversation does not exist. Creating new one...")
-                        
-                        var recipientIds: [NSNumber] = self.recipients.map { $0.userId }
-                        recipientIds.append(User.currentId)
                         
                         APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
                             

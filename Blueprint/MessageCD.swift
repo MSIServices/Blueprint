@@ -28,9 +28,9 @@ public class MessageCD: NSManagedObject {
             let messageEntity = NSEntityDescription.entity(forEntityName: "MessageCD", in: context)
             let newMessage: MessageCD = NSManagedObject(entity: messageEntity!, insertInto: context) as! MessageCD
             
-            newMessage.messageId = message.messageId as NSNumber
+            newMessage.messageId = message.messageId! as NSNumber
             newMessage.text = message.text
-            newMessage.timestamp = message.timestamp as NSDate
+            newMessage.timestamp = message.timestamp! as NSDate
             newMessage.sender = sender
             newMessage.conversation = conversation
             

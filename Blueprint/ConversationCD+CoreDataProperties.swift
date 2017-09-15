@@ -15,8 +15,9 @@ extension ConversationCD {
         return NSFetchRequest<ConversationCD>(entityName: "ConversationCD")
     }
 
-    @NSManaged public var conversationId: NSNumber!
-    @NSManaged public var startDate: NSDate!
+    @NSManaged public var conversationId: NSNumber?
+    @NSManaged public var startDate: NSDate?
+    @NSManaged public var updatedAt: NSDate?
     @NSManaged public var participants: NSSet?
     @NSManaged public var messages: NSSet?
 

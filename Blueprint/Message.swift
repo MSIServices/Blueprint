@@ -11,30 +11,36 @@ import SwiftyJSON
 
 struct Message {
     
-    private var _messageId: Int!
-    private var _text: String!
-    private var _timestamp: Date!
-    private var _sender: User!
+    private var _messageId: NSNumber?
+    private var _text: String?
+    private var _timestamp: Date?
+    private var _sender: User?
     
-    var messageId: Int {
+    var messageId: NSNumber? {
         return _messageId
     }
     
-    var text: String {
+    var text: String? {
         return _text
     }
     
-    var timestamp: Date {
+    var timestamp: Date? {
         return _timestamp
     }
     
-    var sender: User {
+    var sender: User? {
         return _sender
+    }
+    
+    init(messageId: Int?, text: String?, timestamp: Date?) {
+        self._messageId = messageId as NSNumber?
+        self._text = text
+        self._timestamp = timestamp
     }
     
     init(message: JSON) {
         
-        self._messageId = message["messageId"].int
+        self._messageId = message["messageId"].int as NSNumber?
         self._text = message["text"].string
         
         if var dateString = message["timestamp"].string {

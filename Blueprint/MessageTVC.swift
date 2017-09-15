@@ -41,7 +41,7 @@ class MessageTVC: UITableViewCell {
             
             timestampLblTop.constant = 4
             timestampLblHeight.constant = 15
-            timestampLbl.text = message.timestamp.formatDateFrom(outputFormat: "MMM d, h:mm a")
+            timestampLbl.text = message.timestamp?.formatDateFrom(outputFormat: "MMM d, h:mm a")
         } else {
             
             timestampLblTop.constant = 0

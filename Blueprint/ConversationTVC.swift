@@ -18,9 +18,10 @@ class ConversationTVC: UITableViewCell {
     var conversation: ConversationCD!
     var lastMessage: MessageCD!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    override func layoutSubviews() {
+//        super.layoutSubviews()
         
+        contentView.addViewBackedBorder(side: .south, thickness: 1.0, color: UIColor.lightGray)
     }
     
     class func nib() -> UINib {
@@ -31,14 +32,14 @@ class ConversationTVC: UITableViewCell {
         
         self.conversation = conversation
         
-        let messages: [MessageCD] = Array(conversation!.messages!) as! [MessageCD]
-        let sortedMessages = messages.sorted {$0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+        let messages: [MessageCD] = Array(conversation.messages!) as! [MessageCD]
+        let sortedMessages = messages.sorted {$0.timestamp?.compare($1.timestamp! as Date) == .orderedAscending}
         lastMessage = sortedMessages.last
         
         setConversationImage()
-        setParticipants()
-        setLastMessage()
+//        setLastMessage()
         setTimeStamp()
+        setParticipants()
     }
     
     func setConversationImage() {
@@ -51,7 +52,7 @@ class ConversationTVC: UITableViewCell {
     }
     
     func setTimeStamp() {
-        timestampLbl.text = lastMessage.timestamp
+        timestampLbl.text = lastMessage.timestamp?.formatDateFrom(outputFormat: "MMM d, h:mm a")
     }
     
     func setLastMessage() {
@@ -60,16 +61,17 @@ class ConversationTVC: UITableViewCell {
     
     func setParticipants() {
         
-        let participants: [UserCD] = Array(conversation.participants) as! [UserCD]
+        participantsLbl.text = ""
+        
+        var participants: [UserCD] = Array(conversation.participants!) as! [UserCD]
+        participants.remove(at: participants.index {$0.username! == User.username}!)
         
         for (i,p) in participants.enumerated() {
             
-            if p.userId == User.currentId { continue }
-            
             if i != participants.count - 1 {
-                participantsLbl.text += "\(p.username?.capitalized), "
+                participantsLbl.text = participantsLbl.text! + "\(p.username!.capitalized), "
             } else {
-                participantsLbl.text += "\(p.username?.capitalized)"
+                participantsLbl.text = participantsLbl.text! + "\(p.username!.capitalized)"
             }
         }
     }

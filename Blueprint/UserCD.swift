@@ -26,7 +26,7 @@ public class UserCD: NSManagedObject {
             let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
             let newUser = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
             
-            newUser.userId = user.userId as NSNumber
+            newUser.userId = user.userId! as NSNumber
             newUser.email = user.email
             newUser.username = user.username
             newUser.avatar = user.avatar
@@ -54,7 +54,7 @@ public class UserCD: NSManagedObject {
             let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
             let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
 
-            newUser.userId = user.userId as NSNumber
+            newUser.userId = user.userId! as NSNumber
             newUser.email = user.email
             newUser.username = user.username
             newUser.avatar = user.avatar

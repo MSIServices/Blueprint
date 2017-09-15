@@ -21,20 +21,21 @@ public class ConversationCD: NSManagedObject {
         if #available(iOS 10.0, *) {
             
             let context = appDelegate.persistentContainer.viewContext
-            context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+            context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
             
             let conversationEntity = NSEntityDescription.entity(forEntityName: "ConversationCD", in: context)
             let newConvo: ConversationCD = NSManagedObject(entity: conversationEntity!, insertInto: context) as! ConversationCD
             
-            newConvo.conversationId = conversation.conversationId as NSNumber
-            newConvo.startDate = conversation.startDate as NSDate
+            newConvo.conversationId = conversation.conversationId as NSNumber?
+            newConvo.startDate = conversation.startDate as NSDate?
+            newConvo.updatedAt = NSDate()
             
             for user in conversation.participants {
                 
                 let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
                 let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
-
-                newUser.userId = user.userId as NSNumber
+                
+                newUser.userId = user.userId as NSNumber?
                 newUser.email = user.email
                 newUser.username = user.username
                 newUser.avatar = user.avatar
@@ -47,17 +48,17 @@ public class ConversationCD: NSManagedObject {
                 let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
                 let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
                 
-                newUser.userId = msg.sender.userId as NSNumber
-                newUser.email = msg.sender.email
-                newUser.username = msg.sender.username
-                newUser.avatar = msg.sender.avatar
+                newUser.userId = msg.sender?.userId as NSNumber?
+                newUser.email = msg.sender?.email
+                newUser.username = msg.sender?.username
+                newUser.avatar = msg.sender?.avatar
                 
                 let messageEntity = NSEntityDescription.entity(forEntityName: "MessageCD", in: context)
                 let newMessage: MessageCD = NSManagedObject(entity: messageEntity!, insertInto: context) as! MessageCD
                 
-                newMessage.messageId = msg.messageId as NSNumber
+                newMessage.messageId = msg.messageId
                 newMessage.text = msg.text
-                newMessage.timestamp = msg.timestamp as NSDate
+                newMessage.timestamp = msg.timestamp as NSDate?
                 newMessage.sender = newUser
                 newMessage.conversation = newConvo
                 
@@ -69,12 +70,12 @@ public class ConversationCD: NSManagedObject {
                 print("Saved Conversation...")
                 
                 let request = NSFetchRequest<NSFetchRequestResult>(entityName: "ConversationCD")
-                request.sortDescriptors = [NSSortDescriptor(key: "startDate", ascending: false)]
+                request.sortDescriptors = [NSSortDescriptor(key: "updatedAt", ascending: false)]
                 request.fetchLimit = 1
-
+                
                 do {
                     let conversation = try context.fetch(request) as! [ConversationCD]
-                    
+
                     return conversation.first
                     
                 } catch {

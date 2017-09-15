@@ -228,8 +228,7 @@ class APIManager {
                 return
             }
             //You should never end up here unless your data is valid
-
-            let conversation = Conversation(json: json)
+            let conversation = Conversation(json: json, type: .detail)
             Success(ConversationCD.sync(conversation: conversation)!)
         }
     }
@@ -243,7 +242,7 @@ class APIManager {
         
         let url = URL(string: APIManager.conversationFromParticipants)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-            print(res)
+
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
@@ -265,18 +264,17 @@ class APIManager {
                 return
             }
             //You should never end up here unless your data is valid
-            
             if json["result"].bool == false {
                 Success(nil)
             } else {
                 
-                let conversation = Conversation(json: json)
+                let conversation = Conversation(json: json, type: .detail)
                 Success(ConversationCD.sync(conversation: conversation))
             }
         }
     }
     
-    func getConversations(userId: String, Success: @escaping ((ConversationCD?) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func getConversations(userId: NSNumber, Success: @escaping (([ConversationCD]) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         let params = [
             "userId": userId,
@@ -285,8 +283,10 @@ class APIManager {
         
         let url = URL(string: APIManager.conversations)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            
             print(res)
-            guard let json = res.result.value, res.response?.statusCode == 200 else {
+            
+            guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
                     print(Error.noData)
@@ -306,7 +306,47 @@ class APIManager {
                 }
                 return
             }
+            var conversations = [ConversationCD]()
+            
+            for convo in jsonArray {
+                
+                let conversation = Conversation(json: convo, type: .preview)
+                conversations.append(ConversationCD.sync(conversation: conversation)!)
+            }
+            Success(conversations)
+        }
+    }
+    
+    func getConversation(conversationId: NSNumber, Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let params = [
+            "conversationId": conversationId,
+            "aesKey": AES_KEY.toHexString()
+            ] as [String:Any]
+        
+        let url = URL(string: APIManager.conversation)!
+        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
 
+            guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
+                
+                if res.result.value == nil {
+                    print(Error.noData)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(Error.unauthorized)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(Error.badRequest)
+                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(Error.internalServerError)
+                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(Error.unknownError)
+                    Failure(res.result.value?["error"].string!)
+                }
+                return
+            }
         }
     }
 

@@ -11,12 +11,12 @@ import SwiftyJSON
 
 struct User {
     
-    private var _userId: Int!
+    private var _userId: NSNumber?
     private var _email: String?
     private var _username: String?
     private var _avatar: String?
     
-    var userId: Int {
+    var userId: NSNumber? {
         return _userId
     }
     
@@ -44,8 +44,9 @@ struct User {
         return UserDefaults.standard.value(forKey: USERNAME) as! String
     }
     
-    init(userId: Int, email: String?, username: String?) {
-        self._userId = userId
+    init(userId: Int?, email: String?, username: String?) {
+        
+        self._userId = userId as NSNumber?
         self._email = email
         self._username = username
     }
@@ -53,7 +54,9 @@ struct User {
     //Probably should keep these for single purpose and seperate inits for different functions
     init(json: JSON) {
         
-        self._userId = json["userId"].int
+        if let userId = json["userId"].int {
+            self._userId = userId as NSNumber?
+        }
         
         if let email = json["email"].string {
             self._email = email
@@ -69,7 +72,7 @@ struct User {
     }
     
     func current() -> User {
-        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as! Int, email: UserDefaults.standard.value(forKey: EMAIL) as? String, username: UserDefaults.standard.value(forKey: USERNAME) as? String)
+        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as? Int, email: UserDefaults.standard.value(forKey: EMAIL) as? String, username: UserDefaults.standard.value(forKey: USERNAME) as? String)
     }
 
 }

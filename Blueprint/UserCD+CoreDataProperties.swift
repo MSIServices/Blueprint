@@ -16,7 +16,7 @@ extension UserCD {
         return NSFetchRequest<UserCD>(entityName: "UserCD")
     }
 
-    @NSManaged public var userId: NSNumber!
+    @NSManaged public var userId: NSNumber?
     @NSManaged public var email: String?
     @NSManaged public var username: String?
     @NSManaged public var avatar: String?

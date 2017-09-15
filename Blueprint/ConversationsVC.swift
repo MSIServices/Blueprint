@@ -15,6 +15,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     @IBOutlet weak var tableView: UITableView!
     
     var conversations = [ConversationCD]()
+    var selectedConversation: ConversationCD!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,23 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        APIManager.shared.
+        APIManager.shared.getConversations(userId: User.currentId, Success: { conversations in
+            
+            self.conversations = conversations
+            self.tableView.reloadData()
+            
+        }, Failure: { error in
+            print(error ?? "????")
+        })
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == MESSAGES_VC {
+            
+            let vC = segue.destination as! MessagesVC
+            vC.conversation = selectedConversation
+        }
     }
     
     func goToMessages() {
@@ -51,6 +68,13 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableView.cellForRow(at: indexPath) as! ConversationTVC
+        selectedConversation = cell.conversation
+        performSegue(withIdentifier: MESSAGES_VC, sender: self)
     }
 
     @IBAction func unwindToConversationsVC(segue: UIStoryboardSegue) { }

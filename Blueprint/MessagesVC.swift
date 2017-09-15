@@ -82,6 +82,16 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if conversation == nil {
             getUsers()
+        } else {
+            
+            APIManager.shared.getConversation(conversationId: conversation!.conversationId!, Success: { conversation in
+            
+                self.conversation = conversation
+                self.messagesTableView.reloadData()
+                
+            }, Failure: { error in
+                print(error)
+            })
         }
     }
     
@@ -359,7 +369,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 let cell = tableView.dequeueReusableCell(withIdentifier: MESSAGE_TVC, for: indexPath) as! MessageTVC
                 
                 let messages: [MessageCD] = Array(conversation!.messages!) as! [MessageCD]
-                let sortedMessages = messages.sorted {$0.timestamp.compare($1.timestamp as Date) == .orderedAscending}
+                let sortedMessages = messages.sorted {$0.timestamp?.compare($1.timestamp! as Date) == .orderedAscending}
                 let msg = sortedMessages[indexPath.row]
 
                 var showDate: Bool!
@@ -370,7 +380,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 } else {
                     
                     previousMsg = sortedMessages[indexPath.row - 1]
-                    if msg.timestamp.minutes(from: previousMsg.timestamp as Date) > 15 {
+                    if (msg.timestamp?.minutes(from: previousMsg.timestamp! as Date))! > 15 {
                         showDate = true
                     } else {
                         showDate = false
@@ -395,7 +405,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
             
             if conversation == nil && recipients.count > 0 {
                     
-                var recipientIds: [NSNumber] = recipients.map { $0.userId }
+                var recipientIds: [NSNumber] = recipients.map { $0.userId! }
                 recipientIds.append(User.currentId)
                 
                 APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
@@ -403,9 +413,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                     if conversation != nil {
                         
                         print("Conversation already exists")
-                        
                         //SAVE MESSAGE TO EXISTING CONVERSATION
-                        
                         
                         self.conversation = conversation
                         self.messagesTableView.reloadData()

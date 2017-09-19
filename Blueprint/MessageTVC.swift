@@ -35,7 +35,6 @@ class MessageTVC: UITableViewCell {
     func configureCell(message: MessageCD, showDate: Bool) {
         
         self.message = message
-        dump(message)
         
         if showDate {
             
@@ -48,7 +47,7 @@ class MessageTVC: UITableViewCell {
             timestampLblHeight.constant = 0
         }
         
-        if message.sender?.username == UserDefaults.standard.value(forKey: USERNAME) as? String {
+        if message.sender?.userId == UserDefaults.standard.value(forKey: USER_ID) as? NSNumber {
             
             recipientLbl.setContentHuggingPriority(250, for: UILayoutConstraintAxis.vertical)
             senderLbl.setContentHuggingPriority(750, for: UILayoutConstraintAxis.vertical)

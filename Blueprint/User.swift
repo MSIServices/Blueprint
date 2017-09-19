@@ -44,8 +44,7 @@ struct User {
         return UserDefaults.standard.value(forKey: USERNAME) as! String
     }
     
-    init(userId: Int?, email: String?, username: String?) {
-        
+    init(userId: NSNumber?, email: String?, username: String?) {
         self._userId = userId as NSNumber?
         self._email = email
         self._username = username
@@ -72,7 +71,7 @@ struct User {
     }
     
     func current() -> User {
-        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as? Int, email: UserDefaults.standard.value(forKey: EMAIL) as? String, username: UserDefaults.standard.value(forKey: USERNAME) as? String)
+        return User(userId: UserDefaults.standard.value(forKey: USER_ID) as? NSNumber, email: UserDefaults.standard.value(forKey: EMAIL) as? String, username: UserDefaults.standard.value(forKey: USERNAME) as? String)
     }
 
 }

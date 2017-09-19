@@ -32,12 +32,14 @@ class ConversationTVC: UITableViewCell {
         
         self.conversation = conversation
         
+        dump(conversation)
+        
         let messages: [MessageCD] = Array(conversation.messages!) as! [MessageCD]
         let sortedMessages = messages.sorted {$0.timestamp?.compare($1.timestamp! as Date) == .orderedAscending}
         lastMessage = sortedMessages.last
         
         setConversationImage()
-//        setLastMessage()
+        setLastMessage()
         setTimeStamp()
         setParticipants()
     }

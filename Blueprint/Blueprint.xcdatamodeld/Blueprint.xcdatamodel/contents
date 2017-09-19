@@ -69,8 +69,12 @@
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="userId"/>
-                <constraint value="email"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
                 <constraint value="username"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="email"/>
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>

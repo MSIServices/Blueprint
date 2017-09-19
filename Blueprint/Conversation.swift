@@ -11,12 +11,12 @@ import SwiftyJSON
 
 struct Conversation {
     
-    private var _conversationId: Int?
+    private var _conversationId: NSNumber?
     private var _startDate: Date?
     private var _participants = [User]()
     private var _messages = [Message]()
     
-    var conversationId: Int? {
+    var conversationId: NSNumber? {
         return _conversationId
     }
     
@@ -36,11 +36,11 @@ struct Conversation {
         
         if type == ConversationType.preview {
             
-            self._conversationId = json["conversationId"].int
+            self._conversationId = json["conversationId"].number
             
             var lastMessageDate = json["lastMessageDate"].string!
             
-            self._messages.append(Message(messageId: json["lastMessageId"].int!, text: json["lastMessage"].string!, timestamp: lastMessageDate.sqlToDate()))
+            self._messages.append(Message(messageId: json["lastMessageId"].number, text: json["lastMessage"].string!, timestamp: lastMessageDate.sqlToDate(), sender: User(userId: json["sender"].number, email: nil, username: nil)))
             
             if let participants: String = json["participants"].string, let participantsIds: String = json["participantsIds"].string {
                 
@@ -48,18 +48,22 @@ struct Conversation {
                 let participantIds = participantsIds.components(separatedBy: ",").flatMap { Int($0) }
                 
                 for (i,username) in participantUsernames.enumerated() {
-                    self._participants.append(User(userId: participantIds[i], email: nil, username: username))
+                    self._participants.append(User(userId: participantIds[i] as NSNumber, email: nil, username: username))
                 }
             }
         } else if type == ConversationType.detail {
             
-            self._conversationId = json["conversation"]["conversationId"].int
+            self._conversationId = json["conversation"]["conversationId"].number
             
             for user in json["participants"].arrayValue {
                 _participants.append(User(json: user))
             }
             for msg in json["messages"].arrayValue {
-                _messages.append(Message(message: msg))
+                
+                let user = User(userId: msg["userId"].number, email: nil, username: msg["username"].string)
+                var timestamp = msg["timestamp"].string!
+
+                _messages.append(Message(messageId: msg["messageId"].number, text: msg["text"].string, timestamp: timestamp.sqlToDate(), sender: user))
             }
         }
     }

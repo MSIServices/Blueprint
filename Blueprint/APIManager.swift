@@ -21,6 +21,9 @@ class APIManager {
     static let authenticate: String = baseUrl + "/authenticate"
     static let createPost: String = baseUrl + "/post"
     static let conversation: String = baseUrl + "/conversation"
+    static let conversationMessages: String = baseUrl + "/conversation/messages"
+    static let conversationMessage: String = baseUrl + "/conversation/message"
+    static let conversationParticipantsMessage: String = baseUrl + "/conversation/participants/message"
     static let conversations: String = baseUrl + "/conversations"
     static let conversationFromParticipants: String = baseUrl + "/participants/conversation"
     
@@ -60,10 +63,10 @@ class APIManager {
                 }
                 return
             }
-            //You should never end up here unless your data is valid
-
             let user = User(json: json)
-            UserCD.save(user: user)
+            if UserCD.fetchById(UserId: user.userId!) == nil {
+                UserCD.save(user: user)
+            }
             Success(user)
         }
     }
@@ -99,13 +102,15 @@ class APIManager {
                 }
                 return
             }
-            //You should never end up here unless your data is valid
-
-            Success(User(json: json))
+            let user = User(json: json)
+            if UserCD.fetchById(UserId: user.userId!) == nil {
+                UserCD.save(user: user)
+            }
+            Success(user)
         }
     }
     
-    func getUsers(Success: @escaping ((Bool) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func getUsers(Success: @escaping (([UserCD]) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         let url = URL(string: APIManager.users)!
         Alamofire.request(url).responseSwiftyJSON { res in
@@ -130,14 +135,14 @@ class APIManager {
                 }
                 return
             }
-            //You should never end up here unless your data is valid
-            
             for user in jsonArray {
                 
                 let user = User(json: user)
-                UserCD.save(user: user)
+                if UserCD.fetchById(UserId: user.userId!) == nil {
+                    UserCD.save(user: user)
+                }
             }
-            Success(true)
+            Success(UserCD.fetchAll())
         }
     }
     
@@ -189,7 +194,6 @@ class APIManager {
                 return
             }
             //You should never end up here unless your data is valid
-
             let post = Post(id: json["postId"].int!, json: json)
             PostCD.save(post: post)
             Success(post)
@@ -207,6 +211,8 @@ class APIManager {
         let url = URL(string: APIManager.conversation)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
 
+            print(res)
+            
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
@@ -227,12 +233,14 @@ class APIManager {
                 }
                 return
             }
-            //You should never end up here unless your data is valid
             let conversation = Conversation(json: json, type: .detail)
-            Success(ConversationCD.sync(conversation: conversation)!)
+            let savedConversation = ConversationCD.sync(conversation: conversation)!
+            let msg = savedConversation.messages?.allObjects.first as! MessageCD
+            dump(msg.sender)
+            Success(savedConversation)
         }
     }
-
+    
     func getConversationFromRecipients(recipients: [NSNumber], Success: @escaping ((ConversationCD?) -> Void), Failure: @escaping ((String?) -> Void)) {
         
         let params = [
@@ -279,7 +287,7 @@ class APIManager {
         let params = [
             "userId": userId,
             "aesKey": AES_KEY.toHexString()
-            ] as [String:Any]
+        ] as [String:Any]
         
         let url = URL(string: APIManager.conversations)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
@@ -317,16 +325,11 @@ class APIManager {
         }
     }
     
-    func getConversation(conversationId: NSNumber, Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
+    func getConversationMessages(conversationId: NSNumber, Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
         
-        let params = [
-            "conversationId": conversationId,
-            "aesKey": AES_KEY.toHexString()
-            ] as [String:Any]
-        
-        let url = URL(string: APIManager.conversation)!
-        Alamofire.request(url, method: .get, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-
+        let url = createUrlWithQueryStrings(url: APIManager.conversationMessages, parameters: [[0:"conversationId" as AnyObject,1:conversationId]])
+        Alamofire.request(url, method: .get, parameters: nil, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            
             guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
@@ -347,7 +350,122 @@ class APIManager {
                 }
                 return
             }
+            let conversation = ConversationCD.fetch(conversationId: conversationId)
+            
+            for msg in jsonArray {
+                
+                let message = Message(message: msg)
+                let sender = UserCD.fetchById(UserId: msg["userId"].number!)
+                MessageCD.save(message: message, conversation: conversation!, sender: sender!)
+            }
+            Success(ConversationCD.fetch(conversationId: conversationId)!)
         }
     }
+    
+        func saveMessageToConversation(conversationId: NSNumber, message: String, senderId: NSNumber, Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
+    
+            let params = [
+                "senderId": senderId,
+                "message": message,
+                "conversationId": conversationId,
+                "aesKey": AES_KEY.toHexString()
+            ] as [String:Any]
+    
+            let url = URL(string: APIManager.conversationMessage)!
+            Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+//    
+//                print(res)
+                
+                guard let json = res.result.value, res.response?.statusCode == 200 else {
+    
+                    if res.result.value == nil {
+                        print(Error.noData)
+                        Failure(res.result.value?["error"].string!)
+                    } else if res.response?.statusCode == 401 {
+                        print(Error.unauthorized)
+                        Failure(res.result.value?["error"].string!)
+                    } else if res.response?.statusCode == 409 {
+                        print(Error.badRequest)
+                        Failure(res.result.value?["error"].string!)
+                    } else if res.response?.statusCode == 500 {
+                        print(Error.internalServerError)
+                        Failure(res.result.value?["error"].string!)
+                    } else {
+                        print(Error.unknownError)
+                    }
+                    return
+                }
+                let conversation = Conversation(json: json, type: .detail)
+                Success(ConversationCD.sync(conversation: conversation)!)
+            }
+        }
+    
+//    func saveMessageToConversationWithAdditionalRecipients(conversationId: NSNumber, message: String, senderId: NSNumber, participants: [NSNumber], Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
+//        
+//        let params = [
+//            "senderId": senderId,
+//            "message": message,
+//            "conversationId": conversationId,
+//            "participants": participants,
+//            "aesKey": AES_KEY.toHexString()
+//        ] as [String:Any]
+//        
+//        let url = URL(string: APIManager.conversationParticipantsMessage)!
+//        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+//            
+//            guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
+//                
+//                if res.result.value == nil {
+//                    print(Error.noData)
+//                    Failure(res.result.value?["error"].string!)
+//                } else if res.response?.statusCode == 401 {
+//                    print(Error.unauthorized)
+//                    Failure(res.result.value?["error"].string!)
+//                } else if res.response?.statusCode == 409 {
+//                    print(Error.badRequest)
+//                    Failure(res.result.value?["error"].string!)
+//                } else if res.response?.statusCode == 500 {
+//                    print(Error.internalServerError)
+//                    Failure(res.result.value?["error"].string!)
+//                } else {
+//                    print(Error.unknownError)
+//                    Failure(res.result.value?["error"].string!)
+//                }
+//                return
+//            }
+//            let conversation = ConversationCD.fetch(conversationId: conversationId)
+//            
+//            for msg in jsonArray {
+//                
+//                let message = Message(message: msg)
+//                let sender = UserCD.fetchById(UserId: msg["userId"].number!)
+//                MessageCD.save(message: message, conversation: conversation!, sender: sender!)
+//            }
+//            Success(ConversationCD.fetch(conversationId: conversationId)!)
+//        }
+//    }
+    
+}
 
+extension APIManager {
+    
+    func createUrlWithQueryStrings(url: String, parameters: [[Int : Any]]) -> URL {
+        
+        var firstParameter = true
+        var url = url
+        
+        for param in parameters {
+            
+            if firstParameter {
+                
+                firstParameter = false
+                url.append("?\(param[0]!)=\(param[1]!)")
+                
+            } else {
+                url.append("&\(param[0]!)=\(param[1]!)")
+            }
+        }
+        return URL(string: url)!
+    }
+    
 }

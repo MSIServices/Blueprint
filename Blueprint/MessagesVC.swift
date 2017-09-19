@@ -28,10 +28,9 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var users = [UserCD]()
     var filteredUsers = [UserCD]()
     var recipients = [UserCD]()
-//    var participants = [UserCD]()
-//    var messages = [MessageCD]()
     var bubbles = [(BubbleV, UIEdgeInsets)]()
     var conversation: ConversationCD?
+    var conversationId: NSNumber?
     var bubbleHeight: CGFloat = 35
     var bubbleSpacing: CGFloat = 10
     var centerOffset: CGFloat = 0
@@ -42,6 +41,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     var firstLine = true
     var searchMode = false
     var removeBubble = true
+    var activeField: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +80,21 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        if conversation == nil {
-            getUsers()
-        } else {
+        getUsers()
+        
+        if conversation != nil {
             
-            APIManager.shared.getConversation(conversationId: conversation!.conversationId!, Success: { conversation in
+            for case let participant as UserCD in (conversation?.participants?.allObjects)! {
+                createBubble(user: participant)
+            }
             
+            APIManager.shared.getConversationMessages(conversationId: conversation!.conversationId!, Success: { conversation in
+                
+                var recipients: [UserCD] = conversation.participants!.allObjects as! [UserCD]
+                recipients = recipients.filter { $0.userId != User.currentId }
+                
                 self.conversation = conversation
+                self.recipients = recipients
                 self.messagesTableView.reloadData()
                 
             }, Failure: { error in
@@ -138,11 +146,12 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func getUsers() {
 
-        APIManager.shared.getUsers(Success: { good in
+        APIManager.shared.getUsers(Success: { users in
             
-            if good {
-                self.users = UserCD.fetchAll()
-            }
+            let idx = users.index(of: UserCD.fetchById(UserId: User.currentId)!)
+            self.users = users
+            self.users.remove(at: idx!)
+
         }, Failure: { error in
             print(error ?? "No Error")
         })
@@ -197,7 +206,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func backspacePressed() {
         
-        if searchTextView.text == "" && bubbles.count > 0 && removeBubble {
+        if searchTextView.text == "" && bubbles.count > 0 && removeBubble && conversation == nil && activeField != sendMessageTextView {
             
             disableSearch()
             
@@ -251,6 +260,10 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        activeField = textView
+    }
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         if text == "\n" {
@@ -292,12 +305,14 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     
     func textViewDidChange(_ textView: UITextView) {
 
-        if let txt = textView.text, textView == searchTextView, textView.text != "" {
-        
-            filteredUsers = users.filter { $0.username?.lowercased().range(of: txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)) != nil && $0.username != UserDefaults.standard.value(forKey: USERNAME) as? String && !recipients.contains($0) }
-    
+        if var txt = textView.text, textView == searchTextView, txt != "" {
+            
+            txt = txt.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            filteredUsers = users.filter { $0.username!.lowercased().range(of: txt) != nil }
+            
             if filteredUsers.count > 0 {
-                
+               
                 enableSearch()
                 
                 for user in filteredUsers {
@@ -386,7 +401,6 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                         showDate = false
                     }
                 }
-                
                 cell.configureCell(message: msg, showDate: showDate)
                 
                 return cell
@@ -403,40 +417,101 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if let msg = sendMessageTextView.text, msg != placeholderText {
             
-            if conversation == nil && recipients.count > 0 {
-                    
-                var recipientIds: [NSNumber] = recipients.map { $0.userId! }
-                recipientIds.append(User.currentId)
+            if conversation == nil {
                 
-                APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
+                if recipients.count > 0 {
                     
-                    if conversation != nil {
+                    var recipientIds: [NSNumber] = recipients.map { $0.userId! }
+                    recipientIds.append(User.currentId)
+                    
+                    APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
                         
-                        print("Conversation already exists")
-                        //SAVE MESSAGE TO EXISTING CONVERSATION
+                        if conversation != nil {
+                            
+                            print("CONVERSATION ALREADY EXISTS.")
+
+                            APIManager.shared.saveMessageToConversation(conversationId: conversation!.conversationId!, message: msg, senderId: User.currentId, Success: { conversation in
+                                
+                                self.conversation = conversation
+                                self.messagesTableView.reloadData()
+                                self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
+                                
+                            }, Failure: { error in
+                                print(error ?? "No Error.")
+                            })
+                        } else {
+                            
+                            print("CONVERSATION DOES NOT EXIST. CREATING NEW ONE...")
+                            
+                            APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
+                                
+                                self.conversation = conversation
+                                self.messagesTableView.reloadData()
+                                self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
+                                
+                            }, Failure: { error in
+                                print(error ?? "No Error.")
+                            })
+                        }
+                    }, Failure: { error in
+                        print(error ?? "No Error")
+                    })
+                }
+            } else if conversation != nil {
+                
+                if conversation!.participants!.count != recipients.count {
+                    
+                    var recipientIds: [NSNumber] = recipients.map { $0.userId! }
+                    recipientIds.append(User.currentId)
+                    
+                    print("NEW PARTICIPANTS DETECTED. CHECKING FOR EXISTING CONVERSATION...")
+                    
+                    APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
+                        
+                        if conversation != nil {
+                            
+                            print("CONVERSATION FOUND. SAVING MESSAGE...")
+                            
+                            APIManager.shared.saveMessageToConversation(conversationId: conversation!.conversationId!, message: msg, senderId: User.currentId, Success: { conversation in
+                                
+                                self.conversation = conversation
+                                self.messagesTableView.reloadData()
+                                self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
+                                
+                            }, Failure: { error in
+                                print(error ?? "No Error.")
+                            })
+                        } else {
+                            
+                            print("NO CONVERSATION FOUND. CREATING NEW ONE...")
+                            
+                            APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
+                                
+                                self.conversation = conversation
+                                self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
+                                self.messagesTableView.reloadData()
+                                
+                            }, Failure: { error in
+                                print(error ?? "No Error.")
+                            })
+                        }
+                    }, Failure: { error in
+                        print(error)
+                    })
+                } else {
+                    
+                    print("SAVING MESSAGE...")
+                    
+                    APIManager.shared.saveMessageToConversation(conversationId: conversation!.conversationId!, message: msg, senderId: User.currentId, Success: { conversation in
                         
                         self.conversation = conversation
                         self.messagesTableView.reloadData()
+                        self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
                         
-                    } else {
-                        
-                        print("Conversation does not exist. Creating new one...")
-                        
-                        APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
-                            
-                            self.conversation = conversation
-                            self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)
-                            self.messagesTableView.reloadData()
-                            
-                        }, Failure: { error in
-                            print(error ?? "No Error.")
-                        })
-                    }
-                }, Failure: { error in
-                    print(error ?? "No Error")
-                })
-            } else if conversation != nil {
-//                saveMessage(conversation: conversation!, msg: msg)
+                    }, Failure: { error in
+                        print(error ?? "No Error.")
+                    })
+                }
             }
         }
     }

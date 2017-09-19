@@ -22,14 +22,23 @@ public class UserCD: NSManagedObject {
         if #available(iOS 10.0, *) {
             
             let context = appDelegate.persistentContainer.viewContext
-            context.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+            context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
+            
             let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
             let newUser = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
             
-            newUser.userId = user.userId! as NSNumber
-            newUser.email = user.email
-            newUser.username = user.username
-            newUser.avatar = user.avatar
+            if let userId = user.userId {
+                newUser.userId = userId
+            }
+            if let email = user.email {
+                newUser.email = email
+            }
+            if let username = user.username {
+                newUser.username = username
+            }
+            if let avatar = user.avatar {
+                newUser.avatar = avatar
+            }
             
             do {
                 try newUser.managedObjectContext?.save()
@@ -49,16 +58,24 @@ public class UserCD: NSManagedObject {
         if #available(iOS 10.0, *) {
             
             let context = appDelegate.persistentContainer.viewContext
-            context.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
+            context.mergePolicy = NSMergePolicy.mergeByPropertyObjectTrump
             
             let userEntity = NSEntityDescription.entity(forEntityName: "UserCD", in: context)
             let newUser: UserCD = NSManagedObject(entity: userEntity!, insertInto: context) as! UserCD
 
-            newUser.userId = user.userId! as NSNumber
-            newUser.email = user.email
-            newUser.username = user.username
-            newUser.avatar = user.avatar
-
+            if let userId = user.userId {
+                newUser.userId = userId
+            }
+            if let email = user.email {
+                newUser.email = email
+            }
+            if let username = user.username {
+                newUser.username = username
+            }
+            if let avatar = user.avatar {
+                newUser.avatar = avatar
+            }
+            
             do {
                 try newUser.managedObjectContext?.save()
                 print("Saved user...")
@@ -110,14 +127,14 @@ public class UserCD: NSManagedObject {
             
             do {
                 User = try context.fetch(request).first as? UserCD
-                print("Fetched...")
+                print("Fetched user...")
             } catch let error as NSError {
                 print("ERROR FETCHING: \(error.debugDescription)")
             }
         }
         return User
     }
-//
+
     static func fetchAll() -> [UserCD] {
         
         var Users = [UserCD]()
@@ -133,7 +150,7 @@ public class UserCD: NSManagedObject {
             
             do {
                 Users = try context.fetch(request) as! [UserCD]
-                print("Fetched all...")
+                print("Fetched all users..")
             } catch let error as NSError {
                 print("ERROR FETCHING ALL: \(error.debugDescription)")
             }

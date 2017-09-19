@@ -32,10 +32,11 @@ struct Message {
         return _sender
     }
     
-    init(messageId: Int?, text: String?, timestamp: Date?) {
-        self._messageId = messageId as NSNumber?
+    init(messageId: NSNumber?, text: String?, timestamp: Date?, sender: User?) {
+        self._messageId = messageId
         self._text = text
         self._timestamp = timestamp
+        self._sender = sender
     }
     
     init(message: JSON) {
@@ -46,7 +47,7 @@ struct Message {
         if var dateString = message["timestamp"].string {
             self._timestamp = dateString.sqlToDate()
         }
-        self._sender = User(userId: message["userId"].int!, email: nil, username: message["sender"].string)
+        self._sender = User(userId: message["userId"].number, email: nil, username: message["sender"].string)
     }
     
 }

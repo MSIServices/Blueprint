@@ -34,13 +34,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="icD-eP-HeN">
-                        <rect key="frame" x="80" y="24" width="0.0" height="0.0"/>
+                        <rect key="frame" x="80" y="26" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" name="OpenSans-Bold" family="Open Sans" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f66-UE-TBo">
-                        <rect key="frame" x="80" y="26" width="285" height="49.5"/>
+                        <rect key="frame" x="80" y="28" width="285" height="49.5"/>
                         <string key="text">Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. Sample Text. </string>
                         <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="12"/>
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -53,7 +53,7 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="icD-eP-HeN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="16" id="6AJ-g2-gMT"/>
+                    <constraint firstItem="icD-eP-HeN" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="18" id="6AJ-g2-gMT"/>
                     <constraint firstItem="f66-UE-TBo" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="6QN-jE-xkD"/>
                     <constraint firstItem="f66-UE-TBo" firstAttribute="leading" secondItem="cxg-3i-Cyn" secondAttribute="trailing" constant="12" id="I1M-Qk-atA"/>
                     <constraint firstItem="03I-4L-NPy" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="JH9-d0-x6S"/>

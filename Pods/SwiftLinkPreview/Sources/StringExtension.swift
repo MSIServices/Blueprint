@@ -38,10 +38,10 @@ extension String {
     var decoded: String {
         
         let encodedData = self.data(using: String.Encoding.utf8)!
-        let attributedOptions: [String: AnyObject] =
+        let attributedOptions: [NSAttributedString.DocumentReadingOptionKey: AnyObject] =
             [
-                NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType as AnyObject,
-                NSCharacterEncodingDocumentAttribute: String.Encoding.utf8.rawValue as AnyObject
+                NSAttributedString.DocumentReadingOptionKey(rawValue: NSAttributedString.DocumentAttributeKey.documentType.rawValue): NSAttributedString.DocumentType.html as AnyObject,
+                NSAttributedString.DocumentReadingOptionKey(rawValue: NSAttributedString.DocumentAttributeKey.characterEncoding.rawValue): String.Encoding.utf8.rawValue as AnyObject
         ]
         
         do {

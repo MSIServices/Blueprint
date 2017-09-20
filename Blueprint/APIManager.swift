@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import Alamofire
 import AlamofireSwiftyJSON
+import Alamofire
 import CryptoSwift
 
 class APIManager {
@@ -193,7 +193,6 @@ class APIManager {
                 }
                 return
             }
-            //You should never end up here unless your data is valid
             let post = Post(id: json["postId"].int!, json: json)
             PostCD.save(post: post)
             Success(post)
@@ -234,10 +233,7 @@ class APIManager {
                 return
             }
             let conversation = Conversation(json: json, type: .detail)
-            let savedConversation = ConversationCD.sync(conversation: conversation)!
-            let msg = savedConversation.messages?.allObjects.first as! MessageCD
-            dump(msg.sender)
-            Success(savedConversation)
+            Success(ConversationCD.sync(conversation: conversation)!)
         }
     }
     
@@ -291,8 +287,6 @@ class APIManager {
         
         let url = URL(string: APIManager.conversations)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-            
-            print(res)
             
             guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
                 
@@ -363,7 +357,7 @@ class APIManager {
     }
     
         func saveMessageToConversation(conversationId: NSNumber, message: String, senderId: NSNumber, Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
-    
+            
             let params = [
                 "senderId": senderId,
                 "message": message,

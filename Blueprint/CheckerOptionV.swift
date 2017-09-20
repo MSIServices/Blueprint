@@ -88,7 +88,7 @@ class CheckerOptionV: UIView {
         }
     }
     
-    func btnPressed(button: UIButton) {
+    @objc func btnPressed(button: UIButton) {
         checkerOptionD.checkerBtnPressed(tag: button.tag)
     }
     

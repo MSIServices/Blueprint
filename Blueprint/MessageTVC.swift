@@ -49,21 +49,19 @@ class MessageTVC: UITableViewCell {
         
         if message.sender?.userId == UserDefaults.standard.value(forKey: USER_ID) as? NSNumber {
             
-            recipientLbl.setContentHuggingPriority(250, for: UILayoutConstraintAxis.vertical)
-            senderLbl.setContentHuggingPriority(750, for: UILayoutConstraintAxis.vertical)
+            recipientLbl.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: UILayoutConstraintAxis.vertical)
+            senderLbl.setContentHuggingPriority(UILayoutPriority(rawValue: 750), for: UILayoutConstraintAxis.vertical)
             senderLbl.text = message.text
-            senderLbl.sizeToFit()
             recipientNameLbl.isHidden = true
             recipientView.isHidden = true
             senderView.isHidden = false
             
         } else {
             
-            senderLbl.setContentHuggingPriority(250, for: UILayoutConstraintAxis.vertical)
-            recipientLbl.setContentHuggingPriority(750, for: UILayoutConstraintAxis.vertical)
+            senderLbl.setContentHuggingPriority(UILayoutPriority(rawValue: 250), for: UILayoutConstraintAxis.vertical)
+            recipientLbl.setContentHuggingPriority(UILayoutPriority(rawValue: 750), for: UILayoutConstraintAxis.vertical)
             recipientLbl.text = message.text
             recipientNameLbl.text = message.sender?.username?.capitalized
-            recipientLbl.sizeToFit()
             recipientNameLbl.isHidden = false
             recipientView.isHidden = false
             senderView.isHidden = true

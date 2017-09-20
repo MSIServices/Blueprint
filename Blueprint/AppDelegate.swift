@@ -8,11 +8,13 @@
 
 import UIKit
 import CoreData
+import SocketIO
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
+    var socket: SocketIOClient!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -25,6 +27,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
+        
+        socket = SocketIOClient(socketURL: URL(string: APIManager.baseUrl)!, config: [SocketIOClientOption.log(true), SocketIOClientOption.compress])
+        
+        socket.on(clientEvent: .connect) { data, ack in
+            print("Sockets Connected To Server...")
+        }
+        
+        socket.connect()
         
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }

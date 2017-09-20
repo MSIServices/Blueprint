@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocketIO
 
 fileprivate let MESSAGE_TVC = "MessageTVC"
 fileprivate let SEARCH_TVC = "SearchTVC"
@@ -47,7 +48,6 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         super.viewDidLoad()
         
         applyPlaceholderStyle(aTextview: sendMessageTextView, placeholderText: placeholderText)
-        
         addRecipientBtn = UIButton(type: .custom)
         addRecipientBtn.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         addRecipientBtn.frame.origin.x = view.frame.size.width - addRecipientBtn.bounds.size.width - 8
@@ -84,23 +84,30 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         
         if conversation != nil {
             
-            for case let participant as UserCD in (conversation?.participants?.allObjects)! {
-                createBubble(user: participant)
+            var recipients: [UserCD] = conversation!.participants!.allObjects as! [UserCD]
+            recipients.sort { $0.username! < $1.username! }
+            
+            for participant in recipients {
+                
+                if participant.userId != User.currentId {
+                    createBubble(user: participant)
+                }
             }
             
             APIManager.shared.getConversationMessages(conversationId: conversation!.conversationId!, Success: { conversation in
-                
-                var recipients: [UserCD] = conversation.participants!.allObjects as! [UserCD]
-                recipients = recipients.filter { $0.userId != User.currentId }
                 
                 self.conversation = conversation
                 self.recipients = recipients
                 self.messagesTableView.reloadData()
                 
             }, Failure: { error in
-                print(error)
+                print(error ?? "No Error")
             })
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     func applyPlaceholderStyle(aTextview: UITextView, placeholderText: String) {
@@ -140,7 +147,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -204,7 +211,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         disableSearch()
     }
     
-    func backspacePressed() {
+    @objc func backspacePressed() {
         
         if searchTextView.text == "" && bubbles.count > 0 && removeBubble && conversation == nil && activeField != sendMessageTextView {
             
@@ -231,37 +238,28 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
-        let activeField = Helper.findFirstResponder(inView: view) as! UITextView
-        
-        if activeField == sendMessageTextView {
-            
-            if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+        if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 
-                if view.frame.origin.y == 0 {
+            if view.frame.origin.y == 0 {
                     
-                    sendMessageViewBttm.constant = keyboardSize.height - TAB_BAR_HEIGHT
+                sendMessageViewBttm.constant = keyboardSize.height - TAB_BAR_HEIGHT
                     
-                    UIView.animate(withDuration: 0.25) {
-                        self.view.layoutIfNeeded()
-                    }
+                UIView.animate(withDuration: 0.25) {
+                    self.view.layoutIfNeeded()
                 }
             }
         }
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         
         sendMessageViewBttm.constant = 0
-
+        
         UIView.animate(withDuration: 0.25) {
             self.view.layoutIfNeeded()
         }
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        activeField = textView
     }
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -409,7 +407,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return UITableViewCell()
     }
     
-    func backBtnPressed() {
+    @objc func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_CONVERSATIONS_VC, sender: self)
     }
     
@@ -459,6 +457,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 }
             } else if conversation != nil {
                 
+                //Add one because we removed the current user earlier
                 if conversation!.participants!.count != recipients.count {
                     
                     var recipientIds: [NSNumber] = recipients.map { $0.userId! }
@@ -496,7 +495,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             })
                         }
                     }, Failure: { error in
-                        print(error)
+                        print(error ?? "No Error")
                     })
                 } else {
                     

@@ -78,7 +78,7 @@ class SignUpTwoVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -93,7 +93,7 @@ class SignUpTwoVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         
         self.nextBtnBttm.constant = 0
                 
@@ -102,7 +102,7 @@ class SignUpTwoVC: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func dismissAlert() {
+    @objc func dismissAlert() {
         mainV.removeAlert()
     }
             

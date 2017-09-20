@@ -81,7 +81,7 @@ class Regex {
     static func stringMatches(_ results: [NSTextCheckingResult], text: String, index: Int = 0) -> [String] {
         
         return results.map {
-            let range = $0.rangeAt(index)
+            let range = $0.range(at: index)
             if text.characters.count > range.location + range.length {
                 return (text as NSString).substring(with: range)
             }

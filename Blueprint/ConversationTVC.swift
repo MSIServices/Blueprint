@@ -32,8 +32,6 @@ class ConversationTVC: UITableViewCell {
         
         self.conversation = conversation
         
-        dump(conversation)
-        
         let messages: [MessageCD] = Array(conversation.messages!) as! [MessageCD]
         let sortedMessages = messages.sorted {$0.timestamp?.compare($1.timestamp! as Date) == .orderedAscending}
         lastMessage = sortedMessages.last
@@ -46,10 +44,10 @@ class ConversationTVC: UITableViewCell {
     
     func setConversationImage() {
         
-        if (conversation.participants?.count)! > 1 {
+        if (conversation.participants?.count)! > 2 {
             conversationImageView.image = UIImage(named: "group-red")
         } else {
-            
+            conversationImageView.image = UIImage(named: "user")
         }
     }
     
@@ -67,6 +65,7 @@ class ConversationTVC: UITableViewCell {
         
         var participants: [UserCD] = Array(conversation.participants!) as! [UserCD]
         participants.remove(at: participants.index {$0.username! == User.username}!)
+        participants.sort { $0.username! < $1.username! }
         
         for (i,p) in participants.enumerated() {
             

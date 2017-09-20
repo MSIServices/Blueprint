@@ -20,7 +20,7 @@ class TextFieldTVC: UITableViewCell, UITextFieldDelegate {
         textField.delegate = self
         textField.tag = 1
         textField.textPaddingAdjustment = 8
-        textField.attributedPlaceholder = NSAttributedString(string: "Url", attributes: [NSFontAttributeName: UIFont(name: "OpenSans-LightItalic", size: 16)!, NSForegroundColorAttributeName: UIColor.gray])
+        textField.attributedPlaceholder = NSAttributedString(string: "Url", attributes: [NSAttributedStringKey.font: UIFont(name: "OpenSans-LightItalic", size: 16)!, NSAttributedStringKey.foregroundColor: UIColor.gray])
         
         NotificationCenter.default.addObserver(self, selector: #selector(textFieldDidChange), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
@@ -33,7 +33,7 @@ class TextFieldTVC: UITableViewCell, UITextFieldDelegate {
         textField.text = text
     }
     
-    func textFieldDidChange() {
+    @objc func textFieldDidChange() {
         messageDelegate.updateUrl!(text: textField.text)
     }
     

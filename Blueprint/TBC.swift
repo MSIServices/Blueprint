@@ -23,13 +23,13 @@ class TBC: UITabBarController, UITabBarControllerDelegate {
         
         tabBar.barTintColor = TAB_BAR_COLOR
         
-        UITabBarItem.appearance().setTitleTextAttributes([NSForegroundColorAttributeName: TEXT_COLOR_SELECTED], for: UIControlState.selected)
+        UITabBarItem.appearance().setTitleTextAttributes([NSAttributedStringKey.foregroundColor: TEXT_COLOR_SELECTED], for: UIControlState.selected)
         
         for (idx,item) in tabBar.items!.enumerated() {
             
             item.image = UIImage(named: NORMAL_IMAGES[idx])?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
             item.selectedImage = UIImage(named: SELECTED_IMAGES[idx])?.withRenderingMode(UIImageRenderingMode.alwaysOriginal)
-            item.setTitleTextAttributes([NSFontAttributeName: UIFont(name: FONT, size: 9.0)!, NSForegroundColorAttributeName: TEXT_COLOR_NORMAL], for: .normal)
+            item.setTitleTextAttributes([NSAttributedStringKey.font: UIFont(name: FONT, size: 9.0)!, NSAttributedStringKey.foregroundColor: TEXT_COLOR_NORMAL], for: .normal)
             item.title = TITLES[idx]
         }
         delegate = self
@@ -37,7 +37,7 @@ class TBC: UITabBarController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.switchTabs(notification:)), name: Notification.Name(rawValue: "SwitchTab"), object: nil)
     }
     
-    func switchTabs(notification: NSNotification) {
+    @objc func switchTabs(notification: NSNotification) {
         selectedIndex = notification.userInfo?["index"] as! Int
     }
     

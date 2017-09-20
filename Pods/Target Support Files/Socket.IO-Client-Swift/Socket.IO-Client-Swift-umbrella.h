@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double SWXMLHashVersionNumber;
-FOUNDATION_EXPORT const unsigned char SWXMLHashVersionString[];
+FOUNDATION_EXPORT double SocketIOVersionNumber;
+FOUNDATION_EXPORT const unsigned char SocketIOVersionString[];
 

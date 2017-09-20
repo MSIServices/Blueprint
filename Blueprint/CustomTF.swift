@@ -88,7 +88,7 @@ class CustomTF: UITextField {
         
         addBorder(side: .south, thickness: borderThickness, color: borderColor, borderAdjustment: 0.0)
         
-        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSForegroundColorAttributeName: placeholderColor, NSFontAttributeName: placeholderFont])
+        attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: placeholderColor, NSAttributedStringKey.font: placeholderFont])
     }
 
 }

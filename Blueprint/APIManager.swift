@@ -46,19 +46,19 @@ class APIManager {
             guard let json = res.result.value, json["userId"].int != nil, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -85,19 +85,19 @@ class APIManager {
             guard let json = res.result.value, json["userId"].int != nil, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -118,19 +118,19 @@ class APIManager {
             guard let jsonArray = res.result.value?.array, jsonArray.count > 0, res.response?.statusCode == 200 else {
                 
                 if res.result.value?.array == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -176,19 +176,19 @@ class APIManager {
             guard let json = res.result.value, json["postId"].int != nil, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -215,19 +215,19 @@ class APIManager {
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -250,19 +250,19 @@ class APIManager {
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -291,19 +291,19 @@ class APIManager {
             guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -327,19 +327,19 @@ class APIManager {
             guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
                 
                 if res.result.value == nil {
-                    print(Error.noData)
+                    print(ServerError.noData)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
+                    print(ServerError.unauthorized)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
+                    print(ServerError.badRequest)
                     Failure(res.result.value?["error"].string!)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
+                    print(ServerError.internalServerError)
                     Failure(res.result.value?["error"].string!)
                 } else {
-                    print(Error.unknownError)
+                    print(ServerError.unknownError)
                     Failure(res.result.value?["error"].string!)
                 }
                 return
@@ -373,19 +373,19 @@ class APIManager {
                 guard let json = res.result.value, res.response?.statusCode == 200 else {
     
                     if res.result.value == nil {
-                        print(Error.noData)
+                        print(ServerError.noData)
                         Failure(res.result.value?["error"].string!)
                     } else if res.response?.statusCode == 401 {
-                        print(Error.unauthorized)
+                        print(ServerError.unauthorized)
                         Failure(res.result.value?["error"].string!)
                     } else if res.response?.statusCode == 409 {
-                        print(Error.badRequest)
+                        print(ServerError.badRequest)
                         Failure(res.result.value?["error"].string!)
                     } else if res.response?.statusCode == 500 {
-                        print(Error.internalServerError)
+                        print(ServerError.internalServerError)
                         Failure(res.result.value?["error"].string!)
                     } else {
-                        print(Error.unknownError)
+                        print(ServerError.unknownError)
                     }
                     return
                 }
@@ -410,19 +410,19 @@ class APIManager {
 //            guard let jsonArray = res.result.value?.array, res.response?.statusCode == 200 else {
 //                
 //                if res.result.value == nil {
-//                    print(Error.noData)
+//                    print(ServerError.noData)
 //                    Failure(res.result.value?["error"].string!)
 //                } else if res.response?.statusCode == 401 {
-//                    print(Error.unauthorized)
+//                    print(ServerError.unauthorized)
 //                    Failure(res.result.value?["error"].string!)
 //                } else if res.response?.statusCode == 409 {
-//                    print(Error.badRequest)
+//                    print(ServerError.badRequest)
 //                    Failure(res.result.value?["error"].string!)
 //                } else if res.response?.statusCode == 500 {
-//                    print(Error.internalServerError)
+//                    print(ServerError.internalServerError)
 //                    Failure(res.result.value?["error"].string!)
 //                } else {
-//                    print(Error.unknownError)
+//                    print(ServerError.unknownError)
 //                    Failure(res.result.value?["error"].string!)
 //                }
 //                return

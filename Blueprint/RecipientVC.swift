@@ -53,7 +53,7 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
     }
     
-    @objc func dismissAlert() {
+     func dismissAlert() {
         mainV.removeAlert()
     }
     
@@ -137,7 +137,7 @@ class RecipientVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
         }
     }
     
-    @objc func backBtnPressed() {
+     func backBtnPressed() {
         
         switch previousVC {
         case TEXT_VC:

@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-@objc(UserCD)
+(UserCD)
 public class UserCD: NSManagedObject {
 
     static func save(user: User) {

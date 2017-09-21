@@ -47,7 +47,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-    @objc func goToMessages() {
+     func goToMessages() {
         performSegue(withIdentifier: MESSAGES_VC, sender: self)
     }
     
@@ -67,7 +67,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 110
+        return 100
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

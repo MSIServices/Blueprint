@@ -99,16 +99,16 @@ import CoreData
 //// MARK: Generated accessors for participants
 //extension TemplateCD {
 //    
-//    @objc(addParticipantsObject:)
+//    (addParticipantsObject:)
 //    @NSManaged public func addToParticipants(_ value: TemplateCD)
 //    
-//    @objc(removeParticipantsObject:)
+//    (removeParticipantsObject:)
 //    @NSManaged public func removeFromParticipants(_ value: TemplateCD)
 //    
-//    @objc(addParticipants:)
+//    (addParticipants:)
 //    @NSManaged public func addToParticipants(_ values: NSSet)
 //    
-//    @objc(removeParticipants:)
+//    (removeParticipants:)
 //    @NSManaged public func removeFromParticipants(_ values: NSSet)
 //    
 //}

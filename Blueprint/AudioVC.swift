@@ -111,7 +111,7 @@ class AudioVC: UIViewController {
         }
     }
     
-    @objc func sliderDragged(sender: UISlider) {
+     func sliderDragged(sender: UISlider) {
         
         if AudioManager.shared.player!.isPlaying {
             
@@ -121,7 +121,7 @@ class AudioVC: UIViewController {
         }
     }
     
-    @objc func sliderReleased(sender: UISlider) {
+     func sliderReleased(sender: UISlider) {
         
         if dragging {
          
@@ -131,13 +131,13 @@ class AudioVC: UIViewController {
         }
     }
     
-    @objc func sliderValueChanged(sender: UISlider) {
+     func sliderValueChanged(sender: UISlider) {
         
         AudioManager.shared.player!.currentTime = Double(sender.value) * AudioManager.shared.player!.duration
         durationLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.player!.duration - AudioManager.shared.player!.currentTime)
     }
     
-    @objc func refreshBtnPressed() {
+     func refreshBtnPressed() {
         
         AudioManager.shared.recorder = nil
         slider.isHidden = true
@@ -161,15 +161,15 @@ class AudioVC: UIViewController {
         }
     }
     
-    @objc func backBtnPressed() {
+     func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
     }
     
-    @objc func updateRecordingTime() {
+     func updateRecordingTime() {
         recordingLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.recorder!.currentTime)
     }
     
-    @objc func updateAudioSlider() {
+     func updateAudioSlider() {
 
         slider.value = Float(AudioManager.shared.player!.currentTime / AudioManager.shared.player!.duration)
         durationLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.player!.duration - AudioManager.shared.player!.currentTime)
@@ -303,7 +303,7 @@ extension AudioVC: AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         print("AudioManager did finish recording: \(flag)")
     }
     
-    private func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
+    internal func audioRecorderEncodeErrorDidOccur(_ recorder: AVAudioRecorder, error: Error?) {
         print("AUDIO ENCODING ERROR: \(error.debugDescription)")
     }
     
@@ -314,7 +314,7 @@ extension AudioVC: AVAudioRecorderDelegate, AVAudioPlayerDelegate {
         slider.value = 0
     }
     
-    private func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+    internal func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         print("AUDIO DECODE ERROR: \(error.debugDescription)")
     }
 

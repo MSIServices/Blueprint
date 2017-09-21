@@ -4,7 +4,7 @@ use_frameworks!
 
 target 'Blueprint' do
 	pod 'Alamofire', '~> 4.4'
-	pod 'CryptoSwift', :git => "https://github.com/krzyzanowskim/CryptoSwift", :branch => "master"
+	pod 'CryptoSwift'
 	pod 'AlamofireSwiftyJSON'
 	pod 'SwiftyGif'
 	pod 'SwiftLinkPreview', '~> 2.0.7'

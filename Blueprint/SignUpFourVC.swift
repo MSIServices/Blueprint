@@ -76,7 +76,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+     func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -91,7 +91,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
+     func keyboardWillHide(_ notification: Notification) {
         
         self.nextBtnBttm.constant = 0
                 
@@ -100,7 +100,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-    @objc func dismissAlert() {
+     func dismissAlert() {
         mainV.removeAlert()
     }
 

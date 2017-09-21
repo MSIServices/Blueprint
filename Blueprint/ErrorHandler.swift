@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum Error: String {
+enum ServerError: String {
     case internalServerError = "Internal Server Error"
     case resourceNotFound = "Resource not found"
     case parsingFailure = "Parsing Failure"

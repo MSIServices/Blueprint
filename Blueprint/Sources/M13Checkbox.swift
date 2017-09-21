@@ -408,7 +408,7 @@ open class M13Checkbox: UIControl {
     // MARK: - UIControl
     //----------------------------
     
-    @objc func handleLongPress(_ sender: UILongPressGestureRecognizer) {
+     func handleLongPress(_ sender: UILongPressGestureRecognizer) {
         if sender.state == .began || sender.state == .changed {
             isSelected = true
         } else {

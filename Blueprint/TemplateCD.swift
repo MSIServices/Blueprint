@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import CoreData
 
-@objc(TemplateCD)
+(TemplateCD)
 public class TemplateCD: NSManagedObject {
     
 //    static func save(data: Any)  {

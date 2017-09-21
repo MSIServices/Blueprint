@@ -143,7 +143,7 @@ class TextVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+     func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -158,7 +158,7 @@ class TextVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
+     func keyboardWillHide(_ notification: Notification) {
         
         self.nextBtnBttm.constant = 0
         
@@ -167,11 +167,11 @@ class TextVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func dismissAlert() {
+     func dismissAlert() {
         mainV.removeAlert()
     }
     
-    @objc func backBtnPressed() {
+     func backBtnPressed() {
         
         switch previousVC {
         case NEW_POST_VC:

@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var socket: SocketIOClient!
+    var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -28,13 +29,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        socket = SocketIOClient(socketURL: URL(string: APIManager.baseUrl)!, config: [SocketIOClientOption.log(true), SocketIOClientOption.compress])
+        socket = SocketIOClient(socketURL: URL(string: APIManager.baseUrl)!, config: [SocketIOClientOption.log(false), SocketIOClientOption.compress])
         
         socket.on(clientEvent: .connect) { data, ack in
             print("Sockets Connected To Server...")
         }
         
         socket.connect()
+        
+       //declare this property where it won't go out of scope relative to your listener
+        reachability = Reachability()!
+
+        reachability.whenReachable = { reachability in
+            if reachability.connection == .wifi {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+        }
+        reachability.whenUnreachable = { _ in
+            print("Not reachable")
+        }
+
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Unable to start notifier")
+        }
+
+        print(Helper.getWiFiAddress() ?? "Not Wifi")
         
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
@@ -52,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
     }
-
+    
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         AWSMobileClient.sharedInstance.applicationDidBecomeActive(application)
@@ -61,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         return AWSMobileClient.sharedInstance.withApplication(app, withURL: url, withSourceApplication: nil, withAnnotation: (Any).self)
     }
-
+    
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.

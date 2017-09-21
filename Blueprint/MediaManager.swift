@@ -25,20 +25,20 @@ class MediaManager {
             guard let data = res.data else {
                 
                 if res.data == nil {
-                    print(Error.noData)
-                    Failure(Error.noData.rawValue)
+                    print(ServerError.noData)
+                    Failure(ServerError.noData.rawValue)
                 } else if res.response?.statusCode == 401 {
-                    print(Error.unauthorized)
-                    Failure(Error.unauthorized.rawValue)
+                    print(ServerError.unauthorized)
+                    Failure(ServerError.unauthorized.rawValue)
                 } else if res.response?.statusCode == 409 {
-                    print(Error.badRequest)
-                    Failure(Error.badRequest.rawValue)
+                    print(ServerError.badRequest)
+                    Failure(ServerError.badRequest.rawValue)
                 } else if res.response?.statusCode == 500 {
-                    print(Error.internalServerError)
-                    Failure(Error.internalServerError.rawValue)
+                    print(ServerError.internalServerError)
+                    Failure(ServerError.internalServerError.rawValue)
                 } else {
-                    print(Error.unknownError)
-                    Failure(Error.unknownError.rawValue)
+                    print(ServerError.unknownError)
+                    Failure(ServerError.unknownError.rawValue)
                 }
                 return
             }

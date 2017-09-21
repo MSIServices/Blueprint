@@ -119,7 +119,7 @@ class QuoteVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+     func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -134,7 +134,7 @@ class QuoteVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
+     func keyboardWillHide(_ notification: Notification) {
         
         self.nextBtnBttm.constant = 0
         
@@ -143,7 +143,7 @@ class QuoteVC: UIViewController, UITextViewDelegate {
         }
     }
     
-    @objc func backBtnPressed() {
+     func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
     }
     

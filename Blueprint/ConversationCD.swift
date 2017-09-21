@@ -11,7 +11,7 @@ import CoreData
 
 fileprivate let ClassEntity = "ConversationCD"
 
-@objc(ConversationCD)
+(ConversationCD)
 public class ConversationCD: NSManagedObject {
 
     static func sync(conversation: Conversation) -> ConversationCD? {

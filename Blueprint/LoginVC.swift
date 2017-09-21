@@ -35,7 +35,7 @@ class LoginVC: UIViewController {
         return .lightContent
     }
     
-    @objc func dismissAlert() {
+     func dismissAlert() {
         mainV.removeAlert()
     }
     

@@ -396,6 +396,7 @@
 		DCB2C31F1F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
 		DCB2C3201F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
 		DCB2C3211F55C8C400943B52 /* RecordV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB2C31E1F55C8C400943B52 /* RecordV.swift */; };
+		DCB7CD6F1F74222D0095C79B /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB7CD6E1F74222D0095C79B /* Reachability.swift */; };
 		DCEC1D251F6C3D5C004BA7D5 /* ConversationEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC1D241F6C3D5C004BA7D5 /* ConversationEN.swift */; };
 		DCEC1D261F6C3D5C004BA7D5 /* ConversationEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC1D241F6C3D5C004BA7D5 /* ConversationEN.swift */; };
 		DCEC1D271F6C3D5C004BA7D5 /* ConversationEN.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEC1D241F6C3D5C004BA7D5 /* ConversationEN.swift */; };
@@ -663,6 +664,7 @@
 		DCB2C3121F54EB0200943B52 /* CheckerOptionV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckerOptionV.xib; sourceTree = "<group>"; };
 		DCB2C3161F55BFFF00943B52 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
 		DCB2C31E1F55C8C400943B52 /* RecordV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordV.swift; sourceTree = "<group>"; };
+		DCB7CD6E1F74222D0095C79B /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		DCEC1D241F6C3D5C004BA7D5 /* ConversationEN.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationEN.swift; sourceTree = "<group>"; };
 		DCF7AC191F62FE84008B4420 /* SearchTV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTV.swift; sourceTree = "<group>"; };
 		DCF7AC251F6304B8008B4420 /* SearchTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTVC.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 				DC30163E1F4DF17800381031 /* Regex.swift */,
 				DC657C801F5A1BD6007D0DCD /* AudioManager.swift */,
 				DC18A88F1F609EFF0007795A /* S3Manager.swift */,
+				DCB7CD6E1F74222D0095C79B /* Reachability.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1737,6 +1740,7 @@
 				DCAAEEE31F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DC3016471F4E0DA500381031 /* MediaLibraryVC.swift in Sources */,
 				61D614DF1F3F9AFE0013D691 /* SignUpThreeVC.swift in Sources */,
+				DCB7CD6F1F74222D0095C79B /* Reachability.swift in Sources */,
 				DC1C44791F43C3950013AD86 /* UserCD.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

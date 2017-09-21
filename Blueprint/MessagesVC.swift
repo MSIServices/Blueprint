@@ -147,7 +147,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    @objc func dismissKeyboard() {
+     func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -211,7 +211,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         disableSearch()
     }
     
-    @objc func backspacePressed() {
+     func backspacePressed() {
         
         if searchTextView.text == "" && bubbles.count > 0 && removeBubble && conversation == nil && activeField != sendMessageTextView {
             
@@ -238,7 +238,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    @objc func keyboardWillShow(_ notification: Notification) {
+     func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
                 
@@ -253,7 +253,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         }
     }
     
-    @objc func keyboardWillHide(_ notification: Notification) {
+     func keyboardWillHide(_ notification: Notification) {
         
         sendMessageViewBttm.constant = 0
         
@@ -407,7 +407,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
         return UITableViewCell()
     }
     
-    @objc func backBtnPressed() {
+     func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_CONVERSATIONS_VC, sender: self)
     }
     

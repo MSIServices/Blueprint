@@ -804,6 +804,7 @@
 		61A676A51F2D8AB40047DD7B /* Blueprint */ = {
 			isa = PBXGroup;
 			children = (
+				DC3ADFD61F82FFED008D5E08 /* Playgrounds (Future) */,
 				DC0818121F745BC9000D2630 /* Libraries */,
 				61A676E31F2D8C140047DD7B /* Services */,
 				61A676E21F2D8C0C0047DD7B /* Resources */,
@@ -1179,6 +1180,13 @@
 				DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */,
 			);
 			name = UICollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DC3ADFD61F82FFED008D5E08 /* Playgrounds (Future) */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Playgrounds (Future)";
 			sourceTree = "<group>";
 		};
 		DC6F03CE1F3BD765007A8DB4 /* Media */ = {

@@ -143,7 +143,7 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
     func moveCursorToStart(aTextView: UITextView) {
         
         DispatchQueue.main.async {
-            aTextView.selectedRange = NSMakeRange(0, 0);
+            aTextView.selectedRange = NSMakeRange(0, 0)
         }
     }
     
@@ -441,6 +441,8 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             
                             print("CONVERSATION DOES NOT EXIST. CREATING NEW ONE...")
                             
+                            recipientIds.removeLast(1)
+                            
                             APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
                                 
                                 self.conversation = conversation
@@ -460,10 +462,9 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                 //Add one because we removed the current user earlier
                 if conversation!.participants!.count != recipients.count {
                     
-                    var recipientIds: [NSNumber] = recipients.map { $0.userId! }
-                    recipientIds.append(User.currentId)
-                    
                     print("NEW PARTICIPANTS DETECTED. CHECKING FOR EXISTING CONVERSATION...")
+                    
+                    let recipientIds: [NSNumber] = recipients.map { $0.userId! }
                     
                     APIManager.shared.getConversationFromRecipients(recipients: recipientIds, Success: { conversation in
                         
@@ -484,7 +485,9 @@ class MessagesVC: UIViewController, UITableViewDelegate, UITableViewDataSource, 
                             
                             print("NO CONVERSATION FOUND. CREATING NEW ONE...")
                             
-                            APIManager.shared.createConversation(message: msg, recipients: recipientIds, Success: { conversation in
+                            let filteredRecipients = recipientIds.filter { $0 != User.currentId }
+                            
+                            APIManager.shared.createConversation(message: msg, recipients: filteredRecipients, Success: { conversation in
                                 
                                 self.conversation = conversation
                                 self.applyPlaceholderStyle(aTextview: self.sendMessageTextView, placeholderText: placeholderText)

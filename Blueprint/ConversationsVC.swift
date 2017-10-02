@@ -13,6 +13,7 @@ fileprivate let CONVERSATION_TVC = "ConversationTVC"
 class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var noConvoStackView: UIStackView!
     
     var conversations = [ConversationCD]()
     var selectedConversation: ConversationCD!
@@ -29,8 +30,16 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         super.viewWillAppear(animated)
         
         APIManager.shared.getConversations(userId: User.currentId, Success: { conversations in
-            
+
             self.conversations = conversations
+            
+            if conversations.count == 0 {
+                self.tableView.isHidden = true
+                self.noConvoStackView.isHidden = false
+            } else {
+                self.tableView.isHidden = false
+                self.noConvoStackView.isHidden = true
+            }
             self.tableView.reloadData()
                         
         }, Failure: { error in

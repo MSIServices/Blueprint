@@ -1237,7 +1237,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="UtY-1H-o0N">
-                                <rect key="frame" x="0.0" y="68" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="aUj-Zb-SRW">
                                     <size key="itemSize" width="80" height="80"/>
@@ -1308,7 +1308,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="DxU-dD-zvl">
-                                <rect key="frame" x="0.0" y="68" width="375" height="490"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="494"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="rIG-av-5Rg" id="jNj-Hz-36f"/>
@@ -1353,7 +1353,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-Oe-x9W">
-                                <rect key="frame" x="0.0" y="68" width="376" height="490"/>
+                                <rect key="frame" x="0.0" y="64" width="376" height="494"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="yes"/>
@@ -1415,7 +1415,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" rowHeight="62" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="7lQ-Um-oae">
-                                <rect key="frame" x="0.0" y="68" width="375" height="490"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="494"/>
                                 <color key="backgroundColor" red="0.33333333329999998" green="0.43529411759999997" blue="0.44705882349999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="uTw-4b-hgh" id="1K8-kl-F5U"/>
@@ -1470,7 +1470,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="UyM-Py-YeG"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3J-aj-Zw2">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1494,8 +1494,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-uL-0SE">
+                                <rect key="frame" x="87.5" y="261" width="200" height="145"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Conversations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwX-hB-5pX">
+                                        <rect key="frame" x="0.0" y="0.0" width="200" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="VvA-s0-VjO"/>
+                                            <constraint firstAttribute="height" constant="25" id="fWS-ku-6xJ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="18"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="group-gray" translatesAutoresizingMaskIntoConstraints="NO" id="30A-4p-qlm">
+                                        <rect key="frame" x="40" y="25" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="5FN-8M-GZV"/>
+                                            <constraint firstAttribute="width" constant="120" id="p3B-cW-hGA"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Frz-2T-DQS">
-                                <rect key="frame" x="0.0" y="68" width="375" height="550"/>
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Sut-2Q-zAw" id="IoS-of-Oaa"/>
@@ -1505,16 +1527,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zxk-uL-0SE" firstAttribute="centerY" secondItem="NVe-Fl-but" secondAttribute="centerY" id="3Ov-yC-1Op"/>
                             <constraint firstItem="Frz-2T-DQS" firstAttribute="leading" secondItem="NVe-Fl-but" secondAttribute="leading" id="9V7-o6-KgW"/>
                             <constraint firstItem="Frz-2T-DQS" firstAttribute="leading" secondItem="NVe-Fl-but" secondAttribute="leading" id="Z56-Xo-fsD"/>
                             <constraint firstItem="mTS-Vx-uKa" firstAttribute="top" secondItem="Frz-2T-DQS" secondAttribute="bottom" id="ZW7-EN-ZCJ"/>
                             <constraint firstAttribute="trailing" secondItem="Frz-2T-DQS" secondAttribute="trailing" id="aTd-qk-LAV"/>
+                            <constraint firstItem="zxk-uL-0SE" firstAttribute="centerX" secondItem="NVe-Fl-but" secondAttribute="centerX" id="hqf-AO-YHk"/>
                             <constraint firstItem="Frz-2T-DQS" firstAttribute="top" secondItem="7kD-6h-Gmz" secondAttribute="bottom" id="mdi-ys-9wK"/>
                             <constraint firstAttribute="trailing" secondItem="Frz-2T-DQS" secondAttribute="trailing" id="pil-5i-D5J"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="f98-FN-Hac"/>
                     <connections>
+                        <outlet property="noConvoStackView" destination="zxk-uL-0SE" id="Cai-gc-rZv"/>
                         <outlet property="tableView" destination="Frz-2T-DQS" id="n3k-hj-ao3"/>
                         <segue destination="Mz9-p9-VSW" kind="show" identifier="MessagesVC" id="fU1-SC-lR8"/>
                     </connections>
@@ -1530,7 +1555,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="orL-6H-jGH"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="d3R-1F-tGn">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1549,7 +1574,7 @@
                     <tabBarItem key="tabBarItem" title="Item" id="f8S-xY-r7C"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="edd-gm-cSZ">
-                        <rect key="frame" x="0.0" y="20" width="375" height="48"/>
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1567,6 +1592,7 @@
         <image name="chain" width="128" height="128"/>
         <image name="clip" width="32" height="32"/>
         <image name="close-white" width="128" height="128"/>
+        <image name="group-gray" width="128" height="128"/>
         <image name="image-black" width="128" height="128"/>
         <image name="link-black" width="128" height="128"/>
         <image name="mic-black" width="128" height="128"/>

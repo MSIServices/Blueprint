@@ -204,6 +204,7 @@ class APIManager {
         let params = [
             "message": message,
             "recipients": recipients,
+            "sender": User.currentId,
             "aesKey": AES_KEY.toHexString()
         ] as [String : Any]
         

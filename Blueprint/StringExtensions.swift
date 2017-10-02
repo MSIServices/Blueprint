@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CryptoSwift
+//import CryptoSwift
 import UIKit
 
 /*........................................................................................................................................................................................................
@@ -21,25 +21,25 @@ extension String {
         return stride(from: 0, to: characters.count, by: 2).flatMap { UInt8(String(hexa[$0..<$0.advanced(by: 2)]), radix: 16) }
     }
     
-    func aesEncrypt(key: Array<UInt8>, iv: Array<UInt8>) throws -> String {
-        
-        let data = self.data(using: String.Encoding.utf8)
-        let enc = try AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(data!.bytes)
-        let encData = NSData(bytes: enc, length: Int(enc.count))
-        let base64String: String = encData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        
-        return String(base64String)
-    }
-    
-    func aesDecrypt(key: Array<UInt8>, iv: Array<UInt8>) throws -> String {
-        
-        let data = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
-        let dec = try AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(data!.bytes)
-        let decData = NSData(bytes: dec, length: Int(dec.count))
-        let result = NSString(data: decData as Data, encoding: String.Encoding.utf8.rawValue)
-        
-        return String(result!)
-    }
+//    func aesEncrypt(key: Array<UInt8>, iv: Array<UInt8>) throws -> String {
+//
+//        let data = self.data(using: String.Encoding.utf8)
+//        let enc = try AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).encrypt(data!.bytes)
+//        let encData = NSData(bytes: enc, length: Int(enc.count))
+//        let base64String: String = encData.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//
+//        return String(base64String)
+//    }
+//
+//    func aesDecrypt(key: Array<UInt8>, iv: Array<UInt8>) throws -> String {
+//
+//        let data = Data(base64Encoded: self, options: NSData.Base64DecodingOptions(rawValue: 0))
+//        let dec = try AES(key: key, iv: iv, blockMode: .CBC, padding: PKCS7()).decrypt(data!.bytes)
+//        let decData = NSData(bytes: dec, length: Int(dec.count))
+//        let result = NSString(data: decData as Data, encoding: String.Encoding.utf8.rawValue)
+//
+//        return String(result!)
+//    }
 
     func isValidEmail() -> Bool {
         

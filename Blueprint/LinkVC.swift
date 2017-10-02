@@ -74,7 +74,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
     }
     
-     func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -89,7 +89,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
     }
     
-     func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         
         self.tableViewBttm.constant = 0
         
@@ -98,7 +98,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         }
     }
     
-     func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -118,7 +118,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(getPreview), userInfo: nil, repeats: false)
     }
     
-     func getPreview() {
+    @objc func getPreview() {
         
             previewCell.previewImageView.image = UIImage(named: "no-preview")
             previewCell.titleLbl.text = ""
@@ -150,7 +150,7 @@ class LinkVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UITe
             })
     }
     
-     func backBtnPressed() {
+    @objc func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
     }
     

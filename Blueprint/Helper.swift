@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import CryptoSwift
+import SystemConfiguration.CaptiveNetwork
 
 struct Helper {
     
@@ -43,6 +43,24 @@ struct Helper {
             }
             if let recursiveSubView = self.findFirstResponder(inView: subView) {
                 return recursiveSubView
+            }
+        }
+        return nil
+    }
+    
+    static func fetchSSIDInfo() ->  String? {
+        
+        if let interfaces = CNCopySupportedInterfaces() {
+            
+            for i in 0..<CFArrayGetCount(interfaces) {
+                
+                let interfaceName: UnsafeRawPointer = CFArrayGetValueAtIndex(interfaces, i)
+                let rec = unsafeBitCast(interfaceName, to: AnyObject.self)
+                let unsafeInterfaceData = CNCopyCurrentNetworkInfo("\(rec)" as CFString)
+                
+                if let unsafeInterfaceData = unsafeInterfaceData as? Dictionary<AnyHashable, Any> {
+                    return unsafeInterfaceData["SSID"] as? String
+                }
             }
         }
         return nil

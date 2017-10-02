@@ -93,6 +93,7 @@ class AudioVC: UIViewController {
         self.navigationController?.navigationBar.tintColor = nil
         
         AudioManager.shared.recorder = nil
+        recorderTimer.invalidate()
     }
     
     override func viewDidLayoutSubviews() {
@@ -111,7 +112,7 @@ class AudioVC: UIViewController {
         }
     }
     
-     func sliderDragged(sender: UISlider) {
+    @objc func sliderDragged(sender: UISlider) {
         
         if AudioManager.shared.player!.isPlaying {
             
@@ -121,7 +122,7 @@ class AudioVC: UIViewController {
         }
     }
     
-     func sliderReleased(sender: UISlider) {
+    @objc func sliderReleased(sender: UISlider) {
         
         if dragging {
          
@@ -131,13 +132,13 @@ class AudioVC: UIViewController {
         }
     }
     
-     func sliderValueChanged(sender: UISlider) {
+    @objc func sliderValueChanged(sender: UISlider) {
         
         AudioManager.shared.player!.currentTime = Double(sender.value) * AudioManager.shared.player!.duration
         durationLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.player!.duration - AudioManager.shared.player!.currentTime)
     }
     
-     func refreshBtnPressed() {
+    @objc func refreshBtnPressed() {
         
         AudioManager.shared.recorder = nil
         slider.isHidden = true
@@ -161,15 +162,15 @@ class AudioVC: UIViewController {
         }
     }
     
-     func backBtnPressed() {
+    @objc func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
     }
     
-     func updateRecordingTime() {
+    @objc func updateRecordingTime() {
         recordingLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.recorder!.currentTime)
     }
     
-     func updateAudioSlider() {
+    @objc func updateAudioSlider() {
 
         slider.value = Float(AudioManager.shared.player!.currentTime / AudioManager.shared.player!.duration)
         durationLbl.text = Helper.formatTimeIntervalWithMinutesAndSeconds(currentTime: AudioManager.shared.player!.duration - AudioManager.shared.player!.currentTime)

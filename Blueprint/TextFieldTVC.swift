@@ -33,7 +33,7 @@ class TextFieldTVC: UITableViewCell, UITextFieldDelegate {
         textField.text = text
     }
     
-     func textFieldDidChange() {
+    @objc func textFieldDidChange() {
         messageDelegate.updateUrl!(text: textField.text)
     }
     

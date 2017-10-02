@@ -27,16 +27,16 @@ extension GroupCD {
 // MARK: Generated accessors for members
 extension GroupCD {
 
-    (addMembersObject:)
+    @objc(addMembersObject:)
     @NSManaged public func addToMembers(_ value: UserCD)
 
-    (removeMembersObject:)
+    @objc(removeMembersObject:)
     @NSManaged public func removeFromMembers(_ value: UserCD)
 
-    (addMembers:)
+    @objc(addMembers:)
     @NSManaged public func addToMembers(_ values: NSSet)
 
-    (removeMembers:)
+    @objc(removeMembers:)
     @NSManaged public func removeFromMembers(_ values: NSSet)
 
 }

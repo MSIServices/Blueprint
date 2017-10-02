@@ -145,6 +145,14 @@
 		DC03270B1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
 		DC03270C1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
 		DC03270D1F54A61F006541B4 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC03270A1F54A61F006541B4 /* Extension.swift */; };
+		DC08180B1F7459AC000D2630 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB7CD6E1F74222D0095C79B /* Reachability.swift */; };
+		DC08180C1F7459AC000D2630 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB7CD6E1F74222D0095C79B /* Reachability.swift */; };
+		DC08180E1F7459E0000D2630 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08180D1F7459E0000D2630 /* ReachabilityManager.swift */; };
+		DC08180F1F7459E0000D2630 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08180D1F7459E0000D2630 /* ReachabilityManager.swift */; };
+		DC0818101F7459E0000D2630 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC08180D1F7459E0000D2630 /* ReachabilityManager.swift */; };
+		DC0818141F745D0A000D2630 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0818131F745D0A000D2630 /* Regex.swift */; };
+		DC0818151F745D0A000D2630 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0818131F745D0A000D2630 /* Regex.swift */; };
+		DC0818161F745D0A000D2630 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0818131F745D0A000D2630 /* Regex.swift */; };
 		DC18A8901F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
 		DC18A8911F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
 		DC18A8921F609EFF0007795A /* S3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC18A88F1F609EFF0007795A /* S3Manager.swift */; };
@@ -288,9 +296,6 @@
 		DC30163B1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
 		DC30163C1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
 		DC30163D1F4DEAB800381031 /* TV.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163A1F4DEAB800381031 /* TV.swift */; };
-		DC30163F1F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
-		DC3016401F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
-		DC3016411F4DF17800381031 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC30163E1F4DF17800381031 /* Regex.swift */; };
 		DC3016431F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
 		DC3016441F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
 		DC3016451F4E06A600381031 /* MediaVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC3016421F4E06A600381031 /* MediaVC.swift */; };
@@ -308,8 +313,6 @@
 		DC44B4671F3BAFBE00D40871 /* TemplateCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */; };
 		DC44B4691F3BC1D600D40871 /* TemplateCD+Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */; };
 		DC44B46B1F3BC6D300D40871 /* Template.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC44B46A1F3BC6D300D40871 /* Template.swift */; };
-		DC491D2C1F719C6900C0E83D /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC491D291F719C4900C0E83D /* CryptoSwift.framework */; };
-		DC491D2D1F719C6900C0E83D /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DC491D291F719C4900C0E83D /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DC657C7F1F5A1B47007D0DCD /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC657C7E1F5A1B47007D0DCD /* AudioToolbox.framework */; };
 		DC657C811F5A1BD6007D0DCD /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC657C801F5A1BD6007D0DCD /* AudioManager.swift */; };
 		DC657C821F5A1BD6007D0DCD /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC657C801F5A1BD6007D0DCD /* AudioManager.swift */; };
@@ -459,27 +462,6 @@
 			remoteGlobalIDString = 61A676A21F2D8AB40047DD7B;
 			remoteInfo = Blueprint;
 		};
-		DC491D281F719C4900C0E83D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE45519693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
-		DC491D2A1F719C4900C0E83D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 754BE46019693E190098E6F3;
-			remoteInfo = Tests;
-		};
-		DC491D2E1F719C6900C0E83D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 754BE45419693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -492,7 +474,6 @@
 				DC3015D31F4BB4E200381031 /* AWSAPIGateway.framework in Embed Frameworks */,
 				DC3015D51F4BB4E200381031 /* AWSCore.framework in Embed Frameworks */,
 				DC3015D71F4BB4E200381031 /* AWSS3.framework in Embed Frameworks */,
-				DC491D2D1F719C6900C0E83D /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,6 +548,8 @@
 		DC0327021F50BBE2006541B4 /* ProgressV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressV.swift; sourceTree = "<group>"; };
 		DC0327061F50BBFB006541B4 /* ProgressV.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressV.xib; sourceTree = "<group>"; };
 		DC03270A1F54A61F006541B4 /* Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		DC08180D1F7459E0000D2630 /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		DC0818131F745D0A000D2630 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		DC18A88F1F609EFF0007795A /* S3Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = S3Manager.swift; sourceTree = "<group>"; };
 		DC18A8931F61A6F90007795A /* ConversationsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsVC.swift; sourceTree = "<group>"; };
 		DC18A8971F61AA9B0007795A /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
@@ -623,7 +606,6 @@
 		DC3016311F4CD5BD00381031 /* MediaManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaManager.swift; sourceTree = "<group>"; };
 		DC3016351F4CE43500381031 /* LinkPreview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
 		DC30163A1F4DEAB800381031 /* TV.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TV.swift; sourceTree = "<group>"; };
-		DC30163E1F4DF17800381031 /* Regex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		DC3016421F4E06A600381031 /* MediaVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaVC.swift; sourceTree = "<group>"; };
 		DC3016461F4E0DA500381031 /* MediaLibraryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaLibraryVC.swift; sourceTree = "<group>"; };
 		DC30164C1F4E0ED100381031 /* PhotoCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoCVC.swift; sourceTree = "<group>"; };
@@ -632,7 +614,6 @@
 		DC44B4661F3BAFBE00D40871 /* TemplateCD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemplateCD.swift; sourceTree = "<group>"; };
 		DC44B4681F3BC1D600D40871 /* TemplateCD+Properties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "TemplateCD+Properties.swift"; sourceTree = "<group>"; };
 		DC44B46A1F3BC6D300D40871 /* Template.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Template.swift; sourceTree = "<group>"; };
-		DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = "../../Downloads/CryptoSwift-master/CryptoSwift.xcodeproj"; sourceTree = "<group>"; };
 		DC657C7D1F5A1B46007D0DCD /* Blueprint.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Blueprint.entitlements; sourceTree = "<group>"; };
 		DC657C7E1F5A1B47007D0DCD /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		DC657C801F5A1BD6007D0DCD /* AudioManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -691,7 +672,6 @@
 				DC3015FC1F4BB62100381031 /* libsqlite3.tbd in Frameworks */,
 				DC3015FA1F4BB60F00381031 /* libz.tbd in Frameworks */,
 				DC3015F81F4BB5F500381031 /* AWSMobileHubHelper.framework in Frameworks */,
-				DC491D2C1F719C6900C0E83D /* CryptoSwift.framework in Frameworks */,
 				DC657C7F1F5A1B47007D0DCD /* AudioToolbox.framework in Frameworks */,
 				DC3015D61F4BB4E200381031 /* AWSS3.framework in Frameworks */,
 				DC3015D21F4BB4E200381031 /* AWSAPIGateway.framework in Frameworks */,
@@ -783,7 +763,6 @@
 		61A6769A1F2D8AB40047DD7B = {
 			isa = PBXGroup;
 			children = (
-				DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */,
 				DC3015CF1F4BB4E200381031 /* AWSAPIGateway.framework */,
 				DC3015D01F4BB4E200381031 /* AWSCore.framework */,
 				DC3015D11F4BB4E200381031 /* AWSS3.framework */,
@@ -809,6 +788,7 @@
 		61A676A51F2D8AB40047DD7B /* Blueprint */ = {
 			isa = PBXGroup;
 			children = (
+				DC0818121F745BC9000D2630 /* Libraries */,
 				61A676E31F2D8C140047DD7B /* Services */,
 				61A676E21F2D8C0C0047DD7B /* Resources */,
 				61A676E11F2D8C060047DD7B /* Utils */,
@@ -976,10 +956,9 @@
 				61A676F01F2D8CF80047DD7B /* APIManager.swift */,
 				DC6F03CC1F3BD644007A8DB4 /* Helper.swift */,
 				DC3016311F4CD5BD00381031 /* MediaManager.swift */,
-				DC30163E1F4DF17800381031 /* Regex.swift */,
 				DC657C801F5A1BD6007D0DCD /* AudioManager.swift */,
 				DC18A88F1F609EFF0007795A /* S3Manager.swift */,
-				DCB7CD6E1F74222D0095C79B /* Reachability.swift */,
+				DC08180D1F7459E0000D2630 /* ReachabilityManager.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -1122,6 +1101,15 @@
 			name = Code;
 			sourceTree = "<group>";
 		};
+		DC0818121F745BC9000D2630 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				DC0818131F745D0A000D2630 /* Regex.swift */,
+				DCB7CD6E1F74222D0095C79B /* Reachability.swift */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		DC3015DA1F4BB53800381031 /* AmazonAws */ = {
 			isa = PBXGroup;
 			children = (
@@ -1172,15 +1160,6 @@
 				DCAAEEB71F4E1F8A0004ADD7 /* ShowCameraCVC.swift */,
 			);
 			name = UICollectionViewCell;
-			sourceTree = "<group>";
-		};
-		DC491D241F719C4900C0E83D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				DC491D291F719C4900C0E83D /* CryptoSwift.framework */,
-				DC491D2B1F719C4900C0E83D /* Tests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		DC6F03CE1F3BD765007A8DB4 /* Media */ = {
@@ -1295,7 +1274,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				DC491D2F1F719C6900C0E83D /* PBXTargetDependency */,
 			);
 			name = Blueprint;
 			productName = Blueprint;
@@ -1354,6 +1332,9 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.InterAppAudio = {
 								enabled = 1;
 							};
@@ -1386,12 +1367,6 @@
 			mainGroup = 61A6769A1F2D8AB40047DD7B;
 			productRefGroup = 61A676A41F2D8AB40047DD7B /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = DC491D241F719C4900C0E83D /* Products */;
-					ProjectRef = DC491D231F719C4900C0E83D /* CryptoSwift.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				61A676A21F2D8AB40047DD7B /* Blueprint */,
@@ -1400,23 +1375,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		DC491D291F719C4900C0E83D /* CryptoSwift.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = CryptoSwift.framework;
-			remoteRef = DC491D281F719C4900C0E83D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		DC491D2B1F719C4900C0E83D /* Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = Tests.xctest;
-			remoteRef = DC491D2A1F719C4900C0E83D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		61A676A11F2D8AB40047DD7B /* Resources */ = {
@@ -1646,7 +1604,6 @@
 				61A676FF1F2D8DF40047DD7B /* ErrorHandler.swift in Sources */,
 				DC7C52A31F4B4E8D000D3AD7 /* GroupCD.swift in Sources */,
 				616134901F2D919100B52338 /* NC.swift in Sources */,
-				DC30163F1F4DF17800381031 /* Regex.swift in Sources */,
 				DCAAEED71F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DCF7AC381F633D95008B4420 /* BubbleSV.swift in Sources */,
 				DC1C44C91F4762D00013AD86 /* QuoteVC.swift in Sources */,
@@ -1675,7 +1632,9 @@
 				DC3016171F4CAEBA00381031 /* TextViewTVC.swift in Sources */,
 				6161349C1F2D927100B52338 /* DoubleActionAlertV.swift in Sources */,
 				615B79C11F3F6FF4005F8652 /* SingleActionAlertV.swift in Sources */,
+				DC08180E1F7459E0000D2630 /* ReachabilityManager.swift in Sources */,
 				DC7C529E1F4B3CBA000D3AD7 /* ViewControllerExtensions.swift in Sources */,
+				DC0818161F745D0A000D2630 /* Regex.swift in Sources */,
 				DCFF71B91F4B581C00531062 /* HeaderTVC.swift in Sources */,
 				613224901F3F467700F12A0C /* CustomTF.swift in Sources */,
 				DCAAEEDD1F4F48060004ADD7 /* M13CheckboxController.swift in Sources */,
@@ -1750,7 +1709,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCAAEEF31F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
-				DC3016401F4DF17800381031 /* Regex.swift in Sources */,
 				DC0327041F50BBE2006541B4 /* ProgressV.swift in Sources */,
 				DC3015E71F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B41F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
@@ -1803,6 +1761,7 @@
 				613224911F3F467700F12A0C /* CustomTF.swift in Sources */,
 				DC18A8B41F61BCB40007795A /* MessageTVC.swift in Sources */,
 				DC18A8991F61AA9B0007795A /* Conversation.swift in Sources */,
+				DC08180F1F7459E0000D2630 /* ReachabilityManager.swift in Sources */,
 				DCAAEEE71F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
 				DCF7AC281F6304B8008B4420 /* SearchTVC.swift in Sources */,
 				DCAAEEED1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
@@ -1846,7 +1805,9 @@
 				DCAAEEE41F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DCB2C3181F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
 				DC18A8AF1F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */,
+				DC0818141F745D0A000D2630 /* Regex.swift in Sources */,
 				61A677041F2D8E6D0047DD7B /* Direction.swift in Sources */,
+				DC08180B1F7459AC000D2630 /* Reachability.swift in Sources */,
 				616134BD1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED81F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DCAAEF051F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
@@ -1861,7 +1822,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCAAEEF41F4F48060004ADD7 /* M13CheckboxFlatController.swift in Sources */,
-				DC3016411F4DF17800381031 /* Regex.swift in Sources */,
 				DC0327051F50BBE2006541B4 /* ProgressV.swift in Sources */,
 				DC3015E81F4BB53800381031 /* AWSAPI_DTPL0NODLL_EncoderMobileHubClient.m in Sources */,
 				DC3015B51F4BA95200381031 /* PostCD+CoreDataProperties.swift in Sources */,
@@ -1914,6 +1874,7 @@
 				613224921F3F467700F12A0C /* CustomTF.swift in Sources */,
 				DC18A8B51F61BCB40007795A /* MessageTVC.swift in Sources */,
 				DC18A89A1F61AA9B0007795A /* Conversation.swift in Sources */,
+				DC0818101F7459E0000D2630 /* ReachabilityManager.swift in Sources */,
 				DCAAEEE81F4F48060004ADD7 /* M13CheckboxDotController.swift in Sources */,
 				DCF7AC291F6304B8008B4420 /* SearchTVC.swift in Sources */,
 				DCAAEEEE1F4F48060004ADD7 /* M13CheckboxFadeController.swift in Sources */,
@@ -1957,7 +1918,9 @@
 				DCAAEEE51F4F48060004ADD7 /* M13CheckboxBounceController.swift in Sources */,
 				DCB2C3191F55BFFF00943B52 /* UIImageExtensions.swift in Sources */,
 				DC18A8B01F61BBA90007795A /* MessageCD+CoreDataProperties.swift in Sources */,
+				DC0818151F745D0A000D2630 /* Regex.swift in Sources */,
 				61A677051F2D8E6D0047DD7B /* Direction.swift in Sources */,
+				DC08180C1F7459AC000D2630 /* Reachability.swift in Sources */,
 				616134BE1F2D955600B52338 /* UIImageViewExtensions.swift in Sources */,
 				DCAAEED91F4F48060004ADD7 /* M13Checkbox.swift in Sources */,
 				DCAAEF061F4F48060004ADD7 /* M13CheckboxPathGenerator.swift in Sources */,
@@ -1979,11 +1942,6 @@
 			isa = PBXTargetDependency;
 			target = 61A676A21F2D8AB40047DD7B /* Blueprint */;
 			targetProxy = 61A676C61F2D8AB40047DD7B /* PBXContainerItemProxy */;
-		};
-		DC491D2F1F719C6900C0E83D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CryptoSwift;
-			targetProxy = DC491D2E1F719C6900C0E83D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -2131,7 +2089,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.msistone.Blueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Blueprint/AmazonAws/Bridging_Header.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -2155,7 +2113,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.msistone.Blueprint;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = Blueprint/AmazonAws/Bridging_Header.h;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
@@ -2174,7 +2132,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stephen-muscarella.blueprint.BlueprintTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blueprint.app/Blueprint";
 			};
@@ -2194,7 +2152,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stephen-muscarella.blueprint.BlueprintTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Blueprint.app/Blueprint";
 			};
@@ -2213,7 +2171,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stephen-muscarella.blueprint.BlueprintUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Blueprint;
 			};
@@ -2232,7 +2190,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.stephen-muscarella.blueprint.BlueprintUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 				TEST_TARGET_NAME = Blueprint;
 			};

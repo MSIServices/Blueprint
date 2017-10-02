@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-(MessageCD)
+@objc (MessageCD)
 public class MessageCD: NSManagedObject {
 
     static func sync(message: Message, conversation: ConversationCD, sender: UserCD) -> MessageCD? {

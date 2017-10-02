@@ -30,16 +30,16 @@ extension UserCD {
 // MARK: Generated accessors for Groups
 extension UserCD {
     
-    (addGroupsObject:)
+    @objc(addGroupsObject:)
     @NSManaged public func addToGroups(_ value: GroupCD)
     
-    (removeGroupsObject:)
+    @objc(removeGroupsObject:)
     @NSManaged public func removeFromGroups(_ value: GroupCD)
     
-    (addGroups:)
+    @objc(addGroups:)
     @NSManaged public func addToGroups(_ values: NSSet)
     
-    (removeGroups:)
+    @objc(removeGroups:)
     @NSManaged public func removeFromGroups(_ values: NSSet)
     
 }
@@ -47,16 +47,16 @@ extension UserCD {
 // MARK: Generated accessors for Posts
 extension UserCD {
     
-    (addPostsObject:)
+    @objc(addPostsObject:)
     @NSManaged public func addToPosts(_ value: PostCD)
     
-    (removePostsObject:)
+    @objc(removePostsObject:)
     @NSManaged public func removeFromPosts(_ value: PostCD)
     
-    (addPosts:)
+    @objc(addPosts:)
     @NSManaged public func addToPosts(_ values: NSSet)
     
-    (removePosts:)
+    @objc(removePosts:)
     @NSManaged public func removeFromPosts(_ values: NSSet)
     
 }
@@ -64,16 +64,16 @@ extension UserCD {
 // MARK: Generated accessors for Messages
 extension UserCD {
     
-    (addMessagesObject:)
+    @objc(addMessagesObject:)
     @NSManaged public func addToMessages(_ value: MessageCD)
     
-    (removeMessagesObject:)
+    @objc(removeMessagesObject:)
     @NSManaged public func removeFromMessages(_ value: MessageCD)
     
-    (addMessages:)
+    @objc(addMessages:)
     @NSManaged public func addToMessages(_ values: NSSet)
     
-    (removeMessages:)
+    @objc(removeMessages:)
     @NSManaged public func removeFromMessages(_ values: NSSet)
     
 }
@@ -81,16 +81,16 @@ extension UserCD {
 // MARK: Generated accessors for Conversations
 extension UserCD {
     
-    (addConversationsObject:)
+    @objc(addConversationsObject:)
     @NSManaged public func addToConversations(_ value: ConversationCD)
     
-    (removeConversationsObject:)
+    @objc(removeConversationsObject:)
     @NSManaged public func removeFromConversations(_ value: ConversationCD)
     
-    (addConversations:)
+    @objc(addConversations:)
     @NSManaged public func addToConversations(_ values: NSSet)
     
-    (removeConversations:)
+    @objc(removeConversations:)
     @NSManaged public func removeFromConversations(_ values: NSSet)
     
 }

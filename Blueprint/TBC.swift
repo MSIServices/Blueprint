@@ -37,7 +37,7 @@ class TBC: UITabBarController, UITabBarControllerDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(self.switchTabs(notification:)), name: Notification.Name(rawValue: "SwitchTab"), object: nil)
     }
     
-     func switchTabs(notification: NSNotification) {
+    @objc func switchTabs(notification: NSNotification) {
         selectedIndex = notification.userInfo?["index"] as! Int
     }
     

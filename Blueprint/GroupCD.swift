@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-(GroupCD)
+@objc(GroupCD)
 public class GroupCD: NSManagedObject {
 
 }

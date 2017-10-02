@@ -8,8 +8,8 @@
 
 import Foundation
 
- protocol MessageDelegate {
-     optional func updateText(text: String?)
-     optional func updateUrl(text: String?)
-     optional func scrollToPoint(point: CGPoint)
+ @objc protocol MessageDelegate {
+    @objc optional func updateText(text: String?)
+    @objc optional func updateUrl(text: String?)
+    @objc optional func scrollToPoint(point: CGPoint)
 }

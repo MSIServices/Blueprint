@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CryptoSwift
+//import CryptoSwift
 import Alamofire
 
 class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextViewDelegate, UIImagePickerControllerDelegate {
@@ -76,7 +76,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-     func keyboardWillShow(_ notification: Notification) {
+    @objc func keyboardWillShow(_ notification: Notification) {
         
         if let keyboardSize = ((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
             
@@ -91,7 +91,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-     func keyboardWillHide(_ notification: Notification) {
+    @objc func keyboardWillHide(_ notification: Notification) {
         
         self.nextBtnBttm.constant = 0
                 
@@ -100,7 +100,7 @@ class SignUpFourVC: UIViewController, UINavigationControllerDelegate, UITextView
         }
     }
     
-     func dismissAlert() {
+    @objc func dismissAlert() {
         mainV.removeAlert()
     }
 

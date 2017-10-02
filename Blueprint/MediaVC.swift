@@ -71,7 +71,7 @@ class MediaVC: UIViewController, UITextViewDelegate {
         }
     }
     
-     func dismissKeyboard() {
+    @objc func dismissKeyboard() {
         view.endEditing(true)
     }
     
@@ -136,11 +136,11 @@ class MediaVC: UIViewController, UITextViewDelegate {
         }
     }
     
-     func backBtnPressed() {
+    @objc func backBtnPressed() {
         performSegue(withIdentifier: UNWIND_NEW_POST_VC, sender: self)
     }
     
-     func showMediaLibrary() {
+    @objc func showMediaLibrary() {
         performSegue(withIdentifier: MEDIA_LIBRARY_VC, sender: self)
     }
     

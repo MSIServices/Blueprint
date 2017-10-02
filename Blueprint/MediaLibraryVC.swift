@@ -118,11 +118,11 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-     func dismissAlert() {
+    @objc func dismissAlert() {
         mainV.removeAlert()
     }
     
-     func openSettings() {
+    @objc func openSettings() {
         
         let settingsUrl = URL(string: UIApplicationOpenSettingsURLString)!
         
@@ -137,7 +137,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-     func backBtnPressed() {
+    @objc func backBtnPressed() {
         
         print(previousVC)
         
@@ -151,7 +151,7 @@ class MediaLibraryVC: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 
-     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
+    @objc func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         
         if error == nil {
             

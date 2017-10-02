@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-(PostCD)
+@objc(PostCD)
 public class PostCD: NSManagedObject {
 
     static func save(post: Post) {

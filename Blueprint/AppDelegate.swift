@@ -15,7 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     var socket: SocketIOClient!
-    var reachability: Reachability!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -29,35 +28,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         AWSServiceManager.default().defaultServiceConfiguration = configuration
         
-        socket = SocketIOClient(socketURL: URL(string: APIManager.baseUrl)!, config: [SocketIOClientOption.log(false), SocketIOClientOption.compress])
-        
-        socket.on(clientEvent: .connect) { data, ack in
-            print("Sockets Connected To Server...")
-        }
-        
-        socket.connect()
-        
-       //declare this property where it won't go out of scope relative to your listener
-        reachability = Reachability()!
-
-        reachability.whenReachable = { reachability in
-            if reachability.connection == .wifi {
-                print("Reachable via WiFi")
-            } else {
-                print("Reachable via Cellular")
-            }
-        }
-        reachability.whenUnreachable = { _ in
-            print("Not reachable")
-        }
-
-        do {
-            try reachability.startNotifier()
-        } catch {
-            print("Unable to start notifier")
-        }
-
-        print(Helper.getWiFiAddress() ?? "Not Wifi")
+//        socket = SocketIOClient(socketURL: URL(string: APIManager.baseUrl)!, config: [SocketIOClientOption.log(false), SocketIOClientOption.compress])
+//
+//        socket.on(clientEvent: .connect) { data, ack in
+//            print("Sockets Connected To Server...")
+//
+//            self.socket.emit("newConnect", with: [User.currentId, self.socket])
+//        }
+//
+//        self.socket.on("updateMessages") { data, ack in
+//            debugPrint(data)
+//        }
+//
+//        socket.connect()
         
         return AWSMobileClient.sharedInstance.didFinishLaunching(application, withOptions: launchOptions)
     }
@@ -65,6 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        ReachabilityManager.shared.stopMonitoring()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -78,10 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        ReachabilityManager.shared.startMonitoring()
         AWSMobileClient.sharedInstance.applicationDidBecomeActive(application)
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey:Any] = [:]) -> Bool {
         return AWSMobileClient.sharedInstance.withApplication(app, withURL: url, withSourceApplication: nil, withAnnotation: (Any).self)
     }
     

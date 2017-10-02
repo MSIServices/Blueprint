@@ -15,7 +15,12 @@ class HomeVC: UIViewController, SwiftyGifDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

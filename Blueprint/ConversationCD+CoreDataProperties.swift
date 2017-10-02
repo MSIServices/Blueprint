@@ -26,16 +26,16 @@ extension ConversationCD {
 // MARK: Generated accessors for participants
 extension ConversationCD {
 
-    (addParticipantsObject:)
+    @objc(addParticipantsObject:)
     @NSManaged public func addToParticipants(_ value: UserCD)
     
-    (removeParticipantsObject:)
+    @objc(removeParticipantsObject:)
     @NSManaged public func removeFromParticipants(_ value: UserCD)
-
-    (addParticipants:)
+    
+    @objc(addParticipants:)
     @NSManaged public func addToParticipants(_ values: NSSet)
 
-    (removeParticipants:)
+    @objc(removeParticipants:)
     @NSManaged public func removeFromParticipants(_ values: NSSet)
 
 }
@@ -43,16 +43,16 @@ extension ConversationCD {
 // MARK: Generated accessors for messages
 extension ConversationCD {
 
-    (addMessagesObject:)
+    @objc(addMessagesObject:)
     @NSManaged public func addToMessages(_ value: MessageCD)
 
-    (removeMessagesObject:)
+    @objc(removeMessagesObject:)
     @NSManaged public func removeFromMessages(_ value: MessageCD)
 
-    (addMessages:)
+    @objc(addMessages:)
     @NSManaged public func addToMessages(_ values: NSSet)
 
-    (removeMessages:)
+    @objc(removeMessages:)
     @NSManaged public func removeFromMessages(_ values: NSSet)
 
 }

@@ -9,7 +9,7 @@
 import Foundation
 import AlamofireSwiftyJSON
 import Alamofire
-import CryptoSwift
+//import CryptoSwift
 
 class APIManager {
     
@@ -209,8 +209,6 @@ class APIManager {
         
         let url = URL(string: APIManager.conversation)!
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-
-            print(res)
             
             guard let json = res.result.value, res.response?.statusCode == 200 else {
                 
@@ -367,8 +365,6 @@ class APIManager {
     
             let url = URL(string: APIManager.conversationMessage)!
             Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
-//    
-//                print(res)
                 
                 guard let json = res.result.value, res.response?.statusCode == 200 else {
     

@@ -47,7 +47,7 @@ class ConversationsVC: UIViewController, UITableViewDelegate, UITableViewDataSou
         }
     }
     
-     func goToMessages() {
+    @objc func goToMessages() {
         performSegue(withIdentifier: MESSAGES_VC, sender: self)
     }
     

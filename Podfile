@@ -4,10 +4,10 @@ use_frameworks!
 
 target 'Blueprint' do
 	pod 'Alamofire', '~> 4.4'
-	pod 'CryptoSwift'
 	pod 'AlamofireSwiftyJSON'
-	pod 'SwiftyGif'
+	pod 'SwiftyGif', '~> 3.1.0'
 	pod 'SwiftLinkPreview', '~> 2.0.7'
-	pod 'Pulsator'
+	pod 'Pulsator', '~> 0.3.0'
 	pod 'Socket.IO-Client-Swift', '~> 11.1.2'
+	pod 'CryptoSwift', '~> 0.7.1'
 end

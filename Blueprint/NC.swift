@@ -25,7 +25,11 @@ class NC: UINavigationController, UINavigationBarDelegate {
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: true)
         
-        viewController.navigationItem.titleView = LogoV(frame: CGRect(x: 0, y: 0, width: 36, height: 36), image: UIImage(named: "chain")!)
+        if viewController.nameOfClass == "ApplePayVC" {
+            viewController.navigationItem.titleView = LogoV(frame: CGRect(x: 0, y: 0, width: 40, height: 40), image: UIImage(named: "apple-pay-black")!)
+        } else {
+            viewController.navigationItem.titleView = LogoV(frame: CGRect(x: 0, y: 0, width: 36, height: 36), image: UIImage(named: "chain")!)
+        }
         viewController.navigationController?.navigationBar.setBackgroundImage(UIImage(color: CHAIN_BLUE), for: .default)
     }
 

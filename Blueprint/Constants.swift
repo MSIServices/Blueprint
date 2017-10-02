@@ -70,6 +70,7 @@ let RECIPIENT_VC = "RecipientVC"
 let MEDIA_VC = "MediaVC"
 let MEDIA_LIBRARY_VC = "MediaLibraryVC"
 let MESSAGES_VC = "MessagesVC"
+let APPLE_PAY_VC = "ApplePayVC"
 
 //Reverse Segues
 let UNWIND_LOGIN_VC = "unwindToLoginVC"
@@ -85,6 +86,7 @@ let UNWIND_MEDIA_VC = "unwindToMediaVC"
 let UNWIND_AUDIO_VC = "unwindToAudioVC"
 let UNWIND_QUOTE_VC = "unwindToQuoteVC"
 let UNWIND_CONVERSATIONS_VC = "unwindToConversationsVC"
+let UNWIND_FEATURE_VC = "unwindToFeaturesVC"
 
 //UI
 let NAVIGATION_BAR_HEIGHT: CGFloat = 64.0

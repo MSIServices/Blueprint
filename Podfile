@@ -10,4 +10,5 @@ target 'Blueprint' do
 	pod 'Pulsator', '~> 0.3.0'
 	pod 'Socket.IO-Client-Swift', '~> 11.1.2'
 	pod 'CryptoSwift', '~> 0.7.1'
+	pod 'Stripe'
 end

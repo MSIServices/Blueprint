@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="XYX-NS-0eV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1094,6 +1094,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="applePayBtn" destination="pKT-1s-HRe" id="7an-Yc-CBm"/>
                         <segue destination="jH3-gl-nfZ" kind="unwind" identifier="unwindToFeaturesVC" unwindAction="unwindToFeaturesVCWithSegue:" id="fYe-2t-ve6"/>
                     </connections>
                 </viewController>
@@ -1705,6 +1706,6 @@
         <segue reference="PLx-bK-tHk"/>
         <segue reference="nWz-7D-8up"/>
         <segue reference="xtI-eT-4vF"/>
-        <segue reference="UIE-4E-dtS"/>
+        <segue reference="vqX-CV-oE1"/>
     </inferredMetricsTieBreakers>
 </document>

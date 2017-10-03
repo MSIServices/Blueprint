@@ -8,14 +8,26 @@
 
 import UIKit
 import PassKit
+import Stripe
 
 class ApplePayVC: UIViewController {
     
+    @IBOutlet weak var applePayBtn: UIButton!
+    
+    var total: NSDecimalNumber = 10.0
+    
     let supportedPaymentNetworks: [PKPaymentNetwork] = [PKPaymentNetwork.visa, PKPaymentNetwork.masterCard, PKPaymentNetwork.amex, PKPaymentNetwork.discover]
     let merchantID = "merchant.com.eliteiosdevelopment.eid"
+    
+    var customer = [String:Any]()
+    var paymentSucceeded = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        applePayBtn.isEnabled = Stripe.deviceSupportsApplePay()
+        
+        customer["email"] = "a@a.com"
 
         addBarButton(imageNormal: "back-white", imageHighlighted: nil, action: #selector(backBtnPressed), side: .west)
     }
@@ -36,14 +48,20 @@ class ApplePayVC: UIViewController {
 //        request.requiredShippingContactFields = PKContactField.emailAddress
         
         var summaryItems = [PKPaymentSummaryItem]()
-        summaryItems.append(PKPaymentSummaryItem(label: "iPhone", amount: 0.01))
-        summaryItems.append(PKPaymentSummaryItem(label: "SM", amount: 0.01))
+        summaryItems.append(PKPaymentSummaryItem(label: "iPhone", amount: 10.00))
+        summaryItems.append(PKPaymentSummaryItem(label: "Steve", amount: total))
 
         request.paymentSummaryItems = summaryItems
         
-        let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
-        applePayController?.delegate = self
-        self.present(applePayController!, animated: true, completion: nil)
+        if Stripe.canSubmitPaymentRequest(request) {
+            
+            let applePayController = PKPaymentAuthorizationViewController(paymentRequest: request)
+            applePayController?.delegate = self
+            self.present(applePayController!, animated: true, completion: nil)
+            
+        } else {
+            print("There is a problem with your Apple Pay configuration")
+        }
     }
 
 }
@@ -52,12 +70,31 @@ extension ApplePayVC: PKPaymentAuthorizationViewControllerDelegate {
     
     func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationViewController, didAuthorizePayment payment: PKPayment, completion: @escaping (PKPaymentAuthorizationStatus) -> Void) {
         print("Payment Authorized!")
-        completion(PKPaymentAuthorizationStatus.success)
+        
+        STPAPIClient.shared().createToken(with: payment) { (token: STPToken?, error: Error?) in
+            
+            guard let token = token, error == nil else {
+                print("CREATE TOKEN ERROR: \(error!)")
+                return
+            }
+
+            APIManager.shared.processStripePayment(token: token, amount: self.total, description: "Apple Pay Charge", customer: self.customer, Success: { result in
+                
+                print(result)
+                
+            }, Failure: { error in
+                print(error ?? "No Error.")
+            })
+        }
     }
     
     func paymentAuthorizationViewControllerDidFinish(_ controller: PKPaymentAuthorizationViewController) {
         print("Payment authorization view controller did finish.")
-        controller.dismiss(animated: true, completion: nil)
+        controller.dismiss(animated: true, completion: {
+            if self.paymentSucceeded {
+                print("Show a receipt page.")
+            }
+        })
     }
     
     //Tells the delegate the user selected a shipping address

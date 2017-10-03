@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SocketIO
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         UIApplication.shared.statusBarStyle = .lightContent
         
+        STPPaymentConfiguration.shared().publishableKey = "pk_test_FCEnj9av0kt3bAAgMWGRkN3I"
+        STPPaymentConfiguration.shared().appleMerchantIdentifier = "merchant.com.eliteiosdevelopment.eid"
         let credentialsProvider = AWSCognitoCredentialsProvider(regionType: .USEast1, identityPoolId: "us-east-1:bdf5b1a5-9f5e-481c-b5f2-b3a77dfd0a3a")
         let configuration = AWSServiceConfiguration(region: .USEast1, credentialsProvider: credentialsProvider)
         

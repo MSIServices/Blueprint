@@ -9,6 +9,7 @@
 import Foundation
 import AlamofireSwiftyJSON
 import Alamofire
+import Stripe
 //import CryptoSwift
 
 class APIManager {
@@ -25,6 +26,7 @@ class APIManager {
     static let conversationMessage: String = baseUrl + "/conversation/message"
     static let conversationParticipantsMessage: String = baseUrl + "/conversation/participants/message"
     static let conversations: String = baseUrl + "/conversations"
+    static let processStripe: String = baseUrl + "/stripe"
     static let conversationFromParticipants: String = baseUrl + "/participants/conversation"
     
     func createUser(email: String, username: String, password: String, avatar: Data?, Success: @escaping ((User) -> Void), Failure: @escaping ((String?) -> Void)) {
@@ -390,6 +392,43 @@ class APIManager {
                 Success(ConversationCD.sync(conversation: conversation)!)
             }
         }
+    
+    func processStripePayment(token: STPToken, amount: NSDecimalNumber, description: String, customer: [String:Any], Success: @escaping ((Bool) -> Void), Failure: @escaping ((String?) -> Void)) {
+        
+        let params = [
+            "token": token,
+            "amount": amount.multiplying(by: NSDecimalNumber(string: "100")),
+            "description": description,
+            "customer": customer,
+            "userId": User.currentId
+        ] as [String:Any]
+        
+        let url = URL(string: APIManager.processStripe)!
+        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: nil).responseSwiftyJSON { res in
+            
+            print(res)
+            
+            guard let json = res.result.value, res.response?.statusCode == 200 else {
+                
+                if res.result.value == nil {
+                    print(ServerError.noData)
+//                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 401 {
+                    print(ServerError.unauthorized)
+//                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 409 {
+                    print(ServerError.badRequest)
+//                    Failure(res.result.value?["error"].string!)
+                } else if res.response?.statusCode == 500 {
+                    print(ServerError.internalServerError)
+//                    Failure(res.result.value?["error"].string!)
+                } else {
+                    print(ServerError.unknownError)
+                }
+                return
+            }
+        }
+    }
     
 //    func saveMessageToConversationWithAdditionalRecipients(conversationId: NSNumber, message: String, senderId: NSNumber, participants: [NSNumber], Success: @escaping ((ConversationCD) -> Void), Failure: @escaping ((String?) -> Void)) {
 //        
